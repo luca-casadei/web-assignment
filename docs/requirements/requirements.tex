@@ -5,15 +5,34 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{todonotes}
+\usepackage[toc]{glossaries}
 
 
 \author{Luca Casadei\\Francesco Pazzaglia\\Andrea De Carli}
 \date{Ultima modifica: \today}
 \title{\textbf{Specifiche progetto Tecnologie Web}}
 
+\makenoidxglossaries
+
+\newglossaryentry{cliente}{
+	name=cliente,
+	description={Untente abilitato ad effettuare ordini su libri nuovi o usati, ha accesso alla parte di clientela del sito.}
+}
+
+\newglossaryentry{venditore}{
+	name=venditore,
+	description={Chi mette in vendita i propri libri nuovi o usati, riceve ordini ed effettua le spedizioni al campus}
+}
+
+\newglossaryentry{campus}{
+	name=campus,
+	description={Area universitaria dove vengono effettuate le consegne dei libri ordinati, non sono previste altre aree di consegna dal testo fornito}
+}
+
 \begin{document}
 	\maketitle
 	\tableofcontents
+	\printnoidxglossaries
 	\section{Testo fornito}
 	"Scrivere una applicazione web accessibile e responsive che consenta di comprare dei generici prodotti (es:	cibo, beni di prima necessità o qualcosa di più fantasioso) con consegna da effettuare presso il nostro Campus.\\
 	Devono esserci:
@@ -23,6 +42,6 @@
 	\end{itemize}
 	Possono esserci funzioni aggiuntive che faranno parte del design\dots\quotedblbase
 	\section{Adattamento del testo}
-	L'applicazione consente di comprare e mettere in vendita libri (nuovi o usati) da parte di studenti o persone esterne, è prevista quindi una parte di utenza interessata all'acquisto di libri (cliente) che potrà effettuare degli ordini, ed un'altra parte che metterà in vendita i propri libri (venditore). La consegna di questi ultimi avviene direttamente al Campus dell'università di Bologna situato a Cesena. A seguito della corretta effettuazione di tutto il processo di ordinazione, che prevederà l'inserimento dei dati di pagamento, verrà inviata una notifica al venditore.\\
+	L'applicazione consente di comprare e mettere in vendita libri (nuovi o usati) da parte di studenti o persone esterne, è prevista quindi una parte di utenza interessata all'acquisto di libri (\gls{cliente}) che potrà effettuare degli ordini, ed un'altra parte che metterà in vendita i propri libri (\gls{venditore}). La consegna di questi ultimi avviene direttamente al \Gls{campus} dell'università di Bologna situato a Cesena. A seguito della corretta effettuazione di tutto il processo di ordinazione, che prevederà l'inserimento dei dati di pagamento, verrà inviata una notifica al venditore.\\
 	\todo{FINIRE}
 \end{document}
