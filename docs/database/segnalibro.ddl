@@ -1,23 +1,5 @@
--- *********************************************
--- * SQL MySQL generation                      
--- *--------------------------------------------
--- * DB-MAIN version: 11.0.2              
--- * Generator date: Sep 14 2021              
--- * Generation date: Mon Nov 11 15:27:53 2024 
--- * LUN file: C:\Users\casad\Desktop\Coding\Interpreted\Web\web-assignment\docs\database\segnalibro-er.lun 
--- * Schema: segnalibro-logic/1-1 
--- ********************************************* 
-
-
--- Database Section
--- ________________ 
-
-create database segnalibro-logic;
-use segnalibro-logic;
-
-
--- Tables Section
--- _____________ 
+create database segnalibro_logic;
+use segnalibro_logic;
 
 create table ACCOUNT (
      UniqueUserID int not null auto_increment,
@@ -139,11 +121,12 @@ create table LIBRO (
      constraint ISBN_ID primary key (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo));
 
 create table NOTIFICA (
+     UniqueUserID int not null,
      Numero int not null auto_increment,
      Titolo varchar(50) not null,
      Testo varchar(1000) not null,
-     IDDestinatario int not null,
-     CodiceOrdineRelativo int);
+     CodiceOrdine int,
+     constraint IDNOTIFICA primary key (Numero, UniqueUserID));
 
 create table ORDINE (
      Codice int not null auto_increment,
@@ -170,109 +153,112 @@ create table VENDITORE (
      UniqueUserID int not null,
      constraint FKAccVenditore_ID primary key (UniqueUserID));
 
-
--- Constraints Section
--- ___________________ 
-
 alter table AUTORI_LIBRO add constraint FKScr_AUT
      foreign key (CodiceAutore)
-     references AUTORE (Codice);
+     references AUTORE (Codice)
+     ON DELETE CASCADE;
 
 alter table AUTORI_LIBRO add constraint FKScr_LIB
      foreign key (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE CASCADE;
 
 alter table CARRELLO add constraint FKCAR_UTE
      foreign key (UniqueUserID)
-     references UTENTE (UniqueUserID);
+     references UTENTE (UniqueUserID)
+     ON DELETE CASCADE;
 
 alter table CARRELLO add constraint FKCAR_COP
      foreign key (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE CASCADE;
 
 alter table COPIA add constraint FKCondizioneCopia
      foreign key (CodiceCondizione)
-     references CONDIZIONE (Codice);
+     references CONDIZIONE (Codice)
+     ON DELETE RESTRICT;
 
 alter table COPIA add constraint FKCpLibro
      foreign key (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE CASCADE;
 
 alter table COPIE_ORDINE add constraint FKCOP_ORD
      foreign key (CodiceOrdine)
-     references ORDINE (Codice);
+     references ORDINE (Codice)
+     ON DELETE CASCADE;
 
 alter table COPIE_ORDINE add constraint FKCOP_COP
      foreign key (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE RESTRICT;
 
 alter table GENERE add constraint FKCategorizzazione
      foreign key (CodiceCategoria)
-     references CATEGORIA (Codice);
+     references CATEGORIA (Codice)
+     ON DELETE RESTRICT;
 
 alter table GENERE_LIBRO add constraint FKGEN_GEN
      foreign key (CodiceGenere, CodiceCategoria)
-     references GENERE (Codice, CodiceCategoria);
+     references GENERE (Codice, CodiceCategoria)
+     ON DELETE CASCADE;
 
 alter table GENERE_LIBRO add constraint FKGEN_LIB
      foreign key (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE CASCADE;
 
 alter table IMMAGINE add constraint FKPresentazione
      foreign key (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
-     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo);
+     references COPIA (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo)
+     ON DELETE CASCADE;
 
 alter table INDIRIZZO add constraint FKProv
      foreign key (CodiceProvincia)
-     references PROVINCIA (Codice);
+     references PROVINCIA (Codice)
+     ON DELETE RESTRICT;
 
 alter table INDIRIZZO add constraint FKFatturazione_FK
      foreign key (UniqueUserID)
-     references UTENTE (UniqueUserID);
-
--- Not implemented
--- alter table LIBRO add constraint ISBN_CHK
---     check(exists(select * from AUTORI_LIBRO
---                  where AUTORI_LIBRO.EAN = EAN and AUTORI_LIBRO.CodiceRegGroup = CodiceRegGroup and AUTORI_LIBRO.CodiceEditoriale = CodiceEditoriale and AUTORI_LIBRO.CodiceTitolo = CodiceTitolo)); 
+     references UTENTE (UniqueUserID)
+     ON DELETE CASCADE;
 
 alter table LIBRO add constraint FKAssEan
      foreign key (EAN)
-     references GS1 (EAN);
+     references GS1 (EAN)
+     ON DELETE RESTRICT;
 
 alter table LIBRO add constraint FKAssRegGroup
      foreign key (CodiceRegGroup)
-     references REGGROUP (Codice);
+     references REGGROUP (Codice)
+     ON DELETE RESTRICT;
 
 alter table LIBRO add constraint FKAssEditore
      foreign key (CodiceEditoriale)
-     references EDITORE (CodiceEditoriale);
-
-alter table NOTIFICA add constraint FKNotificazione
-     foreign key (IDDestinatario)
-     references ACCOUNT (UniqueUserID);
+     references EDITORE (CodiceEditoriale)
+     ON DELETE RESTRICT;
 
 alter table NOTIFICA add constraint FKNotificaOrdine
-     foreign key (CodiceOrdineRelativo)
-     references ORDINE (Codice);
+     foreign key (CodiceOrdine)
+     references ORDINE (Codice)
+     ON DELETE CASCADE;
+
+alter table NOTIFICA add constraint FKNotificazione
+     foreign key (UniqueUserID)
+     references ACCOUNT (UniqueUserID)
+     ON DELETE CASCADE;
 
 alter table ORDINE add constraint FKOrdineUtente
      foreign key (UniqueUserID)
-     references UTENTE (UniqueUserID);
-
--- Not implemented
--- alter table UTENTE add constraint FKAccUtente_CHK
---     check(exists(select * from INDIRIZZO
---                  where INDIRIZZO.UniqueUserID = UniqueUserID)); 
+     references UTENTE (UniqueUserID)
+     ON DELETE RESTRICT;
 
 alter table UTENTE add constraint FKAccUtente_FK
      foreign key (UniqueUserID)
-     references ACCOUNT (UniqueUserID);
+     references ACCOUNT (UniqueUserID)
+     ON DELETE CASCADE;
 
 alter table VENDITORE add constraint FKAccVenditore_FK
      foreign key (UniqueUserID)
-     references ACCOUNT (UniqueUserID);
-
-
--- Index Section
--- _____________ 
-
+     references ACCOUNT (UniqueUserID)
+     ON DELETE CASCADE;
