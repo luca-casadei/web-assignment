@@ -1,12 +1,10 @@
 body {
   margin: 0;
-  font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter,
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter",
     monospace;
 }
 
-header,
-main,
-footer {
+#content {
   padding: 2%;
 }
 
@@ -27,20 +25,20 @@ footer {
 }
 
 nav > button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    display: none;
-    margin-left: auto;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+  margin-left: auto;
 }
 
 nav > button:first-of-type {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 nav > button:last-of-type {
-    font-size: 29px;
+  font-size: 29px;
 }
 
 nav > ul {
