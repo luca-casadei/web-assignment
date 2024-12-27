@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter,
+    monospace;
+}
+
+header,
+main,
+footer {
+  padding: 2%;
+}
+
+nav,
+footer {
+  background-color: #801524;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+nav > button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+    margin-left: auto;
+}
+
+nav > button:first-of-type {
+    font-size: 25px;
+}
+
+nav > button:last-of-type {
+    font-size: 29px;
+}
+
+nav > ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  transition: transform 0.7s ease;
+}
+
+nav > ul > li > a {
+  color: white;
+  text-decoration: none;
+  padding: 0.625rem;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  nav > button:first-of-type {
+    display: block;
+  }
+
+  nav > ul {
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 45vw;
+    height: 94%;
+    background-color: #801524;
+    overflow-y: auto;
+    transform: translateX(100%);
+  }
+
+  nav[data-open="true"] > ul {
+    transform: translateX(0);
+  }
+
+  nav[data-open="true"] > button:first-of-type {
+    display: none;
+  }
+
+  nav[data-open="false"] > button:first-of-type {
+    display: block;
+  }
+
+  nav[data-open="true"] > button:last-of-type {
+    display: block;
+  }
+
+  nav[data-open="false"] > button:last-of-type {
+    display: none;
+  }
+}
