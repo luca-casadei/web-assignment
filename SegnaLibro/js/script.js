@@ -1,16 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const nav = document.querySelector('nav');
-    const openButton = nav.querySelector('button:first-of-type');
-    const closeButton = nav.querySelector('button:last-of-type');
-
-    openButton.addEventListener('click', () => {
-        nav.setAttribute('data-open', 'true');
-    });
-
-    closeButton.addEventListener('click', () => {
-        nav.setAttribute('data-open', 'false');
-    });
-});
+window.onload = function () {
+    loadPage('login');
+};
 
 function loadPage(page) {
     const xhr = new XMLHttpRequest();
@@ -25,6 +15,16 @@ function loadPage(page) {
     xhr.send();
 }
 
-window.onload = function () {
-    loadPage('home');
-};
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('nav');
+    const openButton = nav.querySelector('button:first-of-type');
+    const closeButton = nav.querySelector('button:last-of-type');
+
+    openButton.addEventListener('click', () => {
+        nav.setAttribute('data-open', 'true');
+    });
+
+    closeButton.addEventListener('click', () => {
+        nav.setAttribute('data-open', 'false');
+    });
+});

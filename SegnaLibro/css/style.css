@@ -31,14 +31,7 @@ nav > button {
   cursor: pointer;
   display: none;
   margin-left: auto;
-}
-
-nav > button:first-of-type {
   font-size: 25px;
-}
-
-nav > button:last-of-type {
-  font-size: 29px;
 }
 
 nav > ul {
@@ -94,4 +87,21 @@ nav > ul > li > a {
   nav[data-open="false"] > button:last-of-type {
     display: none;
   }
+}
+
+form > p {
+  margin-bottom: 15px;
+}
+
+form p label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+    width: 30%;
+    padding: 8px;
+    border: 2px solid #801524;
+    border-radius: 4px;
+    display: inline;
 }
