@@ -1,11 +1,15 @@
 body {
   margin: 0;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter",
-    monospace;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
+  text-align:center;
 }
 
-#content {
+main {
   padding: 2%;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 nav,
@@ -24,7 +28,7 @@ footer {
   text-align: center;
 }
 
-nav > button {
+nav > input {
   background: none;
   border: none;
   color: white;
@@ -52,7 +56,7 @@ nav > ul > li > a {
 }
 
 @media (max-width: 768px) {
-  nav > button:first-of-type {
+  nav > input:first-of-type {
     display: block;
   }
 
@@ -72,19 +76,19 @@ nav > ul > li > a {
     transform: translateX(0);
   }
 
-  nav[data-open="true"] > button:first-of-type {
+  nav[data-open="true"] > input:first-of-type {
     display: none;
   }
 
-  nav[data-open="false"] > button:first-of-type {
+  nav[data-open="false"] > input:first-of-type {
     display: block;
   }
 
-  nav[data-open="true"] > button:last-of-type {
+  nav[data-open="true"] > input:last-of-type {
     display: block;
   }
 
-  nav[data-open="false"] > button:last-of-type {
+  nav[data-open="false"] > input:last-of-type {
     display: none;
   }
 }
@@ -99,9 +103,9 @@ form p label {
 }
 
 input {
-    width: 30%;
-    padding: 8px;
-    border: 2px solid #801524;
-    border-radius: 4px;
-    display: inline;
+  width: 30%;
+  padding: 8px;
+  border: 2px solid #801524;
+  border-radius: 4px;
+  display: inline;
 }
