@@ -1,24 +1,38 @@
-body {
+/*Blank rules and default font*/
+@font-face {
+  font-family: ahyp;
+  src: url("../fonts/AtkinsonHyperlegible-Regular.ttf");
+}
+
+body,
+p,
+h1,
+ul,
+input,
+a {
   margin: 0;
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter",
-    "Lucida Typewriter", monospace;
-  text-align:center;
+  padding: 0;
+  font-family: ahyp, 'Courier New', Courier, monospace;
+  font-size: unset;
+  text-decoration: unset;
+  font-weight: unset;
 }
 
-main {
-  padding: 2%;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/*Navbar and footer*/
 nav,
 footer {
   background-color: #801524;
   color: white;
-  padding: 10px;
   width: 100%;
   box-sizing: border-box;
+}
+
+footer {
+  padding: 10px;
+}
+
+nav {
+  padding: 5px;
 }
 
 footer {
@@ -26,9 +40,10 @@ footer {
   left: 0;
   bottom: 0;
   text-align: center;
+  font-size: 15px;
 }
 
-nav > input {
+nav>input {
   background: none;
   border: none;
   color: white;
@@ -38,7 +53,7 @@ nav > input {
   font-size: 25px;
 }
 
-nav > ul {
+nav>ul {
   list-style-type: none;
   display: flex;
   justify-content: center;
@@ -48,64 +63,153 @@ nav > ul {
   transition: transform 0.7s ease;
 }
 
-nav > ul > li > a {
+nav>ul>li>a {
   color: white;
   text-decoration: none;
-  padding: 0.625rem;
+  padding: 10px;
   display: block;
 }
 
+/*Main*/
+main {
+  margin: 5%;
+}
+
+/*Login*/
+main[login] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  color: #801524;
+}
+
+main[login]>h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+main[login]>form {
+  width: 100%;
+}
+
+main[login]>form>ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+main[login]>form>ul>li {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+main[login] label {
+  width: 20%;
+  padding: 8px;
+  font-size: large;
+}
+
+main[login] input {
+  width: 30%;
+  padding: 8px;
+  border: 2px solid #801524;
+  border-radius: 5px;
+}
+
+main[login] input[type="submit"] {
+  color: white;
+  background-color: #801524;
+  width: 15%;
+  height: 50px;
+  font-size: large;
+}
+
+main[login]>form>ul>li:last-child{
+  font-size: larger;
+}
+
+main[login]>form>ul>li>a {
+  margin-left: 1%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #801524;
+}
+
+/*Signup TODO*/
+
+/*Mobile version*/
 @media (max-width: 768px) {
-  nav > input:first-of-type {
+
+  /*Navbar and Footer*/
+  nav>input:first-of-type {
     display: block;
   }
 
-  nav > ul {
+  nav>ul {
     flex-direction: column;
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 45vw;
+    width: 45%;
     height: 94%;
     background-color: #801524;
     overflow-y: auto;
     transform: translateX(100%);
   }
 
-  nav[data-open="true"] > ul {
+  nav[data-open="true"]>ul {
     transform: translateX(0);
   }
 
-  nav[data-open="true"] > input:first-of-type {
+  nav[data-open="true"]>input:first-of-type {
     display: none;
   }
 
-  nav[data-open="false"] > input:first-of-type {
+  nav[data-open="false"]>input:first-of-type {
     display: block;
   }
 
-  nav[data-open="true"] > input:last-of-type {
+  nav[data-open="true"]>input:last-of-type {
     display: block;
   }
 
-  nav[data-open="false"] > input:last-of-type {
+  nav[data-open="false"]>input:last-of-type {
     display: none;
   }
-}
 
-form > p {
-  margin-bottom: 15px;
-}
+  /*Login*/
+  main[login]>form>ul {
+    flex-direction: column;
+  }
 
-form p label {
-  display: block;
-  margin-bottom: 5px;
-}
+  main[login]>form>ul>li {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
 
-input {
-  width: 30%;
-  padding: 8px;
-  border: 2px solid #801524;
-  border-radius: 4px;
-  display: inline;
+  main[login] label {
+    width: 60%;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  main[login] input {
+    width: 60%;
+    font-size: large;
+  }
+
+  main[login] input[type="submit"] {
+    width: 40%;
+  }
+
+  main[login]>form>ul>li>a {
+    margin-left: 0;
+  }
+
+  /*Signup TODO*/
 }

@@ -1,7 +1,11 @@
-<?php include('includes/navbar.php'); ?>
+<?php
 
-<main>
+require_once 'bootstrap.php';
 
-</main>
+$tp["title"] = "SegnaLibro - Home";
+$tp["identification"] = "home";
+$tp["content"] = './pages/home.php';
+//$tp["js"] = array("js/script.js");
 
-<?php include('includes/footer.php'); ?>
+require 'template/base.php';
+?>
