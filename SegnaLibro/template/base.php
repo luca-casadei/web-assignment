@@ -9,7 +9,7 @@
 
 <body>
     <?php require './components/navbar.php' ?>
-    <main <?php echo $tp["identification"]?>>
+    <main <?php echo "data-" . $tp["identification"]?>>
         <?php
         if (isset($tp["content"])) {
             require($tp["content"]);

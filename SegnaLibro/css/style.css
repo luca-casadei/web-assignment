@@ -76,7 +76,7 @@ main {
 }
 
 /*Login*/
-main[access] {
+main[data-access] {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,43 +84,43 @@ main[access] {
   color: #801524;
 }
 
-main[access]>h1 {
+main[data-access]>h1 {
   font-size: 40px;
   font-weight: bold;
 }
 
-main[access]>form {
+main[data-access]>form {
   width: 100%;
 }
 
-main[access]>form>ul {
+main[data-access]>form>ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-main[access]>form>ul>li {
+main[data-access]>form>ul>li {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
 }
 
-main[access] label {
+main[data-access] label {
   width: 20%;
   padding: 8px;
   font-size: large;
 }
 
-main[access] input {
+main[data-access] input {
   width: 30%;
   padding: 8px;
   border: 2px solid #801524;
   border-radius: 5px;
 }
 
-main[access] input[type="submit"] {
+main[data-access] input[type="submit"] {
   color: white;
   background-color: #801524;
   width: 15%;
@@ -128,18 +128,18 @@ main[access] input[type="submit"] {
   font-size: large;
 }
 
-main[access]>form>ul>li:last-child{
+main[data-access]>form>ul>li:last-child{
   font-size: larger;
 }
 
-main[access]>form>ul>li>a {
+main[data-access]>form>ul>li>a {
   margin-left: 1%;
   text-decoration: none;
   font-weight: bold;
   color: #801524;
 }
 
-main[access] p[error] {
+main[data-access] p[error] {
   text-align: center;
   font-weight: bold;
   margin: 3%;
@@ -186,32 +186,32 @@ main[access] p[error] {
   }
 
   /*Login*/
-  main[access]>form>ul {
+  main[data-access]>form>ul {
     flex-direction: column;
   }
 
-  main[access]>form>ul>li {
+  main[data-access]>form>ul>li {
     flex-direction: column;
     width: 100%;
     align-items: center;
   }
 
-  main[access] label {
+  main[data-access] label {
     width: 60%;
     text-align: center;
     font-size: 25px;
   }
 
-  main[access] input {
+  main[data-access] input {
     width: 60%;
     font-size: large;
   }
 
-  main[access] input[type="submit"] {
+  main[data-access] input[type="submit"] {
     width: 40%;
   }
 
-  main[access]>form>ul>li>a {
+  main[data-access]>form>ul>li>a {
     margin-left: 0;
   }
 
