@@ -10,5 +10,15 @@ class DatabaseHelper
             die("Connection failed: " . $this->db->connect_error);
         }
     }
+
+    public function checkLogin($email){
+        $query = "SELECT Email, Password, Nome, Cognome FROM account WHERE Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }  
 }
 ?>

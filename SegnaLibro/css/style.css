@@ -139,6 +139,12 @@ main[access]>form>ul>li>a {
   color: #801524;
 }
 
+main[access] p[error] {
+  text-align: center;
+  font-weight: bold;
+  margin: 3%;
+}
+
 /*Mobile version*/
 @media (max-width: 768px) {
 
