@@ -15,13 +15,14 @@
 
     if(isUserLoggedIn()){
         $tp["title"] = "SegnaLibro - Benvenuto";
-
+        $tp["content"] = './pages/profile.php';
+        $tp["identification"] = "profile";
     } else {
         $tp["title"] = "SegnaLibro - Accedi";
+        $tp["content"] = './pages/login.php';
+        $tp["identification"] = "access";
     }
 
-    $tp["content"] = './pages/login.php';
-    $tp["identification"] = "access";
 
     require './template/base.php';
 ?>

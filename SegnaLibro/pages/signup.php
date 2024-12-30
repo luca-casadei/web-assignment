@@ -1,4 +1,4 @@
-<h2>Registrazione</h2>
+<h1>Registrazione</h1>
 <form>
     <ul>
         <li>
