@@ -7,6 +7,7 @@ function generateArticles(articoli){
             <header>
                 <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
                 <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
+                <p>${articoli[i]["NomeCategoria"]}</p>
             </header>
             <p>
                 ${articoli[i]["DescrizioneAnnuncio"]}

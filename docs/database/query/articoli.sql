@@ -4,7 +4,8 @@ CREATE VIEW LIBRI_CATEGORIE_AUTORE AS (
 	autore.Nome AS NomeAutore,
 	autore.Cognome AS CognomeAutore,
 	genere.Nome AS NomeGenere,
-	genere.Descrizione AS DescrizioneGenere
+	genere.Descrizione AS DescrizioneGenere,
+	CATEGORIA.Nome AS NomeCategoria
 	FROM libro join autori_libro
 	ON autori_libro.EAN = libro.EAN
 	AND autori_libro.CodiceRegGroup = libro.CodiceRegGroup
@@ -16,7 +17,8 @@ CREATE VIEW LIBRI_CATEGORIE_AUTORE AS (
 	AND genere_libro.CodiceEditoriale = libro.CodiceEditoriale
 	AND genere_libro.CodiceTitolo = libro.CodiceTitolo
 	JOIN genere ON genere.Codice = genere_libro.CodiceGenere
-)
+	JOIN CATEGORIA ON CATEGORIA.Codice = GENERE.CodiceCategoria
+);
 
 CREATE VIEW ANNUNCI AS (	
     SELECT LIBRI_CATEGORIE_AUTORE.*, 
