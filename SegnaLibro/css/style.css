@@ -164,23 +164,21 @@ main[data-access] p[error] {
   nav > ul {
     flex-direction: column;
     position: absolute;
-    bottom: 0;
-    right: -100%; 
+    bottom: 12%;
+    right: 0; 
     width: 45%;
     height: 75%;
     background-color: #801524;
     overflow-y: auto;
-    transition: right 0.3s ease;
     display: none;
   }
 
   nav[data-open="true"] > ul {
     display: block;
-    right: 0;
   }
 
   nav[data-open="false"] > ul {
-    right: -100%;
+    display: none;
   }
 }
 

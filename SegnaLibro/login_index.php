@@ -23,6 +23,5 @@
         $tp["identification"] = "access";
     }
 
-
     require './template/base.php';
 ?>
