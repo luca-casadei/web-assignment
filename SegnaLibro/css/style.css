@@ -1,4 +1,4 @@
-/*Blank rules and default font*/
+/* Font and default styles */
 @font-face {
   font-family: ahyp;
   src: url("../fonts/AtkinsonHyperlegible-Regular.ttf");
@@ -7,6 +7,7 @@
 body,
 p,
 h1,
+h2,
 ul,
 input,
 a {
@@ -18,20 +19,53 @@ a {
   font-weight: unset;
 }
 
-/*Navbar and footer*/
+/* Navbar and footer styles */
 nav,
-footer {
+body > footer {
   background-color: #801524;
   color: white;
   width: 100%;
   box-sizing: border-box;
 }
 
+/* Navbar layout */
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 5px;
 }
 
-footer {
+/* Navbar images */
+nav img {
+  width: 50px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* Navbar menu */
+nav > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  font-size: larger;
+}
+
+nav > ul > li > a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+}
+
+/* Icons visibility control */
+nav > img {
+  display: none;
+}
+
+/* Footer styles */
+body > footer {
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -39,40 +73,13 @@ footer {
   padding: 10px;
 }
 
-nav>input {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: none;
-  margin-left: auto;
-  font-size: 25px;
-}
-
-nav>ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  transition: transform 0.7s ease;
-}
-
-nav>ul>li>a {
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  display: block;
-}
-
-/*Main*/
+/* Main content styles */
 main {
   margin: 5%;
   margin-bottom: 15%;
 }
 
-/*Login*/
+/* Login section */
 main[data-access] {
   display: flex;
   flex-direction: column;
@@ -81,23 +88,23 @@ main[data-access] {
   color: #801524;
 }
 
-main[data-access]>h1 {
+main[data-access] > h1 {
   font-size: 40px;
   font-weight: bold;
 }
 
-main[data-access]>form {
+main[data-access] > form {
   width: 100%;
 }
 
-main[data-access]>form>ul {
+main[data-access] > form > ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-main[data-access]>form>ul>li {
+main[data-access] > form > ul > li {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -129,11 +136,11 @@ main[data-access] input[type="submit"] {
   font-size: large;
 }
 
-main[data-access]>form>ul>li:last-child{
+main[data-access] > form > ul > li:last-child {
   font-size: larger;
 }
 
-main[data-access]>form>ul>li>a {
+main[data-access] > form > ul > li > a {
   text-decoration: none;
   font-weight: bold;
   color: #801524;
@@ -145,56 +152,55 @@ main[data-access] p[error] {
   margin: 3%;
 }
 
-/*Mobile version*/
+/* Mobile version styles */
 @media (max-width: 768px) {
-
-  /*Navbar and Footer*/
-  nav>input:first-of-type {
+  /* Navbar icons visibility */
+  nav > img {
     display: block;
+    width: 10%;
   }
 
-  nav>ul {
+  nav > ul {
+    display: none;
+  }
+
+  /* Navbar menu mobile layout */
+  nav > ul {
     flex-direction: column;
     position: fixed;
     bottom: 0;
-    right: 0;
+    right: -100%; 
     width: 45%;
     height: 94%;
     background-color: #801524;
     overflow-y: auto;
-    transform: translateX(100%);
+    transition: right 0.3s ease;
   }
 
-  nav[data-open="true"]>ul {
-    transform: translateX(0);
+  nav[data-open="true"] > ul {
+    right: 0;
   }
 
-  nav[data-open="true"]>input:first-of-type {
-    display: none;
+  nav[data-open="false"] > ul {
+    right: -100%;
+  }
+}
+
+
+/* Tablet and larger version styles */
+@media (min-width: 769px) {
+  /* Show menu and align elements */
+  nav > ul {
+    display: flex;
+    justify-content: center;
   }
 
-  nav[data-open="false"]>input:first-of-type {
+  /* Navbar images */
+  nav > img {
     display: block;
   }
 
-  nav[data-open="true"]>input:last-of-type {
-    display: block;
-  }
-
-  nav[data-open="false"]>input:last-of-type {
-    display: none;
-  }
-
-  /*Login*/
-  main[data-access] label {
-    width: 60%;
-  }
-
-  main[data-access] input {
-    width: 60%;
-  }
-
-  main[data-access] input[type="submit"] {
-    width: 40%;
+  nav img {
+    margin-left: 10px;
   }
 }

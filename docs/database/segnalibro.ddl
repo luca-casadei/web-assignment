@@ -11,8 +11,8 @@ create table ACCOUNT (
 
 create table AUTORE (
      Codice int not null auto_increment,
-     Nome char(1) not null,
-     Cognome char(1) not null,
+     Nome VARCHAR(50) not null,
+     Cognome VARCHAR(50) not null,
      constraint IDAUTORE primary key (Codice));
 
 create table AUTORI_LIBRO (
@@ -49,7 +49,7 @@ create table COPIA (
      CodiceTitolo char(6) not null,
      Numero int not null auto_increment,
      Prezzo decimal(10,2) not null,
-     Titolo char(1) not null,
+     Titolo VARCHAR(100) not null,
      Descrizione varchar(1000) not null,
      DataAnnuncio date not null,
      CodiceCondizione int not null,

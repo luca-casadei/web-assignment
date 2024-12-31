@@ -41,3 +41,47 @@ INSERT INTO GENERE_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, C
 ('979', '12345', '001001', '000018', 4, 1), -- Horror
 ('979', '12345', '002002', '000019', 5, 1), -- Storico
 ('979', '12345', '003003', '000020', 2, 1); -- Rosa
+
+INSERT INTO AUTORE (Codice, Nome, Cognome) VALUES
+(1, 'Umberto', 'Eco'),
+(2, 'Giorgio', 'Faletti'),
+(3, 'J.K.', 'Rowling'),
+(4, 'Bram', 'Stoker'),
+(5, 'Ildefonso', 'Falcones'),
+(6, 'Jane', 'Austen'),
+(7, 'J.R.R.', 'Tolkien'),
+(8, 'Stephen', 'King'),
+(9, 'Yuval', 'Harari'),
+(10, 'George', 'Orwell'),
+(11, 'Dan', 'Brown'),
+(12, 'Elena', 'Ferrante'),
+(13, 'Antoine', 'de Saint-Exupéry'),
+(14, 'Franz', 'Kafka'),
+(15, 'Miguel', 'de Cervantes'),
+(16, 'Alexandre', 'Dumas'),
+(17, 'Dante', 'Alighieri'),
+(18, 'Mary', 'Shelley'),
+(19, 'Lev', 'Tolstoj'),
+(20, 'Oscar', 'Wilde');
+
+INSERT INTO AUTORI_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceAutore) VALUES
+('978', '12345', '001001', '000001', 1), -- Il Nome della Rosa
+('978', '12345', '001001', '000002', 2), -- Io Uccido
+('978', '12345', '002002', '000003', 3), -- Harry Potter e la Pietra Filosofale
+('978', '12345', '003003', '000004', 4), -- Dracula
+('978', '12345', '004004', '000005', 5), -- La Cattedrale del Mare
+('978', '12345', '001001', '000006', 6), -- Orgoglio e Pregiudizio
+('978', '12345', '002002', '000007', 7), -- Il Signore degli Anelli
+('978', '12345', '003003', '000008', 8), -- IT
+('978', '12345', '004004', '000009', 9), -- Sapiens
+('978', '54321', '001001', '000010', 10), -- 1984
+('979', '54321', '002002', '000011', 11), -- Il Codice Da Vinci
+('978', '54321', '003003', '000012', 12), -- L'Amica Geniale
+('978', '54321', '004004', '000013', 13), -- Il Piccolo Principe
+('978', '54321', '001001', '000014', 14), -- La Metamorfosi
+('978', '54321', '002002', '000015', 15), -- Don Chisciotte
+('978', '54321', '003003', '000016', 16), -- Il Conte di Montecristo
+('979', '12345', '004004', '000017', 17), -- La Divina Commedia
+('979', '12345', '001001', '000018', 18), -- Frankenstein
+('979', '12345', '002002', '000019', 19), -- Guerra e Pace
+('979', '12345', '003003', '000020', 20); -- Il Ritratto di Dorian Gray

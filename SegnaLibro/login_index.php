@@ -13,8 +13,7 @@
         }
     }
 
-    //isUserLoggedIn() non definito
-    if(false){
+    if(isUserLoggedIn()){
         $tp["title"] = "SegnaLibro - Benvenuto";
         $tp["content"] = './pages/profile.php';
         $tp["identification"] = "profile";
