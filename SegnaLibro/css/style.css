@@ -31,16 +31,10 @@ body > footer {
 /* Navbar layout */
 nav {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
-}
-
-/* Navbar images */
-nav img {
-  width: 50px;
-  margin-left: auto;
-  cursor: pointer;
 }
 
 /* Navbar menu */
@@ -48,20 +42,28 @@ nav > ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
-  gap: 20px;
-  font-size: larger;
+  gap: 30px;
+}
+
+nav>ul:first-of-type{
+  margin-left: 1%;
+}
+
+nav>ul:last-of-type{
+  margin-right: 1%;
+}
+
+nav > ul:last-of-type > li:last-of-type{
+  display: none;
+}
+
+nav img {
+  height: 40px;
+  width: 40px;
 }
 
 nav > ul > li > a {
   color: white;
-  text-decoration: none;
-  padding: 10px;
-  display: block;
-}
-
-/* Icons visibility control */
-nav > img {
-  display: none;
 }
 
 /* Footer styles */
@@ -69,8 +71,9 @@ body > footer {
   position: fixed;
   bottom: 0;
   text-align: center;
-  font-size: 15px;
+  font-size: 10px;
   padding: 10px;
+  height: 50px;
 }
 
 /* Main content styles */
@@ -154,49 +157,35 @@ main[data-access] p[error] {
 
 /* Mobile version styles */
 @media (max-width: 768px) {
-  /* Navbar icons visibility */
-  nav > img {
-    display: block;
-    width: 10%;
+  nav[data-open="false"] > ul:first-of-type{
+    display: none;
   }
 
-  /* Navbar menu mobile layout */
-  nav > ul {
+  /* Navbar opened */
+  nav[data-open="true"] > ul:first-of-type {
     flex-direction: column;
     position: absolute;
-    bottom: 12%;
-    right: 0; 
-    width: 45%;
-    height: 75%;
+    right: 0;
+    bottom: 0;
+    top: 50px;
+    width: 60%;
+    gap:10px;
     background-color: #801524;
-    overflow-y: auto;
-    display: none;
+    text-align: center;
+    padding-top: 50px;
+    gap: 20px;
+    font-size: larger;
   }
 
-  nav[data-open="true"] > ul {
-    display: block;
+  nav > ul:last-of-type > li:last-of-type{
+    display:unset
   }
 
-  nav[data-open="false"] > ul {
-    display: none;
-  }
-}
-
-
-/* Tablet and larger version styles */
-@media (min-width: 769px) {
-  /* Show menu and align elements */
-  nav > ul {
-    display: flex;
-    justify-content: center;
+  main[data-access] input{
+    width: 60%;
   }
 
-  /* Navbar images */
-  nav > img {
-    display: block;
-  }
-
-  nav img {
-    margin-left: 10px;
+  main[data-access] input[type="submit"]{
+    width: 40%;
   }
 }

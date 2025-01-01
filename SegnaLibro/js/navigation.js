@@ -10,8 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = nav.querySelector('img[alt="Toggle menu"]');
 
     toggleButton.addEventListener('click', () => {
-        console.log("click");
-        const isOpen = nav.getAttribute('data-open') === 'true';
-        nav.setAttribute('data-open', isOpen ? 'false' : 'true');
+        const navAtt = 'data-open';
+        nav.setAttribute(navAtt, nav.getAttribute(navAtt) === "false" ? "true" : "false");
     });
 });

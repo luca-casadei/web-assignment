@@ -12,7 +12,7 @@ function debug_to_console($data) {
 //
 // User functions
 //
-function registerLoggedUser($user){
+function registerLoggedUser($user) {
     $_SESSION["email"] = $user["Email"];
     $_SESSION["name"] = $user["Nome"];
     $_SESSION["lastname"] = $user["Cognome"];
