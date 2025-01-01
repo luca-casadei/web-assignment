@@ -149,7 +149,7 @@ main[data-access] > form > ul > li > a {
   color: #801524;
 }
 
-main[data-access] p[error] {
+main[data-access] > form > p:first-of-type {
   text-align: center;
   font-weight: bold;
   margin: 3%;

@@ -3,7 +3,13 @@
 
     $tp["title"] = "SegnaLibro - Profilo";
     $tp["identification"] = "profile";
-    $tp["content"] = './pages/profile.php';
+
+    if (isUserLoggedIn()){
+        $tp["content"] = './pages/profile.php';
+    }
+    else{
+        header('Location: ./login_index.php');
+    }
 
     require './template/base.php';
 ?>
