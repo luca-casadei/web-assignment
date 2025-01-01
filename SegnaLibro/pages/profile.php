@@ -1,3 +1,8 @@
+<?php
+if(!defined('DIRECT_ACCESS')){
+    header("Location: ../index.php");
+}
+?>
 <h1>Account</h1>
 <p>Visualizza le informazioni rilevanti del tuo account e apporta modifiche.</p>
 <form method="POST" action="update_profile.php">
