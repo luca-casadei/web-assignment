@@ -5,7 +5,7 @@ if(!defined('DIRECT_ACCESS')){
 ?>
 <h1>Account</h1>
 <p>Visualizza le informazioni rilevanti del tuo account e apporta modifiche.</p>
-<form method="POST" action="update_profile.php">
+<form method="POST">
     <ul>
         <li>
             <label for="name">Nome</label>
@@ -32,20 +32,21 @@ if(!defined('DIRECT_ACCESS')){
     <p>Si prega di inserire la password vecchia e la nuova password (con relativa copia di conferma).</p>
     <ul>
         <li>
-            <label for="old-password">Vecchia password:</label>
-            <input type="password" id="old-password" required>
+            <label for="old_password">Vecchia password:</label>
+            <input type="password" name="old_password" required>
         </li>
         <li>
-            <label for="new-password">Nuova password:</label>
-            <input type="password" id="new-password" required>
+            <label for="new_password">Nuova password:</label>
+            <input type="password"name="new_password" required>
         </li>
         <li>
-            <label for="new-password-confirm">Conferma nuova password:</label>
-            <input type="password" id="new-password-confirm" required>
+            <label for="new_password_confirm">Conferma nuova password:</label>
+            <input type="password" name="new_password_confirm" required>
         </li>
         <li>
             <input type="submit" value="Salva modifiche">
         </li>
+        <p></p>
     </ul>
 </form>
 

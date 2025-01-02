@@ -27,5 +27,12 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    function changePassword($email, $password){
+        $query = "UPDATE ACCOUNT SET Password = ? WHERE Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$password,$email);
+        $stmt->execute();
+    }
 }
 ?>

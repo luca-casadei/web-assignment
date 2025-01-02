@@ -17,6 +17,7 @@ function registerLoggedUser($user) {
     $_SESSION["email"] = $user["Email"];
     $_SESSION["name"] = $user["Nome"];
     $_SESSION["lastname"] = $user["Cognome"];
+    $_SESSION["password"] = $user["Password"];
 }
 
 function isUserLoggedIn(){
