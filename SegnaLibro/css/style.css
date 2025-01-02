@@ -53,6 +53,10 @@ nav>ul:last-of-type{
   margin-right: 1%;
 }
 
+nav > ul:last-of-type > li{
+  cursor: pointer;
+}
+
 nav > ul:last-of-type > li:last-of-type{
   display: none;
 }

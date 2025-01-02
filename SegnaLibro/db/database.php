@@ -12,7 +12,7 @@ class DatabaseHelper
     }
 
     public function checkLogin($email){
-        $query = "SELECT Email, Password, Nome, Cognome FROM account WHERE Email = ?";
+        $query = "SELECT * FROM ACCOUNT WHERE Email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$email);
         $stmt->execute();

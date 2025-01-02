@@ -24,7 +24,7 @@ if(!defined('DIRECT_ACCESS')){
             <input type="text" id="address" name="address" placeholder="Via esempio, 50" />
         </li>
     </ul>
-    <a href="change_password.php" class="change-password-link">Modifica Password</a>
+    <a href="./change_password_index.php">Modifica Password</a>
     <input type="submit" value="Salva Modifiche" />
 </form>
-<a href="./pages/logout.php" class="logout-link">Disconnetti</a>
+<a href="./pages/logout.php">Disconnetti</a>
