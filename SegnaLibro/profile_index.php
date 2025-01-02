@@ -10,5 +10,6 @@ if (isUserLoggedIn()) {
 } else {
     header('Location: ./login_index.php');
 }
+array_push($tp["js"], "./js/profile.js");
 
 require './template/base.php';

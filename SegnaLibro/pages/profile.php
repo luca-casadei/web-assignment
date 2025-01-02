@@ -24,7 +24,29 @@ if(!defined('DIRECT_ACCESS')){
             <input type="text" id="address" name="address" placeholder="Via esempio, 50" />
         </li>
     </ul>
-    <a href="./change_password_index.php">Modifica Password</a>
+    <a href="">Modifica Password</a>
     <input type="submit" value="Salva Modifiche" />
 </form>
+
+<form>
+    <p>Si prega di inserire la password vecchia e la nuova password (con relativa copia di conferma).</p>
+    <ul>
+        <li>
+            <label for="old-password">Vecchia password:</label>
+            <input type="password" id="old-password" required>
+        </li>
+        <li>
+            <label for="new-password">Nuova password:</label>
+            <input type="password" id="new-password" required>
+        </li>
+        <li>
+            <label for="new-password-confirm">Conferma nuova password:</label>
+            <input type="password" id="new-password-confirm" required>
+        </li>
+        <li>
+            <input type="submit" value="Salva modifiche">
+        </li>
+    </ul>
+</form>
+
 <a href="./pages/logout.php">Disconnetti</a>
