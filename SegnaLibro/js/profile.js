@@ -28,7 +28,7 @@ function toggleChangePasswordForm() {
 }
 
 async function changePassword(old_password, new_password, new_password_confirm) {
-    const url = "api-profile.php";
+    const url = "./apis/api-profile.php";
     const formData = new FormData();
     formData.append('old_password', old_password);
     formData.append('new_password', new_password);

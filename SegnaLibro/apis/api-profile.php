@@ -1,5 +1,5 @@
 <?php
-require('bootstrap.php');
+require('../bootstrap.php');
 if(isset($_POST['old_password']) 
 && isset($_POST['new_password'])
 && isset($_POST['new_password_confirm'])) {

@@ -23,23 +23,13 @@ function generateLoginForm(){
 }
 
 async function getLoginData() {
-    const url = 'api-login.php';
+    const url = './apis/api-login.php';
     try {
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        const json = await response.json();
-        console.log(json);
-        if(json["logged"]){
-            console.log("Login già eseguito");
-            window.location.href = "./profile_index.php";
-        }
-        else{
-            showLoginForm();
-        }
-
-
+        showLoginForm();
     } catch (error) {
         console.log(error.message);
     }
@@ -60,7 +50,7 @@ function showLoginForm() {
 }
 
 async function login(username, password) {
-    const url = 'api-login.php';
+    const url = './apis/api-login.php';
     const formData = new FormData();
     formData.append('email', username);
     formData.append('password', password);

@@ -50,4 +50,4 @@ if(!defined('DIRECT_ACCESS')){
     </ul>
 </form>
 
-<a href="./pages/logout.php">Disconnetti</a>
+<a href="./logout_index.php">Disconnetti</a>

@@ -1,8 +1,11 @@
 <?php
-require_once 'bootstrap.php';
+require '../bootstrap.php';
+
+if(isUserLoggedIn()){
+    header("Location: ../profile_index.php");
+}
 
 $result["logged"] = false;
-
 if(isset($_POST["email"]) && isset($_POST["password"])){
 
     $login_result = $dbh->checkLogin($_POST["email"]);
