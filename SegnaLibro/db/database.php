@@ -28,16 +28,30 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function changePassword($email, $password){
+    public function changePassword($email, $password){
         $query = "UPDATE ACCOUNT SET Password = ? WHERE Email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$password,$email);
         $stmt->execute();
     }
 
-    function getBooks(){
+    public function getBooks(){
         $qr = "SELECT * FROM LIBRI_CATEGORIE_AUTORE";
         $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCart() {
+        $qr = "SELECT * FROM CARRELLO JOIN ANNUNCI 
+                ON CARRELLO.CodiceEditoriale = ANNUNCI.CodiceEditoriale 
+                AND CARRELLO.CodiceRegGroup = ANNUNCI.CodiceRegGroup 
+                AND CARRELLO.EAN = ANNUNCI.EAN
+                AND CARRELLO.CodiceTitolo = ANNUNCI.CodiceTitolo
+                WHERE CARRELLO.UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('s',$_SESSION['userid']);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
