@@ -15,17 +15,13 @@ function generateCartArticles(data) {
                 </figure>
                 <h2>${articles[i]["TitoloAnnuncio"]}</h2>
                 <p>${articles[i]["NomeAutore"]} ${articles[i]["CognomeAutore"]}</p>
-                <p>${articles[i]["NomeCategoria"]}</p>
+                <input type="button" alt="Rimuovi articolo dal carrello" />
             </header>
-            <p>
-                ${articles[i]["DescrizioneAnnuncio"]}
-            </p>
+            <p>${articles[i]["NomeCategoria"]}</p>
+            <p>${articles[i]["DescrizioneAnnuncio"]}</p>
             <footer>
                 <p>${articles[i]["Prezzo"]}</p>
-                <p>Condizione:<span>${articles[i]["NomeCondizione"]}</span></p>
-                <button class="remove-button">
-                    <img src="./images/trash.png" alt="Remove" />
-                </button>
+                <p>Condizione: <span>${articles[i]["NomeCondizione"]}</span></p>
             </footer>
         </article>
         `;
