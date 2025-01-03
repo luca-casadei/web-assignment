@@ -2,7 +2,9 @@
     <img src="./images/logo.png" alt="Logo" />
     <ul>
         <li><a href="./index.php">Homepage</a></li>
-        <li><a href="./orders_index.php">Ordini utente</a></li>
+        <li><a href="#">Ricerca libro</a></li>
+        <li><a href="./cart_index.php">Carrello</a></li>
+        <li><a href="./orders_index.php">Ordini</a></li>
     </ul>
     <ul>
         <li><img src="./images/bell.png" alt="Notifiche" /></li>

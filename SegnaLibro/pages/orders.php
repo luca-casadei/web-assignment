@@ -1,6 +1,6 @@
 <?php
 if(!defined('DIRECT_ACCESS')){
-    
+    header("Location: ../index.php");
 }
 ?>
 <h1>Ordini Utente</h1>
