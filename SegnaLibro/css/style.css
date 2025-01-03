@@ -10,6 +10,7 @@ h1,
 h2,
 ul,
 input,
+figure,
 a {
   margin: 0;
   padding: 0;
@@ -82,7 +83,7 @@ body > footer {
 
 /* Main content styles */
 main {
-  margin: 5%;
+  margin: 2%;
   margin-bottom: 15%;
 }
 
@@ -156,6 +157,17 @@ main[data-access] > form > p:first-of-type {
   text-align: center;
   font-weight: bold;
   margin: 3%;
+}
+
+/* Customer's home page and articles */
+main[data-home] article > header > figure {
+  width: 75px;
+  height: 75px;
+}
+
+main[data-home] article > header > figure > img {
+  height: inherit;
+  width: inherit;
 }
 
 /* Mobile version styles */

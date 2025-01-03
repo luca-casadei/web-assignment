@@ -5,3 +5,7 @@ INSERT INTO `segnalibro_logic`.`CONDIZIONE` (`Codice`, `Nome`) VALUES ('4', 'Rov
 INSERT INTO `segnalibro_logic`.`CONDIZIONE` (`Codice`, `Nome`) VALUES ('5', 'Illeggibile');
 
 INSERT INTO `segnalibro_logic`.`COPIA` (`EAN`, `CodiceRegGroup`, `CodiceEditoriale`, `CodiceTitolo`, `Numero`, `Prezzo`, `Titolo`, `Descrizione`, `DataAnnuncio`, `CodiceCondizione`) VALUES ('978', '12345', '001001', '000001', '1', '5.99', 'Il nome della Rosa, ottime condizioni!', 'Vendita de \"Il nome della Rosa\" in ottime condizioni, usato a basso prezzo!', '2024-12-31', '2');
+
+INSERT INTO `segnalibro_logic`.`IMMAGINE` (`Numero`, `Percorso`, `NumeroCopia`, `EAN`, `CodiceRegGroup`, `CodiceEditoriale`, `CodiceTitolo`) VALUES 
+('2','978-12345-001001-000001-1-2.jpg', '1', '978', '12345', '001001', '000001'),
+('1','978-12345-001001-000001-1-1.jpg', '1', '978', '12345', '001001', '000001');

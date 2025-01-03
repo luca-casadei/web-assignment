@@ -5,6 +5,9 @@ function generateArticles(articoli){
         let articolo = `
         <article>
             <header>
+                <figure>
+                    <img src="${articoli[i]["NomeImmagine"]}" alt="" />
+                </figure>
                 <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
                 <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
                 <p>${articoli[i]["NomeCategoria"]}</p>

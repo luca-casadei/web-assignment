@@ -6,3 +6,9 @@
 *.glo
 *.ist
 *.out
+
+# Images
+*.png
+*.jpeg
+*.jpg
+*.bmp
