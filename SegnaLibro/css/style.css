@@ -161,8 +161,8 @@ main[data-access] > form > p:first-of-type {
 
 /* Customer's home page and articles */
 main[data-home] article > header > figure {
-  width: 75px;
-  height: 75px;
+  width: 150px;
+  height: 150px;
 }
 
 main[data-home] article > header > figure > img {
@@ -202,5 +202,11 @@ main[data-home] article > header > figure > img {
 
   main[data-access] input[type="submit"]{
     width: 40%;
+  }
+
+  /* Customer's home page and articles */
+  main[data-home] article > header > figure {
+    width: 60px;
+    height: 60px;
   }
 }
