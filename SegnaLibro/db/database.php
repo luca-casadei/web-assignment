@@ -12,7 +12,7 @@ class DatabaseHelper
     }
 
     public function checkLogin($email){
-        $query = "SELECT * FROM ACCOUNT WHERE Email = ?";
+        $query = "SELECT ACCOUNT.*, VENDITORE.UniqueUserID AS VenditoreID FROM ACCOUNT LEFT JOIN VENDITORE ON VENDITORE.UniqueUserID = ACCOUNT.UniqueUserID WHERE Email = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$email);
         $stmt->execute();
@@ -33,6 +33,14 @@ class DatabaseHelper
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$password,$email);
         $stmt->execute();
+    }
+
+    function getBooks(){
+        $qr = "SELECT * FROM LIBRI_CATEGORIE_AUTORE";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>
