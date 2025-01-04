@@ -51,10 +51,22 @@ class DatabaseHelper
                 AND CARRELLO.CodiceTitolo = ANNUNCI.CodiceTitolo
                 WHERE CARRELLO.UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param('s',$_SESSION['userid']);
+        $stmt->bind_param('i',$_SESSION['userid']);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo){
+        $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('issssi', $numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo, $_SESSION['userid']);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>
