@@ -1,0 +1,1 @@
+INSERT INTO `carrello` (`NumeroCopia`, `EAN`, `CodiceRegGroup`, `CodiceEditoriale`, `CodiceTitolo`, `UniqueUserID`) VALUES ('1', '978', '12345', '001001', '000001', '2')
