@@ -57,7 +57,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRegions() {
+    public function getRegGroup() {
         $query = "SELECT * FROM REGGROUP";
         $stmt = $this->db->prepare($query);
         $stmt->execute();

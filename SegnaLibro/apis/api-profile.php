@@ -28,8 +28,7 @@ if(isset($_POST['old_password'])
         || isset($_POST['address_civic'])
         || isset($_POST['address_city'])
         || isset($_POST['address_province'])
-        || isset($_POST['address_cap'])
-        || isset($_POST['address_region'])) {
+        || isset($_POST['address_cap'])) {
     $name = $_POST['name'];
     $lastname = $_POST['lastname'];
     $avenue = $_POST['address_avenue'];
@@ -37,7 +36,6 @@ if(isset($_POST['old_password'])
     $city = $_POST['address_city'];
     $province = $_POST['address_province'];
     $cap = $_POST['address_cap'];
-    $region = $_POST['address_region'];
 
     if ($name != "" 
     && $lastname != "" 
@@ -53,13 +51,8 @@ if(isset($_POST['old_password'])
     echo json_encode($result);
 } else {
     $provinces = $dbh->getProvinces();
-    $regions = $dbh->getRegions();
 
-    $response = [
-        "regions" => $regions,
-        "provinces" => $provinces
-    ];
     header('Content-Type: application/json');
-    echo json_encode($response);
+    echo json_encode($provinces);
 }
 ?>

@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const city = document.querySelector('form:first-of-type input[name="city"]').value;
         const province = document.querySelector('form:first-of-type input[name="province"]').value;
         const cap = document.querySelector('form:first-of-type input[name="cap"]').value;
-        const region = document.querySelector('form:first-of-type input[name="region"]').value;
-        changeInfo(name, lastname, avenue, civic, city, province, cap, region);
+        changeInfo(name, lastname, avenue, civic, city, province, cap);
     })
 
     var changePasswordLink = document.querySelector('form:first-of-type a');
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    getGeographicData();
+    getProvinces();
 });
 
 function toggleChangePasswordAside() {
@@ -77,7 +76,7 @@ async function changePassword(old_password, new_password, new_password_confirm) 
     }
 }
 
-async function changeInfo(name, lastname, avenue, civic, city, province, cap, region) {
+async function changeInfo(name, lastname, avenue, civic, city, province, cap) {
     const url = "./apis/api-profile.php";
     const formData = new FormData();
     formData.append('name', name);
@@ -87,7 +86,6 @@ async function changeInfo(name, lastname, avenue, civic, city, province, cap, re
     formData.append('address_city', city);
     formData.append('address_province', province);
     formData.append('address_cap', cap);
-    formData.append('address_region', region);
     try{
         const response = await fetch(url, {
             method: "POST",
@@ -104,7 +102,7 @@ async function changeInfo(name, lastname, avenue, civic, city, province, cap, re
     }
 }
 
-async function getGeographicData() {
+async function getProvinces() {
     const url = './apis/api-profile.php';
     try {
         const response = await fetch(url);
@@ -113,25 +111,14 @@ async function getGeographicData() {
         }
         const json = await response.json();
         
-        const provincesSelect = document.querySelector('#address_province');
-        const regionsSelect = document.querySelector('#address_region');
-        
+        const provincesSelect = document.querySelector('#address_province');        
         provincesSelect.innerHTML = '<option value="">Seleziona la provincia</option>';
-        json["provinces"].forEach(province => {
+        json.forEach(province => {
             const option = document.createElement('option');
             option.value = province.Codice; 
             option.textContent = province.Nome;  
             provincesSelect.appendChild(option);
         });
-
-        regionsSelect.innerHTML = '<option value="">Seleziona la regione</option>';
-        json["regions"].forEach(region => {
-            const option = document.createElement('option');
-            option.value = region.Codice;
-            option.textContent = region.Nome;  
-            regionsSelect.appendChild(option);
-        });
-
     } catch (error) {
         console.log(error.message);
     }

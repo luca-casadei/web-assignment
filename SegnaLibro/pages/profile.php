@@ -49,12 +49,6 @@ if(!defined('DIRECT_ACCESS')){
             <label for="address_cap" >CAP</label>
             <input type="text" id="address_cap" name="cap" placeholder="47521" value="" />
         </li>
-        <li>
-            <label for="address_region" >Regione</label>
-            <select id="address_region" name="region">
-                <option value="">Seleziona la Regione</option>
-            </select>
-        </li>
     </ul>
 
     <input type="submit" value="Salva Modifiche" />
