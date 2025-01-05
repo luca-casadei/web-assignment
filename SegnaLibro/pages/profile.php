@@ -1,7 +1,6 @@
 <?php
 if(!defined('DIRECT_ACCESS')){
-    header("Location: ../index.php");
-}
+    header("Location: ".$__DIR__."index.php");}
 ?>
 
 <aside id="sidebar">
