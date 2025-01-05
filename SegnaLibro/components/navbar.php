@@ -2,7 +2,6 @@
     <a href="./index.php"><img src="./images/logo.png" alt="Logo" /></a>
     <ul>
         <li><a href="./index.php">Homepage</a></li>
-        <li><a href="./search_index.php">Ricerca libro</a></li>
         <?php 
             if (isUserLoggedIn()){
                echo '<li><a href="./cart_index.php">Carrello</a></li>';

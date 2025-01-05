@@ -3,14 +3,32 @@ if (!defined('DIRECT_ACCESS')){
     header("Location: ".$__DIR__."index.php");
 }
 ?>
+<aside>
+    <p>Prezzo: <strong>9,99€</strong></p>
+    <button>Aggiungi al carrello</button>
+</aside>
 <section>
     <header>
-        <h2><?php echo $tp["Titolo"]?></h2>
-        <ul>
-            <li><?php echo $tp["NomeAutore"]." ".$tp["CognomeAutore"]?></li>
-            <li><?php echo $tp["NomeEditore"]?></li>
-            <li><span><?php echo $tp["ISBN"]?></span></li>
-        </ul>
-    </header> 
-    <footer></footer> 
+        <h1><?php echo $tp["Titolo"]?></h1>
+        <p><?php echo $tp["NomeAutore"]." ".$tp["CognomeAutore"]?></p>
+        <p><?php echo $tp["NomeEditore"]?></p>
+        <p><?php echo $tp["ISBN"]?></p>
+    </header>
+
+    <div>
+        <input type="button" aria-label="Immagine precedente" />
+        <figure>
+            <img src="./images/book-placeholder.jpg" alt="Copertina del libro" />
+        </figure>
+        <input type="button" aria-label="Immagine successiva" />
+    </div>
+
+    <p>
+        Descrizione estesa del libro, ci sono tutte le informazioni che il venditore ritiene necessarie
+    </p>
+
+    <footer>
+        <p>Prezzo: <strong>9,99€</strong></p>
+        <button>Aggiungi al carrello</button>
+    </footer>
 </section>
