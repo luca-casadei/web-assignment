@@ -27,8 +27,32 @@ if(!defined('DIRECT_ACCESS')){
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly />
         </li>
         <li>
-            <label for="address">Indirizzo</label>
-            <input type="text" id="address" name="address" placeholder="Via esempio, 50" />
+            <label for="address_avenue">Via</label>
+            <input type="text" id="address_avenue" name="avenue" placeholder="Via esempio" value="" />
+        </li>
+        <li>
+            <label for="address_civic" >Civico</label>
+            <input type="text" id="address_civic" name="civic" placeholder="50" value="" />
+        </li>
+        <li>
+            <label for="address_city" >Città</label>
+            <input type="text" id="address_city" name="city" placeholder="Cesena" value="" />
+        </li>
+        <li>
+            <label for="address_province">Provincia</label>
+            <select id="address_province" name="province">
+                <option value="">Seleziona la provincia</option>
+            </select>
+        </li>
+        <li>
+            <label for="address_cap" >CAP</label>
+            <input type="text" id="address_cap" name="cap" placeholder="47521" value="" />
+        </li>
+        <li>
+            <label for="address_region" >Regione</label>
+            <select id="address_region" name="region">
+                <option value="">Seleziona la Regione</option>
+            </select>
         </li>
     </ul>
 

@@ -247,9 +247,10 @@ main[data-profile] section > form > ul > li > label {
   align-items: center;
   justify-content: center;
   text-align: center;
+  line-height: 70%;
 }
 
-main[data-profile] section > form > ul > li > input{
+main[data-profile] section > form > ul > li > input, select{
   width: 70%;
   text-align: center;
   border: none;
@@ -262,9 +263,13 @@ main[data-profile] section > form > input {
   color: #801524;
   cursor: pointer;
   border: none;
+  font-weight: normal;
   background-color: white;
   text-decoration: underline;
+}
 
+main[data-profile] section > form > input:hover {
+  font-weight: bold;
 }
 
 main[data-profile] a{
@@ -274,14 +279,133 @@ main[data-profile] aside > a {
   font-size: 20px;
   height: 30px;
   color: white;
-  display: flex;
+  font-weight: normal;
   text-decoration: underline;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-
 }
+main[data-profile] a:hover {
+  font-weight: bold;
+}
+
+/* Customer's cart page */
+
+main[data-home] article > header > figure > img {
+  width: inherit;
+}
+
+main[data-cart] {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+main[data-cart] h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #8e1017;
+}
+
+main[data-cart] > p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+main[data-cart] input[type="button"] {
+  background-color: #8e1017;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+main[data-cart] input[type="button"]:hover {
+  background-color: #a3111a;
+}
+
+main[data-cart] article {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+main[data-cart] article header {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+main[data-cart] article header figure {
+  margin: 0;
+  min-width: 70px;
+  max-width: 70px;
+  max-height: 70px;
+}
+main[data-cart] article header figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+main[data-cart] article header h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+main[data-cart] article header p {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+main[data-cart] article > p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-left: 86px;
+  color: #333;
+}
+
+main[data-cart] article footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-left: 86px;
+}
+
+main[data-cart] article footer p {
+  margin-right: 1rem;
+}
+
+main[data-cart] article footer p span {
+  font-weight: bold;
+}
+
+main[data-cart] article header input {
+  border: none;
+  cursor: pointer;
+  background-image: url('../images/trash.png'); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 
 /* Mobile version styles */
 @media (max-width: 768px) {
@@ -323,6 +447,8 @@ main[data-profile] aside > a {
     height: 60px;
   }
 
+
+  /* Customer's profile page */
   main[data-profile]{
     display: flex;
     flex-direction: column;
@@ -339,12 +465,12 @@ main[data-profile] aside > a {
     font-size: 20px;
     height: 30px;
     color: #801524;
+    font-weight: normal;
     display: flex;
     text-decoration: underline;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-  
   }
 }

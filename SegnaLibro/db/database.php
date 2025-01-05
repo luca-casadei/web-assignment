@@ -28,11 +28,41 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function changePassword($email, $password){
+    public function changePassword($password){
         $query = "UPDATE ACCOUNT SET Password = ? WHERE Email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$password,$email);
+        $stmt->bind_param('ss',$password,$_SESSION['email']);
         $stmt->execute();
+    }
+
+    public function changePersonalDetails($name, $lastname){
+        $query = "UPDATE ACCOUNT SET Nome = ?, Cognome = ? WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssi', $name, $lastname, $_SESSION["userid"]);
+        $stmt->execute();
+    }
+
+    public function changeAddress($avenue, $civic, $city, $province, $cap){
+        $query = "UPDATE INDIRIZZO SET Via = ?, Civico = ?, Citta = ?, CodiceProvincia = ?, CAP = ? WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssssi', $avenue, $civic, $city, $province, $cap, $_SESSION["userid"]);
+        $stmt->execute();
+    }
+
+    public function getProvinces() {
+        $query = "SELECT * FROM PROVINCIA";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getRegions() {
+        $query = "SELECT * FROM REGGROUP";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getBooks(){
