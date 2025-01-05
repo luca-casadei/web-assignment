@@ -13,7 +13,7 @@ if(isset($_POST['old_password'])
         if(!isUserLoggedIn()){
             $result["profile_alert"] = "Errore interno.";
         } else if(password_verify($old_password, $_SESSION['password'])) {
-            $dbh->changePassword($_SESSION['email'], password_hash($new_password, PASSWORD_DEFAULT, ['cost' => 13]));
+            $dbh->changePassword(password_hash($new_password, PASSWORD_DEFAULT, ['cost' => 13]));
             $result["profile_alert"] = "Password cambiata con successo.";
         } else {
             $result["profile_alert"] = "Password errata.";
@@ -21,7 +21,51 @@ if(isset($_POST['old_password'])
     }
     header('Content-Type: application/json');
     echo json_encode($result);
+
+} else if (isset($_POST['name']) 
+        || isset($_POST['lastname'])
+        || isset($_POST['address_avenue'])
+        || isset($_POST['address_civic'])
+        || isset($_POST['address_city'])
+        || isset($_POST['address_province'])
+        || isset($_POST['address_cap'])) {
+    $name = $_POST['name'];
+    $lastname = $_POST['lastname'];
+    $avenue = $_POST['address_avenue'];
+    $civic = $_POST['address_civic'];
+    $city = $_POST['address_city'];
+    $province = $_POST['address_province'];
+    $cap = $_POST['address_cap'];
+
+    if ($name != "" 
+    && $lastname != "" 
+    && $_SESSION["name"] != $name
+    && $_SESSION["lastname"] != $lastname){
+        $dbh->changePersonalDetails($name, $lastname);
+        $result["profile_alert"] = "Informazioni personali cambiate con successo.";
+    } else if ($avenue != ""
+    || $civic != ""
+    || $city != ""
+    || $province != "" 
+    || $cap != "") {
+        $dbh->changeAddress($avenue, $civic, $city, $province, $cap);
+        $result["profile_alert"] = "Indirizzo cambiato con successo.";
+    } else {
+        $result["profile_alert"] = "Informazioni non valide";
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($result);
 } else {
-    header('Location: ./pages/profile.php');
+    $provinces = $dbh->getProvinces();
+    $userInfo = $dbh->getUserData();
+
+    $response = [
+        "provinces" => $provinces,
+        "user_info" => $userInfo
+    ];
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 ?>

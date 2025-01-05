@@ -1,7 +1,6 @@
 <?php
 if(!defined('DIRECT_ACCESS')){
-    header("Location: ../index.php");
-}
+    header("Location: ".$__DIR__."index.php");}
 ?>
 
 <aside id="sidebar">
@@ -17,22 +16,39 @@ if(!defined('DIRECT_ACCESS')){
     <ul>
         <li>
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" />
+            <input type="text" id="name" name="name" value="" />
         </li>
         <li>
             <label for="lastname">Cognome</label>
-            <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($_SESSION['lastname']); ?>" />
+            <input type="text" id="lastname" name="lastname" value="" />
         </li>
         <li>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly />
+            <input type="email" id="email" name="email" value="" readonly />
         </li>
         <li>
-            <label for="address">Indirizzo</label>
-            <input type="text" id="address" name="address" placeholder="Via esempio, 50" />
+            <label for="address_avenue">Via</label>
+            <input type="text" id="address_avenue" name="avenue" placeholder="Via esempio" value="" />
+        </li>
+        <li>
+            <label for="address_civic" >Civico</label>
+            <input type="text" id="address_civic" name="civic" placeholder="50" value="" />
+        </li>
+        <li>
+            <label for="address_city" >Città</label>
+            <input type="text" id="address_city" name="city" placeholder="Cesena" value="" />
+        </li>
+        <li>
+            <label for="address_province">Provincia</label>
+            <select id="address_province" name="province">
+                <option value="">Seleziona la provincia</option>
+            </select>
+        </li>
+        <li>
+            <label for="address_cap" >CAP</label>
+            <input type="text" id="address_cap" name="cap" placeholder="47521" value="" />
         </li>
     </ul>
-
     <input type="submit" value="Salva Modifiche" />
     <a href="">Modifica Password</a>
 </form>
