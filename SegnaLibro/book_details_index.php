@@ -1,7 +1,7 @@
 <?php
     require './bootstrap.php';
     define('DIRECT_ACCESS',true);
-    
+
     $tp["title"] = "SegnaLibro - Dettagli libro";
     $tp["identification"] = "book_details";
     $tp["content"] = './pages/detailedorder.php';
@@ -18,6 +18,8 @@
     $tp["CodiceRegGroup"] = $data["CodiceRegGroup"];
     $tp["CodiceEditoriale"] = $data["CodiceEditoriale"];
     $tp["CodiceTitolo"] = $data["CodiceTitolo"];
+    $tp["Prezzo"] = $data["Prezzo"];
+    $tp["DescrizioneAnnuncio"] = $data["DescrizioneAnnuncio"];
     
     array_push($tp["js"], "./js/book_details.js");
     require './template/base.php';

@@ -4,7 +4,7 @@ if (!defined('DIRECT_ACCESS')){
 }
 ?>
 <aside>
-    <p>Prezzo: <strong>9,99€</strong></p>
+    <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
     <button>Aggiungi al carrello</button>
 </aside>
 <section>
@@ -23,12 +23,10 @@ if (!defined('DIRECT_ACCESS')){
         <input type="button" aria-label="Immagine successiva" />
     </div>
 
-    <p>
-        Descrizione estesa del libro, ci sono tutte le informazioni che il venditore ritiene necessarie
-    </p>
+    <p><?php echo $tp["DescrizioneAnnuncio"]?></p>
 
     <footer>
-        <p>Prezzo: <strong>9,99€</strong></p>
+        <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
         <button>Aggiungi al carrello</button>
     </footer>
 </section>
