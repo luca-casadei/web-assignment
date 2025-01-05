@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const avenue = document.querySelector('form:first-of-type input[name="avenue"]').value;
         const civic = document.querySelector('form:first-of-type input[name="civic"]').value;
         const city = document.querySelector('form:first-of-type input[name="city"]').value;
-        const province = document.querySelector('form:first-of-type input[name="province"]').value;
+        const province = document.querySelector('form:first-of-type select[name="province"]').value;
         const cap = document.querySelector('form:first-of-type input[name="cap"]').value;
         changeInfo(name, lastname, avenue, civic, city, province, cap);
     })
@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     getProvinces();
+    getUserData();
 });
 
 function toggleChangePasswordAside() {
@@ -110,15 +111,37 @@ async function getProvinces() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        
         const provincesSelect = document.querySelector('#address_province');        
         provincesSelect.innerHTML = '<option value="">Seleziona la provincia</option>';
-        json.forEach(province => {
+        json["provinces"].forEach(province => {
             const option = document.createElement('option');
             option.value = province.Codice; 
             option.textContent = province.Nome;  
             provincesSelect.appendChild(option);
         });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function getUserData() {
+    const url = './apis/api-profile.php';
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        const userInfo = json["user_info"][0];
+        document.querySelector('#name').value = userInfo.Nome || "";
+        document.querySelector('#lastname').value = userInfo.Cognome || "";
+        document.querySelector('#email').value = userInfo.Email || "";
+        document.querySelector('#address_avenue').value = userInfo.Via || "";
+        document.querySelector('#address_civic').value = userInfo.Civico || "";
+        document.querySelector('#address_city').value = userInfo.Citta || "";
+        document.querySelector('#address_province').value = userInfo.CodiceProvincia || "";
+        document.querySelector('#address_cap').value = userInfo.CAP || "";
+
     } catch (error) {
         console.log(error.message);
     }

@@ -43,9 +43,17 @@ class DatabaseHelper
     }
 
     public function changeAddress($avenue, $civic, $city, $province, $cap){
-        $query = "UPDATE INDIRIZZO SET Via = ?, Civico = ?, Citta = ?, CodiceProvincia = ?, CAP = ? WHERE UniqueUserID = ?";
+        $query = "INSERT INTO INDIRIZZO (UniqueUserID, Via, Civico, CAP, Citta, CodiceProvincia)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                    ON DUPLICATE KEY UPDATE
+                    Via = VALUES(Via),
+                    Civico = VALUES(Civico),
+                    CAP = VALUES(CAP),
+                    Citta = VALUES(Citta),
+                    CodiceProvincia = VALUES(CodiceProvincia);
+                    ";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssssi', $avenue, $civic, $city, $province, $cap, $_SESSION["userid"]);
+        $stmt->bind_param('isssss', $_SESSION["userid"], $avenue, $civic, $cap, $city, $province);
         $stmt->execute();
     }
 
@@ -97,6 +105,32 @@ class DatabaseHelper
         } else {
             return false;
         }
+    }
+
+    public function getUserData() {
+        $qr = "SELECT 
+                    ACCOUNT.UniqueUserID,
+                    ACCOUNT.Nome,
+                    ACCOUNT.Cognome,
+                    ACCOUNT.Email,
+                    INDIRIZZO.Via,
+                    INDIRIZZO.Civico,
+                    INDIRIZZO.CAP,
+                    INDIRIZZO.Citta,
+                    PROVINCIA.Codice AS CodiceProvincia,
+                    PROVINCIA.Nome AS NomeProvincia
+                FROM ACCOUNT 
+                JOIN INDIRIZZO 
+                    ON ACCOUNT.UniqueUserID = INDIRIZZO.UniqueUserID
+                JOIN PROVINCIA 
+                    ON INDIRIZZO.CodiceProvincia = PROVINCIA.Codice
+                WHERE ACCOUNT.UniqueUserID = ?;
+";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $_SESSION['userid']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 ?>

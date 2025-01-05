@@ -42,8 +42,15 @@ if(isset($_POST['old_password'])
     && $_SESSION["name"] != $name
     && $_SESSION["lastname"] != $lastname){
         $dbh->changePersonalDetails($name, $lastname);
-        $result["profile_alert"] = "Informazioni cambiate con successo.";
-    }else{
+        $result["profile_alert"] = "Informazioni personali cambiate con successo.";
+    } else if ($avenue != ""
+    || $civic != ""
+    || $city != ""
+    || $province != "" 
+    || $cap != "") {
+        $dbh->changeAddress($avenue, $civic, $city, $province, $cap);
+        $result["profile_alert"] = "Indirizzo cambiato con successo.";
+    } else {
         $result["profile_alert"] = "Informazioni non valide";
     }
 
@@ -51,8 +58,14 @@ if(isset($_POST['old_password'])
     echo json_encode($result);
 } else {
     $provinces = $dbh->getProvinces();
+    $userInfo = $dbh->getUserData();
+
+    $response = [
+        "provinces" => $provinces,
+        "user_info" => $userInfo
+    ];
 
     header('Content-Type: application/json');
-    echo json_encode($provinces);
+    echo json_encode($response);
 }
 ?>

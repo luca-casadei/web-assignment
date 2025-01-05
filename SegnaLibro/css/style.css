@@ -293,9 +293,6 @@ main[data-profile] a:hover {
 
 /* Customer's cart page */
 
-main[data-home] article > header > figure > img {
-  width: inherit;
-}
 
 main[data-cart] {
   display: flex;

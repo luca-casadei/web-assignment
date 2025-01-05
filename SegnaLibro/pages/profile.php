@@ -17,15 +17,15 @@ if(!defined('DIRECT_ACCESS')){
     <ul>
         <li>
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($_SESSION['name']); ?>" />
+            <input type="text" id="name" name="name" value="" />
         </li>
         <li>
             <label for="lastname">Cognome</label>
-            <input type="text" id="lastname" name="lastname" value="<?php echo htmlspecialchars($_SESSION['lastname']); ?>" />
+            <input type="text" id="lastname" name="lastname" value="" />
         </li>
         <li>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" readonly />
+            <input type="email" id="email" name="email" value="" readonly />
         </li>
         <li>
             <label for="address_avenue">Via</label>
@@ -50,7 +50,6 @@ if(!defined('DIRECT_ACCESS')){
             <input type="text" id="address_cap" name="cap" placeholder="47521" value="" />
         </li>
     </ul>
-
     <input type="submit" value="Salva Modifiche" />
     <a href="">Modifica Password</a>
 </form>
