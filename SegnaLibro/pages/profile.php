@@ -3,9 +3,17 @@ if(!defined('DIRECT_ACCESS')){
     header("Location: ../index.php");
 }
 ?>
-<h1>Account</h1>
-<p>Visualizza le informazioni rilevanti del tuo account e apporta modifiche.</p>
+
+<aside id="sidebar">
+    <a href="">Modifica Password</a>
+    <a href="./logout_index.php">Disconnetti</a>
+</aside>
+<section>
+
+
 <form method="POST">
+    <h1>Account</h1>
+    <p>Visualizza le informazioni rilevanti del tuo account e apporta modifiche.</p>
     <ul>
         <li>
             <label for="name">Nome</label>
@@ -24,30 +32,30 @@ if(!defined('DIRECT_ACCESS')){
             <input type="text" id="address" name="address" placeholder="Via esempio, 50" />
         </li>
     </ul>
-    <a href="">Modifica Password</a>
+
     <input type="submit" value="Salva Modifiche" />
+    <a href="">Modifica Password</a>
 </form>
 
 <form>
-    <p>Si prega di inserire la password vecchia e la nuova password (con relativa copia di conferma).</p>
+    <p>Si prega di inserire la vecchia e nuova password, con ulteriore conferma.</p>
     <ul>
         <li>
-            <label for="old_password">Vecchia password:</label>
+            <label for="old_password">Vecchia password</label>
             <input type="password" name="old_password" required>
         </li>
         <li>
-            <label for="new_password">Nuova password:</label>
+            <label for="new_password">Nuova password</label>
             <input type="password"name="new_password" required>
         </li>
         <li>
-            <label for="new_password_confirm">Conferma nuova password:</label>
+            <label for="new_password_confirm">Conferma nuova password</label>
             <input type="password" name="new_password_confirm" required>
         </li>
-        <li>
-            <input type="submit" value="Salva modifiche">
-        </li>
-        <p></p>
     </ul>
+    <input type="submit" value="Salva Password">
 </form>
 
 <a href="./logout_index.php">Disconnetti</a>
+
+</section>

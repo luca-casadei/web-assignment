@@ -170,6 +170,119 @@ main[data-home] article > header > figure > img {
   width: inherit;
 }
 
+
+/* Customer's Profile page */
+main[data-profile] {
+  display:flex;
+  flex-direction:row-reverse;
+  gap:20px;
+}
+
+main[data-profile] aside{
+  height: 500px;
+  width: 30%;
+  background-color: #801524;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+main[data-profile] section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-profile] h1{
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-profile] section > form{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-profile] section > form > ul{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+main[data-profile] section > form > ul > li{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  border: 2px, #801524, solid;
+  border-radius: 10px;
+}
+
+main[data-profile] section > form > ul > li > label {
+  width: 30%;
+  background-color: #801524;
+  border-radius: 7px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+main[data-profile] section > form > ul > li > input{
+  width: 70%;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+}
+
+main[data-profile] section > form > input {
+  border-style: outset;
+  margin: 5px;
+  color: #801524;
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+
+}
+
+main[data-profile] a{
+  display: none;
+}
+main[data-profile] aside > a {
+  font-size: 20px;
+  height: 30px;
+  color: white;
+  display: flex;
+  text-decoration: underline;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
 /* Mobile version styles */
 @media (max-width: 768px) {
   nav[data-open="false"] > ul:first-of-type{
@@ -208,5 +321,30 @@ main[data-home] article > header > figure > img {
   main[data-home] article > header > figure {
     width: 60px;
     height: 60px;
+  }
+
+  main[data-profile]{
+    display: flex;
+    flex-direction: column;
+  }
+  main[data-profile] section{
+    width: 100%;
+  }
+
+  main[data-profile] aside{
+    display: none;
+  }
+
+  main[data-profile] a {
+    font-size: 20px;
+    height: 30px;
+    color: #801524;
+    display: flex;
+    text-decoration: underline;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
   }
 }
