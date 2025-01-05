@@ -3,21 +3,21 @@ function generateArticles(articoli){
 
     for(let i=0; i < articoli.length; i++){
         let articolo = `
-        <article>
+        <article onclick="location.href='./book_details_index.php'">
             <header>
-                <figure>
-                    <img src="${articoli[i]["NomeImmagine"]}" alt="" />
-                </figure>
-                <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
-                <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
-                <p>${articoli[i]["NomeCategoria"]}</p>
+            <figure>
+                <img src="${articoli[i]["NomeImmagine"]}" alt="" />
+            </figure>
+            <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
+            <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
+            <p>${articoli[i]["NomeCategoria"]}</p>
             </header>
             <p>
-                ${articoli[i]["DescrizioneAnnuncio"]}
+            ${articoli[i]["DescrizioneAnnuncio"]}
             </p>
             <footer>
-                <p>${articoli[i]["Prezzo"]}</p>
-                <p>Condizione:<span>${articoli[i]["NomeCondizione"]}</span></p>
+            <p>${articoli[i]["Prezzo"]}</p>
+            <p>Condizione:<span>${articoli[i]["NomeCondizione"]}</span></p>
             </footer>
         </article>
         `;

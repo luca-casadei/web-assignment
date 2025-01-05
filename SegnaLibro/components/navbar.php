@@ -1,5 +1,5 @@
 <nav data-open="false">
-    <img src="./images/logo.png" alt="Logo" />
+    <a href="./index.php"><img src="./images/logo.png" alt="Logo" /></a>
     <ul>
         <li><a href="./index.php">Homepage</a></li>
         <li><a href="#">Ricerca libro</a></li>
