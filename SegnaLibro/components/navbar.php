@@ -1,8 +1,15 @@
 <nav data-open="false">
-    <img src="./images/logo.png" alt="Logo" />
+    <a href="./index.php"><img src="./images/logo.png" alt="Logo" /></a>
     <ul>
         <li><a href="./index.php">Homepage</a></li>
-        <li><a href="./orders_index.php">Ordini utente</a></li>
+        <li><a href="#">Ricerca libro</a></li>
+        <?php 
+            if (isUserLoggedIn()){
+               echo '<li><a href="./cart_index.php">Carrello</a></li>';
+                echo '<li><a href="./orders_index.php">Ordini</a></li>';
+            }
+        ?>
+
     </ul>
     <ul>
         <li><img src="./images/bell.png" alt="Notifiche" /></li>
