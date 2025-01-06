@@ -1,5 +1,8 @@
 <?php
     require './bootstrap.php';
+    if (!isset($_SESSION["expandedarticledata"])){
+        header("Location: ./index.php");
+    }
     define('DIRECT_ACCESS',true);
 
     $tp["title"] = "SegnaLibro - Dettagli libro";
