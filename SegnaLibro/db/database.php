@@ -134,7 +134,7 @@ class DatabaseHelper
     }
 
     public function getBookImages($numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo) {
-        $qr = 'SELECT PERCORSO FROM IMMAGINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?';
+        $qr = 'SELECT Percorso FROM IMMAGINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?';
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issss', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
         $stmt->execute();

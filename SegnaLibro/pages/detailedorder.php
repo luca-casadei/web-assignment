@@ -16,11 +16,9 @@ if (!defined('DIRECT_ACCESS')){
     </header>
 
     <div>
-        <input type="button" aria-label="Immagine precedente" />
-        <figure>
-            <img src="./images/book-placeholder.jpg" alt="Copertina del libro" />
-        </figure>
-        <input type="button" aria-label="Immagine successiva" />
+        <input type="button" aria-label="Immagine precedente" onclick="prevImage()" />
+        <div></div>
+        <input type="button" aria-label="Immagine successiva" onclick="nextImage()" />
     </div>
 
     <p><?php echo $tp["DescrizioneAnnuncio"]?></p>
