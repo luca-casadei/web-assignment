@@ -120,9 +120,9 @@ class DatabaseHelper
                     PROVINCIA.Codice AS CodiceProvincia,
                     PROVINCIA.Nome AS NomeProvincia
                 FROM ACCOUNT 
-                JOIN INDIRIZZO 
+                LEFT JOIN INDIRIZZO 
                     ON ACCOUNT.UniqueUserID = INDIRIZZO.UniqueUserID
-                JOIN PROVINCIA 
+                LEFT JOIN PROVINCIA 
                     ON INDIRIZZO.CodiceProvincia = PROVINCIA.Codice
                 WHERE ACCOUNT.UniqueUserID = ?;
 ";
