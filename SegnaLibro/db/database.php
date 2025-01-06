@@ -104,6 +104,18 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function insertArticleInTheCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo) {
+        $qr = 'INSERT INTO CARRELLO (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, UniqueUserID) VALUES (?, ?, ?, ?, ?, ?)';
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('issssi', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
     {
         $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
@@ -146,7 +158,7 @@ class DatabaseHelper
 
     public function getBookImages($numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
     {
-        $qr = 'SELECT PERCORSO FROM IMMAGINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?';
+        $qr = 'SELECT Percorso FROM IMMAGINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?';
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issss', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
         $stmt->execute();

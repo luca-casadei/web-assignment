@@ -5,8 +5,14 @@ if (!defined('DIRECT_ACCESS')){
 ?>
 <aside>
     <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
-    <button>Aggiungi al carrello</button>
-</aside>
+    <input type="button" aria-label="Aggiungi al carrello" 
+    onclick='insertArticleInTheCart("<?php echo $tp["NumeroCopia"]?>", 
+        "<?php echo $tp["EAN"]?>", 
+        "<?php echo $tp["CodiceRegGroup"]?>", 
+        "<?php echo $tp["CodiceEditoriale"]?>", 
+        "<?php echo $tp["CodiceTitolo"]?>")' 
+    value="Aggiungi al carrello" />
+    </aside>
 <section>
     <header>
         <h1><?php echo $tp["Titolo"]?></h1>
@@ -16,17 +22,21 @@ if (!defined('DIRECT_ACCESS')){
     </header>
 
     <div>
-        <input type="button" aria-label="Immagine precedente" />
-        <figure>
-            <img src="./images/book-placeholder.jpg" alt="Copertina del libro" />
-        </figure>
-        <input type="button" aria-label="Immagine successiva" />
+        <input type="button" aria-label="Immagine precedente" onclick="prevImage()" />
+        <div></div>
+        <input type="button" aria-label="Immagine successiva" onclick="nextImage()" />
     </div>
 
     <p><?php echo $tp["DescrizioneAnnuncio"]?></p>
 
     <footer>
         <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
-        <button>Aggiungi al carrello</button>
+        <input type="button" aria-label="Aggiungi al carrello" 
+        onclick='insertArticleInTheCart("<?php echo $tp["NumeroCopia"]?>", 
+            "<?php echo $tp["EAN"]?>", 
+            "<?php echo $tp["CodiceRegGroup"]?>", 
+            "<?php echo $tp["CodiceEditoriale"]?>", 
+            "<?php echo $tp["CodiceTitolo"]?>")' 
+        value="Aggiungi al carrello" />
     </footer>
 </section>
