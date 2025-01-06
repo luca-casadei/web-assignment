@@ -5,12 +5,21 @@ if(isset($_POST['numero_copia'])
     && isset($_POST['ean']) 
     && isset($_POST['codice_editoriale']) 
     && isset($_POST['codice_reg_group']) 
-    && isset($_POST['codice_titolo']) ) {
-    $data = $dbh->removeArticleFromCart($_POST['numero_copia'],
-    $_POST['ean'], 
-    $_POST['codice_editoriale'], 
-    $_POST['codice_reg_group'],
-    $_POST['codice_titolo']);
+    && isset($_POST['codice_titolo'])
+    && isset($_POST['action'])) {
+        if($_POST['action'] == 'remove') {
+            $data = $dbh->removeArticleFromCart($_POST['numero_copia'],
+            $_POST['ean'], 
+            $_POST['codice_editoriale'], 
+            $_POST['codice_reg_group'],
+            $_POST['codice_titolo']);
+        } else if ($_POST['action'] == 'add') {
+            $data = $dbh->insertArticleInTheCart($_POST['numero_copia'],
+            $_POST['ean'], 
+            $_POST['codice_editoriale'], 
+            $_POST['codice_reg_group'],
+            $_POST['codice_titolo']);
+        }
 
     header('Content-Type: application/json');
     if($data) {
