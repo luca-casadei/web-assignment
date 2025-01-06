@@ -1,7 +1,7 @@
 <?php
     require './bootstrap.php';
 
-    if(isUserLoggedIn()){
+    if(isUserLoggedIn() && !isUserVendor()){
         $tp["title"] = "SegnaLibro - Ordini";
         $tp["identification"] = "orders";
         $tp["content"] = './pages/orders.php';

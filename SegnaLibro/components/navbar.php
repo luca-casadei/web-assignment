@@ -5,7 +5,7 @@
         <?php 
             if (isUserLoggedIn()){
                echo '<li><a href="./cart_index.php">Carrello</a></li>';
-                echo '<li><a href="./orders_index.php">Ordini</a></li>';
+               echo '<li><a href="./orders_index.php">Ordini</a></li>';
             }
         ?>
 

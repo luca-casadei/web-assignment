@@ -11,16 +11,18 @@ class DatabaseHelper
         }
     }
 
-    public function checkLogin($email){
+    public function checkLogin($email)
+    {
         $query = "SELECT ACCOUNT.*, VENDITORE.UniqueUserID AS VenditoreID FROM ACCOUNT LEFT JOIN VENDITORE ON VENDITORE.UniqueUserID = ACCOUNT.UniqueUserID WHERE Email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s',$email);
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    } 
+    }
 
-    public function getAnnounces(){
+    public function getAnnounces()
+    {
         $query = "SELECT * FROM ANNUNCI";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -28,21 +30,24 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function changePassword($password){
+    public function changePassword($password)
+    {
         $query = "UPDATE ACCOUNT SET Password = ? WHERE Email = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$password,$_SESSION['email']);
+        $stmt->bind_param('ss', $password, $_SESSION['email']);
         $stmt->execute();
     }
 
-    public function changePersonalDetails($name, $lastname){
+    public function changePersonalDetails($name, $lastname)
+    {
         $query = "UPDATE ACCOUNT SET Nome = ?, Cognome = ? WHERE UniqueUserID = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssi', $name, $lastname, $_SESSION["userid"]);
         $stmt->execute();
     }
 
-    public function changeAddress($avenue, $civic, $city, $province, $cap){
+    public function changeAddress($avenue, $civic, $city, $province, $cap)
+    {
         $query = "INSERT INTO INDIRIZZO (UniqueUserID, Via, Civico, CAP, Citta, CodiceProvincia)
                     VALUES (?, ?, ?, ?, ?, ?)
                     ON DUPLICATE KEY UPDATE
@@ -57,7 +62,8 @@ class DatabaseHelper
         $stmt->execute();
     }
 
-    public function getProvinces() {
+    public function getProvinces()
+    {
         $query = "SELECT * FROM PROVINCIA";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -65,7 +71,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getRegGroup() {
+    public function getRegGroup()
+    {
         $query = "SELECT * FROM REGGROUP";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -73,7 +80,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBooks(){
+    public function getBooks()
+    {
         $qr = "SELECT * FROM LIBRI_CATEGORIE_AUTORE";
         $stmt = $this->db->prepare($qr);
         $stmt->execute();
@@ -81,7 +89,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCart() {
+    public function getCart()
+    {
         $qr = "SELECT * FROM CARRELLO JOIN ANNUNCI 
                 ON CARRELLO.CodiceEditoriale = ANNUNCI.CodiceEditoriale 
                 AND CARRELLO.CodiceRegGroup = ANNUNCI.CodiceRegGroup 
@@ -89,13 +98,14 @@ class DatabaseHelper
                 AND CARRELLO.CodiceTitolo = ANNUNCI.CodiceTitolo
                 WHERE CARRELLO.UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param('i',$_SESSION['userid']);
+        $stmt->bind_param('i', $_SESSION['userid']);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo){
+    public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
+    {
         $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issssi', $numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo, $_SESSION['userid']);
@@ -107,7 +117,8 @@ class DatabaseHelper
         }
     }
 
-    public function getUserData() {
+    public function getUserData()
+    {
         $qr = "SELECT 
                     ACCOUNT.UniqueUserID,
                     ACCOUNT.Nome,
@@ -133,7 +144,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBookImages($numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo) {
+    public function getBookImages($numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
+    {
         $qr = 'SELECT PERCORSO FROM IMMAGINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?';
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issss', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
@@ -141,5 +153,14 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    function getBookGenres($book)
+    {
+        $qr = "SELECT * FROM genere JOIN genere_libro ON genere_libro.CodiceGenere = genere.Codice WHERE genere_libro.EAN = ? AND genere_libro.CodiceEditoriale = ? AND genere_libro.CodiceRegGroup = ? AND genere_libro.CodiceTitolo = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('ssss', $book["ean"], $book["codiceeditoriale"], $book["codicereggroup"], $book["codicetitolo"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
-?>
