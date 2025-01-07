@@ -16,7 +16,6 @@ async function getBookImages() {
             const imgElement = document.createElement('img');
             imgElement.src = "./images/upload/" + image.Percorso;
             imgElement.alt = "Copertina del libro";
-            /*imgElement.style.transform = `translateX(${index * 100}%)`;*/
             
             console.log(carouselContainer);
 
@@ -32,7 +31,6 @@ function updateCarousel() {
     const images = document.querySelectorAll('main[data-book_details] div > div img');
     images.forEach((img, index) => {
         img.style.display = "none";
-        img.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
     });
     images[currentIndex].style.display = "flex";
 }

@@ -8,7 +8,6 @@ async function loadBooks(books) {
                     <h2>${b["Titolo"]}</h2>
                     <input type="button"/>
                 </header>
-                <hr>
                 <p>
                     <ul>
                         <li>
@@ -45,7 +44,6 @@ async function loadBooks(books) {
                         </li>
                     </ul>
                 </p>
-                <hr>
                 <footer>
                     <input type="button" value="Aggiungi copia"/>
                     <input type="button"/>
@@ -107,17 +105,17 @@ async function getBookData() {
 }
 
 async function expandBook(book){
-    const url = './apis/api-book-modify.php';
+    const url = './apis/vendor/api-book-modify.php';
     try {
         const response = await fetch(url, {
             method: "POST",
-            body: JSON.stringify(art)
+            body: JSON.stringify(book)
         });
 
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
-        }else{
-            window.location.href = "./book_details_index.php";
+        } else {
+            window.location.href = "./book_modify_index.php";
         }
 
     } catch (error) {
