@@ -3,7 +3,8 @@
 
     $tp["title"] = "SegnaLibro - Registrazione";
     $tp["identification"] = "access";
-    $tp["content"] = './pages/signup.php';
+
+    array_push($tp["js"], './js/signup.js');
 
     require './template/base.php';
 ?>

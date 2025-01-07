@@ -166,7 +166,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function getBookGenres($book)
+    public function getBookGenres($book)
     {
         $qr = "SELECT * FROM genere JOIN genere_libro ON genere_libro.CodiceGenere = genere.Codice WHERE genere_libro.EAN = ? AND genere_libro.CodiceEditoriale = ? AND genere_libro.CodiceRegGroup = ? AND genere_libro.CodiceTitolo = ?";
         $stmt = $this->db->prepare($qr);
@@ -175,4 +175,22 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function signup($name, $surname, $email, $password){
+        try{
+            $this->db->begin_transaction();
+            $qr = "INSERT INTO ACCOUNT (Email, Password, Nome, Cognome) VALUES (?,?,?,?);";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param('ssss', $email, $password, $name, $surname);
+            $stmt->execute();
+            $qr = "INSERT INTO UTENTE (UniqueUserID) VALUES (LAST_INSERT_ID());";
+            $stmt = $this->db->prepare($qr);
+            $stmt->execute();
+            $this->db->commit();
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+        
+    }
+    
 }

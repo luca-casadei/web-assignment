@@ -3,7 +3,7 @@ use segnalibro_logic;
 
 create table ACCOUNT (
      UniqueUserID int not null auto_increment,
-     Email varchar(100) not null,
+     Email varchar(100) not null UNIQUE,
      Password varchar(256) not null,
      Nome varchar(50) not null,
      Cognome varchar(50) not null,
