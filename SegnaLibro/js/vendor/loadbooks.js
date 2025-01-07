@@ -1,13 +1,14 @@
 async function loadBooks(books) {
-    var result = "";
+    var result = "<h1>Gestione libri</h1>";
     for (const b of books) {
         const htmlGenres = await loadGenres(b);
         result += `
-            <article> 
+            <article onClick=\'expandBook(${JSON.stringify(b)})\'> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
                     <input type="button"/>
                 </header>
+                <hr>
                 <p>
                     <ul>
                         <li>
@@ -44,6 +45,7 @@ async function loadBooks(books) {
                         </li>
                     </ul>
                 </p>
+                <hr>
                 <footer>
                     <input type="button" value="Aggiungi copia"/>
                     <input type="button"/>
@@ -101,6 +103,25 @@ async function getBookData() {
         }
     } catch (error) {
         console.log(error);
+    }
+}
+
+async function expandBook(book){
+    const url = './apis/api-book-modify.php';
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(art)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }else{
+            window.location.href = "./book_details_index.php";
+        }
+
+    } catch (error) {
+        console.log(error.message);
     }
 }
 

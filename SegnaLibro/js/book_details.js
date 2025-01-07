@@ -16,12 +16,13 @@ async function getBookImages() {
             const imgElement = document.createElement('img');
             imgElement.src = "./images/upload/" + image.Percorso;
             imgElement.alt = "Copertina del libro";
-            imgElement.style.transform = `translateX(${index * 100}%)`;
+            /*imgElement.style.transform = `translateX(${index * 100}%)`;*/
             
             console.log(carouselContainer);
 
             carouselContainer.appendChild(imgElement);
         });
+        updateCarousel();
     } catch (error) {
         console.log(error.message);
     }
@@ -30,20 +31,26 @@ async function getBookImages() {
 function updateCarousel() {
     const images = document.querySelectorAll('main[data-book_details] div > div img');
     images.forEach((img, index) => {
+        img.style.display = "none";
         img.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
     });
+    images[currentIndex].style.display = "flex";
 }
 
 function prevImage() {
-    const totalImages = document.querySelectorAll('main[data-book_details] div > div img').length;
+    const images = document.querySelectorAll('main[data-book_details] div > div img');
+    const totalImages = images.length;
     currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
     updateCarousel();
+    images[currentIndex].style.display = "flex";
 }
 
 function nextImage() {
-    const totalImages = document.querySelectorAll('main[data-book_details] div > div img').length;
+    const images = document.querySelectorAll('main[data-book_details] div > div img');
+    const totalImages = images.length;
     currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
     updateCarousel();
+    images[currentIndex].style.display = "flex";
 }
 
 async function insertArticleInTheCart(numero_copia, ean, codice_reg_group, codice_editoriale, codice_titolo) {
