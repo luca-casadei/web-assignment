@@ -60,15 +60,15 @@ if(!defined('DIRECT_ACCESS')){
     <ul>
         <li>
             <label for="old_password">Vecchia password</label>
-            <input type="password" name="old_password" required>
+            <input type="password" id="old_password" name="old_password" required />
         </li>
         <li>
             <label for="new_password">Nuova password</label>
-            <input type="password"name="new_password" required>
+            <input type="password" id="new_password" name="new_password" required />
         </li>
         <li>
             <label for="new_password_confirm">Conferma nuova password</label>
-            <input type="password" name="new_password_confirm" required>
+            <input type="password" id="new_password_confirm" name="new_password_confirm" required />
         </li>
     </ul>
     <input type="submit" value="Salva Password">

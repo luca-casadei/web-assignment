@@ -650,7 +650,6 @@ main[data-book_details] aside > p{
     height: 60px;
   }
 
-
   /* Customer's profile page */
   main[data-profile]{
     display: flex;
@@ -677,12 +676,11 @@ main[data-book_details] aside > p{
   }
 
   /* Detailed book page */
-
   main[data-book_details] section {
     width: 100%;
   }    
 
-  main[data-book_details] section >footer {
+  main[data-book_details] section > footer {
     display: flex;
     flex-direction: column;
     margin-top: 2em;
@@ -695,7 +693,7 @@ main[data-book_details] aside > p{
     color: #801524;
   }
 
-  main[data-book_details] section footer button {
+  main[data-book_details] section footer input[type="button"] {
     background-color: #801524;
     color: white;
     border: none;
@@ -707,12 +705,12 @@ main[data-book_details] aside > p{
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-  main[data-book_details] section footer button:hover {
+  main[data-book_details] section footer input[type="button"]:hover {
     background-color: #5a1d1d;
     transform: translateY(-3px);
   }
 
-  main[data-book_details] section footer button:active {
+  main[data-book_details] section footer input[type="button"]:active {
     transform: translateY(0);
   }
 

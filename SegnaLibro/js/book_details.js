@@ -46,4 +46,31 @@ function nextImage() {
     updateCarousel();
 }
 
+async function insertArticleInTheCart(numero_copia, ean, codice_reg_group, codice_editoriale, codice_titolo) {
+    const url = './apis/api-cart.php';
+    const data = new FormData();
+    data.append('numero_copia', numero_copia);
+    data.append('ean', ean);
+    data.append('codice_reg_group', codice_reg_group);
+    data.append('codice_editoriale', codice_editoriale);
+    data.append('codice_titolo', codice_titolo);
+    data.append('action', 'add');
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        if (json.status === "success") {
+            alert("Articolo inserito correttamente nel carrello");
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 getBookImages();

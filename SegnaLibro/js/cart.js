@@ -38,7 +38,7 @@ function generateCartArticles(data) {
         }
         result += "</section>";
     } else {
-        result += "</aside><section><p>Il carrello è vuoto</p></section>";
+        result += "<p>Il carrello è vuoto</p></aside><section></section>";
     }
 
     return result;
@@ -61,7 +61,6 @@ async function getCartArticlesData() {
 }
 
 async function removeArticle(numero_copia, ean, codice_reg_group, codice_editoriale, codice_titolo) {
-    console.log(numero_copia, ean, codice_editoriale, codice_reg_group, codice_titolo);
     const url = './apis/api-cart.php';
     const data = new FormData();
     data.append('numero_copia', numero_copia);
@@ -69,6 +68,7 @@ async function removeArticle(numero_copia, ean, codice_reg_group, codice_editori
     data.append('codice_reg_group', codice_reg_group);
     data.append('codice_editoriale', codice_editoriale);
     data.append('codice_titolo', codice_titolo);
+    data.append('action', 'remove');
     try {
         const response = await fetch(url, {
             method: 'POST',
