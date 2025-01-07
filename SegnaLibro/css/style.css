@@ -25,11 +25,39 @@ aside{
   max-height: 100%;
   width: 30%;
   background-color: #801524;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
+  padding: 2.5%;
+}
+
+aside > a, aside > input, aside > button {
+  font-size: 20px;
+  height: 30px;
+  color: white;
+  background-color: #801524;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px, white, solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+aside > a:hover, aside > input:hover, aside > button:hover {
+  font-weight: bold;
+  border: 2px, white, solid;
+}
+
+aside > p {
+  color: white;
+  text-align: center;
+  font-size: 32px;
 }
 
 /* Navbar and footer styles */
@@ -95,7 +123,7 @@ body > footer {
 
 /* Main content styles */
 main {
-  margin: 2%;
+  margin-top: 2%;
   margin-bottom: 15%;
 }
 
@@ -357,35 +385,18 @@ main[data-profile] section > form > input:hover {
   font-weight: bold;
 }
 
-main[data-profile] a{
+main[data-profile] section a{
   display: none;
 }
-main[data-profile] aside > a {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px, white, solid;
-  border-radius: 10px;
-}
 
-main[data-profile] a:hover {
+main[data-profile] section > a:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-profile] aside > p {
-  color: white;
-  text-align: center;
-  font-size: 20;
-}
 
 /* Customer's cart page */
+/*
 main[data-cart] {
   display: flex;
   flex-direction: column;
@@ -393,6 +404,20 @@ main[data-cart] {
   max-width: 1200px;
   margin: 0 auto;
   gap: 1rem;
+}*/
+
+main[data-cart] {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+
+main[data-cart] section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
 }
 
 main[data-cart] h1 {
@@ -401,24 +426,12 @@ main[data-cart] h1 {
   color: #8e1017;
 }
 
-main[data-cart] > p {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+main[data-cart] section > p {
+  display: none;
 }
 
-main[data-cart] input[type="button"] {
-  background-color: #8e1017;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 7px;
-  margin-bottom: 1rem;
-}
-main[data-cart] input[type="button"]:hover {
-  background-color: #a3111a;
+main[data-cart] section > input[type="button"] {
+  display: none;
 }
 
 main[data-cart] article {
@@ -460,14 +473,14 @@ main[data-cart] article header p {
   color: #555;
 }
 
-main[data-cart] article > p {
+main[data-cart] section > article > p {
   font-size: 0.9rem;
   line-height: 1.4;
   margin-left: 86px;
   color: #333;
 }
 
-main[data-cart] article footer {
+main[data-cart] section article footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -475,25 +488,27 @@ main[data-cart] article footer {
   margin-left: 86px;
 }
 
-main[data-cart] article footer p {
+main[data-cart] section article footer p {
   margin-right: 1rem;
 }
 
-main[data-cart] article footer p span {
+main[data-cart] section article footer p span {
   font-weight: bold;
 }
 
-main[data-cart] article header input {
+main[data-cart] section > article > header > input {
   border: none;
   cursor: pointer;
   margin-left: auto;
-  background-image: url('../images/trash.png'); 
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: #801524;
+  background-image: url('../images/trash.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+  background-size: 80%;
+  border-radius: 10px;
 }
 
 /* Detailed Order Page */
@@ -583,33 +598,11 @@ main[data-book_details] section > footer {
   display: none;
 }
 
-main[data-book_details] aside > button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px, white, solid;
-  border-radius: 10px;
+main[data-book_details] aside > p{
+  font-size: 32px;
 }
 
-main[data-book_details] aside > button:hover {
-  font-weight: bold;
-  border: 2px, white, solid;
-  cursor: pointer;
-}
 
-main[data-book_details] aside p{
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.5em;
-  color: white;
-}
 
 
 
@@ -638,6 +631,10 @@ main[data-book_details] aside p{
   nav > ul:last-of-type > li:last-of-type{
     display:unset
   }
+  
+  aside{
+    display: none;
+  }
 
   main[data-access] input{
     width: 60%;
@@ -663,11 +660,7 @@ main[data-book_details] aside p{
     width: 100%;
   }
 
-  main[data-profile] aside{
-    display: none;
-  }
-
-  main[data-profile] a {
+  main[data-profile] section a {
     font-size: 20px;
     height: 30px;
     color: #801524;
@@ -679,14 +672,14 @@ main[data-book_details] aside p{
     justify-content: center;
     text-align: center;
   }
+  main[data-profile] section a:hover {
+    font-weight: bold;
+  }
+
   /* Detailed book page */
 
   main[data-book_details] section {
     width: 100%;
-  }
-
-  main[data-book_details] aside{
-    display: none;
   }    
 
   main[data-book_details] section >footer {
@@ -722,5 +715,26 @@ main[data-book_details] aside p{
   main[data-book_details] section footer button:active {
     transform: translateY(0);
   }
+
+  main[data-cart] section{
+    width: 100%;
+  }
+  
+  main[data-cart] section > input[type="button"] {
+    display: flex;
+    background-color: #801524;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+  }
+  main[data-cart] section > input[type="button"]:hover {
+    display: flex;
+    background-color: #a3111a;
+  }
+
 
 }
