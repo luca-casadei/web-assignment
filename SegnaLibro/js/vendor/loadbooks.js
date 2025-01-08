@@ -1,5 +1,8 @@
 async function loadBooks(books) {
-    var result = "<h1>Gestione libri</h1>";
+    var result = `
+        <h1>Gestione libri</h1>
+        <input type = "button" value = "Aggiungi libro" onClick=\'redirectToInsertBook()\' />
+        `;
     for (const b of books) {
         const htmlGenres = await loadGenres(b);
         result += `
@@ -122,5 +125,10 @@ async function expandBook(book){
         console.log(error.message);
     }
 }
+
+function redirectToInsertBook(){
+    window.location.href = "./book_insert_index.php";
+}
+
 
 getBookData();

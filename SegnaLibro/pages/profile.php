@@ -4,7 +4,7 @@ if(!defined('DIRECT_ACCESS')){
 }
 ?>
 
-<aside id="sidebar">
+<aside>
     <p>Impostazioni</p>
     <a href="">Modifica Password</a>
     <a href="./logout_index.php">Disconnetti</a>

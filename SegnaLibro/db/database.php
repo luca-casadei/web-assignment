@@ -192,5 +192,68 @@ class DatabaseHelper
         }
         
     }
+
+    public function getAuthors()
+    {
+        $qr = "SELECT * FROM AUTORE";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategories()
+    {
+        $qr = "SELECT * FROM CATEGORIA";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategoryGenres($category) {
+        $qr = "SELECT * FROM GENERE WHERE CodiceCategoria = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertBook($book){
+        $qr = "INSERT INTO LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CifraControllo, Titolo, Descrizione, DataPubblicazione, Edizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $book["CifraControllo"], $book["Titolo"], $book["Descrizione"], $book["DataPubblicazione"], $book["Edizione"]);
+        $stmt->execute();
+    }
+
+    public function insertAuthor($author){
+        $qr = "INSERT INTO AUTORE (Codice, Nome, Cognome) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("ss", $author["Nome"], $author["Cognome"]);
+        $stmt->execute();
+    }
+
+    public function getAuthorId($author){
+        $qr = "SELECT Codice FROM AUTORE WHERE Nome = ? AND Cognome = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("ss", $author["Nome"], $author["Cognome"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $author_data = $result->fetch_assoc();
+        return $author_data ? $author_data[0]['Codice'] : null;
+    }
+
+    public function insertBookAuthor($book, $author){
+        $author_id = $this->getAuthorId($author);
+        if ($author_id) {
+            $qr = "INSERT INTO AUTORI_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceAutore) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ssssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $author_id);
+            $stmt->execute();
+        } else {
+            throw new Exception("Author not found");
+        }
+    }
     
 }

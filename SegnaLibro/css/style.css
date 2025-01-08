@@ -357,8 +357,7 @@ main[data-homevendor] article header p {
   color: #555;
 }
 
-main[data-homevendor] article input[type="button"] {
-  width: 35%;
+main[data-homevendor] input[type="button"] {
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
   color: white;
@@ -367,6 +366,10 @@ main[data-homevendor] article input[type="button"] {
   border: none;
   padding: 5px;
   cursor: pointer;
+}
+
+main[data-homevendor] article input[type="button"] {
+  width: 35%;
 }
 
 main[data-homevendor] article > footer > input[type="button"] {
@@ -441,6 +444,161 @@ main[data-homevendor] article footer p {
 
 main[data-homevendor] article footer p span {
   font-weight: bold;
+}
+
+/* Vendor Insert book page */
+main[data-book_insert] {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+  padding: 20px;
+}
+
+main[data-book_insert] aside {
+  width: 30%;
+  background-color: #801524;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 15px;
+  gap: 10px;
+}
+
+main[data-book_insert] aside a {
+  text-decoration: underline;
+  color: #fff;
+  font-weight: normal;
+  cursor: pointer;
+  width: 100%;
+}
+
+main[data-book_insert] aside a:hover {
+  font-weight: bold;
+}
+
+main[data-book_insert] section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-book_insert] section form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-book_insert] section form h1 {
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+main[data-book_insert] section form p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+main[data-book_insert] section form ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+main[data-book_insert] section form ul li {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  border: 2px solid #801524;
+  border-radius: 10px;
+}
+
+main[data-book_insert] section form ul li label {
+  width: 30%;
+  background-color: #801524;
+  border-radius: 7px 0 0 7px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+main[data-book_insert] section form ul li input,
+main[data-book_insert] section form ul li textarea,
+main[data-book_insert] section form ul li select {
+  width: 70%;
+  text-align: center;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 5px;
+  outline: none;
+}
+
+main[data-book_insert] section form ul li textarea {
+  resize: none;
+  height: 60px;
+}
+
+main[data-book_insert] section form input {
+  border-style: outset;
+  margin: 5px;
+  color: #801524;
+  cursor: pointer;
+  border: none;
+  font-weight: normal;
+  background-color: white;
+  font-size: 16px;
+}
+
+main[data-book_insert] section form input:hover {
+  font-weight: bold;
+}
+
+main[data-book_insert] section form fieldset[data-genres-container] {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border: transparent;
+}
+
+main[data-book_insert] section form fieldset[data-genres-container] label {
+  background-color: transparent;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+main[data-book_insert] section form fieldset[data-genres-container] input[type="checkbox"] {
+  background-color: transparent;
+  margin: 0 5px;
 }
 
 /* Customer's Profile page */
@@ -800,6 +958,19 @@ main[data-book_details] aside > p{
     width: 60px;
     height: 60px;
   }
+
+  /* Vendor Insert book page */
+  main[data-book_insert] {
+    flex-direction: column;
+  }
+
+    main[data-book_insert] aside {
+      display: none;
+    }
+
+    main[data-book_insert] section {
+      width: 100%;
+    }
 
   /* Customer's profile page */
   main[data-profile]{
