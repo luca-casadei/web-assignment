@@ -4,7 +4,7 @@ if (!defined('DIRECT_ACCESS')){
 }
 ?>
 <div>
-    <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
+    <p>Prezzo: <strong><?php echo $data["Prezzo"]?>€</strong></p>
     <input type="button" aria-label="Aggiungi al carrello" 
     onclick='insertArticleInTheCart()' 
     value="Aggiungi al carrello" />
