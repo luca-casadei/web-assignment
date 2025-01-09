@@ -2,8 +2,8 @@
 require ('../../bootstrap.php');
 
 if (isUserLoggedIn() && isUserVendor()) {
-    if (isset($_GET['categoryId'])) {
-        $categoryId = $_GET['categoryId'];
+    if (isset($_POST['category'])) {
+        $categoryId = $_POST['category'];
         
         $genres = $dbh->getCategoryGenres($categoryId);
         header('Content-Type: application/json');

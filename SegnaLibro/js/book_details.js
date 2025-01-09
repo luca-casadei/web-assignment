@@ -67,6 +67,8 @@ async function insertArticleInTheCart() {
         const json = await response.json();
         if (json.status === "success") {
             alert("Articolo inserito correttamente nel carrello");
+        } else {
+            alert("Errore durante l'inserimento dell'articolo nel carrello");
         }
     } catch (error) {
         console.log(error.message);
