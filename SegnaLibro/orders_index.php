@@ -1,14 +1,18 @@
 <?php
     require './bootstrap.php';
 
-    if(isUserLoggedIn() && !isUserVendor()){
-        $tp["title"] = "SegnaLibro - Ordini";
-        $tp["identification"] = "orders";
-        $tp["content"] = './pages/orders.php';
+    $tp["title"] = "SegnaLibro - Ordini";
+    $tp["identification"] = "orders";
+    if (isUserLoggedIn()){
+        if (!isUserVendor()){
+            array_push($tp["js"] , "./js/orders.js");
+        }
+        else{
+            header("Location: ./index.php");
+        }
     }
     else{
-        header("Location: ./login_index.php");
+        header("Location: ./index.php");
     }
-
     require './template/base.php';
 ?>

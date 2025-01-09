@@ -89,6 +89,32 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getOrders()
+    {
+        $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $_SESSION['userid']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getArticlesFromOrder($CodiceOrdine)
+    {
+        $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
+                ON COPIE_ORDINE.CodiceEditoriale = COPIA.CodiceEditoriale 
+                AND COPIE_ORDINE.CodiceRegGroup = COPIA.CodiceRegGroup 
+                AND COPIE_ORDINE.EAN = COPIA.EAN
+                AND COPIE_ORDINE.CodiceTitolo = COPIA.CodiceTitolo
+                WHERE COPIE_ORDINE.CodiceOrdine = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $CodiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     public function getCart()
     {
         $qr = "SELECT * FROM CARRELLO JOIN ANNUNCI 
