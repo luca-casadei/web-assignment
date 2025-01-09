@@ -3,7 +3,7 @@ function generateArticles(articoli){
 
     for(let i=0; i < articoli.length; i++){
         let articolo = `
-        <article onClick=\'expandArticles(${JSON.stringify(articoli[i])})\'>
+        <article onClick=\'expandArticles(\"${articoli[i]["EAN"]}\", \"${articoli[i]["CodiceEditoriale"]}\", \"${articoli[i]["CodiceTitolo"]}\", \"${articoli[i]["CodiceRegGroup"]}\", \"${articoli[i]["NumeroCopia"]}\")\'>
             <header>
             <figure>
                 <img src="${articoli[i]["NomeImmagine"]}" alt="" />
@@ -42,12 +42,22 @@ async function getArticleData() {
     }
 }
 
-async function expandArticles(art){
+async function expandArticles(ean, codiceEditoriale, codiceTitolo, codiceRegGroup, numeroCopia){
     const url = './apis/api-detailed-article.php';
     try {
+        console.log(codiceEditoriale)
+        const formData = new FormData();
+        formData.append("expandedarticledata", JSON.stringify({
+            "EAN": ean,
+            "CodiceEditoriale": codiceEditoriale,
+            "CodiceTitolo": codiceTitolo,
+            "CodiceRegGroup": codiceRegGroup,
+            "NumeroCopia": numeroCopia
+        }))
+
         const response = await fetch(url, {
             method: "POST",
-            body: JSON.stringify(art)
+            body: formData
         });
 
         if (!response.ok) {

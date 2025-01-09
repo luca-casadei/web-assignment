@@ -3,6 +3,7 @@
 
     $tp["title"] = "SegnaLibro - Registrazione";
     $tp["identification"] = "access";
+    $tp["active"] = "signup";
 
     array_push($tp["js"], './js/signup.js');
 

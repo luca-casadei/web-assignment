@@ -6,6 +6,7 @@ $tp["identification"] = "profile";
 
 if (isUserLoggedIn()) {
     $tp["content"] = './pages/profile.php';
+    $tp["active"] = "profile";
     define("DIRECT_ACCESS", false);
 } else {
     header('Location: ./login_index.php');
