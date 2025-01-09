@@ -1,6 +1,6 @@
 /* Font and default styles */
 @font-face {
-  font-family: ahyp;
+  font-family: "Atkinson Hyperlegible";
   src: url("../fonts/AtkinsonHyperlegible-Regular.ttf");
 }
 
@@ -14,13 +14,13 @@ figure,
 a {
   margin: 0;
   padding: 0;
-  font-family: ahyp, 'Courier New', Courier, monospace;
+  font-family: "Atkinson Hyperlegible", "Courier New", Courier, monospace;
   font-size: unset;
   text-decoration: unset;
   font-weight: unset;
 }
 
-aside{
+aside {
   min-height: 500px;
   max-height: 100%;
   width: 30%;
@@ -33,7 +33,9 @@ aside{
   padding: 2.5%;
 }
 
-aside > a, aside > input, aside > button {
+aside>a,
+aside>input,
+aside>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -49,12 +51,14 @@ aside > a, aside > input, aside > button {
   cursor: pointer;
 }
 
-aside > a:hover, aside > input:hover, aside > button:hover {
+aside>a:hover,
+aside>input:hover,
+aside>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-aside > p {
+aside>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -62,7 +66,7 @@ aside > p {
 
 /* Navbar and footer styles */
 nav,
-body > footer {
+body>footer {
   background-color: #801524;
   color: white;
   width: 100%;
@@ -79,26 +83,26 @@ nav {
 }
 
 /* Navbar menu */
-nav > ul {
+nav>ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   gap: 30px;
 }
 
-nav>ul:first-of-type{
+nav>ul:first-of-type {
   margin-left: 1%;
 }
 
-nav>ul:last-of-type{
+nav>ul:last-of-type {
   margin-right: 1%;
 }
 
-nav > ul:last-of-type > li{
+nav>ul:last-of-type>li {
   cursor: pointer;
 }
 
-nav > ul:last-of-type > li:last-of-type{
+nav>ul:last-of-type>li:last-of-type {
   display: none;
 }
 
@@ -107,12 +111,12 @@ nav img {
   width: 40px;
 }
 
-nav > ul > li > a {
+nav>ul>li>a {
   color: white;
 }
 
 /* Footer styles */
-body > footer {
+body>footer {
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -135,23 +139,23 @@ main[data-access] {
   color: #801524;
 }
 
-main[data-access] > h1 {
+main[data-access]>h1 {
   font-size: 40px;
   font-weight: bold;
 }
 
-main[data-access] > form {
+main[data-access]>form {
   width: 100%;
 }
 
-main[data-access] > form > ul {
+main[data-access]>form>ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-main[data-access] > form > ul > li {
+main[data-access]>form>ul>li {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -183,17 +187,17 @@ main[data-access] input[type="submit"] {
   font-size: large;
 }
 
-main[data-access] > form > ul > li:last-child {
+main[data-access]>form>ul>li:last-child {
   font-size: larger;
 }
 
-main[data-access] > form > ul > li > a {
+main[data-access]>form>ul>li>a {
   text-decoration: none;
   font-weight: bold;
   color: #801524;
 }
 
-main[data-access] > form > p:first-of-type {
+main[data-access]>form>p:first-of-type {
   text-align: center;
   font-weight: bold;
   margin: 3%;
@@ -216,17 +220,17 @@ main[data-homeuser] h1 {
   color: #8e1017;
 }
 
-main[data-homeuser] > p {
+main[data-homeuser]>p {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 main[data-homeuser] article {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -248,6 +252,7 @@ main[data-homeuser] article header figure {
   max-width: 70px;
   max-height: 70px;
 }
+
 main[data-homeuser] article header figure img {
   display: block;
   width: 100%;
@@ -255,29 +260,29 @@ main[data-homeuser] article header figure img {
   object-fit: cover;
   border-radius: 4px;
 }
+
 main[data-homeuser] article header h2 {
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
 }
+
 main[data-homeuser] article header p {
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
   color: #555;
 }
+
 main[data-homeuser] article footer {
   width: 100%;
+  display: flex;
+  margin-top: 0.5rem;
 }
 
-main[data-homeuser] article > p {
+main[data-homeuser] article>p {
   font-size: 0.9rem;
   line-height: 1.4;
   margin-left: 86px;
   color: #333;
-}
-
-main[data-homeuser] article footer {
-  display:flex;
-  margin-top: 0.5rem;
 }
 
 main[data-homeuser] article footer p {
@@ -287,7 +292,6 @@ main[data-homeuser] article footer p {
 main[data-homeuser] article footer p span {
   font-weight: bold;
 }
-
 
 /* Vendor's homepage */
 
@@ -307,17 +311,17 @@ main[data-homevendor] h1 {
   color: #8e1017;
 }
 
-main[data-homevendor] > p {
+main[data-homevendor]>p {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 
 main[data-homevendor] article {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,6 +344,7 @@ main[data-homevendor] article header figure {
   max-width: 70px;
   max-height: 70px;
 }
+
 main[data-homevendor] article header figure img {
   display: block;
   width: 100%;
@@ -347,10 +352,12 @@ main[data-homevendor] article header figure img {
   object-fit: cover;
   border-radius: 4px;
 }
+
 main[data-homevendor] article header h2 {
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
 }
+
 main[data-homevendor] article header p {
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
@@ -372,31 +379,30 @@ main[data-homevendor] article input[type="button"] {
   width: 35%;
 }
 
-main[data-homevendor] article > footer > input[type="button"] {
+main[data-homevendor] article>footer>input[type="button"] {
   margin-right: auto;
 }
 
 main[data-homevendor] article header input[type="button"]:first-of-type {
-    margin-left: auto;
-    background-image: url('../images/pencil.png');
-    background-position: center;
-    background-size: 80%;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+  margin-left: auto;
+  background-image: url("../images/pencil.png");
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
 }
 
 main[data-homevendor] article footer input[type="button"]:last-of-type {
   margin-right: 0;
   margin-left: auto;
-    background-image: url('../images/list.png');
-    background-position: center;
-    background-size: 80%;
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+  background-image: url("../images/list.png");
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
 }
-
 
 main[data-homevendor] article ul {
   width: 90%;
@@ -404,26 +410,27 @@ main[data-homevendor] article ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  list-style-type: none;    
+  list-style-type: none;
 }
 
-main[data-homevendor] article > ul > li {
+main[data-homevendor] article>ul>li {
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
 
-main[data-homevendor] article > ul > li > p{
+main[data-homevendor] article>ul>li>p {
   width: 50%;
   text-align: left;
 }
-main[data-homevendor] article > ul > li > ul{
+
+main[data-homevendor] article>ul>li>ul {
   display: inline;
   width: 50%;
   text-align: left;
 }
 
-main[data-homevendor] article > p {
+main[data-homevendor] article>p {
   font-size: 0.9rem;
   line-height: 1.4;
   margin-left: 86px;
@@ -563,7 +570,6 @@ main[data-book_insert] section form ul li textarea {
 }
 
 main[data-book_insert] section form input {
-  border-style: outset;
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -603,9 +609,9 @@ main[data-book_insert] section form fieldset[data-genres-container] input[type="
 
 /* Customer's Profile page */
 main[data-profile] {
-  display:flex;
-  flex-direction:row-reverse;
-  gap:20px;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
 }
 
 main[data-profile] section {
@@ -618,7 +624,7 @@ main[data-profile] section {
   gap: 10px;
 }
 
-main[data-profile] h1{
+main[data-profile] h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
@@ -626,7 +632,7 @@ main[data-profile] h1{
   text-align: center;
 }
 
-main[data-profile] section > form{
+main[data-profile] section>form {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -636,7 +642,7 @@ main[data-profile] section > form{
   gap: 10px;
 }
 
-main[data-profile] section > form > ul{
+main[data-profile] section>form>ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -646,8 +652,7 @@ main[data-profile] section > form > ul{
   gap: 20px;
 }
 
-
-main[data-profile] section > form > ul > li{
+main[data-profile] section>form>ul>li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -656,7 +661,7 @@ main[data-profile] section > form > ul > li{
   border-radius: 10px;
 }
 
-main[data-profile] section > form > ul > li > label {
+main[data-profile] section>form>ul>li>label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px;
@@ -669,15 +674,15 @@ main[data-profile] section > form > ul > li > label {
   line-height: 70%;
 }
 
-main[data-profile] section > form > ul > li > input, select{
+main[data-profile] section>form>ul>li>input,
+select {
   width: 70%;
   text-align: center;
   border: none;
   border-radius: 10px;
 }
 
-main[data-profile] section > form > input {
-  border-style: outset;
+main[data-profile] section>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -687,21 +692,21 @@ main[data-profile] section > form > input {
   text-decoration: underline;
 }
 
-main[data-profile] section > form > input:hover {
+main[data-profile] section>form>input:hover {
   font-weight: bold;
 }
 
-main[data-profile] section a{
+main[data-profile] section a {
   display: none;
 }
 
-main[data-profile] section > a:hover {
+main[data-profile] section>a:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-
 /* Customer's cart page */
+
 /*
 main[data-cart] {
   display: flex;
@@ -710,7 +715,8 @@ main[data-cart] {
   max-width: 1200px;
   margin: 0 auto;
   gap: 1rem;
-}*/
+}
+*/
 
 main[data-cart] {
   display: flex;
@@ -732,18 +738,18 @@ main[data-cart] h1 {
   color: #8e1017;
 }
 
-main[data-cart] section > p {
+main[data-cart] section>p {
   display: none;
 }
 
-main[data-cart] section > input[type="button"] {
+main[data-cart] section>input[type="button"] {
   display: none;
 }
 
 main[data-cart] article {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0 0 0 0.1);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -756,12 +762,14 @@ main[data-cart] article header {
   gap: 1rem;
   align-items: center;
 }
+
 main[data-cart] article header figure {
   margin: 0;
   min-width: 70px;
   max-width: 70px;
   max-height: 70px;
 }
+
 main[data-cart] article header figure img {
   display: block;
   width: 100%;
@@ -769,17 +777,19 @@ main[data-cart] article header figure img {
   object-fit: cover;
   border-radius: 4px;
 }
+
 main[data-cart] article header h2 {
   font-size: 1.1rem;
   margin-bottom: 0.25rem;
 }
+
 main[data-cart] article header p {
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
   color: #555;
 }
 
-main[data-cart] section > article > p {
+main[data-cart] section>article>p {
   font-size: 0.9rem;
   line-height: 1.4;
   margin-left: 86px;
@@ -802,7 +812,7 @@ main[data-cart] section article footer p span {
   font-weight: bold;
 }
 
-main[data-cart] section > article > header > input {
+main[data-cart] section>article>header>input {
   border: none;
   cursor: pointer;
   margin-left: auto;
@@ -810,7 +820,7 @@ main[data-cart] section > article > header > input {
   width: 40px;
   height: 40px;
   background-color: #801524;
-  background-image: url('../images/trash.png');
+  background-image: url("../images/trash.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
@@ -822,7 +832,7 @@ main[data-book_details] {
   display: flex;
   flex-direction: row-reverse;
   justify-items: center;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   text-align: center;
   color: #801524;
   gap: 20px;
@@ -831,29 +841,28 @@ main[data-book_details] {
 main[data-book_details] section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-items: center;
+  place-items: center;
   width: 70%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0 0 0 0.1);
   gap: 10px;
 }
 
 main[data-book_details] header {
-    margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 main[data-book_details] h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.3em;
-    color: #801524;
+  font-size: 2.5rem;
+  margin-bottom: 0.3em;
+  color: #801524;
 }
 
 main[data-book_details] p {
-    margin: 0.5em 0;
-    line-height: 1.6;
-    font-size: 1rem;
+  margin: 0.5em 0;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 main[data-book_details] div {
@@ -865,8 +874,7 @@ main[data-book_details] div {
   align-items: center;
 }
 
-main[data-book_details] div > div{
-
+main[data-book_details] div>div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -874,62 +882,55 @@ main[data-book_details] div > div{
   text-align: center;
 }
 
-
 main[data-book_details] div img {
-    max-height: 100%;
-    max-width: 100%;
-    border: 3px solid #801524;
-    border-radius: 10px;
+  max-height: 100%;
+  max-width: 100%;
+  border: 3px solid #801524;
+  border-radius: 10px;
 }
 
 main[data-book_details] div input[type="button"] {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 main[data-book_details] div input[type="button"]:first-of-type {
-    left: -45px;
-    background-image: url('../images/arrow_left.png');
+  left: -45px;
+  background-image: url("../images/arrow_left.png");
 }
 
 main[data-book_details] div input[type="button"]:last-of-type {
-    right: -45px;
-    background-image: url('../images/arrow_right.png');
+  right: -45px;
+  background-image: url("../images/arrow_right.png");
 }
 
-main[data-book_details] section > footer {
+main[data-book_details] section>footer {
   display: none;
 }
 
-main[data-book_details] aside > p{
+main[data-book_details] aside>p {
   font-size: 32px;
 }
 
-
-
-
-
 /* Mobile version styles */
-@media (max-width: 768px) {
-
-  nav[data-open="false"] > ul:first-of-type{
+@media (width <=768px) {
+  nav[data-open="false"]>ul:first-of-type {
     display: none;
   }
 
   /* Navbar opened */
-  nav[data-open="true"] > ul:first-of-type {
+  nav[data-open="true"]>ul:first-of-type {
     flex-direction: column;
     position: absolute;
     right: 0;
     bottom: 0;
     top: 50px;
     width: 60%;
-    gap:10px;
     background-color: #801524;
     text-align: center;
     padding-top: 50px;
@@ -937,24 +938,24 @@ main[data-book_details] aside > p{
     font-size: larger;
   }
 
-  nav > ul:last-of-type > li:last-of-type{
-    display:unset
+  nav>ul:last-of-type>li:last-of-type {
+    display: unset;
   }
-  
-  aside{
+
+  aside {
     display: none;
   }
 
-  main[data-access] input{
+  main[data-access] input {
     width: 60%;
   }
 
-  main[data-access] input[type="submit"]{
+  main[data-access] input[type="submit"] {
     width: 40%;
   }
 
   /* Customer's home page and articles */
-  main[data-home] article > header > figure {
+  main[data-home] article>header>figure {
     width: 60px;
     height: 60px;
   }
@@ -964,20 +965,21 @@ main[data-book_details] aside > p{
     flex-direction: column;
   }
 
-    main[data-book_insert] aside {
-      display: none;
-    }
+  main[data-book_insert] aside {
+    display: none;
+  }
 
-    main[data-book_insert] section {
-      width: 100%;
-    }
+  main[data-book_insert] section {
+    width: 100%;
+  }
 
   /* Customer's profile page */
-  main[data-profile]{
+  main[data-profile] {
     display: flex;
     flex-direction: column;
   }
-  main[data-profile] section{
+
+  main[data-profile] section {
     width: 100%;
   }
 
@@ -993,6 +995,7 @@ main[data-book_details] aside > p{
     justify-content: center;
     text-align: center;
   }
+
   main[data-profile] section a:hover {
     font-weight: bold;
   }
@@ -1000,9 +1003,9 @@ main[data-book_details] aside > p{
   /* Detailed book page */
   main[data-book_details] section {
     width: 100%;
-  }    
+  }
 
-  main[data-book_details] section > footer {
+  main[data-book_details] section>footer {
     display: flex;
     flex-direction: column;
     margin-top: 2em;
@@ -1036,11 +1039,11 @@ main[data-book_details] aside > p{
     transform: translateY(0);
   }
 
-  main[data-cart] section{
+  main[data-cart] section {
     width: 100%;
   }
-  
-  main[data-cart] section > input[type="button"] {
+
+  main[data-cart] section>input[type="button"] {
     display: flex;
     background-color: #801524;
     color: #fff;
@@ -1051,10 +1054,9 @@ main[data-book_details] aside > p{
     border-radius: 7px;
     margin-bottom: 1rem;
   }
-  main[data-cart] section > input[type="button"]:hover {
+
+  main[data-cart] section>input[type="button"]:hover {
     display: flex;
     background-color: #a3111a;
   }
-
-
 }
