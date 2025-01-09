@@ -6,7 +6,7 @@ async function loadBooks(books) {
     for (const b of books) {
         const htmlGenres = await loadGenres(b);
         result += `
-            <article onClick=\'expandBook(${JSON.stringify(b)})\'> 
+            <article onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
                     <input type="button"/>
@@ -107,12 +107,19 @@ async function getBookData() {
     }
 }
 
-async function expandBook(book){
+async function expandBook(ean, codiceTitolo, codiceEditoriale, codiceRegGroup){
     const url = './apis/vendor/api-book-modify.php';
     try {
+        const formData = new FormData();
+        formData.append("expandedvendorbook", JSON.stringify({
+            "EAN": ean,
+            "CodiceEditoriale": codiceEditoriale,
+            "CodiceRegGroup": codiceRegGroup,
+            "CodiceTitolo": codiceTitolo
+        }));
         const response = await fetch(url, {
             method: "POST",
-            body: JSON.stringify(book)
+            body: formData
         });
 
         if (!response.ok) {
@@ -120,7 +127,6 @@ async function expandBook(book){
         } else {
             window.location.href = "./book_modify_index.php";
         }
-
     } catch (error) {
         console.log(error.message);
     }

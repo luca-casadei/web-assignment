@@ -7,19 +7,19 @@ if (!defined('DIRECT_ACCESS')){
 
 <form method="POST">
     <label for="book_title">Titolo</label>
-    <input type="text" id="book_title" name="book_title" value="<?php echo $tp["Titolo"]?>">
+    <input type="text" id="book_title" name="book_title" value="<?php echo $data["Titolo"]?>">
 
     <div>
         <label for="author">Autore</label>
         <label for="year">Anno</label>
     </div>
     <div>
-        <input type="text" id="author" name="author" value="<?php echo $tp["NomeAutore"]?> <?php echo $tp["CognomeAutore"]?>">
-        <input type="text" id="year" name="year" value="<?php echo $tp["DataPubblicazione"]?>">
+        <input type="text" id="author" name="author" value="<?php echo $data["NomeAutore"]?> <?php echo $data["CognomeAutore"]?>">
+        <input type="text" id="year" name="year" value="<?php echo $data["DataPubblicazione"]?>">
     </div>
 
     <label for="description">Descrizione</label>
-    <textarea id="description" name="description"></textarea>
+    <textarea id="description" name="description"><?php echo $data["Descrizione"]?></textarea>
 
     <label for="category">Categoria</label>
     <select id="category" name="category">
