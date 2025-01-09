@@ -6,11 +6,7 @@ if (!defined('DIRECT_ACCESS')){
 <aside>
     <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
     <input type="button" aria-label="Aggiungi al carrello" 
-    onclick='insertArticleInTheCart("<?php echo $tp["NumeroCopia"]?>", 
-        "<?php echo $tp["EAN"]?>", 
-        "<?php echo $tp["CodiceRegGroup"]?>", 
-        "<?php echo $tp["CodiceEditoriale"]?>", 
-        "<?php echo $tp["CodiceTitolo"]?>")' 
+    onclick='insertArticleInTheCart()' 
     value="Aggiungi al carrello" />
     </aside>
 <section>
@@ -32,11 +28,7 @@ if (!defined('DIRECT_ACCESS')){
     <footer>
         <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
         <input type="button" aria-label="Aggiungi al carrello" 
-        onclick='insertArticleInTheCart("<?php echo $tp["NumeroCopia"]?>", 
-            "<?php echo $tp["EAN"]?>", 
-            "<?php echo $tp["CodiceRegGroup"]?>", 
-            "<?php echo $tp["CodiceEditoriale"]?>", 
-            "<?php echo $tp["CodiceTitolo"]?>")' 
+        onclick='insertArticleInTheCart()' 
         value="Aggiungi al carrello" />
     </footer>
 </section>
