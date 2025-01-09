@@ -40,13 +40,18 @@ function loadGenresCheckboxes(genresArray) {
 }
 
 async function fetchCategoryGenres(categoryId) {
+    const url = `./apis/vendor/api-category-genres.php`;
+    const data = new FormData();
+    data.append('category', categoryId);
+
     try {
-        const url = `./apis/vendor/api-category-genres.php?categoryId=${categoryId}`;
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data
+        });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-
         const genresData = await response.json();
         return genresData;
     } catch (error) {
