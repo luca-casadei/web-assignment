@@ -3,6 +3,7 @@
 
     $tp["title"] = "SegnaLibro - Carrello";
     $tp["identification"] = "cart";
+    $tp["active"] = "cart";
     if (isUserLoggedIn()){
         if (!isUserVendor()){
             array_push($tp["js"] , "./js/cart.js");

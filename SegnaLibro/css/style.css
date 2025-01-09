@@ -83,6 +83,10 @@ nav {
   padding: 5px;
 }
 
+nav > ul > li[active]{
+  font-weight: bold;
+}
+
 /* Navbar menu */
 nav>ul {
   display: flex;
