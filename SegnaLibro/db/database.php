@@ -30,6 +30,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAnnounce($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia){
+        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.EAN = ? AND ANNUNCI.CodiceRegGroup = ? AND ANNUNCI.CodiceEditoriale = ? AND ANNUNCI.CodiceTitolo = ? AND ANNUNCI.NumeroCopia = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssssi", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function changePassword($password)
     {
         $query = "UPDATE ACCOUNT SET Password = ? WHERE Email = ?";
