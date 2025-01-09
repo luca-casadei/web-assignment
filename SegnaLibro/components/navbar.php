@@ -1,6 +1,6 @@
 <nav data-open="false">
-    <a href="./index.php"><img src="./images/logo.png" alt="Logo" /></a>
     <ul>
+        <li><a href="./index.php"><img src="./images/logo.png" alt="SegnaLibro - Logo" /></a></li>
         <li><a href="./index.php">Homepage</a></li>
         <?php 
             if (isUserLoggedIn() && !isUserVendor()){

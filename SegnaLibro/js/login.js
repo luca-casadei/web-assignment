@@ -2,7 +2,6 @@ function generateLoginForm(){
     let form = `
     <h1>Login</h1>
     <form action="#" method="POST">
-        <p></p>
         <ul>
             <li>
                 <label for="email">Email:</label>
@@ -17,6 +16,7 @@ function generateLoginForm(){
             </li>
             <li>Non hai un account?<a href="./signup_index.php">Registrati</a></li>
         </ul>
+        <p></p>
     </form>
     `
     return form;

@@ -18,6 +18,7 @@ a {
   font-size: unset;
   text-decoration: unset;
   font-weight: unset;
+  list-style-type: none;
 }
 
 aside {
@@ -84,18 +85,10 @@ nav {
 
 /* Navbar menu */
 nav>ul {
-  list-style-type: none;
   display: flex;
   flex-direction: row;
   gap: 30px;
-}
-
-nav>ul:first-of-type {
-  margin-left: 1%;
-}
-
-nav>ul:last-of-type {
-  margin-right: 1%;
+  align-items: center;
 }
 
 nav>ul:last-of-type>li {
@@ -126,13 +119,13 @@ body>footer {
 }
 
 /* Main content styles */
-main {
-  margin-top: 2%;
-  margin-bottom: 15%;
+main{
+  margin-bottom: 50px;
 }
 
 /* Login section */
 main[data-access] {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,10 +190,11 @@ main[data-access]>form>ul>li>a {
   color: #801524;
 }
 
-main[data-access]>form>p:first-of-type {
+main[data-access]>form>p{
   text-align: center;
   font-weight: bold;
   margin: 3%;
+  font-size: 20px;
 }
 
 /* Customer's home page and articles */
@@ -919,6 +913,10 @@ main[data-book_details] aside>p {
 
 /* Mobile version styles */
 @media (width <=768px) {
+  nav{
+    justify-content: right;
+  }
+
   nav[data-open="false"]>ul:first-of-type {
     display: none;
   }
@@ -938,6 +936,10 @@ main[data-book_details] aside>p {
     font-size: larger;
   }
 
+  nav>ul:first-of-type>li:first-of-type {
+    display: none;
+  }
+
   nav>ul:last-of-type>li:last-of-type {
     display: unset;
   }
@@ -946,11 +948,15 @@ main[data-book_details] aside>p {
     display: none;
   }
 
-  main[data-access] input {
+  main[data-access] > form input {
     width: 60%;
   }
 
-  main[data-access] input[type="submit"] {
+  main[data-access] > form > ul{
+    gap: 20px;
+  }
+
+  main[data-access] > form input[type="submit"] {
     width: 40%;
   }
 
@@ -1008,7 +1014,6 @@ main[data-book_details] aside>p {
   main[data-book_details] section>footer {
     display: flex;
     flex-direction: column;
-    margin-top: 2em;
   }
 
   main[data-book_details] section footer p strong {
