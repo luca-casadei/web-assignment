@@ -273,4 +273,13 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
+        $query = "SELECT * FROM libri_categorie_autore WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
 }
