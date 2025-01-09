@@ -3,9 +3,9 @@ if (!defined('DIRECT_ACCESS')){
     header("Location: ../../index.php");
 }
 ?>
-<aside>
+<div>
     <a href="./index.php">Aggiungi libro</a>
-</aside>
+</div>
 
 <section>
     <form method="POST">

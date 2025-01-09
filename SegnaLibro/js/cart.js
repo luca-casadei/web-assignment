@@ -1,13 +1,13 @@
 function generateCartArticles(data) {
     let result = `
-        <aside>
+        <div>
     `;
 
     let articles = data.articles;
     if (articles.length !== 0) {
         result += `  
             <p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" />
-        </aside>
+        </div>
         <section>
             <h1>Carrello</h1>`;
         result += `<p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" />`;
@@ -38,7 +38,7 @@ function generateCartArticles(data) {
         }
         result += "</section>";
     } else {
-        result += "<p>Il carrello è vuoto</p></aside><section></section>";
+        result += "<p>Il carrello è vuoto</p></div><section><p>Il carrello è vuoto</p></section>";
     }
 
     return result;

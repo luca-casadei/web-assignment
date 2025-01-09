@@ -20,7 +20,7 @@ a {
   font-weight: unset;
 }
 
-aside {
+div {
   min-height: 500px;
   max-height: 100%;
   width: 30%;
@@ -33,9 +33,9 @@ aside {
   padding: 2.5%;
 }
 
-aside>a,
-aside>input,
-aside>button {
+div>a,
+div>input,
+div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -51,14 +51,14 @@ aside>button {
   cursor: pointer;
 }
 
-aside>a:hover,
-aside>input:hover,
-aside>button:hover {
+div>a:hover,
+div>input:hover,
+div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-aside>p {
+div>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -230,7 +230,7 @@ main[data-homeuser] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -321,7 +321,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -458,33 +458,8 @@ main[data-book_insert] {
   display: flex;
   flex-direction: row-reverse;
   gap: 20px;
-  padding: 20px;
 }
 
-main[data-book_insert] aside {
-  width: 30%;
-  background-color: #801524;
-  border-radius: 10px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 15px;
-  gap: 10px;
-}
-
-main[data-book_insert] aside a {
-  text-decoration: underline;
-  color: #fff;
-  font-weight: normal;
-  cursor: pointer;
-  width: 100%;
-}
-
-main[data-book_insert] aside a:hover {
-  font-weight: bold;
-}
 
 main[data-book_insert] section {
   width: 70%;
@@ -729,7 +704,8 @@ main[data-cart] section {
   display: flex;
   flex-direction: column;
   text-align: center;
-  gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 main[data-cart] h1 {
@@ -749,7 +725,7 @@ main[data-cart] section>input[type="button"] {
 main[data-cart] article {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0 0 0 0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -845,7 +821,7 @@ main[data-book_details] section {
   width: 70%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0 0 0 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   gap: 10px;
 }
 
@@ -865,7 +841,15 @@ main[data-book_details] p {
   font-size: 1rem;
 }
 
-main[data-book_details] div {
+main[data-book_details] div > p {
+  font-size: 32px;
+}
+
+main[data-book_details] section div {
+  background-color: unset;
+  max-width: unset;
+  max-height: unset;
+  min-height: unset;
   height: 300px;
   width: 80%;
   display: flex;
@@ -874,7 +858,7 @@ main[data-book_details] div {
   align-items: center;
 }
 
-main[data-book_details] div>div {
+main[data-book_details] section > div > div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -882,14 +866,14 @@ main[data-book_details] div>div {
   text-align: center;
 }
 
-main[data-book_details] div img {
+main[data-book_details] section > div img {
   max-height: 100%;
   max-width: 100%;
   border: 3px solid #801524;
   border-radius: 10px;
 }
 
-main[data-book_details] div input[type="button"] {
+main[data-book_details] section > div input[type="button"] {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -899,12 +883,12 @@ main[data-book_details] div input[type="button"] {
   background-repeat: no-repeat;
 }
 
-main[data-book_details] div input[type="button"]:first-of-type {
+main[data-book_details] section > div input[type="button"]:first-of-type {
   left: -45px;
   background-image: url("../images/arrow_left.png");
 }
 
-main[data-book_details] div input[type="button"]:last-of-type {
+main[data-book_details] section > div input[type="button"]:last-of-type {
   right: -45px;
   background-image: url("../images/arrow_right.png");
 }
@@ -913,9 +897,6 @@ main[data-book_details] section>footer {
   display: none;
 }
 
-main[data-book_details] aside>p {
-  font-size: 32px;
-}
 
 /* Mobile version styles */
 @media (width <=768px) {
@@ -942,7 +923,7 @@ main[data-book_details] aside>p {
     display: unset;
   }
 
-  aside {
+  div {
     display: none;
   }
 
@@ -965,9 +946,6 @@ main[data-book_details] aside>p {
     flex-direction: column;
   }
 
-  main[data-book_insert] aside {
-    display: none;
-  }
 
   main[data-book_insert] section {
     width: 100%;
@@ -1041,6 +1019,13 @@ main[data-book_details] aside>p {
 
   main[data-cart] section {
     width: 100%;
+  }
+
+  main[data-cart] section>p {
+    display: unset;
+    padding: 10px;
+    font-size: 20px;
+    color: #801524;
   }
 
   main[data-cart] section>input[type="button"] {

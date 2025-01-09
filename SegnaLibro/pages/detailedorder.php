@@ -3,7 +3,7 @@ if (!defined('DIRECT_ACCESS')){
     header("Location: ../index.php");
 }
 ?>
-<aside>
+<div>
     <p>Prezzo: <strong><?php echo $tp["Prezzo"]?>€</strong></p>
     <input type="button" aria-label="Aggiungi al carrello" 
     onclick='insertArticleInTheCart("<?php echo $tp["NumeroCopia"]?>", 
@@ -12,7 +12,7 @@ if (!defined('DIRECT_ACCESS')){
         "<?php echo $tp["CodiceEditoriale"]?>", 
         "<?php echo $tp["CodiceTitolo"]?>")' 
     value="Aggiungi al carrello" />
-    </aside>
+    </div>
 <section>
     <header>
         <h1><?php echo $tp["Titolo"]?></h1>
