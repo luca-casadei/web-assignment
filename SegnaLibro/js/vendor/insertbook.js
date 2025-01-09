@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const customAuthorInput = customAuthorLi.querySelector('input');
     const categorySelect = document.getElementById('categorySelect');
 
+
     customAuthorLi.style.display = 'none';
 
     form.addEventListener("submit", handleFormSubmit);
@@ -12,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function handleFormSubmit(event) {
         const isbn = document.getElementById("book_isbn").value.trim();
+        const genresCheckboxes = document.querySelectorAll('input[name="genres[]"]:checked');
+
         const parts = isbn.split("-");
 
         if (!isValidISBN(parts)) {
@@ -50,11 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
             Categoria: categorySelect.value
         };
 
+        const genresData = Array.from(genresCheckboxes).map(checkbox => checkbox.value);
+
         const data = new FormData();
         data.append("book", JSON.stringify(bookData));
         data.append("author", JSON.stringify(authorData));
         data.append("category", JSON.stringify(categoryData));
-        const url = "./apis/vendor/api-addbook.php";
+        data.append("genres", JSON.stringify(genresData));
+
+        const url = "./apis/vendor/api-book-insert.php";
         try {
             const response = await fetch(url, {
                 method: "POST",

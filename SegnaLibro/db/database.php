@@ -256,4 +256,12 @@ class DatabaseHelper
         }
     }
     
+    public function insertBookGenres($book, $category, $genre){ 
+        $qr = "INSERT INTO GENERE_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceGenere, CodiceCategoria) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
