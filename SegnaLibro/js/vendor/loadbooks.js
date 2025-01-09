@@ -6,10 +6,10 @@ async function loadBooks(books) {
     for (const b of books) {
         const htmlGenres = await loadGenres(b);
         result += `
-            <article onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'> 
+            <article> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
-                    <input type="button"/>
+                    <input type="button" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                 </header>
                 <p>
                     <ul>
