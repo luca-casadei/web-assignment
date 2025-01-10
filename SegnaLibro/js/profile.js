@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         toggleChangePasswordForm();
     });
-    var changePasswordLink = document.querySelector('aside:first-of-type a');
+    var changePasswordLink = document.querySelector('div:first-of-type a');
     changePasswordLink.addEventListener('click', (e) => {
         e.preventDefault();
-        toggleChangePasswordAside();
+        toggleChangePasswordDiv();
     });
 
 
@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     getUserData();
 });
 
-function toggleChangePasswordAside() {
-    var changePasswordLink = document.querySelector('aside:first-of-type a');
+function toggleChangePasswordDiv() {
+    var changePasswordLink = document.querySelector('div:first-of-type a');
     var changePasswordForm = document.querySelector('form:last-of-type');
     changePasswordLink.innerHTML = (changePasswordForm.style.display == 'block') ? 'Modifica Password' : 'Annulla cambio password';
     changePasswordForm.style.display = (changePasswordForm.style.display == 'block') ? 'none' : 'block';

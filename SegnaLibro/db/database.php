@@ -98,6 +98,32 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getOrders()
+    {
+        $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $_SESSION['userid']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getArticlesFromOrder($CodiceOrdine)
+    {
+        $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
+                ON COPIE_ORDINE.CodiceEditoriale = COPIA.CodiceEditoriale 
+                AND COPIE_ORDINE.CodiceRegGroup = COPIA.CodiceRegGroup 
+                AND COPIE_ORDINE.EAN = COPIA.EAN
+                AND COPIE_ORDINE.CodiceTitolo = COPIA.CodiceTitolo
+                WHERE COPIE_ORDINE.CodiceOrdine = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('i', $CodiceOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     public function getCart()
     {
         $qr = "SELECT * FROM CARRELLO JOIN ANNUNCI 
@@ -118,11 +144,7 @@ class DatabaseHelper
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issssi', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
         $stmt->execute();
-        if($stmt->affected_rows > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return $stmt->affected_rows > 0;
     }
 
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
@@ -131,11 +153,7 @@ class DatabaseHelper
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('issssi', $numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo, $_SESSION['userid']);
         $stmt->execute();
-        if ($stmt->affected_rows > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $stmt->affected_rows > 0;
     }
 
     public function getUserData()
@@ -199,7 +217,23 @@ class DatabaseHelper
         } catch (Exception $e){
             return $e->getMessage();
         }
-        
+    }
+
+    public function fullyInsertBook($book, $author, $category, $genres){
+        try{
+            $this->db->begin_transaction();
+                $okBook = $this->insertBook($book);
+                if (!$okBook){
+                    throw new Exception("Book not inserted");
+                }
+                $okAuthor = $this->insertAuthor($author);
+                $okBookAuthor = $this->insertBookAuthor($book, $author);
+                $okBookGenres = $this->insertBookGenres($book, $category, $genres);
+            $this->db->commit();
+            return json_encode(["book" => $okBook, "author" => $okAuthor, "bookauthor" => $okBookAuthor, "bookgenres" => $okBookGenres]);
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
     }
 
     public function getAuthors()
@@ -234,13 +268,23 @@ class DatabaseHelper
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $book["CifraControllo"], $book["Titolo"], $book["Descrizione"], $book["DataPubblicazione"], $book["Edizione"]);
         $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function insertCategory($category){
+        $qr = "INSERT INTO CATEGORIA (Nome) SELECT ? WHERE NOT EXISTS (SELECT 1 FROM CATEGORIA WHERE Nome = ? LIMIT 1)";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("s", $category["Nome"]);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
     }
 
     public function insertAuthor($author){
-        $qr = "INSERT INTO AUTORE (Codice, Nome, Cognome) VALUES (?, ?, ?)";
+        $qr = "INSERT INTO AUTORE (Nome, Cognome) SELECT ?, ? WHERE NOT EXISTS (SELECT 1 FROM AUTORE WHERE Nome = ? AND Cognome = ? LIMIT 1)";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("ss", $author["Nome"], $author["Cognome"]);
+        $stmt->bind_param("ssss", $author["Nome"], $author["Cognome"], $author["Nome"], $author["Cognome"]);
         $stmt->execute();
+        return $stmt->affected_rows > 0;
     }
 
     public function getAuthorId($author){
@@ -250,7 +294,7 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         $author_data = $result->fetch_assoc();
-        return $author_data ? $author_data[0]['Codice'] : null;
+        return $author_data ? $author_data["Codice"] : null;
     }
 
     public function insertBookAuthor($book, $author){
@@ -260,18 +304,21 @@ class DatabaseHelper
             $stmt = $this->db->prepare($qr);
             $stmt->bind_param("ssssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $author_id);
             $stmt->execute();
+            return $stmt->affected_rows > 0;
         } else {
             throw new Exception("Author not found");
         }
     }
     
-    public function insertBookGenres($book, $category, $genre){ 
-        $qr = "INSERT INTO GENERE_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceGenere, CodiceCategoria) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+    public function insertBookGenres($book, $category, $genres){ 
+        foreach ($genres as $genre) {
+            $qr = "INSERT INTO GENERE_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceGenere, CodiceCategoria) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category);
+            $stmt->execute();
+        }
+        return $stmt->affected_rows > 0;
+
     }
 
     public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
