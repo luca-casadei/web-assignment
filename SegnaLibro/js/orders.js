@@ -14,11 +14,11 @@ function generateOrders(data) {
                     <h2>Ordine n. ${orders[i]["Codice"]}</h2>
                     <p>${orders[i]["DataOrdine"]}</p>
                 </header>
-                <p>Numero articoli: ${orders[i]["Count"]}</p>
-                <p>Stato: ${orders[i]["Stato"]}</p>
+                <p>Numero articoli: <span> ${orders[i]["Count"]}</span></p>
+                <p>Stato: <span>${orders[i]["Stato"]}</span></p>
                 <footer>
                     <input type="button" value="Visualizza ordine"/>
-                    <p>Prezzo: ${orders[i]["PrezzoTotaleOrdine"]}€</p>
+                    <p>Prezzo: <span>${orders[i]["PrezzoTotaleOrdine"]}€</span></p>
                 </footer>
             </article>
             `;
