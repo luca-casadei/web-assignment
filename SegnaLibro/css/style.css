@@ -202,93 +202,80 @@ main[data-access]>form>p{
 }
 
 /* Customer's home page and articles */
+main[data-homeuser] > search > form > input[type="search"]{
+  width: 95%;
+  text-align: center;
+}
+
+main[data-homeuser] > search > form > input[type="button"]{
+  width: 5%;
+}
+
+main[data-homeuser] > search > form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+main[data-homeuser] > article header > h2 {
+  font-weight: bold;
+}
+
+main[data-homeuser] > article > div > p {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+main[data-homeuser] > article header {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  justify-content: space-between;
+}
+
+main[data-homeuser] > article > div {
+  display: flex;
+  flex-direction: column;
+  width: 79%;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+main[data-homeuser] > article > figure > img {
+  max-width: 150px;
+  max-height: 150px;
+  height: inherit;
+}
+
+main[data-homeuser] > article footer > p:last-of-type {
+  font-weight: bold;
+}
+
+main[data-homeuser] > article footer > p:first-of-type > span {
+  margin-left: 5%;
+  font-weight: bold;
+}
+
+main[data-homeuser] > article footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+main[data-homeuser] > article {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  width: 100%;
+  box-shadow: 0 2px 3px 1px #888;
+  color: #801524;
+}
 
 main[data-homeuser] {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-
-main[data-homeuser] h1 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #8e1017;
-}
-
-main[data-homeuser]>p {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-main[data-homeuser] article {
-  background-color: #d9d9d9;
-  color: #801524;
-  border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.5rem;
-}
-
-main[data-homeuser] article header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-}
-
-main[data-homeuser] article header figure {
-  margin: 0;
-  min-width: 70px;
-  max-width: 70px;
-  max-height: 70px;
-}
-
-main[data-homeuser] article header figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-main[data-homeuser] article header h2 {
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
-}
-
-main[data-homeuser] article header p {
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-main[data-homeuser] article footer {
-  width: 100%;
-  display: flex;
-  margin-top: 0.5rem;
-}
-
-main[data-homeuser] article>p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin-left: 86px;
-  color: #333;
-}
-
-main[data-homeuser] article footer p {
-  margin-right: 1rem;
-}
-
-main[data-homeuser] article footer p span {
-  font-weight: bold;
+  gap: 15px;
+  padding: 15px;
 }
 
 /* Vendor's homepage */
@@ -1067,5 +1054,35 @@ main[data-book_details] aside>p {
   main[data-cart] section>input[type="button"]:hover {
     display: flex;
     background-color: #a3111a;
+  }
+
+  /* Index php styling */
+  main[data-homeuser] > article > div > header > :not(:first-child){
+    display: none;
+  }
+  
+  main[data-homeuser] > article{
+    place-content: center;
+    text-align: center;
+  }
+  
+  main[data-homeuser] > article > figure {
+    place-self: center;
+  }
+
+  main[data-homeuser] > article > div > footer > p:first-of-type {
+    display: none;
+  }
+
+  main[data-homeuser] > article > div > footer {
+    justify-content: center;
+  }
+
+  main[data-homeuser] > article > div > header{
+    justify-content: center;
+  } 
+
+  main[data-homeuser] > article > div {
+    padding: 2px;
   }
 }
