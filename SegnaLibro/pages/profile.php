@@ -4,11 +4,11 @@ if(!defined('DIRECT_ACCESS')){
 }
 ?>
 
-<aside>
+<div>
     <p>Impostazioni</p>
     <a href="">Modifica Password</a>
     <a href="./logout_index.php">Disconnetti</a>
-</aside>
+</div>
 <section>
 
 
