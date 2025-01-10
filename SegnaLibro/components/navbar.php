@@ -3,9 +3,15 @@
         <li><a href="./index.php"><img src="./images/logo.png" alt="SegnaLibro - Logo" /></a></li>
         <li <?php echo ($tp["active"] == "home" ? "active" : "")?>><a href="./index.php">Homepage</a></li>
         <?php 
-            if (isUserLoggedIn() && !isUserVendor()){
-               echo '<li '.($tp["active"] == "cart" ? "active" : "").'><a href="./cart_index.php">Carrello</a></li>';
-               echo '<li '.($tp["active"] == "orders" ? "active" : "").'><a href="./orders_index.php">Ordini</a></li>';
+            if (isUserLoggedIn()){
+                if (!isUserVendor()){
+                    echo '<li '.($tp["active"] == "cart" ? "active" : "").'><a href="./cart_index.php">Carrello</a></li>';
+                    echo '<li '.($tp["active"] == "orders" ? "active" : "").'><a href="./orders_index.php">Ordini</a></li>';
+                    echo '<li '.($tp["active"] == "search" ? "active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
+                }
+               
+            }else{
+                echo '<li '.($tp["active"] == "search" ? "active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
             }
         ?>
     </ul>

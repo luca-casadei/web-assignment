@@ -83,7 +83,7 @@ nav {
   padding: 5px;
 }
 
-nav > ul > li[active]{
+nav>ul>li[active] {
   font-weight: bold;
 }
 
@@ -123,7 +123,7 @@ body>footer {
 }
 
 /* Main content styles */
-main{
+main {
   margin-bottom: 50px;
 }
 
@@ -194,7 +194,7 @@ main[data-access]>form>ul>li>a {
   color: #801524;
 }
 
-main[data-access]>form>p{
+main[data-access]>form>p {
   text-align: center;
   font-weight: bold;
   margin: 3%;
@@ -202,38 +202,75 @@ main[data-access]>form>p{
 }
 
 /* Customer's home page and articles */
-main[data-homeuser] > search > form > input[type="search"]{
+main[data-homeuser]>search>form>input[type="search"] {
   width: 95%;
   text-align: center;
 }
 
-main[data-homeuser] > search > form > input[type="button"]{
+main[data-homeuser]>search>form>input[type="button"] {
   width: 5%;
 }
 
-main[data-homeuser] > search > form{
+main[data-homeuser]>search>form {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-main[data-homeuser] > article header > h2 {
+/* Advanced research */
+
+main[data-advancedsearch]>header {
+  width: 20%;
+  background-color: #801524;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+main[data-advancedsearch]>header>form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+main[data-advancedsearch]>header>form input,
+main[data-advancedsearch]>header>form select {
+  height: 30px;
+  border-radius: 5px;
+}
+
+main[data-advancedsearch]>header>form>div {
+  display: flex;
+  flex-direction: column;
+}
+
+main[data-homeuser]>article header>h2,
+main[data-advancedsearch]>section>article header>h2 {
   font-weight: bold;
 }
 
-main[data-homeuser] > article > div > p {
+main[data-homeuser]>article>div>p,
+main[data-advancedsearch]>section>article>div>p {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-main[data-homeuser] > article header {
+main[data-homeuser]>article header,
+main[data-advancedsearch]>section>article header {
   display: flex;
   flex-direction: row;
   font-size: large;
   justify-content: space-between;
 }
 
-main[data-homeuser] > article > div {
+main[data-homeuser]>article>div,
+main[data-advancedsearch]>section>article>div {
   display: flex;
   flex-direction: column;
   width: 79%;
@@ -241,28 +278,33 @@ main[data-homeuser] > article > div {
   padding: 15px;
 }
 
-main[data-homeuser] > article > figure > img {
+main[data-homeuser]>article>figure>img,
+main[data-advancedsearch]>section>article>figure>img {
   max-width: 150px;
   max-height: 150px;
   height: inherit;
 }
 
-main[data-homeuser] > article footer > p:last-of-type {
+main[data-homeuser]>article footer>p:last-of-type,
+main[data-advancedsearch]>section>article footer>p:last-of-type {
   font-weight: bold;
 }
 
-main[data-homeuser] > article footer > p:first-of-type > span {
+main[data-homeuser]>article footer>p:first-of-type>span,
+main[data-advancedsearch]>section>article footer>p:first-of-type>span {
   margin-left: 5%;
   font-weight: bold;
 }
 
-main[data-homeuser] > article footer {
+main[data-homeuser]>article footer,
+main[data-advancedsearch]>section>article footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-main[data-homeuser] > article {
+main[data-homeuser]>article,
+main[data-advancedsearch]>section>article {
   display: flex;
   flex-direction: row;
   gap: 2%;
@@ -276,6 +318,20 @@ main[data-homeuser] {
   flex-direction: column;
   gap: 15px;
   padding: 15px;
+}
+
+main[data-advancedsearch] {
+  margin: 10px;
+  gap: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+main[data-advancedsearch]>section {
+  width: 80%;
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
 }
 
 /* Vendor's homepage */
@@ -904,7 +960,7 @@ main[data-book_details] aside>p {
 
 /* Mobile version styles */
 @media (width <=768px) {
-  nav{
+  nav {
     justify-content: right;
   }
 
@@ -939,15 +995,15 @@ main[data-book_details] aside>p {
     display: none;
   }
 
-  main[data-access] > form input {
+  main[data-access]>form input {
     width: 60%;
   }
 
-  main[data-access] > form > ul{
+  main[data-access]>form>ul {
     gap: 20px;
   }
 
-  main[data-access] > form input[type="submit"] {
+  main[data-access]>form input[type="submit"] {
     width: 40%;
   }
 
@@ -1057,32 +1113,66 @@ main[data-book_details] aside>p {
   }
 
   /* Index php styling */
-  main[data-homeuser] > article > div > header > :not(:first-child){
+  main[data-homeuser]>article>div>header> :not(:first-child),
+  main[data-advancedsearch]>section>article>div>header> :not(:first-child) {
     display: none;
   }
-  
-  main[data-homeuser] > article{
+
+  main[data-homeuser]>article,
+  main[data-advancedsearch]>section>article {
     place-content: center;
     text-align: center;
   }
-  
-  main[data-homeuser] > article > figure {
+
+  main[data-homeuser]>article>figure,
+  main[data-advancedsearch]>section>article>figure {
     place-self: center;
   }
 
-  main[data-homeuser] > article > div > footer > p:first-of-type {
+  main[data-homeuser]>article>div>footer>p:first-of-type,
+  main[data-advancedsearch]>section>article>div>footer>p:first-of-type {
     display: none;
   }
 
-  main[data-homeuser] > article > div > footer {
+  main[data-homeuser]>article>div>footer,
+  main[data-advancedsearch]>section>article>div>footer {
     justify-content: center;
   }
 
-  main[data-homeuser] > article > div > header{
+  main[data-homeuser]>article>div>header,
+  main[data-advancedsearch]>section>article>div>header {
     justify-content: center;
-  } 
+  }
 
-  main[data-homeuser] > article > div {
+  main[data-homeuser]>article>div,
+  main[data-advancedsearch]>section>article>div {
     padding: 2px;
+  }
+
+  main[data-advancedsearch] {
+    flex-direction: column;
+  }
+
+  main[data-advancedsearch]>section,
+  main[data-advancedsearch]>header {
+    width: 100%;
+    padding: 0;
+  }
+
+  main[data-advancedsearch]>header>form {
+    flex-direction: row;
+  }
+
+  main[data-advancedsearch]>header>form>h2 {
+    display: none;
+  }
+
+  main[data-advancedsearch]>header {
+    gap: 5px;
+  }
+
+  main[data-advancedsearch]>header>search,
+  main[data-advancedsearch]>header>search>input {
+    width: 100%;
   }
 }
