@@ -15,7 +15,7 @@ async function getCategoriesData() {
         } else {
             const json = await response.json();
             const categoriesHtml = loadCategories(json);
-            const categorySelect = document.querySelector("#category");
+            const categorySelect = document.querySelector("#categorySelect");
             categorySelect.insertAdjacentHTML("beforeend", categoriesHtml);
         }
     } catch (error) {
@@ -60,7 +60,7 @@ async function fetchCategoryGenres(categoryId) {
     }
 }
 
-document.querySelector("#category").addEventListener("change", async (event) => {
+document.querySelector("#categorySelect").addEventListener("change", async (event) => {
     const selectedCategoryId = event.target.value;
     if (selectedCategoryId) {
         const genres = await fetchCategoryGenres(selectedCategoryId);
