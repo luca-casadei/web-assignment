@@ -229,8 +229,14 @@ class DatabaseHelper
                 $okAuthor = $this->insertAuthor($author);
                 $okBookAuthor = $this->insertBookAuthor($book, $author);
                 $okBookGenres = $this->insertBookGenres($book, $category, $genres);
+
             $this->db->commit();
-            return json_encode(["book" => $okBook, "author" => $okAuthor, "bookauthor" => $okBookAuthor, "bookgenres" => $okBookGenres]);
+            return json_encode([
+                "book" => $okBook, 
+                "author" => $okAuthor, 
+                "bookauthor" => $okBookAuthor,
+                "bookgenres" => $okBookGenres
+            ]);
         } catch (Exception $e){
             return $e->getMessage();
         }
@@ -271,14 +277,6 @@ class DatabaseHelper
         return $stmt->affected_rows > 0;
     }
 
-    public function insertCategory($category){
-        $qr = "INSERT INTO CATEGORIA (Nome) SELECT ? WHERE NOT EXISTS (SELECT 1 FROM CATEGORIA WHERE Nome = ? LIMIT 1)";
-        $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("s", $category["Nome"]);
-        $stmt->execute();
-        return $stmt->affected_rows > 0;
-    }
-
     public function insertAuthor($author){
         $qr = "INSERT INTO AUTORE (Nome, Cognome) SELECT ?, ? WHERE NOT EXISTS (SELECT 1 FROM AUTORE WHERE Nome = ? AND Cognome = ? LIMIT 1)";
         $stmt = $this->db->prepare($qr);
@@ -310,15 +308,30 @@ class DatabaseHelper
         }
     }
     
+    public function getCategoryId($category) {
+        $qr = "SELECT Codice FROM CATEGORIA WHERE Nome = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("s", $category["Nome"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $category_data = $result->fetch_assoc();
+        return $category_data ? $category_data["Codice"] : null;
+    }
+
     public function insertBookGenres($book, $category, $genres){ 
+        $category_id = $this->getCategoryId($category);
+        $ok = true;
         foreach ($genres as $genre) {
             $qr = "INSERT INTO GENERE_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceGenere, CodiceCategoria) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($qr);
-            $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category);
+            $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category_id);
             $stmt->execute();
+            if($stmt->affected_rows <= 0){
+                $ok = false;
+            }
         }
-        return $stmt->affected_rows > 0;
 
+        return $ok;
     }
 
     public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
