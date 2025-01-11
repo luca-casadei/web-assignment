@@ -1,4 +1,4 @@
-function generateArticles(articoli, searchedTitle){
+function generateArticles(articoli, searchedTitle, priceRange, category){
     let result = "";
 
     for(let i=0; i < articoli.length; i++){
@@ -24,6 +24,8 @@ function generateArticles(articoli, searchedTitle){
         </article>
         `;
         let st = false;
+        let pt = false;
+        let ct = false;
         if (searchedTitle != ""){
             if (articoli[i]["Titolo"].toLowerCase().includes(searchedTitle.toLowerCase())){
                 st = true;
@@ -32,44 +34,85 @@ function generateArticles(articoli, searchedTitle){
         else{
             st = true;
         }
-        if (st){
+        if (priceRange != ""){
+            if (parseFloat(articoli[i]["Prezzo"]) <= parseFloat(priceRange)){
+                pt = true;
+            }
+        }
+        else{
+            pt = true;
+        }
+        if (category != ""){
+            if (articoli[i]["NomeCategoria"].toLowerCase() == category.toLowerCase()){
+                ct = true;
+            }
+        }
+        else{
+            ct = true;
+        }
+        //Final check
+        if (st && pt && ct){
             result += articolo;
         }
     }
     return result;
 }
 
-async function onSearchChange() {
-    const url = './apis/api-articles.php';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        const sv = document.getElementById("contentsearch").value;
-        const articoli = generateArticles(json, sv);
-        const main = document.querySelector("main > section");
-        main.innerHTML = articoli;
-    } catch (error) {
-        console.log(error.message);
+async function updatePriceLabel(){
+    const price = document.getElementById("pricerange").value;
+    const priceLabel = document.querySelector("main > header > form p");
+    priceLabel.innerHTML = "Prezzo <= €" + price;
+    return price;
+}
+
+async function updateSearchTerms(){
+    const price = await updatePriceLabel();
+    const sv = document.getElementById("contentsearch").value;
+    const category = document.getElementById("categoryselect").value
+    
+    const json = await getArticlesJson();
+    const articoli = generateArticles(json, sv, price,category);
+    const main = document.querySelector("main > section");
+    main.innerHTML = articoli;
+}
+
+async function getArticlesJson(){
+    const url = './apis/api-articles-ordered.php';
+    const formData = new FormData();
+    formData.append("OrderMethod",document.getElementById("orderingselect").value)
+    const response = await fetch(url, {
+        method: "POST",
+        body: formData
+    });
+    if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
     }
+    const json = await response.json();
+    return json;
 }
 
 async function getArticleData() {
-    const url = './apis/api-articles.php';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        const articoli = generateArticles(json, "");
-        const main = document.querySelector("main > section");
-        main.innerHTML = main.innerHTML + articoli;
-    } catch (error) {
-        console.log(error.message);
+    const json = await getArticlesJson();
+    const categories = await getCategories();
+    const csele = document.getElementById("categoryselect");
+    categories.forEach(c => {
+        csele.innerHTML += `<option id="${c["Nome"].toLowerCase()}">${c["Nome"]}</option>`
+    });
+    
+    const articoli = generateArticles(json, "", "", "");
+    const main = document.querySelector("main > section");
+    await updatePriceLabel();
+    main.innerHTML = main.innerHTML + articoli;
+}
+
+async function getCategories(){
+    const url = './apis/vendor/api-categories.php';
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
     }
+    const json = await response.json();
+    return json;
 }
 
 async function expandArticles(ean, codiceEditoriale, codiceTitolo, codiceRegGroup, numeroCopia){

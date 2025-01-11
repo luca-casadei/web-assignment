@@ -30,6 +30,32 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAnnouncesOrdered($orderMethod){
+        $query = "SELECT * FROM ANNUNCI";
+        switch($orderMethod){
+            case "pdesc":{
+                $query = $query." ORDER BY Prezzo DESC";
+                break;
+            }
+            case "pasc": {
+                $query = $query." ORDER BY Prezzo ASC";
+                break;
+            }
+            case "tdesc":{
+                $query = $query." ORDER BY Titolo DESC";
+                break;
+            }
+            case "tasc": {
+                $query = $query." ORDER BY Titolo ASC";
+                break;
+            }
+        }
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getAnnounce($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia){
         $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.EAN = ? AND ANNUNCI.CodiceRegGroup = ? AND ANNUNCI.CodiceEditoriale = ? AND ANNUNCI.CodiceTitolo = ? AND ANNUNCI.NumeroCopia = ?";
         $stmt = $this->db->prepare($query);
