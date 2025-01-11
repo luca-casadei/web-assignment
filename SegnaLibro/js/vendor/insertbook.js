@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const authorSelect = document.getElementById('authorSelect');
     const customAuthorLi = document.querySelector('li[customAuthor]');
     const customAuthorInput = customAuthorLi.querySelector('input');
-
     const categorySelect = document.getElementById('categorySelect');
 
     customAuthorLi.style.display = 'none';
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         const categoryData = {
-            Categoria: categorySelect.value
+            Nome: categorySelect.options[categorySelect.selectedIndex].text.trim()
         };
 
         const genresData = Array.from(genresCheckboxes).map(checkbox => checkbox.value);
