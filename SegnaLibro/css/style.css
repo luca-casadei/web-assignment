@@ -160,30 +160,6 @@ main[data-access]>form>p {
   font-size: 20px;
 }
 
-/* Customer's home page and articles */
-main[data-homeuser]>search>form>input[type="search"] {
-  width: 95%;
-  text-align: center;
-}
-
-main[data-homeuser]>search>form>input[type="button"] {
-  background-image: url("../images/search.png");
-  background-position: center;
-  background-size: 80%;
-  background-repeat: no-repeat;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-main[data-homeuser]>search>form {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
 /* Advanced research */
 
 main[data-advancedsearch]>header {
