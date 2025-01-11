@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /* Font and default styles */
 @font-face {
   font-family: "Atkinson Hyperlegible";
@@ -158,22 +160,6 @@ main[data-access]>form>p {
   font-size: 20px;
 }
 
-/* Customer's home page and articles */
-main[data-homeuser]>search>form>input[type="search"] {
-  width: 95%;
-  text-align: center;
-}
-
-main[data-homeuser]>search>form>input[type="button"] {
-  width: 5%;
-}
-
-main[data-homeuser]>search>form {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-}
-
 /* Advanced research */
 
 main[data-advancedsearch]>header {
@@ -205,6 +191,7 @@ main[data-advancedsearch]>header>form select {
 main[data-advancedsearch]>header>form>div {
   display: flex;
   flex-direction: column;
+  width: 85%;
 }
 
 main[data-homeuser]>article header>h2,
@@ -319,7 +306,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 5px rgba(0 0 0 30%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -858,7 +845,7 @@ main[data-cart] section>input[type="button"] {
 main[data-cart] article {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0 0 0 10%);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -986,12 +973,6 @@ main[data-book_details] div>button:hover {
   border: 2px, white, solid;
 }
 
-main[data-profile] div>p {
-  color: white;
-  text-align: center;
-  font-size: 32px;
-}
-
 main[data-book_details] section {
   display: flex;
   flex-direction: column;
@@ -999,7 +980,7 @@ main[data-book_details] section {
   width: 70%;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0 0 0 10%);
   gap: 10px;
 }
 
@@ -1148,7 +1129,7 @@ main[data-book_modify] section form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0 0 0 10%);
 }
 
 main[data-book_modify] section form ul {
@@ -1162,8 +1143,6 @@ main[data-book_modify] section form ul {
   margin: 0;
   padding: 10px;
 }
-
-
 
 main[data-book_modify] section form ul li {
   width: 100%;
@@ -1290,19 +1269,15 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   }
 
   /* Customer's home page and articles */
-  main[data-home] article>header>figure {
-    width: 60px;
-    height: 60px;
-  }
 
   /* Vendor Insert book page */
   main[data-book_insert] {
     flex-direction: column;
   }
+
   main[data-book_insert] div {
     display: none;
   }
-
 
   main[data-book_insert] section {
     width: 100%;
@@ -1384,6 +1359,7 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   main[data-cart] section {
     width: 100%;
   }
+
   main[data-cart] div {
     display: none;
   }
