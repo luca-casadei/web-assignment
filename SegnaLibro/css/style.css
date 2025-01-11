@@ -165,7 +165,15 @@ main[data-homeuser]>search>form>input[type="search"] {
 }
 
 main[data-homeuser]>search>form>input[type="button"] {
-  width: 5%;
+  background-image: url("../images/search.png");
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 main[data-homeuser]>search>form {
@@ -842,9 +850,11 @@ main[data-cart] section {
 }
 
 main[data-cart] h1 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #8e1017;
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
 }
 
 main[data-cart] section>p {
@@ -936,6 +946,113 @@ main[data-cart] section>article>header>input {
   border-radius: 10px;
 }
 
+/* Checkout page */
+main[data-checkout] {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+
+main[data-checkout] > div {
+  min-height: 500px;
+  max-height: 100%;
+  width: 30%;
+  background-color: #801524;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2.5%;
+}
+
+main[data-checkout] > div > input {
+  font-size: 18px;
+  color: #fff;
+  background-color: #801524;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+main[data-checkout] > div > input:hover {
+  font-weight: bold;
+  border: 2px, white, solid;
+}
+
+main[data-checkout] > section {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-checkout] > section > form {
+  width: 80%;
+  max-width: 600px; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+main[data-checkout] > section > form > input {
+  display: none;
+}
+
+main[data-checkout] h1 {
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-checkout] form ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+main[data-checkout] form ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
+}
+
+
+main[data-checkout] form ul li label {
+  color: #801524; 
+  font-size: 18px;
+}
+
+main[data-checkout] form ul li input {
+  padding: 8px;
+  border: 2px solid #801524; 
+  border-radius: 5px;
+  background-color: #ddd; 
+}
+
+main[data-checkout] form input[type="submit"] {
+  align-self: flex-start; 
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #801524;
+  background-color: #fff;
+  border: 2px solid #801524;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+main[data-checkout] form input[type="submit"]:hover {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
 /* Detailed Order Page */
 main[data-book_details] {
   display: flex;
@@ -946,7 +1063,6 @@ main[data-book_details] {
   color: #801524;
   gap: 20px;
 }
-
 
 main[data-book_details] div {
   min-height: 500px;
@@ -1412,6 +1528,44 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     background-color: #a3111a;
   }
 
+  main[data-checkout] {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  main[data-checkout] > div {
+    display: none; 
+  }
+
+  main[data-checkout] > section {
+    width: 100%; 
+  }
+
+  main[data-checkout] form {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  main[data-checkout] form h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  main[data-checkout] form ul li label {
+    font-size: 16px;
+  }
+
+  main[data-checkout] form ul li input {
+    font-size: 14px;
+  }
+
+  main[data-checkout] form input[type="submit"] {
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+    font-weight: bold;
+  }
+
   /* Index php styling */
   main[data-homeuser]>article>div>header> :not(:first-child),
   main[data-advancedsearch]>section>article>div>header> :not(:first-child) {
@@ -1448,6 +1602,8 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   main[data-advancedsearch]>section>article>div {
     padding: 2px;
   }
+
+
 
   main[data-advancedsearch] {
     flex-direction: column;
