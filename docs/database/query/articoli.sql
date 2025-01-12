@@ -1,8 +1,10 @@
 /* Ottenimento di tutto il necessario per rappresentare gli articoli */
 CREATE VIEW LIBRI_CATEGORIE_AUTORE AS (
 	SELECT libro.*,
+	autore.Codice AS CodiceAutore,
 	autore.Nome AS NomeAutore,
 	autore.Cognome AS CognomeAutore,
+	CATEGORIA.Codice AS CodiceCategoria,
 	CATEGORIA.Nome AS NomeCategoria,
 	editore.Nome AS NomeEditore
 	FROM libro join autori_libro

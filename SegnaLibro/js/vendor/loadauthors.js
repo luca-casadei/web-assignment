@@ -18,10 +18,22 @@ async function getAuthorsData() {
             const authorsHtml = loadAuthors(json);
             const authorSelect = document.querySelector("#authorSelect");
             authorSelect.insertAdjacentHTML("beforeend", authorsHtml);
+            removeDuplicateOptions(authorSelect);
         }
     } catch (error) {
         console.log(error.message);
     }
+}
+
+function removeDuplicateOptions(selectElement) {
+    const seen = new Set();
+    Array.from(selectElement.options).forEach(option => {
+        if (seen.has(option.value)) {
+            option.remove();
+        } else {
+            seen.add(option.value);
+        }
+    });
 }
 
 getAuthorsData();

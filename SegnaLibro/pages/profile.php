@@ -37,7 +37,7 @@ if(!defined('DIRECT_ACCESS')){
             <input type="text" id="address_civic" name="civic" placeholder="50" value="" />
         </li>
         <li>
-            <label for="address_city" >Città</label>
+            <label for="address_city">Città</label>
             <input type="text" id="address_city" name="city" placeholder="Cesena" value="" />
         </li>
         <li>

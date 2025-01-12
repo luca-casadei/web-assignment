@@ -132,7 +132,7 @@ async function getUserData() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        const userInfo = json["user_info"][0];
+        const userInfo = json["user_info"];
         document.querySelector('#name').value = userInfo.Nome || "";
         document.querySelector('#lastname').value = userInfo.Cognome || "";
         document.querySelector('#email').value = userInfo.Email || "";

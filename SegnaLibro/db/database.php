@@ -23,32 +23,33 @@ class DatabaseHelper
 
     public function getAnnounces()
     {
-        $query = "SELECT * FROM ANNUNCI";
+        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAnnouncesOrdered($orderMethod){
-        $query = "SELECT * FROM ANNUNCI";
-        switch($orderMethod){
-            case "pdesc":{
-                $query = $query." ORDER BY Prezzo DESC";
-                break;
-            }
+    public function getAnnouncesOrdered($orderMethod)
+    {
+        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
+        switch ($orderMethod) {
+            case "pdesc": {
+                    $query = $query . " ORDER BY Prezzo DESC";
+                    break;
+                }
             case "pasc": {
-                $query = $query." ORDER BY Prezzo ASC";
-                break;
-            }
-            case "tdesc":{
-                $query = $query." ORDER BY Titolo DESC";
-                break;
-            }
+                    $query = $query . " ORDER BY Prezzo ASC";
+                    break;
+                }
+            case "tdesc": {
+                    $query = $query . " ORDER BY Titolo DESC";
+                    break;
+                }
             case "tasc": {
-                $query = $query." ORDER BY Titolo ASC";
-                break;
-            }
+                    $query = $query . " ORDER BY Titolo ASC";
+                    break;
+                }
         }
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -56,7 +57,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAnnounce($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia){
+    public function getAnnounce($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia)
+    {
         $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.EAN = ? AND ANNUNCI.CodiceRegGroup = ? AND ANNUNCI.CodiceEditoriale = ? AND ANNUNCI.CodiceTitolo = ? AND ANNUNCI.NumeroCopia = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssssi", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia);
@@ -169,7 +171,7 @@ class DatabaseHelper
     {
         $qr = "INSERT INTO CARRELLO (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, UniqueUserID) SELECT ?, ?, ?, ?, ?, ? WHERE NOT EXISTS (SELECT 1 FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ? AND UniqueUserID = ? LIMIT 1)";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("issssiissssi",$numero_copia,$ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid'], $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
+        $stmt->bind_param("issssiissssi", $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid'], $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
@@ -208,7 +210,7 @@ class DatabaseHelper
         $stmt->bind_param('i', $_SESSION['userid']);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        return $result->fetch_assoc();
     }
 
     public function getBookImages($numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
@@ -231,8 +233,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function signup($name, $surname, $email, $password){
-        try{
+    public function signup($name, $surname, $email, $password)
+    {
+        try {
             $this->db->begin_transaction();
             $qr = "INSERT INTO ACCOUNT (Email, Password, Nome, Cognome) VALUES (?,?,?,?);";
             $stmt = $this->db->prepare($qr);
@@ -242,30 +245,31 @@ class DatabaseHelper
             $stmt = $this->db->prepare($qr);
             $stmt->execute();
             $this->db->commit();
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function fullyInsertBook($book, $author, $category, $genres){
-        try{
+    public function fullyInsertBook($book, $author, $category, $genres)
+    {
+        try {
             $this->db->begin_transaction();
-                $okBook = $this->insertBook($book);
-                if (!$okBook){
-                    throw new Exception("Book not inserted");
-                }
-                $okAuthor = $this->insertAuthor($author);
-                $okBookAuthor = $this->insertBookAuthor($book, $author);
-                $okBookGenres = $this->insertBookGenres($book, $category, $genres);
+            $okBook = $this->insertBook($book);
+            if (!$okBook) {
+                throw new Exception("Book not inserted");
+            }
+            $okAuthor = $this->insertAuthor($author);
+            $okBookAuthor = $this->insertBookAuthor($book, $author);
+            $okBookGenres = $this->insertBookGenres($book, $category, $genres);
 
             $this->db->commit();
             return json_encode([
-                "book" => $okBook, 
-                "author" => $okAuthor, 
+                "book" => $okBook,
+                "author" => $okAuthor,
                 "bookauthor" => $okBookAuthor,
                 "bookgenres" => $okBookGenres
             ]);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
@@ -288,7 +292,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCategoryGenres($category) {
+    public function getCategoryGenres($category)
+    {
         $qr = "SELECT * FROM GENERE WHERE CodiceCategoria = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('i', $category);
@@ -297,7 +302,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertBook($book){
+    public function insertBook($book)
+    {
         $qr = "INSERT INTO LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CifraControllo, Titolo, Descrizione, DataPubblicazione, Edizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $book["CifraControllo"], $book["Titolo"], $book["Descrizione"], $book["DataPubblicazione"], $book["Edizione"]);
@@ -305,7 +311,8 @@ class DatabaseHelper
         return $stmt->affected_rows > 0;
     }
 
-    public function insertAuthor($author){
+    public function insertAuthor($author)
+    {
         $qr = "INSERT INTO AUTORE (Nome, Cognome) SELECT ?, ? WHERE NOT EXISTS (SELECT 1 FROM AUTORE WHERE Nome = ? AND Cognome = ? LIMIT 1)";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("ssss", $author["Nome"], $author["Cognome"], $author["Nome"], $author["Cognome"]);
@@ -313,7 +320,8 @@ class DatabaseHelper
         return $stmt->affected_rows > 0;
     }
 
-    public function getAuthorId($author){
+    public function getAuthorId($author)
+    {
         $qr = "SELECT Codice FROM AUTORE WHERE Nome = ? AND Cognome = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("ss", $author["Nome"], $author["Cognome"]);
@@ -323,7 +331,8 @@ class DatabaseHelper
         return $author_data ? $author_data["Codice"] : null;
     }
 
-    public function insertBookAuthor($book, $author){
+    public function insertBookAuthor($book, $author)
+    {
         $author_id = $this->getAuthorId($author);
         if ($author_id) {
             $qr = "INSERT INTO AUTORI_LIBRO (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceAutore) VALUES (?, ?, ?, ?, ?)";
@@ -335,8 +344,9 @@ class DatabaseHelper
             throw new Exception("Author not found");
         }
     }
-    
-    public function getCategoryId($category) {
+
+    public function getCategoryId($category)
+    {
         $qr = "SELECT Codice FROM CATEGORIA WHERE Nome = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("s", $category["Nome"]);
@@ -346,7 +356,8 @@ class DatabaseHelper
         return $category_data ? $category_data["Codice"] : null;
     }
 
-    public function insertBookGenres($book, $category, $genres){ 
+    public function insertBookGenres($book, $category, $genres)
+    {
         $category_id = $this->getCategoryId($category);
         $ok = true;
         foreach ($genres as $genre) {
@@ -354,7 +365,7 @@ class DatabaseHelper
             $stmt = $this->db->prepare($qr);
             $stmt->bind_param("ssssii", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $genre, $category_id);
             $stmt->execute();
-            if($stmt->affected_rows <= 0){
+            if ($stmt->affected_rows <= 0) {
                 $ok = false;
             }
         }
@@ -362,7 +373,8 @@ class DatabaseHelper
         return $ok;
     }
 
-    public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
+    public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
+    {
         $query = "SELECT * FROM libri_categorie_autore WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssss", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
@@ -371,7 +383,8 @@ class DatabaseHelper
         return $result->fetch_assoc();
     }
 
-    public function getCopiesOfBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
+    public function getCopiesOfBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
+    {
         $query = "SELECT A.* FROM ANNUNCI as A WHERE A.EAN = ? AND A.CodiceRegGroup = ? AND A.CodiceEditoriale = ? AND A.CodiceTitolo = ? AND NOT EXISTS ( SELECT * FROM COPIE_ORDINE AS CP WHERE CP.EAN = A.EAN AND CP.CodiceRegGroup = A.CodiceRegGroup AND CP.CodiceEditoriale = A.CodiceEditoriale AND CP.CodiceTitolo = A.CodiceTitolo AND A.NumeroCopia = CP.NumeroCopia )";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssss", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
@@ -380,13 +393,44 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function deleteArticle($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia){
-        try{
+    public function deleteArticle($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia)
+    {
+        try {
             $query = "DELETE FROM COPIA WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ? AND Numero = ?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param("ssssi", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia);
             $stmt->execute();
-        } catch(Exception $e){
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+    
+    public function insertOrder()
+    {
+        try {
+            $this->db->begin_transaction();
+            $qr = "INSERT INTO ordine (DataOrdine, Stato, UniqueUserID) VALUES (?, 'Aperto', ?);";
+            $stmt = $this->db->prepare($qr);
+            $orderDate = date("Y-m-d");
+            $stmt->bind_param("si", $orderDate, $_SESSION['userid']);
+            $stmt->execute();
+
+            $cart_articles = $this->getCart();
+            for ($i = 0; $i < count($cart_articles); $i++) {
+                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, LAST_INSERT_ID())";
+                $stmt = $this->db->prepare($qr);
+                $stmt->bind_param("issss", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"]);
+                $stmt->execute();
+            }
+
+            $qr = "DELETE FROM carrello WHERE UniqueUserID = ?";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("i", $_SESSION['userid']);
+            $stmt->execute();
+
+            $this->db->commit();
+            return $stmt->affected_rows > 0;
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
