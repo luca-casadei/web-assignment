@@ -1246,6 +1246,7 @@ main[data-book_modify] section > form > input {
 
 main[data-book_modify] section form fieldset {
   width: 70%;
+  border-radius: 7px;
 }
 
 main[data-book_modify] section form fieldset ul {

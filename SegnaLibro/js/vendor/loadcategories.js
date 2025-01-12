@@ -17,14 +17,25 @@ async function getCategoriesData() {
             const categoriesHtml = loadCategories(json);
             const categorySelect = document.querySelector("#categorySelect");
             categorySelect.insertAdjacentHTML("beforeend", categoriesHtml);
+            removeDuplicateOptions(categorySelect);
         }
     } catch (error) {
         console.log(error.message);
     }
 }
 
-getCategoriesData();
+function removeDuplicateOptions(selectElement) {
+    const seen = new Set();
+    Array.from(selectElement.options).forEach(option => {
+        if (seen.has(option.value)) {
+            option.remove();
+        } else {
+            seen.add(option.value);
+        }
+    });
+}
 
+getCategoriesData();
 
 function loadGenresCheckboxes(genresArray) {
     let checkboxes = "";
@@ -60,12 +71,21 @@ async function fetchCategoryGenres(categoryId) {
     }
 }
 
-document.querySelector("#categorySelect").addEventListener("change", async (event) => {
-    const selectedCategoryId = event.target.value;
+async function updateGenres() {
+    const categorySelect = document.querySelector("#categorySelect");
+    const genresFieldset = document.querySelector("fieldset[data-genres-container]");
+    const selectedCategoryId = categorySelect.value;
     if (selectedCategoryId) {
-        const genres = await fetchCategoryGenres(selectedCategoryId);
-        document.querySelector("fieldset[data-genres-container]").innerHTML = loadGenresCheckboxes(genres);
+        try {
+            const genres = await fetchCategoryGenres(selectedCategoryId);
+            genresFieldset.innerHTML = loadGenresCheckboxes(genres);
+        } catch (error) {
+            console.log(error.message);
+        }
     } else {
-        document.querySelector("fieldset[data-genres-container]").innerHTML = "";
+        genresFieldset.innerHTML = "";
     }
-});
+}
+
+document.addEventListener("DOMContentLoaded", updateGenres);
+document.querySelector("#categorySelect").addEventListener("change", updateGenres);
