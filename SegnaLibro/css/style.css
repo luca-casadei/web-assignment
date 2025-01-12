@@ -941,6 +941,13 @@ main[data-checkout] > section > form > input {
   display: none;
 }
 
+main[data-checkout] > section > form > select {
+  width: 70%;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+}
+
 main[data-checkout] h1 {
   color: #801524;
   font-size: 32px;
