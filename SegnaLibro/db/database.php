@@ -165,13 +165,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertArticleInTheCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo) {
-        $qr = 'INSERT INTO CARRELLO (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, UniqueUserID) VALUES (?, ?, ?, ?, ?, ?)';
+    public function insertArticleInTheCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
+    {
+        $qr = "INSERT INTO CARRELLO (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, UniqueUserID) SELECT ?, ?, ?, ?, ?, ? WHERE NOT EXISTS (SELECT 1 FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ? AND UniqueUserID = ? LIMIT 1)";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param('issssi', $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
+        $stmt->bind_param("issssiissssi",$numero_copia,$ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid'], $numero_copia, $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $_SESSION['userid']);
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
+
 
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
     {
