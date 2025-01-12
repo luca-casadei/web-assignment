@@ -974,6 +974,46 @@ main[data-checkout] form ul li label {
   font-size: 18px;
 }
 
+/* Completed order page */
+main[data-complete_order] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main[data-complete_order] h1 {
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-complete_order] p {
+  color: #801524;
+  font-size: 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+main[data-complete_order] input {
+  display: block;
+  margin: 0 auto;
+  font-size: 18px;
+  color: white;
+  background-color: #801524;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+main[data-complete_order] input:hover {
+  font-weight: bold;
+}
+
 /* Detailed Order Page */
 main[data-book_details] {
   display: flex;
