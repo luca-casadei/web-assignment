@@ -165,7 +165,17 @@ main[data-access]>form>p {
 
 /* Advanced research */
 
-main[data-advancedsearch]>header {
+main[data-copiesofbook] > section:first-of-type > h1 {
+  text-align: center;
+  color: #801524;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+main[data-advancedsearch]>header,
+main[data-copiesofbook] > section:last-of-type {
   width: 20%;
   background-color: #801524;
   color: white;
@@ -200,17 +210,20 @@ main[data-advancedsearch]>header>form>div {
 }
 
 main[data-homeuser]>article header>h2,
+main[data-copiesofbook] article header > h2,
 main[data-advancedsearch]>section>article header>h2 {
   font-weight: bold;
 }
 
 main[data-homeuser]>article>div>p,
+main[data-copiesofbook] article > div > p,
 main[data-advancedsearch]>section>article>div>p {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 main[data-homeuser]>article header,
+main[data-copiesofbook] article header,
 main[data-advancedsearch]>section>article header {
   display: flex;
   flex-direction: row;
@@ -219,6 +232,7 @@ main[data-advancedsearch]>section>article header {
 }
 
 main[data-homeuser]>article>div,
+main[data-copiesofbook] article > div,
 main[data-advancedsearch]>section>article>div {
   display: flex;
   flex-direction: column;
@@ -228,6 +242,7 @@ main[data-advancedsearch]>section>article>div {
 }
 
 main[data-homeuser]>article>figure>img,
+main[data-copiesofbook] article > figure > img,
 main[data-advancedsearch]>section>article>figure>img {
   max-width: 150px;
   max-height: 150px;
@@ -235,17 +250,20 @@ main[data-advancedsearch]>section>article>figure>img {
 }
 
 main[data-homeuser]>article footer>p:last-of-type,
+main[data-copiesofbook] article footer > p:last-of-type,
 main[data-advancedsearch]>section>article footer>p:last-of-type {
   font-weight: bold;
 }
 
 main[data-homeuser]>article footer>p:first-of-type>span,
+main[data-copiesofbook] article footer > p:first-of-type > span,
 main[data-advancedsearch]>section>article footer>p:first-of-type>span {
   margin-left: 5%;
   font-weight: bold;
 }
 
 main[data-homeuser]>article footer,
+main[data-copiesofbook] article footer,
 main[data-advancedsearch]>section>article footer {
   display: flex;
   flex-direction: row;
@@ -253,6 +271,7 @@ main[data-advancedsearch]>section>article footer {
 }
 
 main[data-homeuser]>article,
+main[data-copiesofbook] article,
 main[data-advancedsearch]>section>article {
   display: flex;
   flex-direction: row;
@@ -379,13 +398,11 @@ main[data-homevendor] article header input[type="button"]:first-of-type {
   height: 40px;
 }
 
-main[data-homevendor] article footer input[type="button"]:last-of-type {
+main[data-homevendor] article footer input[type="image"]:last-of-type {
   margin-right: 0;
   margin-left: auto;
-  background-image: url("../images/list.png");
-  background-position: center;
-  background-size: 80%;
-  background-repeat: no-repeat;
+  background-color: #801524;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
 }
@@ -739,6 +756,17 @@ main[data-cart] section>p {
   padding: 10px;
   font-size: 20px;
   color: #801524;
+}
+
+main[data-copiesofbook]{
+  display: flex;
+  flex-direction: row;
+}
+
+main[data-copiesofbook] > section:first-of-type{
+  width: 78%;
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 main > div {
@@ -1436,51 +1464,65 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
 
   /* Index php styling */
   main[data-homeuser]>article>div>header> :not(:first-child),
+  main[data-copiesofbook] article > div > header :not(:first-child),
   main[data-advancedsearch]>section>article>div>header> :not(:first-child) {
     display: none;
   }
 
   main[data-homeuser]>article,
+  main[data-copiesofbook] article,
   main[data-advancedsearch]>section>article {
     place-content: center;
     text-align: center;
   }
 
   main[data-homeuser]>article>figure,
+  main[data-copiesofbook] article > figure,
   main[data-advancedsearch]>section>article>figure {
     place-self: center;
   }
 
   main[data-homeuser]>article>div>footer>p:first-of-type,
+  main[data-copiesofbook] article > div> footer > p:first-of-type,
   main[data-advancedsearch]>section>article>div>footer>p:first-of-type {
     display: none;
   }
 
   main[data-homeuser]>article>div>footer,
+  main[data-copiesofbook] article > div > footer,
   main[data-advancedsearch]>section>article>div>footer {
     justify-content: center;
   }
 
   main[data-homeuser]>article>div>header,
-  main[data-advancedsearch]>section>article>div>header {
+  main[data-advancedsearch]>section>article>div>header,
+  main[data-copiesofbook] article > div > header {
     justify-content: center;
   }
 
   main[data-homeuser]>article>div,
+  main[data-copiesofbook] article > div,
   main[data-advancedsearch]>section>article>div {
     padding: 2px;
   }
 
-
+  main[data-copiesofbook]{
+    flex-direction: column-reverse;
+  }
 
   main[data-advancedsearch] {
     flex-direction: column;
   }
 
   main[data-advancedsearch]>section,
+  main[data-copiesofbook] > section:nth-child(n),
   main[data-advancedsearch]>header {
     width: 100%;
     padding: 0;
+  }
+
+  main[data-copiesofbook] > section:last-of-type{
+    padding-bottom: 20px;
   }
 
   main[data-advancedsearch]>header>form {
@@ -1491,7 +1533,8 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     display: none;
   }
 
-  main[data-advancedsearch]>header {
+  main[data-advancedsearch]>header,
+  main[data-copiesofbook] > section:last-of-type {
     position: unset;
     gap: 5px;
   }

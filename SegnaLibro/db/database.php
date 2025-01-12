@@ -370,4 +370,24 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+
+    public function getCopiesOfBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo){
+        $query = "SELECT A.* FROM ANNUNCI as A WHERE A.EAN = ? AND A.CodiceRegGroup = ? AND A.CodiceEditoriale = ? AND A.CodiceTitolo = ? AND NOT EXISTS ( SELECT * FROM COPIE_ORDINE AS CP WHERE CP.EAN = A.EAN AND CP.CodiceRegGroup = A.CodiceRegGroup AND CP.CodiceEditoriale = A.CodiceEditoriale AND CP.CodiceTitolo = A.CodiceTitolo AND A.NumeroCopia = CP.NumeroCopia )";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteArticle($ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia){
+        try{
+            $query = "DELETE FROM COPIA WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ? AND Numero = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("ssssi", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo, $numero_copia);
+            $stmt->execute();
+        } catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
 }

@@ -49,12 +49,37 @@ async function loadBooks(books) {
                 </p>
                 <footer>
                     <input type="button" value="Aggiungi copia"/>
-                    <input type="button"/>
+                    <label for="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}">Visualizza annunci</label> 
+                    <input id="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}" type="image" src="./images/list.png" alt="" onclick="gotoRelatedAnnounces(\'${b["EAN"]}\',\'${b["CodiceTitolo"]}\',\'${b["CodiceEditoriale"]}\',\'${b["CodiceRegGroup"]}\')"/>
                 </footer>
             </article>
             `;
     }
     return result;
+}
+
+async function gotoRelatedAnnounces(ean, codiceTitolo, codiceEditoriale, codiceRegGroup){
+    const url = "./apis/vendor/api-getcopiesofbook.php";
+    try{
+        let formData = new FormData()
+        formData.append("bofcopies", JSON.stringify({
+            "EAN": ean,
+            "CodiceTitolo": codiceTitolo,
+            "CodiceRegGroup": codiceRegGroup,
+            "CodiceEditoriale": codiceEditoriale
+        }));
+        const response = await fetch(url,{
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        } else {
+            window.location.href = "./copies_of_book_index.php"
+        }
+    } catch(error){
+        console.log(error);
+    }
 }
 
 async function loadGenres(book) {
@@ -121,7 +146,6 @@ async function expandBook(ean, codiceTitolo, codiceEditoriale, codiceRegGroup){
             method: "POST",
             body: formData
         });
-
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         } else {
