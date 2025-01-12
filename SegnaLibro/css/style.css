@@ -166,11 +166,12 @@ main[data-advancedsearch]>header {
   width: 20%;
   background-color: #801524;
   color: white;
-  border-radius: 5px;
-  padding: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 50px;
+  top: 55px;
   display: flex;
   flex-direction: column;
-  place-content: center;
   text-align: center;
   gap: 20px;
 }
@@ -268,7 +269,6 @@ main[data-advancedsearch] {
   margin: 10px;
   gap: 10px;
   display: flex;
-  flex-direction: row-reverse;
 }
 
 main[data-advancedsearch]>section {
@@ -615,22 +615,8 @@ main[data-book_insert] section form fieldset[data-genres-container] input[type="
 /* Customer's Profile page */
 main[data-profile] {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   gap: 20px;
-}
-
-
-main[data-profile] div {
-  min-height: 500px;
-  max-height: 100%;
-  width: 30%;
-  background-color: #801524;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 2.5%;
 }
 
 main[data-profile] div>a,
@@ -757,35 +743,28 @@ main[data-profile] section>a:hover {
 
 /* Customer's cart page */
 
-/*
 main[data-cart] {
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-*/
-
-main[data-cart] {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 20px;
+  flex-direction: row;
+  gap: 10px;
 }
 
+main[data-cart] section>p {
+  padding: 10px;
+  font-size: 20px;
+  color: #801524;
+}
 
-main[data-cart] div {
-  min-height: 500px;
-  max-height: 100%;
+main > div {
   width: 30%;
   background-color: #801524;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 2.5%;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  bottom: 50px;
 }
 
 main[data-cart] div>a,
@@ -824,8 +803,6 @@ main[data-cart] section {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 main[data-cart] h1 {
@@ -834,10 +811,6 @@ main[data-cart] h1 {
   text-decoration: underline;
   font-weight: bold;
   text-align: center;
-}
-
-main[data-cart] section>p {
-  display: none;
 }
 
 main[data-cart] section>input[type="button"] {
@@ -1035,25 +1008,10 @@ main[data-checkout] form input[type="submit"]:hover {
 /* Detailed Order Page */
 main[data-book_details] {
   display: flex;
-  flex-direction: row-reverse;
   justify-items: center;
-  font-family: "Courier New", monospace;
   text-align: center;
   color: #801524;
   gap: 20px;
-}
-
-main[data-book_details] div {
-  min-height: 500px;
-  max-height: 100%;
-  width: 30%;
-  background-color: #801524;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 2.5%;
 }
 
 main[data-book_details] div>a,
@@ -1086,9 +1044,6 @@ main[data-book_details] section {
   flex-direction: column;
   place-items: center;
   width: 70%;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0 0 0 10%);
   gap: 10px;
 }
 
@@ -1166,25 +1121,6 @@ main[data-book_details] section>footer {
 }
 
 /* Modify book page */
-
-main[data-book_modify] {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-main[data-book_modify] div {
-  min-height: 500px;
-  max-height: 100%;
-  width: 30%;
-  background-color: #801524;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 2.5%;
-}
 
 main[data-book_modify] div>a,
 main[data-book_modify] div>input,
@@ -1326,8 +1262,6 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   padding: 5px;
   outline: none;
 }
-
-
 
 /* Mobile version styles */
 @media (width <=768px) {
@@ -1472,13 +1406,6 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     display: none;
   }
 
-  main[data-cart] section>p {
-    display: unset;
-    padding: 10px;
-    font-size: 20px;
-    color: #801524;
-  }
-
   main[data-cart] section>input[type="button"] {
     display: flex;
     background-color: #801524;
@@ -1592,6 +1519,7 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   }
 
   main[data-advancedsearch]>header {
+    position: unset;
     gap: 5px;
   }
 
