@@ -39,6 +39,8 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
   padding: 5px;
 }
 
@@ -83,16 +85,17 @@ body>footer {
 
 /* Main content styles */
 main {
+  margin-top: 55px;
   margin-bottom: 50px;
 }
 
 /* Login section */
 main[data-access] {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #801524;
+  padding-top: 50px;
 }
 
 main[data-access]>h1 {
@@ -166,14 +169,15 @@ main[data-advancedsearch]>header {
   width: 20%;
   background-color: #801524;
   color: white;
-  position: absolute;
+  position: fixed;
   right: 0;
+  top:55px;
   bottom: 50px;
-  top: 55px;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 20px;
+  padding-top:20px;
 }
 
 main[data-advancedsearch]>header>form {
@@ -266,9 +270,9 @@ main[data-homeuser] {
 }
 
 main[data-advancedsearch] {
-  margin: 10px;
   gap: 10px;
   display: flex;
+  padding: 5px;
 }
 
 main[data-advancedsearch]>section {
@@ -283,11 +287,8 @@ main[data-advancedsearch]>section {
 main[data-homevendor] {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-bottom: 100px;
-  gap: 1rem;
+  padding: 20px;
+  gap: 10px;
 }
 
 main[data-homevendor] h1 {
@@ -441,22 +442,7 @@ main[data-homevendor] article footer p span {
 /* Vendor Insert book page */
 main[data-book_insert] {
   display: flex;
-  flex-direction: row-reverse;
   gap: 20px;
-}
-
-
-main[data-book_insert] div {
-  min-height: 500px;
-  max-height: 100%;
-  width: 30%;
-  background-color: #801524;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 2.5%;
 }
 
 main[data-book_insert] div>a,
@@ -761,9 +747,9 @@ main > div {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  position: absolute;
-  top: 55px;
+  position: fixed;
   right: 0;
+  top: 55px;
   bottom: 50px;
 }
 
@@ -1276,10 +1262,10 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   /* Navbar opened */
   nav[data-open="true"]>ul:first-of-type {
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     right: 0;
-    bottom: 0;
-    top: 50px;
+    top: 55px;
+    bottom: 50px;
     width: 60%;
     background-color: #801524;
     text-align: center;
