@@ -1,5 +1,5 @@
     <div>
-        <input type="button" value="Procedi all’ordine">
+        <input type="button" value="Procedi all’ordine" onclick="redirectToCompleteOrder()">
     </div>
 
     <section>
@@ -32,6 +32,6 @@
                 </li>
             </ul>
 
-            <input type="submit" value="Procedi all’ordine">
+            <input type="submit" value="Procedi all’ordine" onclick="redirectToCompleteOrder()">
         </form>
     </section>
