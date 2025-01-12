@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       const cardNumber = form.querySelector('input[name="card_number"]');
       const expiration = form.querySelector('input[name="expiration"]');
-      const cvc = form.querySelector('input[name="cvc"]');
+      const cvc = form.querySelector('input[name="card_cvc"]');
       const cardHolder = form.querySelector('input[name="card_holder"]');
       if (!validateCardNumber(cardNumber.value)) {
         alert("Il numero carta non è valido. Deve contenere 16 cifre (senza spazi).");
@@ -124,8 +124,7 @@ async function insertOrder() {
       body: formData
     });
     const json = await response.json();
-    console.log("insert order json", json);
-    //redirectToCompleteOrder();
+    redirectToCompleteOrder();
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }

@@ -17,7 +17,7 @@
                 </li>
                 <li>
                     <label for="card_cvc">CVC</label>
-                    <input type="text" id="cvc" name="card_cvc" placeholder="123" required />
+                    <input type="text" id="card_cvc" name="card_cvc" placeholder="123" required />
                 </li>
 
                 <li>
