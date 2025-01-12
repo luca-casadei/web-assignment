@@ -61,7 +61,17 @@ if (!defined('DIRECT_ACCESS')){
         </li>
         <li>
             <label>Generi</label>
-            <fieldset data-genres-container></fieldset>
+            <fieldset data-genres-container>
+                <div data-preselected-genres>
+                    <?php foreach ($genres as $genre) { ?>
+                        <label>
+                            <input type="checkbox" name="genres[]" value="<?php echo $genre["Codice"]; ?>" checked>
+                            <?php echo $genre["Nome"]; ?>
+                        </label><br>
+                    <?php } ?>
+                </div>
+                <div data-js-genres></div>
+            </fieldset>
         </li>
     </ul>
 

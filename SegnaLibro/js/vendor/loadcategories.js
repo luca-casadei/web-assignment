@@ -71,19 +71,33 @@ async function fetchCategoryGenres(categoryId) {
     }
 }
 
+function removeDuplicateCheckboxes() {
+    const fieldset = document.querySelector("fieldset[data-genres-container]");
+    const seen = new Set();
+    const checkboxes = fieldset.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach(checkbox => {
+        if (seen.has(checkbox.value)) {
+            checkbox.closest("label").remove();
+        } else {
+            seen.add(checkbox.value);
+        }
+    });
+}
+
+
 async function updateGenres() {
     const categorySelect = document.querySelector("#categorySelect");
-    const genresFieldset = document.querySelector("fieldset[data-genres-container]");
+    const jsGenresContainer = document.querySelector("fieldset[data-genres-container] div[data-js-genres]");
+    jsGenresContainer.innerHTML = "";
     const selectedCategoryId = categorySelect.value;
     if (selectedCategoryId) {
         try {
             const genres = await fetchCategoryGenres(selectedCategoryId);
-            genresFieldset.innerHTML = loadGenresCheckboxes(genres);
+            jsGenresContainer.insertAdjacentHTML("beforeend", loadGenresCheckboxes(genres));
+            removeDuplicateCheckboxes();
         } catch (error) {
             console.log(error.message);
         }
-    } else {
-        genresFieldset.innerHTML = "";
     }
 }
 
