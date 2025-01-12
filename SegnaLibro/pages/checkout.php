@@ -3,7 +3,7 @@
     </div>
 
     <section>
-        <form action="./complete_order_index.php" >
+        <form id="checkoutForm">
             <h1>Completa pagamento</h1>
             <ul>
                 <li>

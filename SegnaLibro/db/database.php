@@ -23,7 +23,7 @@ class DatabaseHelper
 
     public function getAnnounces()
     {
-        $query = "SELECT * FROM ANNUNCI";
+        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -31,7 +31,7 @@ class DatabaseHelper
     }
 
     public function getAnnouncesOrdered($orderMethod){
-        $query = "SELECT * FROM ANNUNCI";
+        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
         switch($orderMethod){
             case "pdesc":{
                 $query = $query." ORDER BY Prezzo DESC";
@@ -370,4 +370,34 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+
+    public function insertOrder() {
+        try {
+            $this->db->begin_transaction();
+            $qr = "INSERT INTO ordine (DataOrdine, Stato, UniqueUserID) VALUES (?, 'Aperto', ?);";
+            $stmt = $this->db->prepare($qr);
+            $orderDate = date("Y-m-d");
+            $stmt->bind_param("si", $orderDate, $_SESSION['userid']);
+            $stmt->execute();
+
+            $cart_articles = $this->getCart();
+            for($i = 0; $i < count($cart_articles); $i++){
+                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, LAST_INSERT_ID())";
+                $stmt = $this->db->prepare($qr);
+                $stmt->bind_param("issss", $cart_articles[$i]["NumeroCopia"],$cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"]);
+                $stmt->execute();
+            }
+
+            $qr = "DELETE FROM carrello WHERE UniqueUserID = ?";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("i", $_SESSION['userid']);
+            $stmt->execute();
+            
+            $this->db->commit();
+            return $stmt->affected_rows > 0;
+        } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
 }

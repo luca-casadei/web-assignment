@@ -1,31 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector('form[action="./complete_order_index.php"]');
+  const form = document.querySelector('form');
+  console.log("form", form);
   if (form) {
     form.addEventListener("submit", (event) => {
+      console.log("submit");
+      event.preventDefault();
       const cardNumber = form.querySelector('input[name="card_number"]');
       const expiration = form.querySelector('input[name="expiration"]');
       const cvc = form.querySelector('input[name="cvc"]');
       const cardHolder = form.querySelector('input[name="card_holder"]');
       if (!validateCardNumber(cardNumber.value)) {
-        event.preventDefault();
         alert("Il numero carta non è valido. Deve contenere 16 cifre (senza spazi).");
         return;
       }
       if (!validateExpiration(expiration.value)) {
-        event.preventDefault();
         alert("La data di scadenza deve essere nel formato MM/YY (es. 08/26).");
         return;
       }
       if (!validateCVC(cvc.value)) {
-        event.preventDefault();
         alert("Il CVC deve essere un numero di 3 cifre.");
         return;
       }
       if (!cardHolder.value.trim()) {
-        event.preventDefault();
         alert("Inserisci il nome dell’intestatario della carta.");
         return;
       }
+
+      insertOrder();
     });
   }
 
@@ -111,4 +112,30 @@ async function getProvinces() {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+async function insertOrder() {
+  const url = './apis/api-checkout.php';
+  const formData = new FormData();
+  formData.append('action', 'insert_order');
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+    const json = await response.json();
+    console.log("insert order json", json);
+    //redirectToCompleteOrder();
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+function redirectToCompleteOrder() {
+  window.location.href = "./complete_order_index.php";
 }
