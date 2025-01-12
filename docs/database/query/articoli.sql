@@ -36,9 +36,10 @@ CREATE VIEW ANNUNCI AS (
 	AND COPIA.CodiceTitolo = LIBRI_CATEGORIE_AUTORE.CodiceTitolo
 	AND COPIA.CodiceEditoriale = LIBRI_CATEGORIE_AUTORE.CodiceEditoriale
     JOIN CONDIZIONE ON COPIA.CodiceCondizione = CONDIZIONE.Codice
-    JOIN IMMAGINE ON IMMAGINE.CodiceRegGroup = COPIA.CodiceRegGroup
+    LEFT JOIN IMMAGINE ON IMMAGINE.CodiceRegGroup = COPIA.CodiceRegGroup
     AND IMMAGINE.CodiceEditoriale = COPIA.CodiceEditoriale
     AND IMMAGINE.EAN = COPIA.EAN
+	AND IMMAGINE.CodiceTitolo = COPIA.CodiceTitolo
     AND IMMAGINE.NumeroCopia = COPIA.Numero
     GROUP BY COPIA.EAN, COPIA.CodiceEditoriale, COPIA.CodiceRegGroup, COPIA.CodiceTitolo, COPIA.Numero
 );
