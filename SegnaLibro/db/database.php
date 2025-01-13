@@ -523,4 +523,11 @@ class DatabaseHelper
             return $e->getMessage();
         }
     }
+
+    public function markAsReady($orderCode) {
+        $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("i", $orderCode);
+        return $stmt->execute();
+    }
 }

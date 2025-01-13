@@ -1,5 +1,9 @@
 function generateArticles(data) {
-    let result = `<h1>Ordine n. ${data[0]["CodiceOrdine"]}</h1>`;
+    let result = `
+    <div>
+        <input type="button" value="Segna come pronto" onclick="markAsReady(${data[0]["CodiceOrdine"]})" />
+    </div>
+    <h1>Ordine n. ${data[0]["CodiceOrdine"]}</h1>`;
     for (let i = 0; i < data.length; i++) {
         let article = `
         <article>
@@ -20,8 +24,6 @@ function generateArticles(data) {
         `;
         result += article;
     }
-
-
     return result;
 }
 
@@ -44,3 +46,19 @@ async function getExpandedOrder() {
 }
 
 getExpandedOrder();
+
+async function markAsReady(orderCode) {
+    const url = './apis/vendor/api-user_order-expanded.php';
+    try {
+        const formData = new FormData();
+        formData.append('markAsReady', orderCode);
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+        const json = await response.json();
+        console.log("markAsReady", json);
+    } catch (error) {
+        console.log(error.message);
+    }
+}

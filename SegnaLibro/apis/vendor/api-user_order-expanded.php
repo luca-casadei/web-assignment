@@ -12,6 +12,9 @@ else if (isset($_POST["getArticles"])) {
         $data[$i]["Immagine"] = IMAGE_PATH.$images[0]["Percorso"];
     }
     echo json_encode($data);
+} else if (isset($_POST["markAsReady"])){ 
+    $data = $dbh->markAsReady($_POST["markAsReady"]);
+    echo json_encode($data);
 }
 else{
     echo http_response_code(400); 
