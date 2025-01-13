@@ -7,7 +7,12 @@ function generateArticles(data) {
                 <h2>${data[i]["Titolo"]}</h2>
                 <p>${data[i]["DataAnnuncio"]}</p>
             </header>
-            <p>${data[i]["Descrizione"]}</p>
+            <div>
+                <figure>
+                    <img src="${data[i]["Immagine"]}" alt="" />
+                </figure>
+                <p>${data[i]["Descrizione"]}</p>
+            </div>
             <footer>
                 <p>Prezzo: <span>${data[i]["Prezzo"]}€</span></p>
             </footer>
