@@ -25,7 +25,7 @@ a {
 
 /* Navbar and footer styles */
 nav,
-body > footer {
+body>footer {
   background-color: #801524;
   color: white;
   width: 100%;
@@ -43,23 +43,23 @@ nav {
   padding: 5px;
 }
 
-nav > ul > li[active] {
+nav>ul>li[active] {
   font-weight: bold;
 }
 
 /* Navbar menu */
-nav > ul {
+nav>ul {
   display: flex;
   flex-direction: row;
   gap: 30px;
   align-items: center;
 }
 
-nav > ul:last-of-type > li {
+nav>ul:last-of-type>li {
   cursor: pointer;
 }
 
-nav > ul:last-of-type > li:last-of-type {
+nav>ul:last-of-type>li:last-of-type {
   display: none;
 }
 
@@ -68,12 +68,12 @@ nav img {
   width: 40px;
 }
 
-nav > ul > li > a {
+nav>ul>li>a {
   color: white;
 }
 
 /* Footer styles */
-body > footer {
+body>footer {
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -97,23 +97,23 @@ main[data-access] {
   padding-top: 50px;
 }
 
-main[data-access] > h1 {
+main[data-access]>h1 {
   font-size: 40px;
   font-weight: bold;
 }
 
-main[data-access] > form {
+main[data-access]>form {
   width: 100%;
 }
 
-main[data-access] > form > ul {
+main[data-access]>form>ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-main[data-access] > form > ul > li {
+main[data-access]>form>ul>li {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -145,17 +145,17 @@ main[data-access] input[type="submit"] {
   font-size: large;
 }
 
-main[data-access] > form > ul > li:last-child {
+main[data-access]>form>ul>li:last-child {
   font-size: larger;
 }
 
-main[data-access] > form > ul > li > a {
+main[data-access]>form>ul>li>a {
   text-decoration: none;
   font-weight: bold;
   color: #801524;
 }
 
-main[data-access] > form > p {
+main[data-access]>form>p {
   text-align: center;
   font-weight: bold;
   margin: 3%;
@@ -164,7 +164,17 @@ main[data-access] > form > p {
 
 /* Advanced research */
 
-main[data-advancedsearch] > header {
+main[data-copiesofbook]>section:first-of-type>h1 {
+  text-align: center;
+  color: #801524;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+main[data-advancedsearch]>header,
+main[data-copiesofbook]>section:last-of-type {
   width: 20%;
   background-color: #801524;
   color: white;
@@ -179,46 +189,50 @@ main[data-advancedsearch] > header {
   padding-top: 20px;
 }
 
-main[data-advancedsearch] > header > form {
+main[data-advancedsearch]>header>form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-main[data-advancedsearch] > header > form input,
-main[data-advancedsearch] > header > form select {
+main[data-advancedsearch]>header>form input,
+main[data-advancedsearch]>header>form select {
   height: 30px;
   border-radius: 5px;
 }
 
-main[data-advancedsearch] > header > form > div {
+main[data-advancedsearch]>header>form>div {
   display: flex;
   flex-direction: column;
   width: 85%;
 }
 
-main[data-homeuser] > article header > h2,
-main[data-advancedsearch] > section > article header > h2 {
+main[data-homeuser]>article header>h2,
+main[data-copiesofbook] article header>h2,
+main[data-advancedsearch]>section>article header>h2 {
   font-weight: bold;
 }
 
-main[data-homeuser] > article > div > p,
-main[data-advancedsearch] > section > article > div > p {
+main[data-homeuser]>article>div>p,
+main[data-copiesofbook] article>div>p,
+main[data-advancedsearch]>section>article>div>p {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-main[data-homeuser] > article header,
-main[data-advancedsearch] > section > article header {
+main[data-homeuser]>article header,
+main[data-copiesofbook] article header,
+main[data-advancedsearch]>section>article header {
   display: flex;
   flex-direction: row;
   font-size: large;
   justify-content: space-between;
 }
 
-main[data-homeuser] > article > div,
-main[data-advancedsearch] > section > article > div {
+main[data-homeuser]>article>div,
+main[data-copiesofbook] article>div,
+main[data-advancedsearch]>section>article>div {
   display: flex;
   flex-direction: column;
   width: 79%;
@@ -226,33 +240,38 @@ main[data-advancedsearch] > section > article > div {
   padding: 15px;
 }
 
-main[data-homeuser] > article > figure > img,
-main[data-advancedsearch] > section > article > figure > img {
+main[data-homeuser]>article>figure>img,
+main[data-copiesofbook] article>figure>img,
+main[data-advancedsearch]>section>article>figure>img {
   max-width: 150px;
   max-height: 150px;
   height: inherit;
 }
 
-main[data-homeuser] > article footer > p:last-of-type,
-main[data-advancedsearch] > section > article footer > p:last-of-type {
+main[data-homeuser]>article footer>p:last-of-type,
+main[data-copiesofbook] article footer>p:last-of-type,
+main[data-advancedsearch]>section>article footer>p:last-of-type {
   font-weight: bold;
 }
 
-main[data-homeuser] > article footer > p:first-of-type > span,
-main[data-advancedsearch] > section > article footer > p:first-of-type > span {
+main[data-homeuser]>article footer>p:first-of-type>span,
+main[data-copiesofbook] article footer>p:first-of-type>span,
+main[data-advancedsearch]>section>article footer>p:first-of-type>span {
   margin-left: 5%;
   font-weight: bold;
 }
 
-main[data-homeuser] > article footer,
-main[data-advancedsearch] > section > article footer {
+main[data-homeuser]>article footer,
+main[data-copiesofbook] article footer,
+main[data-advancedsearch]>section>article footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-main[data-homeuser] > article,
-main[data-advancedsearch] > section > article {
+main[data-homeuser]>article,
+main[data-copiesofbook] article,
+main[data-advancedsearch]>section>article {
   display: flex;
   flex-direction: row;
   gap: 2%;
@@ -274,7 +293,7 @@ main[data-advancedsearch] {
   padding: 5px;
 }
 
-main[data-advancedsearch] > section {
+main[data-advancedsearch]>section {
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -296,7 +315,7 @@ main[data-homevendor] h1 {
   color: #8e1017;
 }
 
-main[data-homevendor] > p {
+main[data-homevendor]>p {
   font-size: 19px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -306,7 +325,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,7 +383,7 @@ main[data-homevendor] article input[type="button"] {
   width: 35%;
 }
 
-main[data-homevendor] article > footer > input[type="button"] {
+main[data-homevendor] article>footer>input[type="button"] {
   margin-right: auto;
 }
 
@@ -378,13 +397,11 @@ main[data-homevendor] article header input[type="button"]:first-of-type {
   height: 40px;
 }
 
-main[data-homevendor] article footer input[type="button"]:last-of-type {
+main[data-homevendor] article footer input[type="image"]:last-of-type {
   margin-right: 0;
   margin-left: auto;
-  background-image: url("../images/list.png");
-  background-position: center;
-  background-size: 80%;
-  background-repeat: no-repeat;
+  background-color: #801524;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
 }
@@ -398,24 +415,24 @@ main[data-homevendor] article ul {
   list-style-type: none;
 }
 
-main[data-homevendor] article > ul > li {
+main[data-homevendor] article>ul>li {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-main[data-homevendor] article > ul > li > p {
+main[data-homevendor] article>ul>li>p {
   width: 50%;
   text-align: left;
 }
 
-main[data-homevendor] article > ul > li > ul {
+main[data-homevendor] article>ul>li>ul {
   display: inline;
   width: 50%;
   text-align: left;
 }
 
-main[data-homevendor] article > p {
+main[data-homevendor] article>p {
   font-size: 14px;
   line-height: 22px;
   margin-left: 86px;
@@ -444,9 +461,9 @@ main[data-book_insert] {
   gap: 20px;
 }
 
-main[data-book_insert] div > a,
-main[data-book_insert] div > input,
-main[data-book_insert] div > button {
+main[data-book_insert] div>a,
+main[data-book_insert] div>input,
+main[data-book_insert] div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -462,14 +479,14 @@ main[data-book_insert] div > button {
   cursor: pointer;
 }
 
-main[data-book_insert] div > a:hover,
-main[data-book_insert] div > input:hover,
-main[data-book_insert] div > button:hover {
+main[data-book_insert] div>a:hover,
+main[data-book_insert] div>input:hover,
+main[data-book_insert] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-book_insert] div > p {
+main[data-book_insert] div>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -592,11 +609,7 @@ main[data-book_insert] section form fieldset[data-genres-container] label {
   margin: 0 2px;
 }
 
-main[data-book_insert]
-  section
-  form
-  fieldset[data-genres-container]
-  input[type="checkbox"] {
+main[data-book_insert] section form fieldset[data-genres-container] input[type="checkbox"] {
   background-color: transparent;
   margin: 0 5px;
 }
@@ -608,9 +621,9 @@ main[data-profile] {
   gap: 20px;
 }
 
-main[data-profile] div > a,
-main[data-profile] div > input,
-main[data-profile] div > button {
+main[data-profile] div>a,
+main[data-profile] div>input,
+main[data-profile] div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -626,14 +639,14 @@ main[data-profile] div > button {
   cursor: pointer;
 }
 
-main[data-profile] div > a:hover,
-main[data-profile] div > input:hover,
-main[data-profile] div > button:hover {
+main[data-profile] div>a:hover,
+main[data-profile] div>input:hover,
+main[data-profile] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-profile] div > p {
+main[data-profile] div>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -657,7 +670,7 @@ main[data-profile] h1 {
   text-align: center;
 }
 
-main[data-profile] section > form {
+main[data-profile] section>form {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -667,7 +680,7 @@ main[data-profile] section > form {
   gap: 10px;
 }
 
-main[data-profile] section > form > ul {
+main[data-profile] section>form>ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -677,7 +690,7 @@ main[data-profile] section > form > ul {
   gap: 20px;
 }
 
-main[data-profile] section > form > ul > li {
+main[data-profile] section>form>ul>li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -686,7 +699,7 @@ main[data-profile] section > form > ul > li {
   border-radius: 10px;
 }
 
-main[data-profile] section > form > ul > li > label {
+main[data-profile] section>form>ul>li>label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px;
@@ -699,7 +712,7 @@ main[data-profile] section > form > ul > li > label {
   line-height: 70%;
 }
 
-main[data-profile] section > form > ul > li > input,
+main[data-profile] section>form>ul>li>input,
 select {
   width: 70%;
   text-align: center;
@@ -707,7 +720,7 @@ select {
   border-radius: 10px;
 }
 
-main[data-profile] section > form > input {
+main[data-profile] section>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -717,7 +730,7 @@ main[data-profile] section > form > input {
   text-decoration: underline;
 }
 
-main[data-profile] section > form > input:hover {
+main[data-profile] section>form>input:hover {
   font-weight: bold;
 }
 
@@ -725,7 +738,7 @@ main[data-profile] section a {
   display: none;
 }
 
-main[data-profile] section > a:hover {
+main[data-profile] section>a:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -738,13 +751,24 @@ main[data-cart] {
   gap: 10px;
 }
 
-main[data-cart] section > p {
+main[data-cart] section>p {
   padding: 10px;
   font-size: 20px;
   color: #801524;
 }
 
-main > div {
+main[data-copiesofbook] {
+  display: flex;
+  flex-direction: row;
+}
+
+main[data-copiesofbook]>section:first-of-type {
+  width: 78%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+main>div {
   width: 30%;
   background-color: #801524;
   display: flex;
@@ -756,9 +780,9 @@ main > div {
   bottom: 50px;
 }
 
-main[data-cart] div > a,
-main[data-cart] div > input,
-main[data-cart] div > button {
+main[data-cart] div>a,
+main[data-cart] div>input,
+main[data-cart] div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -774,14 +798,14 @@ main[data-cart] div > button {
   cursor: pointer;
 }
 
-main[data-cart] div > a:hover,
-main[data-cart] div > input:hover,
-main[data-cart] div > button:hover {
+main[data-cart] div>a:hover,
+main[data-cart] div>input:hover,
+main[data-cart] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-cart] div > p {
+main[data-cart] div>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -802,14 +826,14 @@ main[data-cart] h1 {
   text-align: center;
 }
 
-main[data-cart] section > input[type="button"] {
+main[data-cart] section>input[type="button"] {
   display: none;
 }
 
 main[data-cart] article {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -849,7 +873,7 @@ main[data-cart] article header p {
   color: #555;
 }
 
-main[data-cart] section > article > p {
+main[data-cart] section>article>p {
   font-size: 14px;
   line-height: 22px;
   margin-left: 86px;
@@ -872,7 +896,7 @@ main[data-cart] section article footer p span {
   font-weight: bold;
 }
 
-main[data-cart] section > article > header > input {
+main[data-cart] section>article>header>input {
   border: none;
   cursor: pointer;
   margin-left: auto;
@@ -895,7 +919,7 @@ main[data-checkout] {
   margin-bottom: 100px;
 }
 
-main[data-checkout] > div > input,
+main[data-checkout]>div>input,
 main[data-checkout] form input[type="submit"] {
   font-size: 18px;
   color: white;
@@ -906,13 +930,13 @@ main[data-checkout] form input[type="submit"] {
   padding: 10px 20px;
 }
 
-main[data-checkout] > div > input:hover,
+main[data-checkout]>div>input:hover,
 main[data-checkout] form input[type="submit"]:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-checkout] > section {
+main[data-checkout]>section {
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -922,7 +946,7 @@ main[data-checkout] > section {
   gap: 10px;
 }
 
-main[data-checkout] > section > form {
+main[data-checkout]>section>form {
   width: 80%;
   max-width: 600px;
   display: flex;
@@ -930,11 +954,11 @@ main[data-checkout] > section > form {
   gap: 20px;
 }
 
-main[data-checkout] > section > form > input {
+main[data-checkout]>section>form>input {
   display: none;
 }
 
-main[data-checkout] > section > form select,
+main[data-checkout]>section>form select,
 main[data-checkout] form ul li input,
 main[data-checkout] form ul li select {
   width: 100%;
@@ -945,7 +969,7 @@ main[data-checkout] form ul li select {
   color: #801524;
   background-color: #ddd;
   text-align: center;
-  margin: 0; 
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -1024,9 +1048,9 @@ main[data-book_details] {
   gap: 20px;
 }
 
-main[data-book_details] div > a,
-main[data-book_details] div > input,
-main[data-book_details] div > button {
+main[data-book_details] div>a,
+main[data-book_details] div>input,
+main[data-book_details] div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1037,14 +1061,14 @@ main[data-book_details] div > button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
 
-main[data-book_details] div > a:hover,
-main[data-book_details] div > input:hover,
-main[data-book_details] div > button:hover {
+main[data-book_details] div>a:hover,
+main[data-book_details] div>input:hover,
+main[data-book_details] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -1073,7 +1097,7 @@ main[data-book_details] p {
   font-size: 16px;
 }
 
-main[data-book_details] div > p {
+main[data-book_details] div>p {
   color: white;
   font-size: 32px;
 }
@@ -1091,7 +1115,7 @@ main[data-book_details] section div {
   align-items: center;
 }
 
-main[data-book_details] section > div > div {
+main[data-book_details] section>div>div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1099,14 +1123,14 @@ main[data-book_details] section > div > div {
   text-align: center;
 }
 
-main[data-book_details] section > div img {
+main[data-book_details] section>div img {
   max-height: 100%;
   max-width: 100%;
   border: 3px solid #801524;
   border-radius: 10px;
 }
 
-main[data-book_details] section > div input[type="button"] {
+main[data-book_details] section>div input[type="button"] {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -1116,25 +1140,25 @@ main[data-book_details] section > div input[type="button"] {
   background-repeat: no-repeat;
 }
 
-main[data-book_details] section > div input[type="button"]:first-of-type {
+main[data-book_details] section>div input[type="button"]:first-of-type {
   left: -45px;
   background-image: url("../images/arrow_left.png");
 }
 
-main[data-book_details] section > div input[type="button"]:last-of-type {
+main[data-book_details] section>div input[type="button"]:last-of-type {
   right: -45px;
   background-image: url("../images/arrow_right.png");
 }
 
-main[data-book_details] section > footer {
+main[data-book_details] section>footer {
   display: none;
 }
 
 /* Modify book page */
 
-main[data-book_modify] div > a,
-main[data-book_modify] div > input,
-main[data-book_modify] div > button {
+main[data-book_modify] div>a,
+main[data-book_modify] div>input,
+main[data-book_modify] div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1150,14 +1174,14 @@ main[data-book_modify] div > button {
   cursor: pointer;
 }
 
-main[data-book_modify] div > a:hover,
-main[data-book_modify] div > input:hover,
-main[data-book_modify] div > button:hover {
+main[data-book_modify] div>a:hover,
+main[data-book_modify] div>input:hover,
+main[data-book_modify] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-book_modify] div > p {
+main[data-book_modify] div>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -1234,7 +1258,7 @@ main[data-book_modify] section form ul li textarea {
   height: 60px;
 }
 
-main[data-book_modify] section > form > input {
+main[data-book_modify] section>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -1273,18 +1297,161 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   outline: none;
 }
 
+/* User orders page */
+
+main[data-orders]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+main[data-orders] section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-items: center;
+}
+
+main[data-orders] h1{
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-orders] section > article {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #d9d9d9;
+  color: #801524;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main[data-orders] section > article span{
+  font-weight: bold;
+}
+
+main[data-orders] section > article > header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px #801524 solid;
+  padding-bottom: 10px;
+}
+
+main[data-orders] section > article > footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px #801524 solid;
+  padding-top: 10px;
+}
+
+main[data-orders] section > article > footer > input{
+  padding: 5px;
+  background-color: #801524;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+main[data-orders] section > article > footer > input:hover{
+  background-color: #8e1017;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Order expanded page */
+
+
+main[data-order_expanded] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+main[data-order_expanded] h1 {
+  font-size: 30px;
+  color: #801524;
+}
+
+
+main[data-order_expanded] article{
+  width: 80%;
+  background-color: #fff;
+  color: #801524;
+  border-radius: 6px;
+  box-shadow: 0 3px 5px #888;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+}
+
+main[data-order_expanded] article > header{
+  border-bottom: 2px #801524 solid;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+main[data-order_expanded] article > div{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  gap: 20px;
+}
+
+main[data-order_expanded] article > footer{
+  border-top: 2px #801524 solid;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+main[data-order_expanded] article span{
+  font-weight: bold;
+}
+
+main[data-order_expanded] article figure {
+  margin: 0;
+}
+
+main[data-order_expanded] article figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+
 /* Mobile version styles */
 @media (width <=768px) {
   nav {
     justify-content: right;
   }
 
-  nav[data-open="false"] > ul:first-of-type {
+  nav[data-open="false"]>ul:first-of-type {
     display: none;
   }
 
   /* Navbar opened */
-  nav[data-open="true"] > ul:first-of-type {
+  nav[data-open="true"]>ul:first-of-type {
     flex-direction: column;
     position: fixed;
     right: 0;
@@ -1298,23 +1465,23 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     font-size: larger;
   }
 
-  nav > ul:first-of-type > li:first-of-type {
+  nav>ul:first-of-type>li:first-of-type {
     display: none;
   }
 
-  nav > ul:last-of-type > li:last-of-type {
+  nav>ul:last-of-type>li:last-of-type {
     display: unset;
   }
 
-  main[data-access] > form input {
+  main[data-access]>form input {
     width: 60%;
   }
 
-  main[data-access] > form > ul {
+  main[data-access]>form>ul {
     gap: 20px;
   }
 
-  main[data-access] > form input[type="submit"] {
+  main[data-access]>form input[type="submit"] {
     width: 40%;
   }
 
@@ -1373,19 +1540,19 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     display: none;
   }
 
-  main[data-book_details] section > footer {
+  main[data-book_details] section>footer {
     display: flex;
     flex-direction: column;
-    }
+  }
 
-    main[data-book_details] section footer p strong {
+  main[data-book_details] section footer p strong {
     font-size: 32px;
     display: block;
     margin-bottom: 8px;
     color: #801524;
-    }
+  }
 
-    main[data-book_details] section footer input[type="button"] {
+  main[data-book_details] section footer input[type="button"] {
     background-color: #801524;
     color: white;
     border: none;
@@ -1395,7 +1562,7 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+  }
 
   main[data-book_details] section footer input[type="button"]:hover {
     background-color: #5a1d1d;
@@ -1413,7 +1580,8 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   main[data-cart] div {
     display: none;
   }
-  main[data-cart] section > input[type="button"] {
+
+  main[data-cart] section>input[type="button"] {
     display: flex;
     background-color: #801524;
     color: #fff;
@@ -1425,7 +1593,7 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     margin-bottom: 16px;
   }
 
-  main[data-cart] section > input[type="button"]:hover {
+  main[data-cart] section>input[type="button"]:hover {
     display: flex;
     background-color: #a3111a;
   }
@@ -1435,11 +1603,11 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
     flex-direction: column;
   }
 
-  main[data-checkout] > div {
+  main[data-checkout]>div {
     display: none;
   }
 
-  main[data-checkout] > section {
+  main[data-checkout]>section {
     width: 100%;
   }
 
@@ -1469,77 +1637,84 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
   }
 
   /* Index php styling */
-  main[data-homeuser] > article > div > header > :not(:first-child),
-  main[data-advancedsearch]
-    > section
-    > article
-    > div
-    > header
-    > :not(:first-child) {
+  main[data-homeuser]>article>div>header> :not(:first-child),
+  main[data-copiesofbook] article>div>header :not(:first-child),
+  main[data-advancedsearch]>section>article>div>header> :not(:first-child) {
     display: none;
   }
 
-  main[data-homeuser] > article,
-  main[data-advancedsearch] > section > article {
+  main[data-homeuser]>article,
+  main[data-copiesofbook] article,
+  main[data-advancedsearch]>section>article {
     place-content: center;
     text-align: center;
   }
 
-  main[data-homeuser] > article > figure,
-  main[data-advancedsearch] > section > article > figure {
+  main[data-homeuser]>article>figure,
+  main[data-copiesofbook] article>figure,
+  main[data-advancedsearch]>section>article>figure {
     place-self: center;
   }
 
-  main[data-homeuser] > article > div > footer > p:first-of-type,
-  main[data-advancedsearch]
-    > section
-    > article
-    > div
-    > footer
-    > p:first-of-type {
+  main[data-homeuser]>article>div>footer>p:first-of-type,
+  main[data-copiesofbook] article>div>footer>p:first-of-type,
+  main[data-advancedsearch]>section>article>div>footer>p:first-of-type {
     display: none;
   }
 
-  main[data-homeuser] > article > div > footer,
-  main[data-advancedsearch] > section > article > div > footer {
+  main[data-homeuser]>article>div>footer,
+  main[data-copiesofbook] article>div>footer,
+  main[data-advancedsearch]>section>article>div>footer {
     justify-content: center;
   }
 
-  main[data-homeuser] > article > div > header,
-  main[data-advancedsearch] > section > article > div > header {
+  main[data-homeuser]>article>div>header,
+  main[data-advancedsearch]>section>article>div>header,
+  main[data-copiesofbook] article>div>header {
     justify-content: center;
   }
 
-  main[data-homeuser] > article > div,
-  main[data-advancedsearch] > section > article > div {
+  main[data-homeuser]>article>div,
+  main[data-copiesofbook] article>div,
+  main[data-advancedsearch]>section>article>div {
     padding: 2px;
+  }
+
+  main[data-copiesofbook] {
+    flex-direction: column-reverse;
   }
 
   main[data-advancedsearch] {
     flex-direction: column;
   }
 
-  main[data-advancedsearch] > section,
-  main[data-advancedsearch] > header {
+  main[data-advancedsearch]>section,
+  main[data-copiesofbook]>section:nth-child(n),
+  main[data-advancedsearch]>header {
     width: 100%;
     padding: 0;
   }
 
-  main[data-advancedsearch] > header > form {
+  main[data-copiesofbook]>section:last-of-type {
+    padding-bottom: 20px;
+  }
+
+  main[data-advancedsearch]>header>form {
     flex-direction: row;
   }
 
-  main[data-advancedsearch] > header > form > h2 {
+  main[data-advancedsearch]>header>form>h2 {
     display: none;
   }
 
-  main[data-advancedsearch] > header {
+  main[data-advancedsearch]>header,
+  main[data-copiesofbook]>section:last-of-type {
     position: unset;
     gap: 5px;
   }
 
-  main[data-advancedsearch] > header > search,
-  main[data-advancedsearch] > header > search > input {
+  main[data-advancedsearch]>header>search,
+  main[data-advancedsearch]>header>search>input {
     width: 100%;
   }
 }

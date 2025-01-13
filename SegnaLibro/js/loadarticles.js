@@ -1,29 +1,32 @@
 function generateArticles(articoli){
     let result = "";
-
-    for(let i=0; i < articoli.length; i++){
-        let articolo = `
-        <article onClick=\'expandArticles(\"${articoli[i]["EAN"]}\", \"${articoli[i]["CodiceEditoriale"]}\", \"${articoli[i]["CodiceTitolo"]}\", \"${articoli[i]["CodiceRegGroup"]}\", \"${articoli[i]["NumeroCopia"]}\")\'>
-            <figure>
-                <img src="${articoli[i]["NomeImmagine"]}" alt="" />
-            </figure>
-            <div>
-                <header>
-                    <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
-                    <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
-                    <p>${articoli[i]["NomeCategoria"]}</p>
-                </header>
-                <p>
-                    ${articoli[i]["DescrizioneAnnuncio"]}
-                </p>
-                <footer>
-                    <p>Condizione:<span>${articoli[i]["NomeCondizione"]}</span></p>
-                    <p>€ ${articoli[i]["Prezzo"]}</p>
-                </footer>
-            </div>
-        </article>
-        `;
-        result += articolo;
+    if (articoli.length == 0){
+        result += "<p>Nessun annuncio disponibile.</p>"
+    }else{
+        for(let i=0; i < articoli.length; i++){
+            let articolo = `
+            <article onClick=\'expandArticles(\"${articoli[i]["EAN"]}\", \"${articoli[i]["CodiceEditoriale"]}\", \"${articoli[i]["CodiceTitolo"]}\", \"${articoli[i]["CodiceRegGroup"]}\", \"${articoli[i]["NumeroCopia"]}\")\'>
+                <figure>
+                    <img src="${articoli[i]["NomeImmagine"]}" alt="" />
+                </figure>
+                <div>
+                    <header>
+                        <h2>${articoli[i]["TitoloAnnuncio"]}</h2>
+                        <p>${articoli[i]["NomeAutore"]} ${articoli[i]["CognomeAutore"]}</p>
+                        <p>${articoli[i]["NomeCategoria"]}</p>
+                    </header>
+                    <p>
+                        ${articoli[i]["DescrizioneAnnuncio"]}
+                    </p>
+                    <footer>
+                        <p>Condizione:<span>${articoli[i]["NomeCondizione"]}</span></p>
+                        <p>€ ${articoli[i]["Prezzo"]}</p>
+                    </footer>
+                </div>
+            </article>
+            `;
+            result += articolo;
+        }
     }
     return result;
 }
