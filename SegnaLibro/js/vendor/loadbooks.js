@@ -48,7 +48,7 @@ async function loadBooks(books) {
                     </ul>
                 </p>
                 <footer>
-                    <input type="button" value="Aggiungi copia"/>
+                    <input type="button" value="Aggiungi copia" onClick=\'addCopy(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                     <label for="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}">Visualizza annunci</label> 
                     <input id="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}" type="image" src="./images/list.png" alt="View announces" onclick="gotoRelatedAnnounces(\'${b["EAN"]}\',\'${b["CodiceTitolo"]}\',\'${b["CodiceEditoriale"]}\',\'${b["CodiceRegGroup"]}\')"/>
                 </footer>
@@ -150,6 +150,30 @@ async function expandBook(ean, codiceTitolo, codiceEditoriale, codiceRegGroup){
             throw new Error(`Response status: ${response.status}`);
         } else {
             window.location.href = "./book_modify_index.php";
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function addCopy(ean, codiceTitolo, codiceEditoriale, codiceRegGroup){
+    const url = './apis/vendor/api-addcopy.php';
+    try {
+        const formData = new FormData();
+        formData.append("addcopy", JSON.stringify({
+            "EAN": ean,
+            "CodiceEditoriale": codiceEditoriale,
+            "CodiceRegGroup": codiceRegGroup,
+            "CodiceTitolo": codiceTitolo
+        }));
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        } else {
+            window.location.href = "./add_copy_index.php";
         }
     } catch (error) {
         console.log(error.message);

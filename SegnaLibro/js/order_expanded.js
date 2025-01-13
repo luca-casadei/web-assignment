@@ -1,26 +1,37 @@
 function generateArticles(data) {
-    let result = `<h1>Ordine n. ${data[0]["CodiceOrdine"]}</h1>`;
-    for (let i = 0; i < data.length; i++) {
+    let result = `
+    <div>
+        <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
+        <p>Data ordine: <span>${data["dataOrdine"]}</span></p>
+        <p>N. articoli: <span>${data.articles.length}</span></p>
+    </div>
+    <section>
+    <h1>Ordine n. ${data.articles[0]["CodiceOrdine"]}</h1>
+    <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
+    <p>Data ordine: <span>${data["dataOrdine"]}</span></p>
+    <p>N. articoli: <span>${data.articles.length}</span></p>
+    `;
+    for (let i = 0; i < data.articles.length; i++) {
         let article = `
         <article>
             <header>
-                <h2>${data[i]["Titolo"]}</h2>
-                <p>${data[i]["DataAnnuncio"]}</p>
+                <h2>${data.articles[i]["Titolo"]}</h2>
+                <p>${data.articles[i]["DataAnnuncio"]}</p>
             </header>
             <div>
                 <figure>
-                    <img src="${data[i]["Immagine"]}" alt="" />
+                    <img src="${data.articles[i]["Immagine"]}" alt="" />
                 </figure>
-                <p>${data[i]["Descrizione"]}</p>
+                <p>${data.articles[i]["Descrizione"]}</p>
             </div>
             <footer>
-                <p>Prezzo: <span>${data[i]["Prezzo"]}€</span></p>
+                <p>Prezzo: <span>${data.articles[i]["Prezzo"]}€</span></p>
             </footer>
         </article>
         `;
         result += article;
     }
-
+    result+="</section>"
 
     return result;
 }
