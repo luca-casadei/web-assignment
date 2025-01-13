@@ -19,34 +19,41 @@ function generateArticles(data) {
                 <p>${data.articles[i]["DataAnnuncio"]}</p>
             </header>
             <div>
+            `;
+        if (data.articles[i]["Immagine"] != null) {
+            article += `
                 <figure>
                     <img src="${data.articles[i]["Immagine"]}" alt="" />
                 </figure>
-                <p>${data.articles[i]["Descrizione"]}</p>
-            </div>
+                `;
+        }
+        article += `
+            <p>${data.articles[i]["Descrizione"]}</p>
+            </div> 
             <footer>
                 <p>Prezzo: <span>${data.articles[i]["Prezzo"]}€</span></p>
             </footer>
-        </article>
-        `;
+            </article>
+            `;
         result += article;
     }
-    result+="</section>"
+    result += "</section>";
 
     return result;
 }
 
 async function getExpandedOrder() {
     console.log("getExpandedOrder");
-    const url = './apis/api-order-expanded.php';
+    const url = "./apis/api-order-expanded.php";
     try {
         const formData = new FormData();
-        formData.append('getArticles', true);
+        formData.append("getArticles", true);
         const response = await fetch(url, {
             method: "POST",
-            body: formData
+            body: formData,
         });
         const json = await response.json();
+        console.log(json);
         const data = generateArticles(json);
         document.querySelector("main").innerHTML = data;
     } catch (error) {
