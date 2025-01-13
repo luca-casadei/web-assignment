@@ -20,7 +20,7 @@ function generateUserOrders(data) {
                 <footer>
                     <input type="button"
                         value="Visualizza libri"
-                        onclick="viewOrderDetails('${orders[i]["Codice"]}')"
+                        onclick="expandUserOrder('${orders[i]["Codice"]}')"
                     />
                     <p>Totale: ${orders[i]["PrezzoTotaleOrdine"]} €</p>
                 </footer>
@@ -63,9 +63,26 @@ async function getUserOrdersData() {
     }
 }
 
-function viewOrderDetails(id_ordine) {
-    console.log("viewOrderDetails");
-}
+async function expandUserOrder(codiceOrdine) {
+    const url = './apis/vendor/api-user_order-expanded.php';
+    try {
+        const formData = new FormData();
+        formData.append('userorderexpanded', JSON.stringify({
+            "codiceOrdine": codiceOrdine
+        }));
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
 
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        } else {
+            window.location.href = "./user_order_expanded_index.php";
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 
 getUserOrdersData();
