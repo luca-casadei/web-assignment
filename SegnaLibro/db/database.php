@@ -143,6 +143,7 @@ class DatabaseHelper
                 AND COPIE_ORDINE.CodiceRegGroup = COPIA.CodiceRegGroup 
                 AND COPIE_ORDINE.EAN = COPIA.EAN
                 AND COPIE_ORDINE.CodiceTitolo = COPIA.CodiceTitolo
+                AND COPIE_ORDINE.NumeroCopia = COPIA.Numero
                 WHERE COPIE_ORDINE.CodiceOrdine = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('i', $CodiceOrdine);
@@ -283,6 +284,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getConditions()
+    {
+        $qr = "SELECT * FROM CONDIZIONE";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCategories()
     {
         $qr = "SELECT * FROM CATEGORIA";
@@ -300,6 +310,17 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertCopy($book, $title, $price, $description, $date, $condition){
+        try{
+            $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
+            $stmt->execute();
+        } catch(Exception $e){
+            return $e->getMessage();
+        }        
     }
 
     public function insertBook($book)
