@@ -173,6 +173,15 @@ main[data-copiesofbook]>section:first-of-type>h1 {
   padding-bottom: 10px;
 }
 
+main[data-advancedsearch]>section>h1 {
+  text-align: center;
+  color: #801524;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 main[data-advancedsearch]>header,
 main[data-copiesofbook]>section:last-of-type {
   width: 20%;
@@ -743,6 +752,39 @@ main[data-profile] section>a:hover {
   border: 2px white solid;
 }
 
+/* Notifcations */
+main[data-notifications]{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+main[data-notifications] > article{
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+main[data-notifications] > article > footer > p > span{
+  font-weight: bold;
+}
+
+main[data-notifications] > article > footer > p {
+  font-size: 18px;
+}
+
+main[data-notifications] > article > header > h2{
+  font-size: 20px;
+  font-weight: bold;
+  color: #801524;
+}
+
 /* Customer's cart page */
 
 main[data-cart] {
@@ -751,7 +793,7 @@ main[data-cart] {
   gap: 10px;
 }
 
-main[data-cart] section>p {
+main[data-cart] div+p {
   padding: 10px;
   font-size: 20px;
   color: #801524;
@@ -1130,7 +1172,11 @@ main[data-book_details] section>div img {
   border-radius: 10px;
 }
 
-main[data-book_details] section>div input[type="button"] {
+main[data-book_details] section>div>label {
+  display: none;
+}
+
+main[data-book_details] section>div input[type="image"] {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -1140,14 +1186,12 @@ main[data-book_details] section>div input[type="button"] {
   background-repeat: no-repeat;
 }
 
-main[data-book_details] section>div input[type="button"]:first-of-type {
+main[data-book_details] section>div input[type="image"]:first-of-type {
   left: -45px;
-  background-image: url("../images/arrow_left.png");
 }
 
-main[data-book_details] section>div input[type="button"]:last-of-type {
+main[data-book_details] section>div input[type="image"]:last-of-type {
   right: -45px;
-  background-image: url("../images/arrow_right.png");
 }
 
 main[data-book_details] section>footer {
@@ -1855,7 +1899,6 @@ main[data-user_order_expanded] div>button:hover {
   main[data-order_expanded] section > p{
     display: flex;
     flex-direction: row;
-    
     color: #801524;
     font-size: 20px;
   }
@@ -1937,8 +1980,8 @@ main[data-user_order_expanded] div>button:hover {
     gap: 5px;
   }
 
-  main[data-advancedsearch]>header>search,
-  main[data-advancedsearch]>header>search>input {
+  main[data-advancedsearch]>header>div[role="search"],
+  main[data-advancedsearch]>header>div[role="search"]>input {
     width: 100%;
   }
 }

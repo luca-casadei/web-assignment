@@ -19,9 +19,11 @@ if (!defined('DIRECT_ACCESS')) {
     </header>
 
     <div>
-        <input type="button" aria-label="Immagine precedente" onclick="prevImage()" />
+        <label for="nextimg">next</label>
+        <input id="nextimg" type="image" src="./images/arrow_left.png" alt="Next image" aria-label="Immagine precedente" onclick="prevImage()" />
         <div></div>
-        <input type="button" aria-label="Immagine successiva" onclick="nextImage()" />
+        <label for="previmg">prev</label>
+        <input id="previmg" type="image" src="./images/arrow_right.png" alt="Previous image" aria-label="Immagine successiva" onclick="nextImage()" />
     </div>
 
     <p><?php echo $data["DescrizioneAnnuncio"] ?></p>

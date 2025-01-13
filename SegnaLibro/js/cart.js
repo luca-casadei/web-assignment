@@ -38,7 +38,7 @@ function generateCartArticles(data) {
         }
         result += "</section>";
     } else {
-        result += "<p>Il carrello è vuoto</p></div><section><p>Il carrello è vuoto</p></section>";
+        result += "<p>Il carrello è vuoto</p></div><p>Il carrello è vuoto</p>";
     }
 
     return result;

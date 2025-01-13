@@ -1,5 +1,5 @@
 function generateArticles(articoli, searchedTitle, priceRange, category){
-    let result = "";
+    let result = "<h1>Ricerca</h1>";
 
     for(let i=0; i < articoli.length; i++){
         let articolo = `
