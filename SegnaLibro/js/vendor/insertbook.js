@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             [authorName, ...authorLastName] = authorSelect.options[authorSelect.selectedIndex].text.trim().split(' ');
         }
         authorLastName = authorLastName.join(' ');
-
         const authorData = {
             Nome: authorName,
             Cognome: authorLastName

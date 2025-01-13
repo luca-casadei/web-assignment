@@ -5,17 +5,17 @@ if (!defined('DIRECT_ACCESS')){
 ?>
 
 <div>
-    <input type="submit" value="Applica modifiche">
+    <input type="submit" value="Applica modifiche" form="modifyBookForm">
 </div>
 
 <section>
 <h1>Modifica Libro</h1>
 
-<form method="POST">
+<form id="modifyBookForm">
     <ul>
         <li>
             <label for="book_isbn">ISBN</label>
-            <input type="text" id="book_isbn" name="book_isbn" placeholder="978–12345–001001–000001–8" value="<?php echo $data["EAN"] ?>-<?php echo $data["CodiceRegGroup"] ?>-<?php echo $data["CodiceEditoriale"] ?>-<?php echo $data["CodiceTitolo"] ?>-<?php echo $data["CifraControllo"] ?>" required>
+            <input type="text" id="book_isbn" name="book_isbn" placeholder="978–12345–001001–000001–8" value="<?php echo $data["EAN"] ?>-<?php echo $data["CodiceRegGroup"] ?>-<?php echo $data["CodiceEditoriale"] ?>-<?php echo $data["CodiceTitolo"] ?>-<?php echo $data["CifraControllo"] ?>" disabled>
         </li>
         <li>
             <label for="book_title">Titolo del libro</label>
@@ -41,8 +41,8 @@ if (!defined('DIRECT_ACCESS')){
             <input type="date" id="book_publish_date" name="book_publish_date" placeholder="1980" value="<?php echo $data["DataPubblicazione"]; ?>" required>
         </li>
         <li>
-            <label for="book_desription">Descrizione</label>
-            <textarea id="book_desription" name="book_desription" placeholder="Scrivi qui la trama o qualche nota..."><?php echo $data["Descrizione"]; ?></textarea>
+            <label for="book_description">Descrizione</label>
+            <textarea id="book_description" name="book_description" placeholder="Scrivi qui la trama o qualche nota..."><?php echo $data["Descrizione"]; ?></textarea>
         </li>
         <li>
             <label for="book_edition">Edizione</label>
