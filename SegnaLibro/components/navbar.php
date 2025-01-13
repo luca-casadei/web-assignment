@@ -1,7 +1,7 @@
 <nav data-open="false">
     <ul>
         <li><a href="./index.php"><img src="./images/logo.png" alt="SegnaLibro - Logo" /></a></li>
-        <li <?php echo ($tp["active"] == "home" ? "active" : "")?>><a href="./index.php">Homepage</a></li>
+        <li <?php echo ($tp["active"] == "home" ? "data-active" : "")?>><a href="./index.php">Homepage</a></li>
         <?php 
             if (isUserLoggedIn()){
                 if (!isUserVendor()){
