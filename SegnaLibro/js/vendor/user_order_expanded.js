@@ -1,28 +1,33 @@
 function generateArticles(data) {
     let result = `
     <div>
-        <input type="button" value="Segna come pronto" onclick="markAsReady(${data[0]["CodiceOrdine"]})" />
+        <input type="button" value="Segna come pronto" onclick="markAsReady(${data.articles[0]["CodiceOrdine"]})" />
     </div>
     <section>
-    <h1>Ordine n. ${data[0]["CodiceOrdine"]}</h1>`;
-    for (let i = 0; i < data.length; i++) {
+    <h1>Ordine n. ${data.articles[0]["CodiceOrdine"]}</h1>`;
+    for (let i = 0; i < data.articles.length; i++) {
         let article = `
         <article>
             <header>
-                <h2>${data[i]["Titolo"]}</h2>
-                <p>${data[i]["DataAnnuncio"]}</p>
+                <h2>${data.articles[i]["Titolo"]}</h2>
+                <p>${data.articles[i]["DataAnnuncio"]}</p>
             </header>
-            <div>
-                <figure>
-                    <img src="${data[i]["Immagine"]}" alt="" />
-                </figure>
-                <p>${data[i]["Descrizione"]}</p>
-            </div>
-            <footer>
-                <p>Prezzo: <span>${data[i]["Prezzo"]}€</span></p>
-            </footer>
-        </article>
-        `;
+            <div>`;
+            if (data.articles[i]["NomeImmagine"] != null) {
+                article += `
+                    <figure>
+                        <img src="./images/upload/${data.articles[i]["NomeImmagine"]}" alt="" />
+                    </figure>
+                    `;
+            }
+            article += `
+                <p>${data.articles[i]["Descrizione"]}</p>
+                </div>
+                <footer>
+                    <p>Prezzo: <span>${data.articles[i]["Prezzo"]}€</span></p>
+                </footer>
+            </article>
+            `;
         result += article;
     }
     result += `</section>`;
@@ -40,6 +45,7 @@ async function getExpandedOrder() {
             body: formData
         });
         const json = await response.json();
+        console.log("json getExpandedOrder", json);
         const data = generateArticles(json);
         document.querySelector("main").innerHTML = data;
     } catch (error) {

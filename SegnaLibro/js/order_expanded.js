@@ -20,10 +20,10 @@ function generateArticles(data) {
             </header>
             <div>
             `;
-        if (data.articles[i]["Immagine"] != null) {
+        if (data.articles[i]["NomeImmagine"] != null) {
             article += `
                 <figure>
-                    <img src="${data.articles[i]["Immagine"]}" alt="" />
+                    <img src="./images/upload/${data.articles[i]["NomeImmagine"]}" alt="" />
                 </figure>
                 `;
         }
