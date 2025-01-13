@@ -31,14 +31,14 @@ if (!defined('DIRECT_ACCESS')){
                 <?php } ?>
             </select>
         </li>
-        <li customAuthor>
+        <li>
             <label for="customAuthor">Inserisci autore</label>
             <input type="text" id="customAuthor" placeholder="Nome e cognome...">
         </li>
         </li>
         <li>
             <label for="book_publish_date">Anno</label>
-            <input type="date" id="book_publish_date" name="book_publish_date" placeholder="1980" value="<?php echo $data["DataPubblicazione"]; ?>" required>
+            <input type="date" id="book_publish_date" name="book_publish_date" value="<?php echo $data["DataPubblicazione"]; ?>" required>
         </li>
         <li>
             <label for="book_description">Descrizione</label>

@@ -1563,7 +1563,7 @@ main[data-user_order_expanded] > section:last-of-type > h1 {
   color: #801524;
 }
 
-main[data-user_order_expanded] > section:first-of-type{
+main[data-user_order_expanded] > div{
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -1623,9 +1623,9 @@ main[data-user_order_expanded] > section:last-of-type > article figure img {
   border-radius: 4px;
 }
 
-main[data-user_order_expanded] > section:first-of-type>a,
-main[data-user_order_expanded] > section:first-of-type>input,
-main[data-user_order_expanded] > section:first-of-type>button {
+main[data-user_order_expanded] > div>a,
+main[data-user_order_expanded] > div>input,
+main[data-user_order_expanded] > div>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1641,9 +1641,9 @@ main[data-user_order_expanded] > section:first-of-type>button {
   cursor: pointer;
 }
 
-main[data-user_order_expanded] section:first-of-type>a:hover,
-main[data-user_order_expanded] section:first-of-type>input:hover,
-main[data-user_order_expanded] section:first-of-type>button:hover {
+main[data-user_order_expanded] div>a:hover,
+main[data-user_order_expanded] div>input:hover,
+main[data-user_order_expanded] div>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }

@@ -9,7 +9,7 @@ async function loadBooks(books) {
             <article> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
-                    <input type="image" src="./images/pencil.png" alt="" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
+                    <input type="image" src="./images/pencil.png" alt="Edit book" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                 </header>
                 <p>
                     <ul>
@@ -50,7 +50,7 @@ async function loadBooks(books) {
                 <footer>
                     <input type="button" value="Aggiungi copia" onClick=\'addCopy(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                     <label for="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}">Visualizza annunci</label> 
-                    <input id="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}" type="image" src="./images/list.png" alt="" onclick="gotoRelatedAnnounces(\'${b["EAN"]}\',\'${b["CodiceTitolo"]}\',\'${b["CodiceEditoriale"]}\',\'${b["CodiceRegGroup"]}\')"/>
+                    <input id="gotocopies${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}" type="image" src="./images/list.png" alt="View announces" onclick="gotoRelatedAnnounces(\'${b["EAN"]}\',\'${b["CodiceTitolo"]}\',\'${b["CodiceEditoriale"]}\',\'${b["CodiceRegGroup"]}\')"/>
                 </footer>
             </article>
             `;

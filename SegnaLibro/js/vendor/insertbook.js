@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("main[data-book_insert] form");
     const authorSelect = document.getElementById('authorSelect');
-    const customAuthorLi = document.querySelector('li[customAuthor]');
-    const customAuthorInput = customAuthorLi.querySelector('input');
+    const customAuthorInput = document.querySelector('[placeholder="Nome e cognome..."]');
+    const customAuthorLi = customAuthorInput.parentElement;
     const categorySelect = document.getElementById('categorySelect');
 
     customAuthorLi.style.display = 'none';
