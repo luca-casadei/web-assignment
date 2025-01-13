@@ -743,6 +743,39 @@ main[data-profile] section>a:hover {
   border: 2px, white, solid;
 }
 
+/* Notifcations */
+main[data-notifications]{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+main[data-notifications] > article{
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+main[data-notifications] > article > footer > p > span{
+  font-weight: bold;
+}
+
+main[data-notifications] > article > footer > p {
+  font-size: 18px;
+}
+
+main[data-notifications] > article > header > h2{
+  font-size: 20px;
+  font-weight: bold;
+  color: #801524;
+}
+
 /* Customer's cart page */
 
 main[data-cart] {
@@ -1302,17 +1335,15 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
 main[data-orders]{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-items: center;
+  place-items: center;
 }
 
 main[data-orders] section{
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  place-items: center;
   gap: 20px;
-  justify-items: center;
 }
 
 main[data-orders] h1{
@@ -1331,7 +1362,7 @@ main[data-orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
   border-radius: 10px;
   padding: 20px;
 }
@@ -1377,17 +1408,15 @@ main[data-orders] section > article > footer > input:hover{
 main[data-user_orders]{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-items: center;
+  place-items: center;
 }
 
 main[data-user_orders] section{
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
-  justify-items: center;
+  place-items: center;
 }
 
 main[data-user_orders] h1{
@@ -1406,7 +1435,7 @@ main[data-user_orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
   border-radius: 10px;
   padding: 20px;
 }
