@@ -124,12 +124,10 @@ async function insertOrder() {
       body: formData
     });
     const json = await response.json();
-    redirectToCompleteOrder();
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-
-
+    redirectToCompleteOrder();
   } catch (error) {
     console.log(error.message);
   }

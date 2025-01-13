@@ -176,7 +176,6 @@ class DatabaseHelper
         return $stmt->affected_rows > 0;
     }
 
-
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
     {
         $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
@@ -415,11 +414,18 @@ class DatabaseHelper
             $stmt->bind_param("si", $orderDate, $_SESSION['userid']);
             $stmt->execute();
 
+            $oid = $this->db->insert_id;
+
+            $qr = "INSERT INTO NOTIFICA (UniqueUserID, Titolo, Testo, CodiceOrdine) VALUES (?,'Nuovo ordine','È stato creato un nuovo ordine, seleziona questa notifica per visualizzarlo.',?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ii", $_SESSION['userid'], $oid);
+            $stmt->execute();
+
             $cart_articles = $this->getCart();
             for ($i = 0; $i < count($cart_articles); $i++) {
-                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, LAST_INSERT_ID())";
+                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("issss", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"]);
+                $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"],$oid);
                 $stmt->execute();
             }
 
@@ -514,5 +520,14 @@ class DatabaseHelper
             $this->db->rollback();
             return $e->getMessage();
         }
+    }
+
+    public function getNotificationsOfUUID($userid){
+        $qr = "SELECT * FROM NOTIFICA WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("i", $userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

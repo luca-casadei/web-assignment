@@ -15,6 +15,4 @@ for($i = 0; $i < count($orders); $i++){
 
     header('Content-Type: application/json');
     echo json_encode($data);
-
-
 ?>

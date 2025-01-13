@@ -18,6 +18,6 @@
     <ul>
         <li><img src="./images/bell.png" alt="Notifiche" /></li>
         <li><img src="./images/account.png" alt="Accesso e Profilo" /></li>
-        <li><img src="./images/book.png" alt="Apri navigazione"/></li>
+        <li><img src="./images/book.png"  alt="Apri navigazione"/></li>
     </ul>
 </nav>
