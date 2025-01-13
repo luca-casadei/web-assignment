@@ -136,7 +136,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getAllOrders() {
+    public function getAllOrders()
+    {
         $qr = "SELECT * FROM ORDINE JOIN ACCOUNT ON ORDINE.UniqueUserID = ACCOUNT.UniqueUserID";
         $stmt = $this->db->prepare($qr);
         $stmt->execute();
@@ -146,12 +147,12 @@ class DatabaseHelper
 
     public function getArticlesFromOrder($CodiceOrdine)
     {
-        $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
-                ON COPIE_ORDINE.CodiceEditoriale = COPIA.CodiceEditoriale 
-                AND COPIE_ORDINE.CodiceRegGroup = COPIA.CodiceRegGroup 
-                AND COPIE_ORDINE.EAN = COPIA.EAN
-                AND COPIE_ORDINE.CodiceTitolo = COPIA.CodiceTitolo
-                AND COPIE_ORDINE.NumeroCopia = COPIA.Numero
+        $qr = "SELECT * FROM COPIE_ORDINE JOIN ANNUNCI 
+                ON COPIE_ORDINE.CodiceEditoriale = ANNUNCI.CodiceEditoriale 
+                AND COPIE_ORDINE.CodiceRegGroup = ANNUNCI.CodiceRegGroup 
+                AND COPIE_ORDINE.EAN = ANNUNCI.EAN
+                AND COPIE_ORDINE.CodiceTitolo = ANNUNCI.CodiceTitolo
+                AND COPIE_ORDINE.NumeroCopia = ANNUNCI.NumeroCopia
                 WHERE COPIE_ORDINE.CodiceOrdine = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('i', $CodiceOrdine);
@@ -320,15 +321,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertCopy($book, $title, $price, $description, $date, $condition){
-        try{
+    public function insertCopy($book, $title, $price, $description, $date, $condition)
+    {
+        try {
             $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($qr);
             $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
             $stmt->execute();
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return $e->getMessage();
-        }        
+        }
     }
 
     public function insertBook($book)
@@ -433,7 +435,7 @@ class DatabaseHelper
             return $e->getMessage();
         }
     }
-    
+
     public function insertOrder()
     {
         try {
@@ -455,7 +457,7 @@ class DatabaseHelper
             for ($i = 0; $i < count($cart_articles); $i++) {
                 $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"],$oid);
+                $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"], $oid);
                 $stmt->execute();
             }
 
@@ -471,41 +473,47 @@ class DatabaseHelper
         }
     }
 
-    public function updateBook($book){
+    public function updateBook($book)
+    {
         $qr = "UPDATE LIBRO SET Titolo = ?, Descrizione = ?, DataPubblicazione = ?, Edizione = ? WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?;";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("sssissss", 
-            $book["Titolo"], 
-            $book["Descrizione"], 
-            $book["DataPubblicazione"], 
+        $stmt->bind_param(
+            "sssissss",
+            $book["Titolo"],
+            $book["Descrizione"],
+            $book["DataPubblicazione"],
             $book["Edizione"],
-            $book["EAN"], 
-            $book["CodiceRegGroup"], 
-            $book["CodiceEditoriale"], 
+            $book["EAN"],
+            $book["CodiceRegGroup"],
+            $book["CodiceEditoriale"],
             $book["CodiceTitolo"]
         );
         return $stmt->execute();
     }
 
-    public function updateAuthor($author){
+    public function updateAuthor($author)
+    {
         $qr = "UPDATE AUTORE SET Nome = ?, Cognome = ? WHERE Codice = ?";
         $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("ssi", 
-            $author["Nome"], 
-            $author["Cognome"], 
-            $author["Codice"]  
+        $stmt->bind_param(
+            "ssi",
+            $author["Nome"],
+            $author["Cognome"],
+            $author["Codice"]
         );
         $stmt->execute();
         return $stmt->affected_rows >= 0;
     }
 
-    public function updateBookAuthor($book, $author) {
+    public function updateBookAuthor($book, $author)
+    {
         $qrDelete = "DELETE FROM AUTORI_LIBRO WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
         $stmt = $this->db->prepare($qrDelete);
-        $stmt->bind_param("ssss", 
-            $book["EAN"], 
-            $book["CodiceRegGroup"], 
-            $book["CodiceEditoriale"], 
+        $stmt->bind_param(
+            "ssss",
+            $book["EAN"],
+            $book["CodiceRegGroup"],
+            $book["CodiceEditoriale"],
             $book["CodiceTitolo"]
         );
         $stmt->execute();
@@ -513,13 +521,15 @@ class DatabaseHelper
         return $this->insertBookAuthor($book, $author);
     }
 
-    public function updateBookGenres($book, $category, $genres){ 
+    public function updateBookGenres($book, $category, $genres)
+    {
         $qrDelete = "DELETE FROM GENERE_LIBRO WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
         $stmt = $this->db->prepare($qrDelete);
-        $stmt->bind_param("ssss", 
-            $book["EAN"], 
-            $book["CodiceRegGroup"], 
-            $book["CodiceEditoriale"], 
+        $stmt->bind_param(
+            "ssss",
+            $book["EAN"],
+            $book["CodiceRegGroup"],
+            $book["CodiceEditoriale"],
             $book["CodiceTitolo"]
         );
         $stmt->execute();
@@ -527,7 +537,8 @@ class DatabaseHelper
         return $this->insertBookGenres($book, $category, $genres);
     }
 
-    public function fullyUpdateBook($book, $author, $category, $genres){
+    public function fullyUpdateBook($book, $author, $category, $genres)
+    {
         try {
             $this->db->begin_transaction();
 
@@ -535,14 +546,14 @@ class DatabaseHelper
             if (!$okBook) {
                 throw new Exception("Book not updated");
             }
-            $okAuthor = $this->updateAuthor($author);            
+            $okAuthor = $this->updateAuthor($author);
             $okBookAuthor = $this->updateBookAuthor($book, $author);
             $okBookGenres = $this->updateBookGenres($book, $category, $genres);
 
             $this->db->commit();
             return json_encode([
-                "book" => $okBook, 
-                "author" => $okAuthor, 
+                "book" => $okBook,
+                "author" => $okAuthor,
                 "bookauthor" => $okBookAuthor,
                 "bookgenres" => $okBookGenres
             ]);
@@ -552,7 +563,8 @@ class DatabaseHelper
         }
     }
 
-    public function getNotificationsOfUUID($userid){
+    public function getNotificationsOfUUID($userid)
+    {
         $qr = "SELECT * FROM NOTIFICA WHERE UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("i", $userid);
@@ -560,8 +572,9 @@ class DatabaseHelper
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
-    public function markAsReady($orderCode) {
+
+    public function markAsReady($orderCode)
+    {
         $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param("i", $orderCode);
