@@ -340,6 +340,7 @@ main[data-homevendor] article header {
   gap: 16px;
   align-items: center;
   border-bottom: 2px #801524 solid;
+  padding-bottom: 6px;
 }
 
 main[data-homevendor] article header figure {
@@ -387,12 +388,11 @@ main[data-homevendor] article>footer>input[type="button"] {
   margin-right: auto;
 }
 
-main[data-homevendor] article header input[type="button"]:first-of-type {
+main[data-homevendor] article header input[type="image"]:first-of-type {
+  margin-right: 0;
   margin-left: auto;
-  background-image: url("../images/pencil.png");
-  background-position: center;
-  background-size: 80%;
-  background-repeat: no-repeat;
+  background-color: #801524;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
 }
@@ -474,7 +474,7 @@ main[data-book_insert] div>button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -483,7 +483,7 @@ main[data-book_insert] div>a:hover,
 main[data-book_insert] div>input:hover,
 main[data-book_insert] div>button:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 main[data-book_insert] div>p {
@@ -634,7 +634,7 @@ main[data-profile] div>button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -643,7 +643,7 @@ main[data-profile] div>a:hover,
 main[data-profile] div>input:hover,
 main[data-profile] div>button:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 main[data-profile] div>p {
@@ -695,7 +695,7 @@ main[data-profile] section>form>ul>li {
   display: flex;
   flex-direction: row;
   height: 45px;
-  border: 2px, #801524, solid;
+  border: 2px #801524 solid;
   border-radius: 10px;
 }
 
@@ -740,7 +740,7 @@ main[data-profile] section a {
 
 main[data-profile] section>a:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 /* Customer's cart page */
