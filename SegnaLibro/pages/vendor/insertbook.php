@@ -25,14 +25,14 @@ if (!defined('DIRECT_ACCESS')){
                 <option value="">Seleziona un autore</option>
             </select>
         </li>
-        <li customAuthor>
+        <li>
             <label for="customAuthor">Inserisci autore</label>
             <input type="text" id="customAuthor" placeholder="Nome e cognome...">
         </li>
         </li>
         <li>
             <label for="book_publish_date">Anno</label>
-            <input type="date" id="book_publish_date" name="book_publish_date" placeholder="1980" required>
+            <input type="date" id="book_publish_date" name="book_publish_date" required>
         </li>
         <li>
             <label for="book_desription">Descrizione</label>
