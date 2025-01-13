@@ -321,13 +321,26 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertCopy($book, $title, $price, $description, $date, $condition)
+    public function insertCopy($book, $title, $price, $description, $date, $condition, $images)
     {
         try {
-            $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $this->db->prepare($qr);
-            $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
-            $stmt->execute();
+            $this->db->begin_transaction();
+                $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($qr);
+                $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
+                $stmt->execute();
+
+                $last_copy_id = $this->db->insert_id;
+                for ($i = 1; $i <= count($images); $i++) {
+                    $image = $images[$i-1];
+                    $image += "-" . $last_copy_id . "-" . $i;
+                    $qr = "INSERT INTO IMMAGINE (Numero, Percorso, NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    $stmt = $this->db->prepare($qr);
+                    $stmt->bind_param("isissss", $i, $image, $last_copy_id, $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"],$book["CodiceTitolo"]);
+                    $stmt->execute();
+                }
+            $this->db->commit();
+            return "PROVA db";
         } catch (Exception $e) {
             return $e->getMessage();
         }
