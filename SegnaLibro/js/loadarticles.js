@@ -1,5 +1,5 @@
 function generateArticles(articoli){
-    let result = "<search><form><input name='articlesearch' type='search' aria-label='Barra di ricerca annunci' id='articlesearch' placeholder='Ricerca Annuncio'/><input type='button' aria-label='Bottone di ricerca annunci'/></form></search>";
+    let result = "";
 
     for(let i=0; i < articoli.length; i++){
         let articolo = `
@@ -47,7 +47,6 @@ async function getArticleData() {
 async function expandArticles(ean, codiceEditoriale, codiceTitolo, codiceRegGroup, numeroCopia){
     const url = './apis/api-detailed-article.php';
     try {
-        console.log(codiceEditoriale)
         const formData = new FormData();
         formData.append("expandedarticledata", JSON.stringify({
             "EAN": ean,

@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const customAuthorInput = customAuthorLi.querySelector('input');
     const categorySelect = document.getElementById('categorySelect');
 
-
     customAuthorLi.style.display = 'none';
 
     form.addEventListener("submit", handleFormSubmit);
     authorSelect.addEventListener('change', handleAuthorSelectChange);
 
     async function handleFormSubmit(event) {
+        event.preventDefault();
         const isbn = document.getElementById("book_isbn").value.trim();
         const genresCheckboxes = document.querySelectorAll('input[name="genres[]"]:checked');
 
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!isValidISBN(parts)) {
             alert("ISBN non valido! Assicurati che sia nel formato EAN-CodiceRegGroup-CodiceEditoriale-CodiceTitolo-CifraControllo");
-            event.preventDefault();
             return;
         }
 
@@ -31,9 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
             CodiceTitolo: codTitle,
             CifraControllo: codCheck,
             Titolo: document.getElementById("book_title").value.trim(),
-            Descrizione: document.getElementById("description").value.trim(),
-            DataPubblicazione: document.getElementById("date").value.trim(),
-            Edizione: document.getElementById("edition").value.trim()
+            Descrizione: document.getElementById("book_desription").value.trim(),
+            DataPubblicazione: document.getElementById("book_publish_date").value.trim(),
+            Edizione: document.getElementById("book_edition").value.trim()
         };
 
         let authorName, authorLastName;
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         const categoryData = {
-            Categoria: categorySelect.value
+            Nome: categorySelect.options[categorySelect.selectedIndex].text.trim()
         };
 
         const genresData = Array.from(genresCheckboxes).map(checkbox => checkbox.value);
@@ -61,17 +60,23 @@ document.addEventListener("DOMContentLoaded", () => {
         data.append("category", JSON.stringify(categoryData));
         data.append("genres", JSON.stringify(genresData));
 
+        console.log("bookData", bookData);
+        console.log("authorData", authorData);
+        console.log("categoryData", categoryData);
+        console.log("genresData", genresData);
+
         const url = "./apis/vendor/api-book-insert.php";
         try {
             const response = await fetch(url, {
                 method: "POST",
-                body: formData
+                body: data
             });
 
             if (!response.ok) {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
+            console.log("JSON", json);
         } catch (error) {
             console.log(error.message);
         }
@@ -81,7 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (parts.length !== 5) return false;
 
         const [ean, regGroup, codEdit, codTitle, codCheck] = parts;
-        return /^\d{3}$/.test(ean) && /^\d+$/.test(regGroup) && /^\d+$/.test(codEdit) && /^\d+$/.test(codTitle) && /^\d+$/.test(codCheck);
+
+        const isEANValid = ean.length === 3;
+        const isRegGroupValid = regGroup.length > 0;
+        const isCodEditValid = codEdit.length > 0;
+        const isCodTitleValid = codTitle.length > 0;
+        const isCodCheckValid = codCheck.length > 0;
+
+        return isEANValid && isRegGroupValid && isCodEditValid && isCodTitleValid && isCodCheckValid;
     }
 
     function handleAuthorSelectChange() {

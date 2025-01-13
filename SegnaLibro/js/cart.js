@@ -6,7 +6,7 @@ function generateCartArticles(data) {
     let articles = data.articles;
     if (articles.length !== 0) {
         result += `  
-            <p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" />
+            <p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
         </div>
         <section>
             <h1>Carrello</h1>`;
@@ -84,6 +84,10 @@ async function removeArticle(numero_copia, ean, codice_reg_group, codice_editori
     } catch (error) {
         console.log(error.message);
     }
+}
+
+function redirectToPayment() {
+    window.location.href = "./checkout_index.php";
 }
 
 getCartArticlesData();
