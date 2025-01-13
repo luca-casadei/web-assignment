@@ -1372,9 +1372,98 @@ main[data-orders] section > article > footer > input:hover{
   font-weight: bold;
   cursor: pointer;
 }
+
+/* Vendor order page */
+/* User orders page */
+
+main[data-user_orders]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+main[data-user_orders] section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-items: center;
+}
+
+main[data-user_orders] h1{
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-user_orders] section > article {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #d9d9d9;
+  color: #801524;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main[data-user_orders] section > article span{
+  font-weight: bold;
+}
+
+main[data-user_orders] section > article > header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px #801524 solid;
+  padding-bottom: 10px;
+}
+
+main[data-user_orders] input[type="button"] {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: white;
+  background-color: #801524;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+main[data-user_orders] section > article > footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px #801524 solid;
+  padding-top: 10px;
+}
+
+
+
+main[data-user_orders] section > article > footer > input{
+  padding: 5px;
+  background-color: #801524;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+main[data-user_orders] section > article > footer > input:hover{
+  background-color: #8e1017;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 /* Order expanded page */
-
-
 main[data-order_expanded] {
   display: flex;
   flex-direction: column;

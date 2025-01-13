@@ -136,6 +136,14 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllOrders() {
+        $qr = "SELECT * FROM ORDINE";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getArticlesFromOrder($CodiceOrdine)
     {
         $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
