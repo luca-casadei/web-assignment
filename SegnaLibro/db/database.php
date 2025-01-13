@@ -23,7 +23,7 @@ class DatabaseHelper
 
     public function getAnnounces()
     {
-        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
+        $query = "SELECT a.* FROM ANNUNCI a WHERE (a.NumeroCopia, a.EAN, a.CodiceRegGroup, a.CodiceEditoriale, a.CodiceTitolo) NOT IN (SELECT NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo FROM COPIE_ORDINE)";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,7 +32,7 @@ class DatabaseHelper
 
     public function getAnnouncesOrdered($orderMethod)
     {
-        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
+        $query = "SELECT a.* FROM ANNUNCI a WHERE (a.NumeroCopia, a.EAN, a.CodiceRegGroup, a.CodiceEditoriale, a.CodiceTitolo) NOT IN (SELECT NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo FROM COPIE_ORDINE)";
         switch ($orderMethod) {
             case "pdesc": {
                     $query = $query . " ORDER BY Prezzo DESC";
@@ -136,6 +136,14 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllOrders() {
+        $qr = "SELECT * FROM ORDINE JOIN ACCOUNT ON ORDINE.UniqueUserID = ACCOUNT.UniqueUserID";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getArticlesFromOrder($CodiceOrdine)
     {
         $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
@@ -160,6 +168,7 @@ class DatabaseHelper
                 AND CARRELLO.CodiceRegGroup = ANNUNCI.CodiceRegGroup 
                 AND CARRELLO.EAN = ANNUNCI.EAN
                 AND CARRELLO.CodiceTitolo = ANNUNCI.CodiceTitolo
+                AND CARRELLO.NumeroCopia = ANNUNCI.NumeroCopia
                 WHERE CARRELLO.UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('i', $_SESSION['userid']);
@@ -176,7 +185,6 @@ class DatabaseHelper
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
-
 
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
     {
@@ -436,11 +444,18 @@ class DatabaseHelper
             $stmt->bind_param("si", $orderDate, $_SESSION['userid']);
             $stmt->execute();
 
+            $oid = $this->db->insert_id;
+
+            $qr = "INSERT INTO NOTIFICA (UniqueUserID, Titolo, Testo, CodiceOrdine) VALUES (?,'Nuovo ordine','È stato creato un nuovo ordine, seleziona questa notifica per visualizzarlo.',?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ii", $_SESSION['userid'], $oid);
+            $stmt->execute();
+
             $cart_articles = $this->getCart();
             for ($i = 0; $i < count($cart_articles); $i++) {
-                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, LAST_INSERT_ID())";
+                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("issss", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"]);
+                $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"],$oid);
                 $stmt->execute();
             }
 
@@ -535,5 +550,21 @@ class DatabaseHelper
             $this->db->rollback();
             return $e->getMessage();
         }
+    }
+
+    public function getNotificationsOfUUID($userid){
+        $qr = "SELECT * FROM NOTIFICA WHERE UniqueUserID = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("i", $userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function markAsReady($orderCode) {
+        $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("i", $orderCode);
+        return $stmt->execute();
     }
 }

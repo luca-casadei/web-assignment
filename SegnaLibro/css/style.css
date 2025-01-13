@@ -43,7 +43,7 @@ nav {
   padding: 5px;
 }
 
-nav>ul>li[active] {
+nav>ul>li[data-active] {
   font-weight: bold;
 }
 
@@ -325,7 +325,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
+  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,6 +340,7 @@ main[data-homevendor] article header {
   gap: 16px;
   align-items: center;
   border-bottom: 2px #801524 solid;
+  padding-bottom: 6px;
 }
 
 main[data-homevendor] article header figure {
@@ -387,12 +388,11 @@ main[data-homevendor] article>footer>input[type="button"] {
   margin-right: auto;
 }
 
-main[data-homevendor] article header input[type="button"]:first-of-type {
+main[data-homevendor] article header input[type="image"]:first-of-type {
+  margin-right: 0;
   margin-left: auto;
-  background-image: url("../images/pencil.png");
-  background-position: center;
-  background-size: 80%;
-  background-repeat: no-repeat;
+  background-color: #801524;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
 }
@@ -474,7 +474,7 @@ main[data-book_insert] div>button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -483,7 +483,7 @@ main[data-book_insert] div>a:hover,
 main[data-book_insert] div>input:hover,
 main[data-book_insert] div>button:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 main[data-book_insert] div>p {
@@ -634,7 +634,7 @@ main[data-profile] div>button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -643,7 +643,7 @@ main[data-profile] div>a:hover,
 main[data-profile] div>input:hover,
 main[data-profile] div>button:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 main[data-profile] div>p {
@@ -695,7 +695,7 @@ main[data-profile] section>form>ul>li {
   display: flex;
   flex-direction: row;
   height: 45px;
-  border: 2px, #801524, solid;
+  border: 2px #801524 solid;
   border-radius: 10px;
 }
 
@@ -740,7 +740,7 @@ main[data-profile] section a {
 
 main[data-profile] section>a:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 /* Customer's cart page */
@@ -1372,9 +1372,94 @@ main[data-orders] section > article > footer > input:hover{
   font-weight: bold;
   cursor: pointer;
 }
-/* Order expanded page */
 
+/* Vendor order page */
+main[data-user_orders]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
 
+main[data-user_orders] section{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-items: center;
+}
+
+main[data-user_orders] h1{
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+}
+
+main[data-user_orders] section > article {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #d9d9d9;
+  color: #801524;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main[data-user_orders] section > article span{
+  font-weight: bold;
+}
+
+main[data-user_orders] section > article > header{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px #801524 solid;
+  padding-bottom: 10px;
+}
+
+main[data-user_orders] input[type="button"] {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: white;
+  background-color: #801524;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+main[data-user_orders] section > article > footer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px #801524 solid;
+  padding-top: 10px;
+}
+
+main[data-user_orders] section > article > footer > input{
+  padding: 5px;
+  background-color: #801524;
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+main[data-user_orders] section > article > footer > input:hover{
+  background-color: #8e1017;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* User Order expanded page */
 main[data-order_expanded] {
   display: flex;
   align-items: center;
@@ -1470,6 +1555,98 @@ main[data-order_expanded] article figure img {
   border-radius: 4px;
 }
 
+/* Vendor user order expanded page */
+
+
+main[data-user_order_expanded] > section:last-of-type > h1 {
+  font-size: 30px;
+  color: #801524;
+}
+
+main[data-user_order_expanded] > section:first-of-type{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  top: 55px;
+  width: 30%;
+  background-color: #801524;
+}
+
+main[data-user_order_expanded] > section:last-of-type {
+  width: 70%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article > header{
+  border-bottom: 2px #801524 solid;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article > section:first-of-type{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  gap: 20px;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article > footer{
+  border-top: 2px #801524 solid;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article span{
+  font-weight: bold;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article figure {
+  margin: 0;
+  min-width: 70px;
+  max-width: 70px;
+  max-height: 70px;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+main[data-user_order_expanded] > section:first-of-type>a,
+main[data-user_order_expanded] > section:first-of-type>input,
+main[data-user_order_expanded] > section:first-of-type>button {
+  font-size: 20px;
+  height: 30px;
+  color: white;
+  background-color: #801524;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px, white, solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+main[data-user_order_expanded] section:first-of-type>a:hover,
+main[data-user_order_expanded] section:first-of-type>input:hover,
+main[data-user_order_expanded] section:first-of-type>button:hover {
+  font-weight: bold;
+  border: 2px, white, solid;
+}
 
 /* Mobile version styles */
 @media (width <=768px) {

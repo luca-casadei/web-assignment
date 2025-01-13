@@ -1,9 +1,9 @@
-<?php 
-require('../bootstrap.php');
-
-$orders = $dbh->getOrders();
-for($i = 0; $i < count($orders); $i++){
-        $total_price = 0;
+<?php
+require ('../../bootstrap.php');
+if (isUserLoggedIn() && isUserVendor()){
+    $orders = $dbh->getAllOrders();
+    for($i = 0; $i < count($orders); $i++){
+            $total_price = 0;
         $articles = $dbh->getArticlesFromOrder($orders[$i]['Codice']);
         for($j = 0; $j < count($articles); $j++){
             $total_price += $articles[$j]['Prezzo'];
@@ -15,4 +15,7 @@ for($i = 0; $i < count($orders); $i++){
 
     header('Content-Type: application/json');
     echo json_encode($data);
+} else{
+    http_response_code("403");
+}
 ?>

@@ -9,7 +9,7 @@ async function loadBooks(books) {
             <article> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
-                    <input type="button" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
+                    <input type="image" src="./images/pencil.png" alt="" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                 </header>
                 <p>
                     <ul>
