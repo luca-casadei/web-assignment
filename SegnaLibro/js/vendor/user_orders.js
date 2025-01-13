@@ -15,7 +15,7 @@ function generateUserOrders(data) {
                     <p>${orders[i]["DataOrdine"]}</p>
                 </header>
                 <p>Stato: ${orders[i]["Stato"]}</p>
-                <p>Email: DACAMBIARE@GMAIL.COM</p>
+                <p>Email: ${orders[i]["Email"]}</p>
                 <p>Numero libri: ${orders[i]["Count"]}</p>
                 <footer>
                     <input type="button"

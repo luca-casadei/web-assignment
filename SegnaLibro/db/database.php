@@ -137,7 +137,7 @@ class DatabaseHelper
     }
 
     public function getAllOrders() {
-        $qr = "SELECT * FROM ORDINE";
+        $qr = "SELECT * FROM ORDINE JOIN ACCOUNT ON ORDINE.UniqueUserID = ACCOUNT.UniqueUserID";
         $stmt = $this->db->prepare($qr);
         $stmt->execute();
         $result = $stmt->get_result();
