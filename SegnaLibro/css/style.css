@@ -43,7 +43,7 @@ nav {
   padding: 5px;
 }
 
-nav>ul>li[active] {
+nav>ul>li[data-active] {
   font-weight: bold;
 }
 
@@ -325,7 +325,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.3);
+  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
   display: flex;
   flex-direction: column;
   align-items: center;
