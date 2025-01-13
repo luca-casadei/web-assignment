@@ -346,7 +346,7 @@ class DatabaseHelper
         return $category_data ? $category_data["Codice"] : null;
     }
 
-    public function insertBookGenres($book, $category, $genres){ 
+    public function insertBookGenres($book, $category, $genres): bool{ 
         $category_id = $this->getCategoryId($category);
         $ok = true;
         foreach ($genres as $genre) {
@@ -396,6 +396,87 @@ class DatabaseHelper
             $this->db->commit();
             return $stmt->affected_rows > 0;
         } catch (Exception $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function updateBook($book){
+        $qr = "UPDATE LIBRO SET Titolo = ?, Descrizione = ?, DataPubblicazione = ?, Edizione = ? WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?;";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("sssissss", 
+            $book["Titolo"], 
+            $book["Descrizione"], 
+            $book["DataPubblicazione"], 
+            $book["Edizione"],
+            $book["EAN"], 
+            $book["CodiceRegGroup"], 
+            $book["CodiceEditoriale"], 
+            $book["CodiceTitolo"]
+        );
+        return $stmt->execute();
+    }
+
+    public function updateAuthor($author){
+        $qr = "UPDATE AUTORE SET Nome = ?, Cognome = ? WHERE Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("ssi", 
+            $author["Nome"], 
+            $author["Cognome"], 
+            $author["Codice"]  
+        );
+        $stmt->execute();
+        return $stmt->affected_rows >= 0;
+    }
+
+    public function updateBookAuthor($book, $author) {
+        $qrDelete = "DELETE FROM AUTORI_LIBRO WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
+        $stmt = $this->db->prepare($qrDelete);
+        $stmt->bind_param("ssss", 
+            $book["EAN"], 
+            $book["CodiceRegGroup"], 
+            $book["CodiceEditoriale"], 
+            $book["CodiceTitolo"]
+        );
+        $stmt->execute();
+
+        return $this->insertBookAuthor($book, $author);
+    }
+
+    public function updateBookGenres($book, $category, $genres){ 
+        $qrDelete = "DELETE FROM GENERE_LIBRO WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
+        $stmt = $this->db->prepare($qrDelete);
+        $stmt->bind_param("ssss", 
+            $book["EAN"], 
+            $book["CodiceRegGroup"], 
+            $book["CodiceEditoriale"], 
+            $book["CodiceTitolo"]
+        );
+        $stmt->execute();
+
+        return $this->insertBookGenres($book, $category, $genres);
+    }
+
+    public function fullyUpdateBook($book, $author, $category, $genres){
+        try {
+            $this->db->begin_transaction();
+
+            $okBook = $this->updateBook($book);
+            if (!$okBook) {
+                throw new Exception("Book not updated");
+            }
+            $okAuthor = $this->updateAuthor($author);            
+            $okBookAuthor = $this->updateBookAuthor($book, $author);
+            $okBookGenres = $this->updateBookGenres($book, $category, $genres);
+
+            $this->db->commit();
+            return json_encode([
+                "book" => $okBook, 
+                "author" => $okAuthor, 
+                "bookauthor" => $okBookAuthor,
+                "bookgenres" => $okBookGenres
+            ]);
+        } catch (Exception $e) {
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
