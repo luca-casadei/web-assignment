@@ -126,6 +126,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getSingleOrder($ordineId)
+    {
+        $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ? AND Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('ii', $_SESSION['userid'], $ordineId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function getOrders()
     {
         $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ?";

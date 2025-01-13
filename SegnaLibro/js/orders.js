@@ -53,9 +53,7 @@ async function expandOrder(codiceOrdine, prezzoTotale, dataOrdine){
     try {
         const formData = new FormData();
         formData.append('orderexpanded', JSON.stringify({
-            "codiceOrdine": codiceOrdine,
-            "prezzoTotale": prezzoTotale,
-            "dataOrdine": dataOrdine
+            "codiceOrdine": codiceOrdine
         }));
         const response = await fetch(url, {
             method: "POST",

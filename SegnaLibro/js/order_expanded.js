@@ -2,13 +2,13 @@ function generateArticles(data) {
     let result = `
     <div>
         <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
-        <p>Data ordine: <span>${data["dataOrdine"]}</span></p>
+        <p>Data ordine: <span>${data["DataOrdine"]}</span></p>
         <p>N. articoli: <span>${data.articles.length}</span></p>
     </div>
     <section>
     <h1>Ordine n. ${data.articles[0]["CodiceOrdine"]}</h1>
     <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
-    <p>Data ordine: <span>${data["dataOrdine"]}</span></p>
+    <p>Data ordine: <span>${data["DataOrdine"]}</span></p>
     <p>N. articoli: <span>${data.articles.length}</span></p>
     `;
     for (let i = 0; i < data.articles.length; i++) {
