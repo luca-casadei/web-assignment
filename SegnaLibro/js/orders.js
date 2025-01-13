@@ -17,7 +17,7 @@ function generateOrders(data) {
                 <p>Numero articoli: <span> ${orders[i]["Count"]}</span></p>
                 <p>Stato: <span>${orders[i]["Stato"]}</span></p>
                 <footer>
-                    <input type="button" value="Visualizza ordine"/>
+                    <input type="button" value="Visualizza ordine" onClick=\'expandOrder(${orders[i]["Codice"]})\'/>
                     <p>Prezzo: <span>${orders[i]["PrezzoTotaleOrdine"]}€</span></p>
                 </footer>
             </article>
@@ -43,6 +43,28 @@ async function getOrdersData() {
         const json = await response.json();
         const data = generateOrders(json);
         document.querySelector("main").innerHTML = data;
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+async function expandOrder(codiceOrdine){
+    const url = './apis/api-order-expanded.php';
+    try {
+        const formData = new FormData();
+        formData.append('orderexpanded', JSON.stringify({
+            "codiceOrdine": codiceOrdine
+        }));
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        } else {
+            window.location.href = "./order_expanded_index.php";
+        }
     } catch (error) {
         console.log(error.message);
     }
