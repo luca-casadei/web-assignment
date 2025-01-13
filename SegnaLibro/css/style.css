@@ -743,39 +743,6 @@ main[data-profile] section>a:hover {
   border: 2px, white, solid;
 }
 
-/* Notifcations */
-main[data-notifications]{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-}
-
-main[data-notifications] > article{
-  background-color: #d9d9d9;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-main[data-notifications] > article > footer > p > span{
-  font-weight: bold;
-}
-
-main[data-notifications] > article > footer > p {
-  font-size: 18px;
-}
-
-main[data-notifications] > article > header > h2{
-  font-size: 20px;
-  font-weight: bold;
-  color: #801524;
-}
-
 /* Customer's cart page */
 
 main[data-cart] {
@@ -1335,15 +1302,17 @@ main[data-book_modify] section form ul li input[type="checkbox"] {
 main[data-orders]{
   display: flex;
   flex-direction: column;
-  place-items: center;
+  align-items: center;
+  justify-items: center;
 }
 
 main[data-orders] section{
   width: 100%;
   display: flex;
   flex-direction: column;
-  place-items: center;
+  align-items: center;
   gap: 20px;
+  justify-items: center;
 }
 
 main[data-orders] h1{
@@ -1362,7 +1331,7 @@ main[data-orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
 }
@@ -1408,15 +1377,17 @@ main[data-orders] section > article > footer > input:hover{
 main[data-user_orders]{
   display: flex;
   flex-direction: column;
-  place-items: center;
+  align-items: center;
+  justify-items: center;
 }
 
 main[data-user_orders] section{
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  place-items: center;
+  justify-items: center;
 }
 
 main[data-user_orders] h1{
@@ -1435,7 +1406,7 @@ main[data-user_orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 20px;
 }
@@ -1554,31 +1525,32 @@ main[data-order_expanded] article figure img {
 }
 
 /* Vendor user order expanded page */
-main[data-user_order_expanded] {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
 
-main[data-user_order_expanded] h1 {
+
+main[data-user_order_expanded] > section:last-of-type > h1 {
   font-size: 30px;
   color: #801524;
 }
 
-main[data-user_order_expanded] article{
-  width: 80%;
-  background-color: #fff;
-  color: #801524;
-  border-radius: 6px;
-  box-shadow: 0 3px 5px #888;
+main[data-user_order_expanded] > section:first-of-type{
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  gap: 8px;
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+  top: 55px;
+  width: 30%;
+  background-color: #801524;
 }
 
-main[data-user_order_expanded] article > header{
+main[data-user_order_expanded] > section:last-of-type {
+  width: 70%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+main[data-user_order_expanded] > section:last-of-type > article > header{
   border-bottom: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1586,14 +1558,14 @@ main[data-user_order_expanded] article > header{
   justify-content: space-between;
 }
 
-main[data-user_order_expanded] article > div{
+main[data-user_order_expanded] > section:last-of-type > article > section:first-of-type{
   display: flex;
   flex-direction: row;
   height: 100px;
   gap: 20px;
 }
 
-main[data-user_order_expanded] article > footer{
+main[data-user_order_expanded] > section:last-of-type > article > footer{
   border-top: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1601,25 +1573,28 @@ main[data-user_order_expanded] article > footer{
   justify-content: end;
 }
 
-main[data-user_order_expanded] article span{
+main[data-user_order_expanded] > section:last-of-type > article span{
   font-weight: bold;
 }
 
-main[data-user_order_expanded] article figure {
+main[data-user_order_expanded] > section:last-of-type > article figure {
   margin: 0;
+  min-width: 70px;
+  max-width: 70px;
+  max-height: 70px;
 }
 
-main[data-user_order_expanded] article figure img {
+main[data-user_order_expanded] > section:last-of-type > article figure img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 4px;
 }
 
-main[data-user_order_expanded] div>a,
-main[data-user_order_expanded] div>input,
-main[data-user_order_expanded] div>button {
+main[data-user_order_expanded] > section:first-of-type>a,
+main[data-user_order_expanded] > section:first-of-type>input,
+main[data-user_order_expanded] > section:first-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1635,9 +1610,9 @@ main[data-user_order_expanded] div>button {
   cursor: pointer;
 }
 
-main[data-user_order_expanded] div>a:hover,
-main[data-user_order_expanded] div>input:hover,
-main[data-user_order_expanded] div>button:hover {
+main[data-user_order_expanded] section:first-of-type>a:hover,
+main[data-user_order_expanded] section:first-of-type>input:hover,
+main[data-user_order_expanded] section:first-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
