@@ -136,6 +136,14 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllOrders() {
+        $qr = "SELECT * FROM ORDINE JOIN ACCOUNT ON ORDINE.UniqueUserID = ACCOUNT.UniqueUserID";
+        $stmt = $this->db->prepare($qr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getArticlesFromOrder($CodiceOrdine)
     {
         $qr = "SELECT * FROM COPIE_ORDINE JOIN COPIA 
@@ -529,5 +537,12 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function markAsReady($orderCode) {
+        $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param("i", $orderCode);
+        return $stmt->execute();
     }
 }

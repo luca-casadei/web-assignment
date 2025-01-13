@@ -8,8 +8,9 @@
                     echo '<li '.($tp["active"] == "cart" ? "active" : "").'><a href="./cart_index.php">Carrello</a></li>';
                     echo '<li '.($tp["active"] == "orders" ? "active" : "").'><a href="./orders_index.php">Ordini</a></li>';
                     echo '<li '.($tp["active"] == "search" ? "active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
+                } else {
+                    echo '<li '.($tp["active"] == "user_orders" ? "active" : "").'><a href="./user_orders_index.php">Ordini utenti</a></li>';
                 }
-               
             }else{
                 echo '<li '.($tp["active"] == "search" ? "active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
             }
