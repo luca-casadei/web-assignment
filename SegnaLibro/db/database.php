@@ -23,7 +23,7 @@ class DatabaseHelper
 
     public function getAnnounces()
     {
-        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
+        $query = "SELECT a.* FROM ANNUNCI a WHERE (a.NumeroCopia, a.EAN, a.CodiceRegGroup, a.CodiceEditoriale, a.CodiceTitolo) NOT IN (SELECT NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo FROM COPIE_ORDINE)";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -32,7 +32,7 @@ class DatabaseHelper
 
     public function getAnnouncesOrdered($orderMethod)
     {
-        $query = "SELECT * FROM ANNUNCI WHERE ANNUNCI.NumeroCopia NOT IN (SELECT NumeroCopia FROM COPIE_ORDINE)";
+        $query = "SELECT a.* FROM ANNUNCI a WHERE (a.NumeroCopia, a.EAN, a.CodiceRegGroup, a.CodiceEditoriale, a.CodiceTitolo) NOT IN (SELECT NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo FROM COPIE_ORDINE)";
         switch ($orderMethod) {
             case "pdesc": {
                     $query = $query . " ORDER BY Prezzo DESC";
@@ -167,6 +167,7 @@ class DatabaseHelper
                 AND CARRELLO.CodiceRegGroup = ANNUNCI.CodiceRegGroup 
                 AND CARRELLO.EAN = ANNUNCI.EAN
                 AND CARRELLO.CodiceTitolo = ANNUNCI.CodiceTitolo
+                AND CARRELLO.NumeroCopia = ANNUNCI.NumeroCopia
                 WHERE CARRELLO.UniqueUserID = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('i', $_SESSION['userid']);
