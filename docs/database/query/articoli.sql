@@ -43,5 +43,5 @@ CREATE VIEW ANNUNCI AS (
     AND IMMAGINE.EAN = COPIA.EAN
 	AND IMMAGINE.CodiceTitolo = COPIA.CodiceTitolo
     AND IMMAGINE.NumeroCopia = COPIA.Numero
-    GROUP BY COPIA.EAN, COPIA.CodiceEditoriale, COPIA.CodiceRegGroup, COPIA.CodiceTitolo
+    GROUP BY COPIA.EAN, COPIA.CodiceEditoriale, COPIA.CodiceRegGroup, COPIA.CodiceTitolo, COPIA.Numero
 );
