@@ -71,30 +71,15 @@ async function fetchCategoryGenres(categoryId) {
     }
 }
 
-function removeDuplicateCheckboxes() {
-    const fieldset = document.querySelector("fieldset[data-genres-container]");
-    const seen = new Set();
-    const checkboxes = fieldset.querySelectorAll("input[type='checkbox']");
-    checkboxes.forEach(checkbox => {
-        if (seen.has(checkbox.value)) {
-            checkbox.closest("label").remove();
-        } else {
-            seen.add(checkbox.value);
-        }
-    });
-}
-
-
 async function updateGenres() {
     const categorySelect = document.querySelector("#categorySelect");
-    const jsGenresContainer = document.querySelector("fieldset[data-genres-container] div[data-js-genres]");
+    const jsGenresContainer = document.querySelector("fieldset[data-genres-container]");
     jsGenresContainer.innerHTML = "";
     const selectedCategoryId = categorySelect.value;
     if (selectedCategoryId) {
         try {
             const genres = await fetchCategoryGenres(selectedCategoryId);
             jsGenresContainer.insertAdjacentHTML("beforeend", loadGenresCheckboxes(genres));
-            removeDuplicateCheckboxes();
         } catch (error) {
             console.log(error.message);
         }

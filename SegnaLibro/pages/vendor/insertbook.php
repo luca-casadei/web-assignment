@@ -51,7 +51,7 @@ if (!defined('DIRECT_ACCESS')){
         </li>
         <li>
             <label>Generi</label>
-            <fieldset data-genres-container><div data-js-genres></div></fieldset>
+            <fieldset data-genres-container></fieldset>
         </li>
     </ul>
     </form>
