@@ -16,26 +16,26 @@ else if(isset($_POST["newCopy"])) {
 
     $index = 0;
     $imgCount = 0;
+    $fileExtensions = [];
     while (isset($_FILES["imgarticle$index"])) {
+        $lastDotIndex = strrpos($_FILES["imgarticle$index"]["name"], '.');
+        $fileExt = substr($_FILES["imgarticle$index"]["name"], $lastDotIndex);
+        array_push($fileExtensions, $fileExt);
         $imgCount++;
         $index++;
     }
 
-    $result = $dbh->insertCopy($bookdata, $title, $price, $description, $date, $condition, $imgCount);
+    $result = $dbh->insertCopy($bookdata, $title, $price, $description, $date, $condition, $fileExtensions);
 
     for ($i = 0; $i < $imgCount; $i++) {
         $filename = $bookdata["EAN"] . "-" . $bookdata["CodiceRegGroup"] . "-" . $bookdata["CodiceEditoriale"] . "-" . $bookdata["CodiceTitolo"] . "-" . $result[$i];
         if (isset($_FILES["imgarticle$i"]) && strlen($_FILES["imgarticle$i"]["name"]) > 0) {
-            if($i == 1) {
-                $path = __DIR__ . "/../." . IMAGE_PATH;
-                list($resultIMG, $msgIMG) = uploadImage($path, $_FILES["imgarticle$i"], $filename);
-                $imgarticle = $msgIMG;
-                $baseName = pathinfo($imgarticle, PATHINFO_FILENAME);
-            }
+            $path = __DIR__ . "/../." . IMAGE_PATH;
+            list($resultIMG, $msgIMG) = uploadImage($path, $_FILES["imgarticle$i"], $filename);
         }
     }
     
-    echo $path;
+    echo json_encode($fileExtensions);
 } else {
     echo http_response_code(400);
 }

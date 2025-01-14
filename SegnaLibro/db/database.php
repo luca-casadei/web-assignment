@@ -381,7 +381,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertCopy($book, $title, $price, $description, $date, $condition, $images_count)
+    public function insertCopy($book, $title, $price, $description, $date, $condition, $file_extensions)
     {
         try {
             $this->db->begin_transaction();
@@ -391,8 +391,8 @@ class DatabaseHelper
             $stmt->execute();
 
             $last_copy_id = $this->db->insert_id;
-            for ($i = 1; $i <= $images_count; $i++) {
-                $image = $book["EAN"]."-".$book["CodiceRegGroup"]."-".$book["CodiceEditoriale"]."-".$book["CodiceTitolo"]."-" . $last_copy_id . "-" . $i;
+            for ($i = 1; $i <= count($file_extensions); $i++) {
+                $image = $book["EAN"]."-".$book["CodiceRegGroup"]."-".$book["CodiceEditoriale"]."-".$book["CodiceTitolo"]."-" . $last_copy_id . "-" . $i . $file_extensions[$i-1];
                 $qr = "INSERT INTO IMMAGINE (Numero, Percorso, NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo) VALUES(?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
                 $stmt->bind_param("isissss", $i, $image, $last_copy_id, $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"]);
@@ -400,7 +400,7 @@ class DatabaseHelper
             }
             $this->db->commit();
             $extras = array();
-            for ($i = 1; $i <= $images_count; $i++) {
+            for ($i = 1; $i <= count($file_extensions); $i++) {
                 $extras[] = $last_copy_id . "-" . $i;
             }
             return $extras;
