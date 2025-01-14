@@ -54,9 +54,8 @@ if (!defined('DIRECT_ACCESS')){
             <fieldset data-genres-container><div data-js-genres></div></fieldset>
         </li>
     </ul>
+    <div>
+        <input type="submit" value="Aggiungi Libro">
+    </div>
     </form>
-</section>
-
-<section>
-    <a href="./index.php">Aggiungi libro</a>
 </section>

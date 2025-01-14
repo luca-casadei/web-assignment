@@ -46,9 +46,9 @@
                     <input type="text" id="card_holder" name="card_holder" placeholder="Mario Rossi" required />
                 </li>
             </ul>
-
+            <div>
+                  <input type="submit" value="Completa ordine"/>
+            </div>
+            
         </form>
-    </section>
-    <section>
-          <input type="submit" value="Completa ordine" form="checkoutForm" />
     </section>
