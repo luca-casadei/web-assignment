@@ -478,37 +478,6 @@ main[data-book_insert] {
   gap: 20px;
 }
 
-main[data-book_insert] form>div:last-of-type>a,
-main[data-book_insert] form>div:last-of-type>input,
-main[data-book_insert] form>div:last-of-type>button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px white solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-book_insert] form>div:last-of-type>a:hover,
-main[data-book_insert] form>div:last-of-type>input:hover,
-main[data-book_insert] form>div:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px white solid;
-}
-
-main[data-book_insert] form>div:last-of-type>p {
-  color: white;
-  text-align: center;
-  font-size: 32px;
-}
-
 main[data-book_insert] section:first-of-type {
   width: 80%;
   display: flex;
@@ -631,7 +600,6 @@ main[data-book_insert] section:first-of-type form fieldset[data-genres-container
   margin: 0 5px;
 }
 
-
 /* Vendor's add copy page */
 main[data-add_copy] {
   display: flex;
@@ -642,37 +610,6 @@ main[data-add_copy] h1{
   font-size: 30px;
   margin-bottom: 5px;
   color: #801524;
-}
-
-main[data-add_copy] div:last-of-type a,
-main[data-add_copy] div:last-of-type input,
-main[data-add_copy] div:last-of-type button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px white solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-add_copy] div:last-of-type>a:hover,
-main[data-add_copy] div:last-of-type>input:hover,
-main[data-add_copy] div:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px white solid;
-}
-
-main[data-add_copy] div:last-of-type>p {
-  color: white;
-  text-align: center;
-  font-size: 32px;
 }
 
 main[data-add_copy] section:first-of-type {
@@ -804,31 +741,6 @@ main[data-profile] {
   gap: 20px;
 }
 
-main[data-profile] section:last-of-type>a,
-main[data-profile] section:last-of-type>input,
-main[data-profile] section:last-of-type>button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px white solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-profile] section:last-of-type>a:hover,
-main[data-profile] section:last-of-type>input:hover,
-main[data-profile] section:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px white solid;
-}
-
 main[data-profile] div>p {
   color: white;
   text-align: center;
@@ -917,7 +829,6 @@ main[data-profile] section:first-of-type>form>input:hover {
   font-weight: bold;
 }
 
-
 main[data-profile] section>a:hover {
   font-weight: bold;
   border: 2px white solid;
@@ -991,31 +902,6 @@ main>div {
   right: 0;
   top: 55px;
   bottom: 50px;
-}
-
-main[data-cart] section:last-of-type>a,
-main[data-cart] section:last-of-type>input,
-main[data-cart] section:last-of-type>button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px, white, solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-cart] section:last-of-type>a:hover,
-main[data-cart] section:last-of-type>input:hover,
-main[data-cart] section:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px, white, solid;
 }
 
 main[data-cart] div>p {
@@ -1131,23 +1017,6 @@ main[data-checkout] {
   gap: 20px;
 }
 
-main[data-checkout]>div:last-of-type>input,
-main[data-checkout] form input[type="submit"] {
-  font-size: 18px;
-  color: white;
-  background-color: #801524;
-  border: 1px solid white;
-  border-radius: 10px;
-  cursor: pointer;
-  padding: 10px 20px;
-}
-
-main[data-checkout]>div:last-of-type>input:hover,
-main[data-checkout] form input[type="submit"]:hover {
-  font-weight: bold;
-  border: 2px, white, solid;
-}
-
 main[data-checkout]>section:first-of-type {
   width: 80%;
   display: flex;
@@ -1260,31 +1129,6 @@ main[data-book_details] {
   gap: 20px;
 }
 
-main[data-book_details] section:last-of-type>a,
-main[data-book_details] section:last-of-type>input,
-main[data-book_details] section:last-of-type>button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px white solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-book_details] section:last-of-type>a:hover,
-main[data-book_details] section:last-of-type>input:hover,
-main[data-book_details] section:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px, white, solid;
-}
-
 main[data-book_details] section:first-of-type {
   display: flex;
   flex-direction: column;
@@ -1369,32 +1213,6 @@ main[data-book_details] section:first-of-type>footer {
 }
 
 /* Modify book page */
-
-
-main[data-book_modify] div:last-of-type>a,
-main[data-book_modify] div:last-of-type>input,
-main[data-book_modify] div:last-of-type>button {
-  font-size: 20px;
-  height: 30px;
-  color: white;
-  background-color: #801524;
-  font-weight: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px, white, solid;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-main[data-book_modify] div:last-of-type>a:hover,
-main[data-book_modify] div:last-of-type>input:hover,
-main[data-book_modify] div:last-of-type>button:hover {
-  font-weight: bold;
-  border: 2px, white, solid;
-}
 
 main[data-book_modify] div>p {
   color: white;
@@ -1692,7 +1510,6 @@ main[data-order_expanded] section:last-of-type p {
   font-size: 20px;
 }
 
-
 main[data-order_expanded] section:first-of-type {
   width: 80%;
   display: flex;
@@ -1766,7 +1583,6 @@ main[data-order_expanded] article figure img {
 }
 
 /* Vendor user order expanded page */
-
 
 main[data-user_order_expanded] {
   display: flex;
@@ -1852,9 +1668,27 @@ main[data-user_order_expanded] > section:first-of-type > article figure img {
   border-radius: 4px;
 }
 
-main[data-user_order_expanded] > section:last-of-type>a,
-main[data-user_order_expanded] > section:last-of-type>input,
-main[data-user_order_expanded] > section:last-of-type>button {
+/* Stili comuni per pulsanti */
+main[data-book_insert] form>div:last-of-type>a,
+main[data-book_insert] form>div:last-of-type>input,
+main[data-book_insert] form>div:last-of-type>button,
+main[data-add_copy] div:last-of-type>a,
+main[data-add_copy] div:last-of-type>input,
+main[data-add_copy] div:last-of-type>button,
+main[data-profile] section:last-of-type>a,
+main[data-profile] section:last-of-type>input,
+main[data-profile] section:last-of-type>button,
+main[data-cart] section:last-of-type>a,
+main[data-cart] section:last-of-type>input,
+main[data-cart] section:last-of-type>button,
+main[data-checkout] > div:last-of-type > input,
+main[data-checkout] form input[type="submit"],
+main[data-book_details] section:last-of-type>a,
+main[data-book_details] section:last-of-type>input,
+main[data-book_details] section:last-of-type>button,
+main[data-book_modify] div:last-of-type>a,
+main[data-book_modify] div:last-of-type>input,
+main[data-book_modify] div:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1865,16 +1699,34 @@ main[data-user_order_expanded] > section:last-of-type>button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 1px, white, solid;
+  border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
 }
 
-main[data-user_order_expanded] section:last-of-type>a:hover,
-main[data-user_order_expanded] section:last-of-type>input:hover,
-main[data-user_order_expanded] section:last-of-type>button:hover {
+/* Stili comuni in hover */
+main[data-book_insert] form>div:last-of-type>a:hover,
+main[data-book_insert] form>div:last-of-type>input:hover,
+main[data-book_insert] form>div:last-of-type>button:hover,
+main[data-add_copy] div:last-of-type>a:hover,
+main[data-add_copy] div:last-of-type>input:hover,
+main[data-add_copy] div:last-of-type>button:hover,
+main[data-profile] section:last-of-type>a:hover,
+main[data-profile] section:last-of-type>input:hover,
+main[data-profile] section:last-of-type>button:hover,
+main[data-cart] section:last-of-type>a:hover,
+main[data-cart] section:last-of-type>input:hover,
+main[data-cart] section:last-of-type>button:hover,
+main[data-checkout] > div:last-of-type > input:hover,
+main[data-checkout] form input[type="submit"]:hover,
+main[data-book_details] section:last-of-type>a:hover,
+main[data-book_details] section:last-of-type>input:hover,
+main[data-book_details] section:last-of-type>button:hover,
+main[data-book_modify] div:last-of-type>a:hover,
+main[data-book_modify] div:last-of-type>input:hover,
+main[data-book_modify] div:last-of-type>button:hover {
   font-weight: bold;
-  border: 2px, white, solid;
+  border: 2px white solid;
 }
 
 /* Mobile version styles */
@@ -2004,7 +1856,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-
   main[data-cart] section:first-of-type {
     width: 100%;
   }
@@ -2012,8 +1863,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
   main[data-cart] div {
     display: none;
   }
-
- 
 
   main[data-cart] section>input[type="button"]:hover {
     display: flex;
@@ -2024,7 +1873,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     display: flex;
     flex-direction: column;
   }
-
 
   main[data-checkout] section:first-of-type {
     width: 100%;
@@ -2063,8 +1911,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     width: 100%;
   }
 
-  
-
   main[data-order_expanded] section:first-of-type > p{
     display: flex;
     flex-direction: row;
@@ -2072,9 +1918,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     font-size: 20px;
   }
 
-
-
-  
   main[data-book_modify] section:first-of-type,
   main[data-user_order_expanded] section:first-of-type,
   main[data-add_copy] section:first-of-type{
@@ -2164,10 +2007,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
 
   main[data-advancedsearch]>header>form {
     flex-direction: row;
-  }
-
-  main[data-advancedsearch]>header>form>h2 {
-    display: none;
   }
 
   main[data-advancedsearch]>header,
