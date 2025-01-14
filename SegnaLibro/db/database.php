@@ -299,7 +299,7 @@ class DatabaseHelper
             $qr = "INSERT INTO REGGROUP(Codice, Nome) VALUES (?, ?)";
             $stmt = $this->db->prepare($qr);
             $grg = "Generico";
-            $stmt->bind_param('ss', $book["CodiceEditoriale"], $grg);
+            $stmt->bind_param('ss', $book["CodiceRegGroup"], $grg);
             $stmt->execute();
         }catch(Exception $e){
             $r = $r."Reggroup-";
