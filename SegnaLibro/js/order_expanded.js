@@ -32,10 +32,20 @@ function generateArticles(data) {
     result += `</section>
     <section>
         <h1>Dettagli ordine:</h1>
-        <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
-        <p>Data ordine: <span>${data["DataOrdine"]}</span></p>
-        <p>N. articoli: <span>${data.articles.length}</span></p>
-        <p>Stato: <span>${data["stato"]}</span></p>
+        <ul>
+            <li>
+                <p>Prezzo totale:</p> <span>${data["prezzoTotale"]}€</span>
+            </li>
+            <li>
+                <p>Data ordine:</p> <span>${data["DataOrdine"]}</span>
+            </li>
+            <li>
+                <p>N. articoli:</p> <span>${data.articles.length}</span>
+            </li>
+            <li>
+                <p>Stato:</p> <span>${data["stato"]}</span>
+            </li>
+        </ul>
     </section>`;
 
     return result;
