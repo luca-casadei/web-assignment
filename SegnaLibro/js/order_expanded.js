@@ -31,6 +31,7 @@ function generateArticles(data) {
     }
     result += `</section>
     <section>
+        <h1>Dettagli ordine:</h1>
         <p>Prezzo totale: <span>${data["prezzoTotale"]}€</span></p>
         <p>Data ordine: <span>${data["DataOrdine"]}</span></p>
         <p>N. articoli: <span>${data.articles.length}</span></p>
