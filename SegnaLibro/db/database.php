@@ -126,6 +126,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getSingleOrder($ordineId)
+    {
+        $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ? AND Codice = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('ii', $_SESSION['userid'], $ordineId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
     public function getOrders()
     {
         $qr = "SELECT * FROM ORDINE WHERE UniqueUserID = ?";
@@ -260,9 +270,43 @@ class DatabaseHelper
         }
     }
 
+    private function insertISBN($book){
+        $r = "";
+        try{
+            $qr = "INSERT INTO GS1(EAN) VALUES (?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param('s', $book["EAN"]);
+            $stmt->execute();
+        } catch(Exception $e){
+            $r = $r."GS1-";
+            //return $e->getMessage();
+        }
+        try{
+            $qr = "INSERT INTO REGGROUP(Codice, Nome) VALUES (?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $grg = "Generico";
+            $stmt->bind_param('ss', $book["CodiceEditoriale"], $grg);
+            $stmt->execute();
+        }catch(Exception $e){
+            $r = $r."Reggroup-";
+            //return $e->getMessage();
+        }
+        try{
+            $qr = "INSERT INTO EDITORE(CodiceEditoriale, Nome) VALUES (?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param('ss', $book["CodiceEditoriale"], $book["NomeEditore"]);
+            $stmt->execute();
+        }catch(Exception $e){
+            $r = $r."Editore-";
+            //return $e->getMessage();
+        }
+        return $r;
+    }
+
     public function fullyInsertBook($book, $author, $category, $genres)
     {
         try {
+            $okISBN = $this->insertISBN($book);
             $this->db->begin_transaction();
             $okBook = $this->insertBook($book);
             if (!$okBook) {
@@ -277,7 +321,8 @@ class DatabaseHelper
                 "book" => $okBook,
                 "author" => $okAuthor,
                 "bookauthor" => $okBookAuthor,
-                "bookgenres" => $okBookGenres
+                "bookgenres" => $okBookGenres,
+                "isbn" => $okISBN
             ]);
         } catch (Exception $e) {
             return $e->getMessage();
@@ -327,7 +372,7 @@ class DatabaseHelper
             $this->db->begin_transaction();
                 $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("ssssisssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
+                $stmt->bind_param("ssssdsssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
                 $stmt->execute();
 
                 $last_copy_id = $this->db->insert_id;
@@ -464,9 +509,10 @@ class DatabaseHelper
 
             $oid = $this->db->insert_id;
 
-            $qr = "INSERT INTO NOTIFICA (UniqueUserID, Titolo, Testo, CodiceOrdine) VALUES (?,'Nuovo ordine','È stato creato un nuovo ordine, seleziona questa notifica per visualizzarlo.',?)";
+            $qr = "INSERT INTO NOTIFICA (UniqueUserID, Titolo, Testo, CodiceOrdine) VALUES (?,'Nuovo ordine','È stato creato un nuovo ordine, seleziona questa notifica per visualizzarlo.',?), (?,'Nuovo ordine','È stato creato un nuovo ordine, seleziona questa notifica per visualizzarlo.',?);";
             $stmt = $this->db->prepare($qr);
-            $stmt->bind_param("ii", $_SESSION['userid'], $oid);
+            $admid = 1;
+            $stmt->bind_param("iiii", $_SESSION['userid'], $oid, $admid, $oid);
             $stmt->execute();
 
             $cart_articles = $this->getCart();
@@ -591,9 +637,25 @@ class DatabaseHelper
 
     public function markAsReady($orderCode)
     {
-        $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
-        $stmt = $this->db->prepare($qr);
-        $stmt->bind_param("i", $orderCode);
-        return $stmt->execute();
+        try{
+            $qr = "UPDATE ORDINE SET ORDINE.Stato='Pronto' WHERE Codice = ?";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("i", $orderCode);
+            $stmt->execute();
+            $this->db->begin_transaction();
+            $qr = "SELECT UniqueUserID FROM ORDINE WHERE ORDINE.Codice = ?";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("i", $orderCode);
+            $stmt->execute();
+            $uid = $stmt->get_result()->fetch_assoc()["UniqueUserID"];
+            $qr = "INSERT INTO NOTIFICA (UniqueUserID, Titolo, Testo, CodiceOrdine) VALUES (?,'Ordine pronto per il ritiro','È ora possibile ritirare il tuo ordine al campus, clicca per i dettagli ordine.',?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ii", $uid, $orderCode);
+            $stmt->execute();
+            $this->db->commit();
+            return 'SUCCESS';
+        } catch(Exception $e){
+            return $e->getMessage();
+        }
     }
 }

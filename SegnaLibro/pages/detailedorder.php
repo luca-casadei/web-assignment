@@ -3,12 +3,7 @@ if (!defined('DIRECT_ACCESS')) {
     header("Location: ../index.php");
 }
 ?>
-<div>
-    <p>Prezzo: <strong><?php echo $data["Prezzo"]?>€</strong></p>
-    <input type="button" aria-label="Aggiungi al carrello" 
-    onclick='insertArticleInTheCart()' 
-    value="Aggiungi al carrello" />
-    </div>
+
 <section>
     <header>
         <h1><?php echo $data["Titolo"] ?></h1>
@@ -27,11 +22,10 @@ if (!defined('DIRECT_ACCESS')) {
     </div>
 
     <p><?php echo $data["DescrizioneAnnuncio"] ?></p>
-
-    <footer>
-        <p>Prezzo: <strong><?php echo $data["Prezzo"] ?>€</strong></p>
-        <input type="button" aria-label="Aggiungi al carrello"
-            onclick='insertArticleInTheCart()'
-            value="Aggiungi al carrello" />
-    </footer>
+</section>
+<section>
+    <p>Prezzo: <strong><?php echo $data["Prezzo"]?>€</strong></p>
+    <input type="button" aria-label="Aggiungi al carrello" 
+    onclick='insertArticleInTheCart()' 
+    value="Aggiungi al carrello" />
 </section>

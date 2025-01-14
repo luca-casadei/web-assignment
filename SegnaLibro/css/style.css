@@ -183,7 +183,15 @@ main[data-advancedsearch]>section>h1 {
 }
 
 main[data-advancedsearch]>header,
-main[data-copiesofbook]>section:last-of-type {
+main[data-copiesofbook]>section:last-of-type,
+main[data-add_copy]>section:last-of-type,
+main[data-book_insert]>section:last-of-type,
+main[data-order_expanded]>section:last-of-type,
+main[data-book_modify]>section:last-of-type,
+main[data-book_details]>section:last-of-type,
+main[data-cart]>section:last-of-type,
+main[data-checkout]>section:last-of-type,
+main[data-profile]>section:last-of-type  {
   width: 20%;
   background-color: #801524;
   color: white;
@@ -470,9 +478,9 @@ main[data-book_insert] {
   gap: 20px;
 }
 
-main[data-book_insert] div>a,
-main[data-book_insert] div>input,
-main[data-book_insert] div>button {
+main[data-book_insert] section:last-of-type>a,
+main[data-book_insert] section:last-of-type>input,
+main[data-book_insert] section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -488,20 +496,20 @@ main[data-book_insert] div>button {
   cursor: pointer;
 }
 
-main[data-book_insert] div>a:hover,
-main[data-book_insert] div>input:hover,
-main[data-book_insert] div>button:hover {
+main[data-book_insert] section:last-of-type>a:hover,
+main[data-book_insert] section:last-of-type>input:hover,
+main[data-book_insert] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px white solid;
 }
 
-main[data-book_insert] div>p {
+main[data-book_insert] section:last-of-type>p {
   color: white;
   text-align: center;
   font-size: 32px;
 }
 
-main[data-book_insert] section {
+main[data-book_insert] section:first-of-type {
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -511,7 +519,7 @@ main[data-book_insert] section {
   gap: 10px;
 }
 
-main[data-book_insert] section form {
+main[data-book_insert] section:first-of-type form {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -522,7 +530,7 @@ main[data-book_insert] section form {
   margin-bottom: 20px;
 }
 
-main[data-book_insert] section form h1 {
+main[data-book_insert] section:first-of-type form h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
@@ -531,13 +539,13 @@ main[data-book_insert] section form h1 {
   margin: 0;
 }
 
-main[data-book_insert] section form p {
+main[data-book_insert] section:first-of-type form p {
   margin: 0;
   font-size: 14px;
   color: #333;
 }
 
-main[data-book_insert] section form ul {
+main[data-book_insert] section:first-of-type form ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -549,7 +557,7 @@ main[data-book_insert] section form ul {
   padding: 0;
 }
 
-main[data-book_insert] section form ul li {
+main[data-book_insert] section:first-of-type form ul li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -558,7 +566,7 @@ main[data-book_insert] section form ul li {
   border-radius: 10px;
 }
 
-main[data-book_insert] section form ul li label {
+main[data-book_insert] section:first-of-type form ul li label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px 0 0 7px;
@@ -569,9 +577,9 @@ main[data-book_insert] section form ul li label {
   text-align: center;
 }
 
-main[data-book_insert] section form ul li input,
-main[data-book_insert] section form ul li textarea,
-main[data-book_insert] section form ul li select {
+main[data-book_insert] section:first-of-type form ul li input,
+main[data-book_insert] section:first-of-type form ul li textarea,
+main[data-book_insert] section:first-of-type form ul li select {
   width: 70%;
   text-align: center;
   border: none;
@@ -580,12 +588,12 @@ main[data-book_insert] section form ul li select {
   outline: none;
 }
 
-main[data-book_insert] section form ul li textarea {
+main[data-book_insert] section:first-of-type form ul li textarea {
   resize: none;
   height: 60px;
 }
 
-main[data-book_insert] section form input {
+main[data-book_insert] section:first-of-type form input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -595,11 +603,11 @@ main[data-book_insert] section form input {
   font-size: 16px;
 }
 
-main[data-book_insert] section form input:hover {
+main[data-book_insert] section:first-of-type form input:hover {
   font-weight: bold;
 }
 
-main[data-book_insert] section form fieldset[data-genres-container] {
+main[data-book_insert] section:first-of-type form fieldset[data-genres-container] {
   padding: 15px;
   display: flex;
   flex-direction: row;
@@ -607,7 +615,7 @@ main[data-book_insert] section form fieldset[data-genres-container] {
   border: transparent;
 }
 
-main[data-book_insert] section form fieldset[data-genres-container] label {
+main[data-book_insert] section:first-of-type form fieldset[data-genres-container] label {
   background-color: transparent;
   flex-direction: column;
   display: flex;
@@ -618,21 +626,21 @@ main[data-book_insert] section form fieldset[data-genres-container] label {
   margin: 0 2px;
 }
 
-main[data-book_insert] section form fieldset[data-genres-container] input[type="checkbox"] {
+main[data-book_insert] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
   background-color: transparent;
   margin: 0 5px;
 }
 
-/* Customer's Profile page */
-main[data-profile] {
+
+/* Vendor's add copy page */
+main[data-add_copy] {
   display: flex;
-  flex-direction: row;
   gap: 20px;
 }
 
-main[data-profile] div>a,
-main[data-profile] div>input,
-main[data-profile] div>button {
+main[data-add_copy] section:last-of-type>a,
+main[data-add_copy] section:last-of-type>input,
+main[data-add_copy] section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -648,9 +656,169 @@ main[data-profile] div>button {
   cursor: pointer;
 }
 
-main[data-profile] div>a:hover,
-main[data-profile] div>input:hover,
-main[data-profile] div>button:hover {
+main[data-add_copy] section:last-of-type>a:hover,
+main[data-add_copy] section:last-of-type>input:hover,
+main[data-add_copy] section:last-of-type>button:hover {
+  font-weight: bold;
+  border: 2px white solid;
+}
+
+main[data-add_copy] section:last-of-type>p {
+  color: white;
+  text-align: center;
+  font-size: 32px;
+}
+
+main[data-add_copy] section:first-of-type {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+
+main[data-add_copy] section:first-of-type form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+main[data-add_copy] section:first-of-type form h1 {
+  color: #801524;
+  font-size: 32px;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+main[data-add_copy] section:first-of-type form p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+main[data-add_copy] section:first-of-type form ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+main[data-add_copy] section:first-of-type form ul li {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  border: 2px solid #801524;
+  border-radius: 10px;
+}
+
+main[data-add_copy] section:first-of-type form ul li label {
+  width: 30%;
+  background-color: #801524;
+  border-radius: 7px 0 0 7px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+main[data-add_copy] section:first-of-type form ul li input,
+main[data-add_copy] section:first-of-type form ul li textarea,
+main[data-add_copy] section:first-of-type form ul li select {
+  width: 70%;
+  text-align: center;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 5px;
+  outline: none;
+}
+
+main[data-add_copy] section:first-of-type form ul li textarea {
+  resize: none;
+  height: 60px;
+}
+
+main[data-add_copy] section:first-of-type form input {
+  margin: 5px;
+  color: #801524;
+  cursor: pointer;
+  border: none;
+  font-weight: normal;
+  background-color: white;
+  font-size: 16px;
+}
+
+main[data-add_copy] section:first-of-type form input:hover {
+  font-weight: bold;
+}
+
+main[data-add_copy] section:first-of-type form fieldset[data-genres-container] {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border: transparent;
+}
+
+main[data-add_copy] section:first-of-type form fieldset[data-genres-container] label {
+  background-color: transparent;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+main[data-add_copy] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
+  background-color: transparent;
+  margin: 0 5px;
+}
+
+/* Customer's Profile page */
+main[data-profile] {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+main[data-profile] section:last-of-type>a,
+main[data-profile] section:last-of-type>input,
+main[data-profile] section:last-of-type>button {
+  font-size: 20px;
+  height: 30px;
+  color: white;
+  background-color: #801524;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px white solid;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+main[data-profile] section:last-of-type>a:hover,
+main[data-profile] section:last-of-type>input:hover,
+main[data-profile] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px white solid;
 }
@@ -661,7 +829,7 @@ main[data-profile] div>p {
   font-size: 32px;
 }
 
-main[data-profile] section {
+main[data-profile] section:first-of-type {
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -679,7 +847,7 @@ main[data-profile] h1 {
   text-align: center;
 }
 
-main[data-profile] section>form {
+main[data-profile] section:first-of-type>form {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -689,7 +857,7 @@ main[data-profile] section>form {
   gap: 10px;
 }
 
-main[data-profile] section>form>ul {
+main[data-profile] section:first-of-type>form>ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -699,7 +867,7 @@ main[data-profile] section>form>ul {
   gap: 20px;
 }
 
-main[data-profile] section>form>ul>li {
+main[data-profile] section:first-of-type>form>ul>li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -708,7 +876,7 @@ main[data-profile] section>form>ul>li {
   border-radius: 10px;
 }
 
-main[data-profile] section>form>ul>li>label {
+main[data-profile] section:first-of-type>form>ul>li>label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px;
@@ -721,7 +889,7 @@ main[data-profile] section>form>ul>li>label {
   line-height: 70%;
 }
 
-main[data-profile] section>form>ul>li>input,
+main[data-profile] section:first-of-type>form>ul>li>input,
 select {
   width: 70%;
   text-align: center;
@@ -729,7 +897,7 @@ select {
   border-radius: 10px;
 }
 
-main[data-profile] section>form>input {
+main[data-profile] section:first-of-type>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -739,13 +907,10 @@ main[data-profile] section>form>input {
   text-decoration: underline;
 }
 
-main[data-profile] section>form>input:hover {
+main[data-profile] section:first-of-type>form>input:hover {
   font-weight: bold;
 }
 
-main[data-profile] section a {
-  display: none;
-}
 
 main[data-profile] section>a:hover {
   font-weight: bold;
@@ -822,9 +987,9 @@ main>div {
   bottom: 50px;
 }
 
-main[data-cart] div>a,
-main[data-cart] div>input,
-main[data-cart] div>button {
+main[data-cart] section:last-of-type>a,
+main[data-cart] section:last-of-type>input,
+main[data-cart] section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -840,9 +1005,9 @@ main[data-cart] div>button {
   cursor: pointer;
 }
 
-main[data-cart] div>a:hover,
-main[data-cart] div>input:hover,
-main[data-cart] div>button:hover {
+main[data-cart] section:last-of-type>a:hover,
+main[data-cart] section:last-of-type>input:hover,
+main[data-cart] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -853,8 +1018,8 @@ main[data-cart] div>p {
   font-size: 32px;
 }
 
-main[data-cart] section {
-  width: 70%;
+main[data-cart] section:first-of-type {
+  width: 78%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -868,7 +1033,7 @@ main[data-cart] h1 {
   text-align: center;
 }
 
-main[data-cart] section>input[type="button"] {
+main[data-cart] section:first-of-type>input[type="button"] {
   display: none;
 }
 
@@ -915,14 +1080,14 @@ main[data-cart] article header p {
   color: #555;
 }
 
-main[data-cart] section>article>p {
+main[data-cart] section:first-of-type>article>p {
   font-size: 14px;
   line-height: 22px;
   margin-left: 86px;
   color: #333;
 }
 
-main[data-cart] section article footer {
+main[data-cart] section:first-of-type article footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -930,15 +1095,15 @@ main[data-cart] section article footer {
   margin-left: 86px;
 }
 
-main[data-cart] section article footer p {
+main[data-cart] section:first-of-type article footer p {
   margin-right: 16px;
 }
 
-main[data-cart] section article footer p span {
+main[data-cart] section:first-of-type article footer p span {
   font-weight: bold;
 }
 
-main[data-cart] section>article>header>input {
+main[data-cart] section:first-of-type>article>header>input {
   border: none;
   cursor: pointer;
   margin-left: auto;
@@ -958,10 +1123,9 @@ main[data-checkout] {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  margin-bottom: 100px;
 }
 
-main[data-checkout]>div>input,
+main[data-checkout]>section:last-of-type>input,
 main[data-checkout] form input[type="submit"] {
   font-size: 18px;
   color: white;
@@ -972,14 +1136,14 @@ main[data-checkout] form input[type="submit"] {
   padding: 10px 20px;
 }
 
-main[data-checkout]>div>input:hover,
+main[data-checkout]>section:last-of-type>input:hover,
 main[data-checkout] form input[type="submit"]:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-checkout]>section {
-  width: 70%;
+main[data-checkout]>section:first-of-type {
+  width: 78%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -988,7 +1152,7 @@ main[data-checkout]>section {
   gap: 10px;
 }
 
-main[data-checkout]>section>form {
+main[data-checkout]>section:first-of-type>form {
   width: 80%;
   max-width: 600px;
   display: flex;
@@ -996,11 +1160,11 @@ main[data-checkout]>section>form {
   gap: 20px;
 }
 
-main[data-checkout]>section>form>input {
+main[data-checkout]>section:first-of-type>form>input {
   display: none;
 }
 
-main[data-checkout]>section>form select,
+main[data-checkout]>section:first-of-type>form select,
 main[data-checkout] form ul li input,
 main[data-checkout] form ul li select {
   width: 100%;
@@ -1090,9 +1254,9 @@ main[data-book_details] {
   gap: 20px;
 }
 
-main[data-book_details] div>a,
-main[data-book_details] div>input,
-main[data-book_details] div>button {
+main[data-book_details] section:last-of-type>a,
+main[data-book_details] section:last-of-type>input,
+main[data-book_details] section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1108,18 +1272,18 @@ main[data-book_details] div>button {
   cursor: pointer;
 }
 
-main[data-book_details] div>a:hover,
-main[data-book_details] div>input:hover,
-main[data-book_details] div>button:hover {
+main[data-book_details] section:last-of-type>a:hover,
+main[data-book_details] section:last-of-type>input:hover,
+main[data-book_details] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
 
-main[data-book_details] section {
+main[data-book_details] section:first-of-type {
   display: flex;
   flex-direction: column;
   place-items: center;
-  width: 70%;
+  width: 78%;
   gap: 10px;
 }
 
@@ -1144,7 +1308,7 @@ main[data-book_details] div>p {
   font-size: 32px;
 }
 
-main[data-book_details] section div {
+main[data-book_details] section:first-of-type div {
   background-color: unset;
   max-width: unset;
   max-height: unset;
@@ -1157,7 +1321,7 @@ main[data-book_details] section div {
   align-items: center;
 }
 
-main[data-book_details] section>div>div {
+main[data-book_details] section:first-of-type>div>div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1165,18 +1329,18 @@ main[data-book_details] section>div>div {
   text-align: center;
 }
 
-main[data-book_details] section>div img {
+main[data-book_details] section:first-of-type>div img {
   max-height: 100%;
   max-width: 100%;
   border: 3px solid #801524;
   border-radius: 10px;
 }
 
-main[data-book_details] section>div>label {
+main[data-book_details] section:first-of-type>div>label {
   display: none;
 }
 
-main[data-book_details] section>div input[type="image"] {
+main[data-book_details] section:first-of-type>div input[type="image"] {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -1186,23 +1350,23 @@ main[data-book_details] section>div input[type="image"] {
   background-repeat: no-repeat;
 }
 
-main[data-book_details] section>div input[type="image"]:first-of-type {
+main[data-book_details] section:first-of-type>div input[type="image"]:first-of-type {
   left: -45px;
 }
 
-main[data-book_details] section>div input[type="image"]:last-of-type {
+main[data-book_details] section:first-of-type>div input[type="image"]:last-of-type {
   right: -45px;
 }
 
-main[data-book_details] section>footer {
+main[data-book_details] section:first-of-type>footer {
   display: none;
 }
 
 /* Modify book page */
 
-main[data-book_modify] div>a,
-main[data-book_modify] div>input,
-main[data-book_modify] div>button {
+main[data-book_modify] section:last-of-type>a,
+main[data-book_modify] section:last-of-type>input,
+main[data-book_modify] section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1218,9 +1382,9 @@ main[data-book_modify] div>button {
   cursor: pointer;
 }
 
-main[data-book_modify] div>a:hover,
-main[data-book_modify] div>input:hover,
-main[data-book_modify] div>button:hover {
+main[data-book_modify] section:last-of-type>a:hover,
+main[data-book_modify] section:last-of-type>input:hover,
+main[data-book_modify] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -1239,14 +1403,14 @@ main[data-book_modify] h1 {
   text-align: center;
 }
 
-main[data-book_modify] section {
+main[data-book_modify] section:first-of-type {
   width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-main[data-book_modify] section form {
+main[data-book_modify] section:first-of-type form {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -1254,7 +1418,7 @@ main[data-book_modify] section form {
   box-shadow: 0 3px 5px rgba(0 0 0 10%);
 }
 
-main[data-book_modify] section form ul {
+main[data-book_modify] section:first-of-type form ul {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -1266,7 +1430,7 @@ main[data-book_modify] section form ul {
   padding: 10px;
 }
 
-main[data-book_modify] section form ul li {
+main[data-book_modify] section:first-of-type form ul li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1275,7 +1439,7 @@ main[data-book_modify] section form ul li {
   border-radius: 10px;
 }
 
-main[data-book_modify] section form ul li label {
+main[data-book_modify] section:first-of-type form ul li label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px 0 0 7px;
@@ -1286,9 +1450,9 @@ main[data-book_modify] section form ul li label {
   text-align: center;
 }
 
-main[data-book_modify] section form ul li input,
-main[data-book_modify] section form ul li textarea,
-main[data-book_modify] section form ul li select {
+main[data-book_modify] section:first-of-type form ul li input,
+main[data-book_modify] section:first-of-type form ul li textarea,
+main[data-book_modify] section:first-of-type form ul li select {
   width: 70%;
   text-align: center;
   border: none;
@@ -1297,12 +1461,12 @@ main[data-book_modify] section form ul li select {
   outline: none;
 }
 
-main[data-book_modify] section form ul li textarea {
+main[data-book_modify] section:first-of-type form ul li textarea {
   resize: none;
   height: 60px;
 }
 
-main[data-book_modify] section>form>input {
+main[data-book_modify] section:first-of-type>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -1312,16 +1476,16 @@ main[data-book_modify] section>form>input {
   text-decoration: underline;
 }
 
-main[data-book_modify] section form fieldset {
+main[data-book_modify] section:first-of-type form fieldset {
   width: 70%;
   border-radius: 7px;
 }
 
-main[data-book_modify] section form fieldset ul {
+main[data-book_modify] section:first-of-type form fieldset ul {
   flex-direction: row;
 }
 
-main[data-book_modify] section form fieldset ul li label {
+main[data-book_modify] section:first-of-type form fieldset ul li label {
   width: 80%;
   background-color: #801524;
   border-radius: 7px 0 0 7px;
@@ -1332,7 +1496,7 @@ main[data-book_modify] section form fieldset ul li label {
   text-align: center;
 }
 
-main[data-book_modify] section form ul li input[type="checkbox"] {
+main[data-book_modify] section:first-of-type form ul li input[type="checkbox"] {
   width: 20%;
   text-align: center;
   border: none;
@@ -1515,27 +1679,27 @@ main[data-order_expanded] h1 {
   color: #801524;
 }
 
-main[data-order_expanded] div {
+main[data-order_expanded] section:last-of-type {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-main[data-order_expanded] div p {
+main[data-order_expanded] section:last-of-type p {
   color: white;
   font-size: 20px;
 }
 
 
-main[data-order_expanded] section {
-  width: 70%;
+main[data-order_expanded] section:first-of-type {
+  width: 78%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
-main[data-order_expanded] section > p {
+main[data-order_expanded] section:first-of-type > p {
   display: none;
 }
 
@@ -1551,7 +1715,7 @@ main[data-order_expanded] article{
   gap: 8px;
 }
 
-main[data-order_expanded] section > article > header{
+main[data-order_expanded] section:first-of-type > article > header{
   border-bottom: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1559,7 +1723,7 @@ main[data-order_expanded] section > article > header{
   justify-content: space-between;
 }
 
-main[data-order_expanded] section > article > div{
+main[data-order_expanded] section:first-of-type > article > div{
   color: #801524;
   font-size: unset;
   display: flex;
@@ -1569,12 +1733,12 @@ main[data-order_expanded] section > article > div{
   gap: 20px;
 }
 
-main[data-order_expanded] section > article > div > p{
+main[data-order_expanded] section:first-of-type > article > div > p{
   color: #801524;
   font-size: unset;
 }
 
-main[data-order_expanded] section > article > footer{
+main[data-order_expanded] section:first-of-type > article > footer{
   border-top: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1602,30 +1766,30 @@ main[data-order_expanded] article figure img {
 /* Vendor user order expanded page */
 
 
-main[data-user_order_expanded] > section:last-of-type > h1 {
+main[data-user_order_expanded] > section:first-of-type > h1 {
   font-size: 30px;
   color: #801524;
 }
 
-main[data-user_order_expanded] > div{
+main[data-user_order_expanded] > section:last-of-type{
   display: flex;
   flex-direction: column;
   position: fixed;
   right: 0;
   bottom: 50px;
   top: 55px;
-  width: 30%;
+  width: 20%;
   background-color: #801524;
 }
 
-main[data-user_order_expanded] > section:last-of-type {
+main[data-user_order_expanded] > section:first-of-type {
   width: 70%;
   justify-content: center;
   display: flex;
   flex-direction: column;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article > header{
+main[data-user_order_expanded] > section:first-of-type > article > header{
   border-bottom: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1633,14 +1797,14 @@ main[data-user_order_expanded] > section:last-of-type > article > header{
   justify-content: space-between;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article > section:first-of-type{
+main[data-user_order_expanded] > section:first-of-type > article > section:first-of-type{
   display: flex;
   flex-direction: row;
   height: 100px;
   gap: 20px;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article > footer{
+main[data-user_order_expanded] > section:first-of-type > article > footer{
   border-top: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1648,18 +1812,18 @@ main[data-user_order_expanded] > section:last-of-type > article > footer{
   justify-content: end;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article span{
+main[data-user_order_expanded] > section:first-of-type > article span{
   font-weight: bold;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article figure {
+main[data-user_order_expanded] > section:first-of-type > article figure {
   margin: 0;
   min-width: 70px;
   max-width: 70px;
   max-height: 70px;
 }
 
-main[data-user_order_expanded] > section:last-of-type > article figure img {
+main[data-user_order_expanded] > section:first-of-type > article figure img {
   display: block;
   width: 100%;
   height: auto;
@@ -1667,9 +1831,9 @@ main[data-user_order_expanded] > section:last-of-type > article figure img {
   border-radius: 4px;
 }
 
-main[data-user_order_expanded] > div>a,
-main[data-user_order_expanded] > div>input,
-main[data-user_order_expanded] > div>button {
+main[data-user_order_expanded] > section:last-of-type>a,
+main[data-user_order_expanded] > section:last-of-type>input,
+main[data-user_order_expanded] > section:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1685,9 +1849,9 @@ main[data-user_order_expanded] > div>button {
   cursor: pointer;
 }
 
-main[data-user_order_expanded] div>a:hover,
-main[data-user_order_expanded] div>input:hover,
-main[data-user_order_expanded] div>button:hover {
+main[data-user_order_expanded] section:last-of-type>a:hover,
+main[data-user_order_expanded] section:last-of-type>input:hover,
+main[data-user_order_expanded] section:last-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -1748,7 +1912,7 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-book_insert] section {
+  main[data-book_insert] section:first-of-type {
     width: 100%;
   }
 
@@ -1762,11 +1926,11 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-profile] section {
+  main[data-profile] section:first-of-type {
     width: 100%;
   }
 
-  main[data-profile] section a {
+  main[data-profile] section:first-of-type a {
     font-size: 20px;
     height: 30px;
     color: #801524;
@@ -1779,12 +1943,12 @@ main[data-user_order_expanded] div>button:hover {
     text-align: center;
   }
 
-  main[data-profile] section a:hover {
+  main[data-profile] section:first-of-type a:hover {
     font-weight: bold;
   }
 
   /* Detailed book page */
-  main[data-book_details] section {
+  main[data-book_details] section:first-of-type {
     width: 100%;
   }
 
@@ -1792,19 +1956,19 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-book_details] section>footer {
+  main[data-book_details] section:first-of-type>footer {
     display: flex;
     flex-direction: column;
   }
 
-  main[data-book_details] section footer p strong {
+  main[data-book_details] section:first-of-type footer p strong {
     font-size: 32px;
     display: block;
     margin-bottom: 8px;
     color: #801524;
   }
 
-  main[data-book_details] section footer input[type="button"] {
+  main[data-book_details] section:first-of-type footer input[type="button"] {
     background-color: #801524;
     color: white;
     border: none;
@@ -1816,16 +1980,8 @@ main[data-user_order_expanded] div>button:hover {
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-  main[data-book_details] section footer input[type="button"]:hover {
-    background-color: #5a1d1d;
-    transform: translateY(-3px);
-  }
 
-  main[data-book_details] section footer input[type="button"]:active {
-    transform: translateY(0);
-  }
-
-  main[data-cart] section {
+  main[data-cart] section:first-of-type {
     width: 100%;
   }
 
@@ -1833,17 +1989,7 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-cart] section>input[type="button"] {
-    display: flex;
-    background-color: #801524;
-    color: #fff;
-    border: none;
-    padding: 10px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 7px;
-    margin-bottom: 16px;
-  }
+ 
 
   main[data-cart] section>input[type="button"]:hover {
     display: flex;
@@ -1859,7 +2005,7 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-checkout]>section {
+  main[data-checkout] section:first-of-type {
     width: 100%;
   }
 
@@ -1892,15 +2038,22 @@ main[data-user_order_expanded] div>button:hover {
     display: none;
   }
 
-  main[data-order_expanded] section{
+  main[data-order_expanded] section:first-of-type{
     width: 100%;
   }
 
-  main[data-order_expanded] section > p{
+  
+
+  main[data-order_expanded] section:first-of-type > p{
     display: flex;
     flex-direction: row;
     color: #801524;
     font-size: 20px;
+  }
+
+  
+  main[data-book_modify] section:first-of-type{
+    width: 100%;
   }
 
   /* Index php styling */
@@ -1947,17 +2100,34 @@ main[data-user_order_expanded] div>button:hover {
     padding: 2px;
   }
 
-  main[data-copiesofbook] {
+  main[data-copiesofbook],
+  main[data-order_expanded],
+  main[data-cart] {
     flex-direction: column-reverse;
   }
 
-  main[data-advancedsearch] {
+  main[data-book_details],
+  main[data-advancedsearch],
+  main[data-add_copy],
+  main[data-book_modify],
+  main[data-book_insert],
+  main[data-checkout] {
     flex-direction: column;
   }
 
   main[data-advancedsearch]>section,
+  main[data-profile]>section:last-of-type,
+  main[data-add_copy]>section:last-of-type,
+  main[data-book_insert]>section:last-of-type,
+  main[data-user_order_expanded]>section:last-of-type,
+  main[data-order_expanded]>section:last-of-type,
+  main[data-book_modify]>section:last-of-type,
+  main[data-checkout]>section:last-of-type,
+  main[data-cart]>section:last-of-type,
+  main[data-book_details]>section:last-of-type,
   main[data-copiesofbook]>section:nth-child(n),
   main[data-advancedsearch]>header {
+    height: 100px;
     width: 100%;
     padding: 0;
   }
@@ -1975,7 +2145,16 @@ main[data-user_order_expanded] div>button:hover {
   }
 
   main[data-advancedsearch]>header,
-  main[data-copiesofbook]>section:last-of-type {
+  main[data-profile]>section:last-of-type
+  main[data-add_copy]>section:last-of-type,
+  main[data-book_insert]>section:last-of-type,
+  main[data-user_order_expanded]>section:last-of-type,
+  main[data-order_expanded]>section:last-of-type,
+  main[data-book_modify]>section:last-of-type,
+  main[data-checkout]>section:last-of-type,
+  main[data-cart]>section:last-of-type,
+  main[data-book_details]>section:last-of-type,
+  main[data-copiesofbook]>section:last-of-type{
     position: unset;
     gap: 5px;
   }

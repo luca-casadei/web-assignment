@@ -4,9 +4,7 @@ if (!defined('DIRECT_ACCESS')){
 }
 ?>
 
-<div>
-    <input type="submit" value="Applica modifiche" form="modifyBookForm">
-</div>
+
 
 <section>
 <h1>Modifica Libro</h1>
@@ -74,7 +72,8 @@ if (!defined('DIRECT_ACCESS')){
             </fieldset>
         </li>
     </ul>
-
-    <input type="submit" value="Applica modifiche">
 </form>
+</section>
+<section>
+    <input type="submit" value="Applica modifiche" form="modifyBookForm">
 </section>

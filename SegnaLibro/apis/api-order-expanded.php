@@ -7,7 +7,17 @@ if (isset($_POST["orderexpanded"])){
 else if (isset($_POST["getArticles"])) {
     $decode = json_decode($_SESSION["orderexpanded"],true);
     $articles= $dbh->getArticlesFromOrder($decode["codiceOrdine"]);
+    $total_price = 0;
+    for($j = 0; $j < count($articles); $j++){
+        $total_price += $articles[$j]['Prezzo'];
+    }
+    $order = $dbh->getSingleOrder($decode["codiceOrdine"]);
+
     $data["articles"] = $articles;
+    $data["DataOrdine"] = $order["DataOrdine"];
+    $data["stato"] = $order["Stato"];
+    $data["prezzoTotale"] = $total_price;
+
     echo json_encode($data);
 }
 else{

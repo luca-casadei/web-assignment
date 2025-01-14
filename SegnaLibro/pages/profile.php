@@ -4,11 +4,7 @@ if(!defined('DIRECT_ACCESS')){
 }
 ?>
 
-<div>
-    <p>Impostazioni</p>
-    <a href="">Modifica Password</a>
-    <a href="./logout_index.php">Disconnetti</a>
-</div>
+
 <section>
 
 
@@ -52,7 +48,6 @@ if(!defined('DIRECT_ACCESS')){
         </li>
     </ul>
     <input type="submit" value="Salva Modifiche" />
-    <a href="">Modifica Password</a>
 </form>
 
 <form>
@@ -74,6 +69,10 @@ if(!defined('DIRECT_ACCESS')){
     <input type="submit" value="Salva Password">
 </form>
 
-<a href="./logout_index.php">Disconnetti</a>
+</section>
 
+<section>
+    <p>Impostazioni</p>
+    <a href="">Modifica Password</a>
+    <a href="./logout_index.php">Disconnetti</a>
 </section>
