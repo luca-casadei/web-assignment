@@ -1768,6 +1768,12 @@ main[data-order_expanded] article figure img {
 /* Vendor user order expanded page */
 
 
+main[data-user_order_expanded] {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 main[data-user_order_expanded] > section:first-of-type > h1 {
   font-size: 30px;
   color: #801524;
@@ -1789,6 +1795,19 @@ main[data-user_order_expanded] > section:first-of-type {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+main[data-user_order_expanded] article{
+  width: 80%;
+  background-color: #fff;
+  color: #801524;
+  border-radius: 6px;
+  box-shadow: 0 3px 5px #888;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
 }
 
 main[data-user_order_expanded] > section:first-of-type > article > header{
@@ -1799,7 +1818,7 @@ main[data-user_order_expanded] > section:first-of-type > article > header{
   justify-content: space-between;
 }
 
-main[data-user_order_expanded] > section:first-of-type > article > section:first-of-type{
+main[data-user_order_expanded] > section:first-of-type > article > div{
   display: flex;
   flex-direction: row;
   height: 100px;
@@ -2057,6 +2076,7 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
 
   
   main[data-book_modify] section:first-of-type,
+  main[data-user_order_expanded] section:first-of-type,
   main[data-add_copy] section:first-of-type{
     width: 100%;
   }
@@ -2090,7 +2110,7 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
   main[data-homeuser]>article>div>footer,
   main[data-copiesofbook] article>div>footer,
   main[data-advancedsearch]>section>article>div>footer {
-    justify-content: center;
+    justify-content: space-between;
   }
 
   main[data-homeuser]>article>div>header,
@@ -2132,7 +2152,7 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
   main[data-book_details]>section:last-of-type,
   main[data-copiesofbook]>section:nth-child(n),
   main[data-advancedsearch]>header {
-    height: 100px;
+    height: 120px;
     width: 100%;
     padding: 0;
     padding-top: 20px;
