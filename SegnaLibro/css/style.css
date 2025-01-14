@@ -292,9 +292,10 @@ main[data-advancedsearch]>section>article {
   display: flex;
   flex-direction: row;
   gap: 2%;
-  width: 100%;
+  width: 80%;
   box-shadow: 0 2px 3px 1px #888;
   color: #801524;
+  padding: 10px;
 }
 
 main[data-homeuser] {
@@ -302,12 +303,12 @@ main[data-homeuser] {
   flex-direction: column;
   gap: 15px;
   padding: 15px;
+  align-items: center;
 }
 
 main[data-advancedsearch] {
   gap: 10px;
   display: flex;
-  padding: 5px;
 }
 
 main[data-advancedsearch]>section {
@@ -315,6 +316,7 @@ main[data-advancedsearch]>section {
   flex-direction: column;
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 /* Vendor's homepage */
@@ -323,7 +325,7 @@ main[data-homevendor] {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  gap: 10px;
+  gap: 20px;
 }
 
 main[data-homevendor] h1 {
@@ -977,8 +979,10 @@ main[data-copiesofbook] {
 
 main[data-copiesofbook]>section:first-of-type {
   width: 80%;
-  padding-left: 1%;
-  padding-right: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 main>div {
@@ -1029,6 +1033,8 @@ main[data-cart] section:first-of-type {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+  gap: 20px;
 }
 
 main[data-cart] h1 {
@@ -1051,6 +1057,7 @@ main[data-cart] article {
   flex-direction: column;
   padding: 16px;
   gap: 8px;
+  width: 80%;
 }
 
 main[data-cart] article header {
@@ -1422,7 +1429,6 @@ main[data-book_modify] section:first-of-type form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 3px 5px #888;
 }
 
 main[data-book_modify] section:first-of-type form ul {

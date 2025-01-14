@@ -33,7 +33,7 @@ function generateCartArticles(data) {
         }
         result += `</section>
         <section>  
-            <p>Totale: ${data.total_price}</p>
+            <p>Totale: ${data.total_price}€</p>
             <input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
         </section>`;
     } else {

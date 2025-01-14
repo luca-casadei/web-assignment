@@ -12,15 +12,15 @@ if (!defined('DIRECT_ACCESS')) {
         <p><?php echo $data["ISBN"] ?></p>
         <p>Condizione: <?php echo $data["NomeCondizione"]?></p>
     </header>
-
-    <div>
-        <label for="nextimg">next</label>
-        <input id="nextimg" type="image" src="./images/arrow_left.png" alt="Next image" aria-label="Immagine precedente" onclick="prevImage()" />
-        <div></div>
-        <label for="previmg">prev</label>
-        <input id="previmg" type="image" src="./images/arrow_right.png" alt="Previous image" aria-label="Immagine successiva" onclick="nextImage()" />
-    </div>
-
+    <?php if (isset($data["NomeImmagine"])) { ?>
+        <div>
+            <label for="nextimg">next</label>
+            <input id="nextimg" type="image" src="./images/arrow_left.png" alt="Next image" aria-label="Immagine precedente" onclick="prevImage()" />
+            <div></div>
+            <label for="previmg">prev</label>
+            <input id="previmg" type="image" src="./images/arrow_right.png" alt="Previous image" aria-label="Immagine successiva" onclick="nextImage()" />
+        </div>
+    <?php } ?>
     <p><?php echo $data["DescrizioneAnnuncio"] ?></p>
 </section>
 <section>
