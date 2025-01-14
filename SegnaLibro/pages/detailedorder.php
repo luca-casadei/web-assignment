@@ -7,6 +7,7 @@ if (!defined('DIRECT_ACCESS')) {
 <section>
     <header>
         <h1><?php echo $data["Titolo"] ?></h1>
+        <p><?php echo $data["TitoloAnnuncio"] ?></p>
         <p><?php echo $data["NomeAutore"] . " " . $data["CognomeAutore"] ?></p>
         <p><?php echo $data["NomeEditore"] ?></p>
         <p><?php echo $data["ISBN"] ?></p>

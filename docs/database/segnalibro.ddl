@@ -62,7 +62,7 @@ create table COPIE_ORDINE (
      CodiceEditoriale char(6) not null,
      CodiceTitolo char(6) not null,
      CodiceOrdine int not null,
-     constraint IDCOPIE_ORDINE primary key (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine));
+     constraint IDCOPIE_ORDINE primary key (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo));
 
 create table EDITORE (
      CodiceEditoriale char(6) not null,
