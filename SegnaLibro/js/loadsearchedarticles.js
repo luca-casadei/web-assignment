@@ -35,6 +35,9 @@ function generateArticles(articoli, searchedTitle, priceRange, category) {
             if (
                 articoli[i]["Titolo"]
                     .toLowerCase()
+                    .includes(searchedTitle.toLowerCase()) ||
+                articoli[i]["TitoloAnnuncio"]
+                    .toLowerCase()
                     .includes(searchedTitle.toLowerCase())
             ) {
                 st = true;
@@ -108,8 +111,9 @@ async function getArticleData() {
     const categories = await getCategories();
     const csele = document.getElementById("categoryselect");
     categories.forEach((c) => {
-        csele.innerHTML += `<option id="${c["Nome"].toLowerCase()}">${c["Nome"]
-            }</option>`;
+        csele.innerHTML += `<option id="${c["Nome"].toLowerCase()}">${
+            c["Nome"]
+        }</option>`;
     });
 
     const articoli = generateArticles(json, "", "", "");
