@@ -27,6 +27,11 @@ else if(isset($_POST["newCopy"])) {
 
     $result = $dbh->insertCopy($bookdata, $title, $price, $description, $date, $condition, $fileExtensions);
 
+    $path = __DIR__ . "/../." . IMAGE_PATH;
+    if (!is_dir($path)) {
+        mkdir($path, 0777, true);
+    }
+
     for ($i = 0; $i < $imgCount; $i++) {
         $filename = $bookdata["EAN"] . "-" . $bookdata["CodiceRegGroup"] . "-" . $bookdata["CodiceEditoriale"] . "-" . $bookdata["CodiceTitolo"] . "-" . $result[$i];
         if (isset($_FILES["imgarticle$i"]) && strlen($_FILES["imgarticle$i"]["name"]) > 0) {
