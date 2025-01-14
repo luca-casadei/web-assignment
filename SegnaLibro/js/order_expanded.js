@@ -5,7 +5,7 @@ function generateArticles(data) {
     `;
     for (let i = 0; i < data.articles.length; i++) {
         let article = `
-        <article>
+        <article onClick=\'expandArticles(\"${data.articles[i]["EAN"]}\", \"${data.articles[i]["CodiceEditoriale"]}\", \"${data.articles[i]["CodiceTitolo"]}\", \"${data.articles[i]["CodiceRegGroup"]}\", \"${data.articles[i]["NumeroCopia"]}\")\'>
             <header>
                 <h2>${data.articles[i]["Titolo"]}</h2>
                 <p>${data.articles[i]["DataAnnuncio"]}</p>
@@ -39,6 +39,42 @@ function generateArticles(data) {
     </section>`;
 
     return result;
+}
+
+async function expandArticles(
+    ean,
+    codiceEditoriale,
+    codiceTitolo,
+    codiceRegGroup,
+    numeroCopia
+) {
+    const url = "./apis/api-detailed-article.php";
+    try {
+        const formData = new FormData();
+        formData.append(
+            "expandedarticledata",
+            JSON.stringify({
+                EAN: ean,
+                CodiceEditoriale: codiceEditoriale,
+                CodiceTitolo: codiceTitolo,
+                CodiceRegGroup: codiceRegGroup,
+                NumeroCopia: numeroCopia,
+            })
+        );
+
+        const response = await fetch(url, {
+            method: "POST",
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        } else {
+            window.location.href = "./book_details_index.php";
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 async function getExpandedOrder() {
