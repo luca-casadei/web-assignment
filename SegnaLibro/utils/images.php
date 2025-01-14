@@ -1,14 +1,11 @@
 <?php
 
-function uploadImage($path, $image, $bookdata)
+function uploadImage($path, $image, $filename)
 {
     $originalName   = $image["name"];
     $imageFileType  = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
-    $baseName = $bookdata["EAN"] . "-" .
-                $bookdata["CodiceRegGroup"] . "-" .
-                $bookdata["CodiceEditoriale"] . "-" .
-                $bookdata["CodiceTitolo"];
+    $baseName = $filename;
 
     $imageName = $baseName . '.' . $imageFileType;
 

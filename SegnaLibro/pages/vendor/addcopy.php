@@ -33,7 +33,7 @@ if (!defined('DIRECT_ACCESS')){
         </li>
         <li>
             <label for="imgarticle">Immagine Articolo</label>
-            <input type="file" name="imgarticle" id="imgarticle" accept=".png,.jpg,.jpeg" />
+            <input type="file" name="imgarticle" id="imgarticle" accept=".png,.jpg,.jpeg" multiple />
         </li>
     </ul>
 
