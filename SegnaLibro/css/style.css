@@ -816,7 +816,7 @@ main[data-profile] section:first-of-type {
   gap: 10px;
 }
 
-main[data-profile] h1 {
+main[data-profile] section:first-of-type > h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
