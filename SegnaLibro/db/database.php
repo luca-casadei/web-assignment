@@ -30,6 +30,19 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getIfCart($ean, $codEditoriale, $codTitolo, $codiceRegGroup, $nCopia, $uid){
+        try{
+            $query = "SELECT * FROM CARRELLO WHERE NumeroCopia = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND EAN = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param("issssi",$nCopia, $codiceRegGroup, $codEditoriale, $ean, $codTitolo, $uid);
+            $stmt->execute();
+            $result = $stmt->get_result()->num_rows;
+            return $result > 0;
+        } catch(Exception $e){
+            return $e->getMessage();
+        }
+    }
+
     public function getAnnouncesOrdered($orderMethod)
     {
         $query = "SELECT a.* FROM ANNUNCI a WHERE (a.NumeroCopia, a.EAN, a.CodiceRegGroup, a.CodiceEditoriale, a.CodiceTitolo) NOT IN (SELECT NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo FROM COPIE_ORDINE)";
@@ -266,6 +279,7 @@ class DatabaseHelper
             $stmt->execute();
             $this->db->commit();
         } catch (Exception $e) {
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
@@ -325,6 +339,7 @@ class DatabaseHelper
                 "isbn" => $okISBN
             ]);
         } catch (Exception $e) {
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
@@ -370,19 +385,19 @@ class DatabaseHelper
     {
         try {
             $this->db->begin_transaction();
-                $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("ssssdsssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
-                $stmt->execute();
+            $qr = "INSERT INTO COPIA (EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, Prezzo, Titolo, Descrizione, DataAnnuncio, CodiceCondizione) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($qr);
+            $stmt->bind_param("ssssdsssi", $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"], $price, $title, $description, $date, $condition);
+            $stmt->execute();
 
-                $last_copy_id = $this->db->insert_id;
-                for ($i = 1; $i <= $images_count; $i++) {
-                    $image = $book["EAN"]."-".$book["CodiceRegGroup"]."-".$book["CodiceEditoriale"]."-".$book["CodiceTitolo"]."-" . $last_copy_id . "-" . $i;
-                    $qr = "INSERT INTO IMMAGINE (Numero, Percorso, NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo) VALUES(?, ?, ?, ?, ?, ?, ?)";
-                    $stmt = $this->db->prepare($qr);
-                    $stmt->bind_param("isissss", $i, $image, $last_copy_id, $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"]);
-                    $stmt->execute();
-                }
+            $last_copy_id = $this->db->insert_id;
+            for ($i = 1; $i <= $images_count; $i++) {
+                $image = $book["EAN"]."-".$book["CodiceRegGroup"]."-".$book["CodiceEditoriale"]."-".$book["CodiceTitolo"]."-" . $last_copy_id . "-" . $i;
+                $qr = "INSERT INTO IMMAGINE (Numero, Percorso, NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo) VALUES(?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($qr);
+                $stmt->bind_param("isissss", $i, $image, $last_copy_id, $book["EAN"], $book["CodiceRegGroup"], $book["CodiceEditoriale"], $book["CodiceTitolo"]);
+                $stmt->execute();
+            }
             $this->db->commit();
             $extras = array();
             for ($i = 1; $i <= $images_count; $i++) {
@@ -390,6 +405,7 @@ class DatabaseHelper
             }
             return $extras;
         } catch (Exception $e) {
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
@@ -531,6 +547,7 @@ class DatabaseHelper
             $this->db->commit();
             return $stmt->affected_rows > 0;
         } catch (Exception $e) {
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
@@ -655,6 +672,7 @@ class DatabaseHelper
             $this->db->commit();
             return 'SUCCESS';
         } catch(Exception $e){
+            $this->db->rollback();
             return $e->getMessage();
         }
     }
