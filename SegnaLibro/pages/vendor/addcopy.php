@@ -7,7 +7,7 @@ if (!defined('DIRECT_ACCESS')){
 <section>
 <h1>Modifica Libro</h1>
 
-<form id="addCopyForm">
+<form id="addCopyForm" enctype="multipart/form-data">
     <ul>
         <li>
             <label for="article_title">Titolo annuncio</label>
@@ -26,6 +26,10 @@ if (!defined('DIRECT_ACCESS')){
         <li>
             <label for="description">Descrizione annuncio</label>
             <input type="textarea" id="description" name="description" placeholder="Descrizione annuncio..." required>
+        </li>
+        <li>
+            <label for="imgarticle">Immagine Articolo</label>
+            <input type="file" name="imgarticle" id="imgarticle" accept=".png,.jpg,.jpeg" multiple />
         </li>
     </ul>
 </form>
