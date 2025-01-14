@@ -1,11 +1,11 @@
 <?php
 require '../../bootstrap.php';
 if (isset($_POST["userorderexpanded"])){
-    $_SESSION["userorderexpanded"] = $_POST["userorderexpanded"];
+    $_SESSION["orderexpanded"] = $_POST["userorderexpanded"];
     echo 'SUCCESS';
 }
 else if (isset($_POST["getArticles"])) {
-    $decode = json_decode($_SESSION["userorderexpanded"],true);
+    $decode = json_decode($_SESSION["orderexpanded"],true);
     $articles = $dbh->getArticlesFromOrder($decode["codiceOrdine"]);
     $data["articles"] = $articles;
     echo json_encode($data);
