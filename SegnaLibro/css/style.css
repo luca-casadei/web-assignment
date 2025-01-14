@@ -2061,7 +2061,7 @@ main[data-book_modify] div:last-of-type > button:hover {
 
   main[data-homeuser]>article>div>footer,
   main[data-copiesofbook] article>div>footer{
-    justify-content: space-between;
+    justify-content: center;
   }
 
   main[data-homeuser] > article > div > header,
