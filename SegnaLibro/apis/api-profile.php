@@ -42,6 +42,8 @@ if(isset($_POST['old_password'])
     && $_SESSION["name"] != $name
     && $_SESSION["lastname"] != $lastname){
         $dbh->changePersonalDetails($name, $lastname);
+        $_SESSION["name"] = $name;
+        $_SESSION["lastname"] = $lastname;
         $result["profile_alert"] = "Informazioni personali cambiate con successo.";
     } else if ($avenue != ""
     || $civic != ""
