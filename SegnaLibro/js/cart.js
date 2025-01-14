@@ -23,11 +23,10 @@ function generateCartArticles(data) {
                         onclick="removeArticle('${articles[i]["NumeroCopia"]}', '${articles[i]["EAN"]}', '${articles[i]["CodiceRegGroup"]}', '${articles[i]["CodiceEditoriale"]}', '${articles[i]["CodiceTitolo"]}')"
                     />
                 </header>
-                <p>ISBN: ${articles[i]["EAN"]}-${articles[i]["CodiceRegGroup"]}-${articles[i]["CodiceEditoriale"]}-${articles[i]["CodiceTitolo"]}-${articles[i]["CifraControllo"]}</p>
                 <p>${articles[i]["NomeCategoria"]}</p>
                 <p>${articles[i]["DescrizioneAnnuncio"]}</p>
                 <footer>
-                    <p>${articles[i]["Prezzo"]}</p>
+                    <p>${articles[i]["Prezzo"]}€</p>
                     <p>Condizione: <span>${articles[i]["NomeCondizione"]}</span></p>
                 </footer>
             </article>

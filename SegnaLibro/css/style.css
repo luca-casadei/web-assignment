@@ -980,7 +980,7 @@ main[data-cart] section:first-of-type {
   gap: 20px;
 }
 
-main[data-cart] h1 {
+main[data-cart] section:first-of-type>h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
@@ -1008,6 +1008,10 @@ main[data-cart] article header {
   flex-direction: row;
   gap: 16px;
   align-items: center;
+}
+
+main[data-cart] article > header > label {
+  display: flex;
 }
 
 main[data-cart] article header figure {
@@ -1067,10 +1071,6 @@ main[data-cart] section:first-of-type > article > header > input {
   width: 40px;
   height: 40px;
   background-color: #801524;
-  background-image: url("../images/trash.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80%;
   border-radius: 10px;
 }
 
@@ -1945,6 +1945,15 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-cart] section > input[type="button"]:hover {
     display: flex;
     background-color: #a3111a;
+  }
+
+  main[data-cart] article > header > label {
+    display: none;
+  }
+
+  main[data-cart] section:first-of-type > article > header > input {
+    width: 20px;
+    height: 20px;
   }
 
   main[data-checkout] {
