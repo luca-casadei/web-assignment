@@ -41,8 +41,8 @@ function loadGenresCheckboxes(genresArray) {
     let checkboxes = "";
     genresArray.forEach((genre) => {
         checkboxes += `
-      <label>
-        <input type="checkbox" name="genres[]" value="${genre.Codice}">
+      <label for="${genre.Codice}">
+        <input id="${genre.Codice}" type="checkbox" name="genres[]" value="${genre.Codice}">
         ${genre.Nome}
       </label><br>
     `;

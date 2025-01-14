@@ -25,7 +25,7 @@ if (!defined('DIRECT_ACCESS')){
         </li>
         <li>
             <label for="description">Descrizione annuncio</label>
-            <input type="textarea" id="description" name="description" placeholder="Descrizione annuncio..." required>
+            <textarea id="description" name="description" placeholder="Descrizione annuncio..."></textarea>
         </li>
         <li>
             <label for="imgarticle">Immagine Articolo</label>
