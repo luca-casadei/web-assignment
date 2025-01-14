@@ -28,6 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const parts = isbn.split("-");
 
+        if (genresCheckboxes.length === 0) {
+            alert("Devi selezionare almeno un genere.");
+            return;
+        }
+
         if (!isValidISBN(parts)) {
             alert("ISBN non valido! Assicurati che sia nel formato EAN-CodiceRegGroup-CodiceEditoriale-CodiceTitolo-CifraControllo");
             return;

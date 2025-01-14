@@ -62,6 +62,10 @@ async function updateBook() {
     };
 
     const genresCheckboxes = document.querySelectorAll('input[name="genres[]"]:checked');
+    if (genresCheckboxes.length === 0) {
+        alert("Devi selezionare almeno un genere.");
+        return;
+    }
     const genresData = Array.from(genresCheckboxes).map(checkbox => checkbox.value);
 
     const formData = new FormData();
