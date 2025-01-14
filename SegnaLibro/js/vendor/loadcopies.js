@@ -7,7 +7,7 @@ function loadCopies(articoli) {
             let articolo = `
             <article onClick=\'deleteArticle(\"${articoli[i]["EAN"]}\", \"${articoli[i]["CodiceEditoriale"]}\", \"${articoli[i]["CodiceTitolo"]}\", \"${articoli[i]["CodiceRegGroup"]}\", \"${articoli[i]["NumeroCopia"]}\")\'>
                 <figure>
-                    <img src="./images/upload/${articoli[i]["NomeImmagine"]}" alt="" />
+                    <img src="${articoli[i]["NomeImmagine"]}" alt="" />
                 </figure>
                 <div>
                     <header>
