@@ -5,7 +5,7 @@ if (!defined('DIRECT_ACCESS')){
 ?>
 
 <section>
-<h1>Modifica Libro</h1>
+<h1>Aggiungi Copia</h1>
 
 <form id="addCopyForm" enctype="multipart/form-data">
     <ul>

@@ -638,6 +638,12 @@ main[data-add_copy] {
   gap: 20px;
 }
 
+main[data-add_copy] h1{
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: #801524;
+}
+
 main[data-add_copy] div:last-of-type a,
 main[data-add_copy] div:last-of-type input,
 main[data-add_copy] div:last-of-type button {
@@ -1364,6 +1370,7 @@ main[data-book_details] section:first-of-type>footer {
 
 /* Modify book page */
 
+
 main[data-book_modify] div:last-of-type>a,
 main[data-book_modify] div:last-of-type>input,
 main[data-book_modify] div:last-of-type>button {
@@ -1476,33 +1483,28 @@ main[data-book_modify] section:first-of-type>form>input {
   text-decoration: underline;
 }
 
-main[data-book_modify] section:first-of-type form fieldset {
+main[data-book_modify] section:first-of-type form fieldset[data-genres-container] {
   width: 70%;
-  border-radius: 7px;
-}
-
-main[data-book_modify] section:first-of-type form fieldset ul {
+  padding: 15px;
+  display: flex;
   flex-direction: row;
+  border: transparent;
 }
 
-main[data-book_modify] section:first-of-type form fieldset ul li label {
-  width: 80%;
-  background-color: #801524;
-  border-radius: 7px 0 0 7px;
-  color: white;
+main[data-book_modify] section:first-of-type form fieldset[data-genres-container] label {
+  background-color: transparent;
+  flex-direction: column;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  margin: 0 2px;
 }
 
-main[data-book_modify] section:first-of-type form ul li input[type="checkbox"] {
-  width: 20%;
-  text-align: center;
-  border: none;
-  border-radius: 0 10px 10px 0;
-  padding: 5px;
-  outline: none;
+main[data-book_modify] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
+  background-color: transparent;
+  margin: 0 5px;
 }
 
 /* User orders page */
@@ -1912,6 +1914,13 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     width: 100%;
   }
 
+  main[data-book_insert] section:first-of-type form fieldset[data-genres-container],
+  main[data-book_modify] section:first-of-type form fieldset[data-genres-container]{
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
   /* Customer's profile page */
   main[data-profile] {
     display: flex;
@@ -2043,6 +2052,8 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     color: #801524;
     font-size: 20px;
   }
+
+
 
   
   main[data-book_modify] section:first-of-type,
