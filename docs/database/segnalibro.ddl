@@ -97,7 +97,7 @@ create table IMMAGINE (
      CodiceRegGroup char(5) not null,
      CodiceEditoriale char(6) not null,
      CodiceTitolo char(6) not null,
-     constraint IDIMMAGINE primary key (Numero));
+     constraint IDIMMAGINE primary key (Numero, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, NumeroCopia));
 
 create table INDIRIZZO (
      UniqueUserID int not null,

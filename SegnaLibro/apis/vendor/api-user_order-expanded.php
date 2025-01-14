@@ -11,7 +11,7 @@ else if (isset($_POST["getArticles"])) {
     echo json_encode($data);
 } else if (isset($_POST["markAsReady"])){ 
     $data = $dbh->markAsReady($_POST["markAsReady"]);
-    echo json_encode($data);
+    echo $data;
 }
 else{
     echo http_response_code(400); 
