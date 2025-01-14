@@ -10,6 +10,7 @@
                     echo '<li '.($tp["active"] == "search" ? "data-active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
                 } else {
                     echo '<li '.($tp["active"] == "user_orders" ? "data-active" : "").'><a href="./user_orders_index.php">Ordini utenti</a></li>';
+                    echo '<li '.($tp["active"] == "every_announce_vendor" ? "data-active": "").'><a href="./every_announce_index.php">Annunci</a></li>';
                 }
             }else{
                 echo '<li '.($tp["active"] == "search" ? "data-active" : "").'><a href="./advanced_search_index.php">Ricerca avanzata</a></li>';
