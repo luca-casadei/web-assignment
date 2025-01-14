@@ -1571,7 +1571,7 @@ main[data-order_expanded] {
   gap: 20px;
 }
 
-main[data-order_expanded] h1 {
+main[data-order_expanded] section:first-of-type > h1 {
   font-size: 30px;
   color: #801524;
 }
@@ -2103,7 +2103,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-book_details] footer:last-of-type,
   main[data-copiesofbook] > section:nth-child(n),
   main[data-advancedsearch] > header {
-    height: 120px;
+    height: 140px;
     width: 100%;
     padding: 0;
     padding-top: 20px;
