@@ -41,7 +41,6 @@ function generateArticles(data) {
 }
 
 async function getExpandedOrder() {
-    console.log("getExpandedOrder");
     const url = "./apis/api-order-expanded.php";
     try {
         const formData = new FormData();
@@ -51,7 +50,6 @@ async function getExpandedOrder() {
             body: formData,
         });
         const json = await response.json();
-        console.log(json);
         const data = generateArticles(json);
         document.querySelector("main").innerHTML = data;
     } catch (error) {

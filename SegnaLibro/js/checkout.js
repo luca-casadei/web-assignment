@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector('form');
-  console.log("form", form);
   if (form) {
     form.addEventListener("submit", (event) => {
-      console.log("submit");
       event.preventDefault();
       const cardNumber = form.querySelector('input[name="card_number"]');
       const expiration = form.querySelector('input[name="expiration"]');

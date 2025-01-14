@@ -8,7 +8,6 @@ async function getBookImages() {
             throw new Error(`Response status: ${response.status}`);
         }
         const images = await response.json();
-        console.log(images);
 
         const carouselContainer = document.querySelector('main[data-book_details] div > div');
 
@@ -17,8 +16,6 @@ async function getBookImages() {
             imgElement.src = "./images/upload/" + image.Percorso;
             imgElement.alt = "Copertina del libro";
             
-            console.log(carouselContainer);
-
             carouselContainer.appendChild(imgElement);
         });
         updateCarousel();

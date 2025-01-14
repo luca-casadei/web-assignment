@@ -60,11 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         data.append("category", JSON.stringify(categoryData));
         data.append("genres", JSON.stringify(genresData));
 
-        console.log("bookData", bookData);
-        console.log("authorData", authorData);
-        console.log("categoryData", categoryData);
-        console.log("genresData", genresData);
-
         const url = "./apis/vendor/api-book-insert.php";
         try {
             const response = await fetch(url, {
@@ -76,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
-            console.log("JSON", json);
         } catch (error) {
             console.log(error.message);
         }

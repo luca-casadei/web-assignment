@@ -14,16 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
             "Condizione": document.getElementById("conditionSelect").value.trim(),
         };
 
-        console.log("Immagine selezionata", copyData["Immagine"]);
-
         const data = new FormData();
         data.append("newCopy", JSON.stringify(copyData));
 
         const fileInput = document.getElementById("imgarticle");
-        console.log("fileInput.files.length", fileInput.files.length);
 
         for (let i = 0; i < fileInput.files.length; i++) {
-            console.log(`imgarticle${i}:`,fileInput.files[i]);
             data.append(`imgarticle${i}`, fileInput.files[i]);
         }
 
@@ -38,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.text();
-            console.log("JSON", json);
         } catch (error) {
             console.log(error.message);
         }

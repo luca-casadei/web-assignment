@@ -45,7 +45,6 @@ function generateUserOrders(data) {
 }
 
 async function getUserOrdersData() {
-    console.log("getUserOrdersData");
     const url = './apis/vendor/api-user_orders.php';
 
     try {
@@ -55,7 +54,6 @@ async function getUserOrdersData() {
         }
 
         const json = await response.json();
-        console.log(json);
         const data = generateUserOrders(json);
         document.querySelector("main").innerHTML = data;
     } catch (error) {

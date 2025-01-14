@@ -66,7 +66,6 @@ async function login(username, password) {
         }
         const json = await response.json();
         if(json["logged"]){
-            console.log("Login già eseguito");
             window.location.href = "./profile_index.php";
         }
         else{

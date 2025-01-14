@@ -69,11 +69,6 @@ async function updateBook() {
     formData.append("category", JSON.stringify(categoryData));
     formData.append("genres", JSON.stringify(genresData));
 
-    console.log("bookDataModify", bookData);
-    console.log("authorDataModify", authorData);
-    console.log("categoryDataModify", categoryData);
-    console.log("genresDataModify", genresData);
-
     const url = './apis/vendor/api-book-modify.php';
     try {
         const response = await fetch(url, {
@@ -84,7 +79,6 @@ async function updateBook() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        console.log("JSON", json);
         redirectToCompleteOrder();
     } catch (error) {
         console.log(error.message);

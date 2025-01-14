@@ -44,7 +44,6 @@ function generateCartArticles(data) {
 }
 
 async function getCartArticlesData() {
-    console.log("getCartArticlesData");
     const url = './apis/api-cart.php';
     try {
         const response = await fetch(url);

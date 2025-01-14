@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Profile page loaded");
     var changePasswordForm = document.querySelector('form:last-of-type');
     changePasswordForm.style.display = 'none';
 

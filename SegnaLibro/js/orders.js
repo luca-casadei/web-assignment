@@ -33,7 +33,6 @@ function generateOrders(data) {
 }
 
 async function getOrdersData() {
-    console.log("getOrdersData");
     const url = './apis/api-orders.php';
     try {
         const response = await fetch(url);

@@ -118,7 +118,6 @@ async function getCategories(){
 async function expandArticles(ean, codiceEditoriale, codiceTitolo, codiceRegGroup, numeroCopia){
     const url = './apis/api-detailed-article.php';
     try {
-        console.log(codiceEditoriale)
         const formData = new FormData();
         formData.append("expandedarticledata", JSON.stringify({
             "EAN": ean,
