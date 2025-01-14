@@ -79,7 +79,13 @@ async function updateBook() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        redirectToCompleteOrder();
+        if(json["book"] == true && json["author"] == true && json["bookauthor"] == true && json["bookgenres"] == true){
+            alert("Libro modificato con successo");
+            window.location.href = "./index.php";
+        }
+        else{
+            console.log(json);
+        }
     } catch (error) {
         console.log(error.message);
     }
