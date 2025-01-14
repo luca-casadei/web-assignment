@@ -12,7 +12,7 @@
     <form action="#" method="POST">
         <h2>Filtri</h2>
         <label for="categoryselect">Categoria:</label>
-        <select title="Categoria" id="categoryselect" onchange="updateSearchTerms()"></select>
+        <select title="Categoria" id="categoryselect" onchange="updateSearchTerms()"><option selected value="">Nessuna categoria</option></select>
         <label for="orderingselect">Ordina:</label>
         <select title="Ordinamento" id="orderingselect" onchange="updateSearchTerms()">
             <optgroup label="Prezzo">
@@ -26,7 +26,7 @@
         </select>
         <div>
             <label for="pricerange">Prezzo:</label>
-            <input type="range" min="5" max="100" step="5" onchange="updateSearchTerms()" id="pricerange" name="pricerange"/>
+            <input type="range" min="5" max="500" step="5" onchange="updateSearchTerms()" id="pricerange" name="pricerange"/>
             <p></p>
         </div>
     </form>
