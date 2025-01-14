@@ -3,12 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const authorSelect = document.getElementById('authorSelect');
     const customAuthorInput = document.querySelector('[placeholder="Nome e cognome..."]');
     const customAuthorLi = customAuthorInput.parentElement;
+    const authorSelectLi = authorSelect.parentElement;
     const categorySelect = document.getElementById('categorySelect');
 
-    customAuthorLi.style.display = 'none';
+    customAuthorLi.remove();
 
     form.addEventListener("submit", handleFormSubmit);
     authorSelect.addEventListener('change', handleAuthorSelectChange);
+
+    function handleAuthorSelectChange() {
+        if (authorSelect.value === 'custom') {
+            authorSelectLi.insertAdjacentElement('afterend', customAuthorLi);
+            customAuthorInput.focus();
+        } else {
+            customAuthorLi.remove();
+            customAuthorInput.value = '';
+        }
+    }
 
     async function handleFormSubmit(event) {
         event.preventDefault();
@@ -95,15 +106,5 @@ document.addEventListener("DOMContentLoaded", () => {
         const isCodCheckValid = codCheck.length > 0;
 
         return isEANValid && isRegGroupValid && isCodEditValid && isCodTitleValid && isCodCheckValid;
-    }
-
-    function handleAuthorSelectChange() {
-        if (authorSelect.value === 'custom') {
-            customAuthorLi.style.display = 'flex';
-            customAuthorInput.focus();
-        } else {
-            customAuthorLi.style.display = 'none';
-            customAuthorInput.value = '';
-        }
     }
 });
