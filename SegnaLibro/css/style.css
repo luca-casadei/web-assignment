@@ -342,7 +342,7 @@ main[data-homevendor] article {
   background-color: #d9d9d9;
   color: #801524;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgb(0 0 0 / 30%);
+  box-shadow: 0 3px 5px #888;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -510,7 +510,7 @@ main[data-book_insert] section:last-of-type>p {
 }
 
 main[data-book_insert] section:first-of-type {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -670,7 +670,7 @@ main[data-add_copy] section:last-of-type>p {
 }
 
 main[data-add_copy] section:first-of-type {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -830,7 +830,7 @@ main[data-profile] div>p {
 }
 
 main[data-profile] section:first-of-type {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -970,7 +970,7 @@ main[data-copiesofbook] {
 }
 
 main[data-copiesofbook]>section:first-of-type {
-  width: 78%;
+  width: 80%;
   padding-left: 1%;
   padding-right: 1%;
 }
@@ -1019,7 +1019,7 @@ main[data-cart] div>p {
 }
 
 main[data-cart] section:first-of-type {
-  width: 78%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -1040,7 +1040,7 @@ main[data-cart] section:first-of-type>input[type="button"] {
 main[data-cart] article {
   background-color: #fff;
   border-radius: 6px;
-  box-shadow: 0 3px 5px rgba(0 0 0 0.1);
+  box-shadow: 0 3px 5px #888;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -1143,7 +1143,7 @@ main[data-checkout] form input[type="submit"]:hover {
 }
 
 main[data-checkout]>section:first-of-type {
-  width: 78%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1283,7 +1283,7 @@ main[data-book_details] section:first-of-type {
   display: flex;
   flex-direction: column;
   place-items: center;
-  width: 78%;
+  width: 80%;
   gap: 10px;
 }
 
@@ -1404,7 +1404,7 @@ main[data-book_modify] h1 {
 }
 
 main[data-book_modify] section:first-of-type {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1415,7 +1415,7 @@ main[data-book_modify] section:first-of-type form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 3px 5px rgba(0 0 0 10%);
+  box-shadow: 0 3px 5px #888;
 }
 
 main[data-book_modify] section:first-of-type form ul {
@@ -1539,7 +1539,7 @@ main[data-orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px #888;
   border-radius: 10px;
   padding: 20px;
 }
@@ -1614,7 +1614,7 @@ main[data-user_orders] section > article {
   gap: 10px;
   background-color: #d9d9d9;
   color: #801524;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px #888;
   border-radius: 10px;
   padding: 20px;
 }
@@ -1692,7 +1692,7 @@ main[data-order_expanded] section:last-of-type p {
 
 
 main[data-order_expanded] section:first-of-type {
-  width: 78%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1783,7 +1783,7 @@ main[data-user_order_expanded] > section:last-of-type{
 }
 
 main[data-user_order_expanded] > section:first-of-type {
-  width: 70%;
+  width: 80%;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -2052,7 +2052,8 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
   }
 
   
-  main[data-book_modify] section:first-of-type{
+  main[data-book_modify] section:first-of-type,
+  main[data-add_copy] section:first-of-type{
     width: 100%;
   }
 
@@ -2145,7 +2146,7 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
   }
 
   main[data-advancedsearch]>header,
-  main[data-profile]>section:last-of-type
+  main[data-profile]>section:last-of-type,
   main[data-add_copy]>section:last-of-type,
   main[data-book_insert]>section:last-of-type,
   main[data-user_order_expanded]>section:last-of-type,
