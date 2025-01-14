@@ -188,7 +188,7 @@ main[data-add_copy] div:last-of-type,
 main[data-book_insert] form > div:last-of-type,
 main[data-order_expanded] > section:last-of-type,
 main[data-book_modify] form > div:last-of-type,
-main[data-book_details] > section:last-of-type,
+main[data-book_details]  footer:last-of-type,
 main[data-cart] > section:last-of-type,
 main[data-checkout] div:last-of-type,
 main[data-profile] > section:last-of-type {
@@ -1278,9 +1278,6 @@ main[data-book_details]
   right: -45px;
 }
 
-main[data-book_details] section:first-of-type > footer {
-  display: none;
-}
 
 /* Modify book page */
 
@@ -1766,9 +1763,9 @@ main[data-user_order_expanded] section:last-of-type>input,
 main[data-user_order_expanded] section:last-of-type>button,
 main[data-checkout] > div:last-of-type > input,
 main[data-checkout] form input[type="submit"],
-main[data-book_details] section:last-of-type > a,
-main[data-book_details] section:last-of-type > input,
-main[data-book_details] section:last-of-type > button,
+main[data-book_details] footer:last-of-type > a,
+main[data-book_details] footer:last-of-type > input,
+main[data-book_details] footer:last-of-type > button,
 main[data-book_modify] div:last-of-type > a,
 main[data-book_modify] div:last-of-type > input,
 main[data-book_modify] div:last-of-type > button {
@@ -1805,9 +1802,9 @@ main[data-user_order_expanded] section:last-of-type>input:hover,
 main[data-user_order_expanded] section:last-of-type>button:hover,
 main[data-checkout] > div:last-of-type > input:hover,
 main[data-checkout] form input[type="submit"]:hover,
-main[data-book_details] section:last-of-type > a:hover,
-main[data-book_details] section:last-of-type > input:hover,
-main[data-book_details] section:last-of-type > button:hover,
+main[data-book_details] footer:last-of-type > a:hover,
+main[data-book_details] footer:last-of-type > input:hover,
+main[data-book_details] footer:last-of-type > button:hover,
 main[data-book_modify] div:last-of-type > a:hover,
 main[data-book_modify] div:last-of-type > input:hover,
 main[data-book_modify] div:last-of-type > button:hover {
@@ -1936,17 +1933,6 @@ main[data-book_modify] div:last-of-type > button:hover {
     color: #801524;
   }
 
-  main[data-book_details] section:first-of-type footer input[type="button"] {
-    background-color: #801524;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
 
   main[data-cart] section:first-of-type {
     width: 100%;
@@ -2105,7 +2091,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-book_modify] form > div:last-of-type,
   main[data-checkout] div:last-of-type,
   main[data-cart] > section:last-of-type,
-  main[data-book_details] > section:last-of-type,
+  main[data-book_details] footer:last-of-type,
   main[data-copiesofbook] > section:nth-child(n),
   main[data-advancedsearch] > header {
     height: 120px;
@@ -2139,7 +2125,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-book_modify] form > div:last-of-type,
   main[data-checkout] div:last-of-type,
   main[data-cart] > section:last-of-type,
-  main[data-book_details] > section:last-of-type,
+  main[data-book_details] footer:last-of-type,
   main[data-copiesofbook] > section:last-of-type {
     position: unset;
     gap: 5px;
