@@ -1,25 +1,25 @@
 /* Ottenimento di tutto il necessario per rappresentare gli articoli */
 CREATE VIEW LIBRI_CATEGORIE_AUTORE AS (
-	SELECT libro.*,
-	autore.Codice AS CodiceAutore,
-	autore.Nome AS NomeAutore,
-	autore.Cognome AS CognomeAutore,
+	SELECT LIBRO.*,
+	AUTORE.Codice AS CodiceAUTORE,
+	AUTORE.Nome AS NomeAUTORE,
+	AUTORE.Cognome AS CognomeAUTORE,
 	CATEGORIA.Codice AS CodiceCategoria,
 	CATEGORIA.Nome AS NomeCategoria,
-	editore.Nome AS NomeEditore
-	FROM libro join autori_libro
-	ON autori_libro.EAN = libro.EAN
-	AND autori_libro.CodiceRegGroup = libro.CodiceRegGroup
-	AND autori_libro.CodiceTitolo = libro.CodiceTitolo
-	AND autori_libro.CodiceEditoriale = libro.CodiceEditoriale
-	JOIN autore ON autore.Codice = autori_libro.CodiceAutore
-	JOIN genere_libro ON genere_libro.EAN = libro.EAN
-	AND genere_libro.CodiceRegGroup = libro.CodiceRegGroup
-	AND genere_libro.CodiceEditoriale = libro.CodiceEditoriale
-	AND genere_libro.CodiceTitolo = libro.CodiceTitolo
-	JOIN genere ON genere.Codice = genere_libro.CodiceGenere
+	EDITORE.Nome AS NomeEditore
+	FROM LIBRO join AUTORI_LIBRO
+	ON AUTORI_LIBRO.EAN = LIBRO.EAN
+	AND AUTORI_LIBRO.CodiceRegGroup = LIBRO.CodiceRegGroup
+	AND AUTORI_LIBRO.CodiceTitolo = LIBRO.CodiceTitolo
+	AND AUTORI_LIBRO.CodiceEditoriale = LIBRO.CodiceEditoriale
+	JOIN AUTORE ON AUTORE.Codice = AUTORI_LIBRO.CodiceAUTORE
+	JOIN GENERE_LIBRO ON GENERE_LIBRO.EAN = LIBRO.EAN
+	AND GENERE_LIBRO.CodiceRegGroup = LIBRO.CodiceRegGroup
+	AND GENERE_LIBRO.CodiceEditoriale = LIBRO.CodiceEditoriale
+	AND GENERE_LIBRO.CodiceTitolo = LIBRO.CodiceTitolo
+	JOIN GENERE ON GENERE.Codice = GENERE_LIBRO.CodiceGENERE
 	JOIN CATEGORIA ON CATEGORIA.Codice = GENERE.CodiceCategoria
-	JOIN editore ON editore.CodiceEditoriale = LIBRO.CodiceEditoriale
+	JOIN EDITORE ON EDITORE.CodiceEditoriale = LIBRO.CodiceEditoriale
 	GROUP BY EAN, CodiceEditoriale, CodiceTitolo, CodiceRegGroup
 );
 

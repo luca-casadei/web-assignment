@@ -1,4 +1,4 @@
-INSERT INTO Provincia (Codice, Nome) VALUES
+INSERT INTO PROVINCIA (Codice, Nome) VALUES
 ('AG', 'Agrigento'),
 ('AL', 'Alessandria'),
 ('AN', 'Ancona'),
