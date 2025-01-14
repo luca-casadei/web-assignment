@@ -237,13 +237,28 @@ main[data-advancedsearch]>header>form div {
   width: 85%;
 }
 
+
+main[data-everyann]{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+main[data-everyann] h1{
+  font-size: 30px;
+  color: #801524;
+}
+
 main[data-homeuser]>article header>h2,
+main[data-everyann]>article header>h2,
 main[data-copiesofbook] article header>h2,
 main[data-advancedsearch]>section>article header>h2 {
   font-weight: bold;
 }
 
 main[data-homeuser]>article>div>p,
+main[data-everyann] article>div>p,
 main[data-copiesofbook] article>div>p,
 main[data-advancedsearch]>section>article>div>p {
   padding-top: 20px;
@@ -251,6 +266,7 @@ main[data-advancedsearch]>section>article>div>p {
 }
 
 main[data-homeuser]>article header,
+main[data-everyann] article header,
 main[data-copiesofbook] article header,
 main[data-advancedsearch]>section>article header {
   display: flex;
@@ -260,6 +276,7 @@ main[data-advancedsearch]>section>article header {
 }
 
 main[data-homeuser]>article>div,
+main[data-everyann] article>div,
 main[data-copiesofbook] article>div,
 main[data-advancedsearch]>section>article>div {
   display: flex;
@@ -270,6 +287,7 @@ main[data-advancedsearch]>section>article>div {
 }
 
 main[data-homeuser]>article>figure>img,
+main[data-everyann] article>figure>img,
 main[data-copiesofbook] article>figure>img,
 main[data-advancedsearch]>section>article>figure>img {
   max-width: 150px;
@@ -278,12 +296,14 @@ main[data-advancedsearch]>section>article>figure>img {
 }
 
 main[data-homeuser]>article footer>p:last-of-type,
+main[data-everyann] article footer>p:last-of-type,
 main[data-copiesofbook] article footer>p:last-of-type,
 main[data-advancedsearch]>section>article footer>p:last-of-type {
   font-weight: bold;
 }
 
 main[data-homeuser]>article footer>p:first-of-type>span,
+main[data-everyann] article footer>p:first-of-type>span,
 main[data-copiesofbook] article footer>p:first-of-type>span,
 main[data-advancedsearch]>section>article footer>p:first-of-type>span {
   margin-left: 5%;
@@ -291,6 +311,7 @@ main[data-advancedsearch]>section>article footer>p:first-of-type>span {
 }
 
 main[data-homeuser]>article footer,
+main[data-everyann] article footer,
 main[data-copiesofbook] article footer,
 main[data-advancedsearch]>section>article footer {
   display: flex;
@@ -299,6 +320,7 @@ main[data-advancedsearch]>section>article footer {
 }
 
 main[data-homeuser]>article,
+main[data-everyann] article,
 main[data-copiesofbook] article,
 main[data-advancedsearch]>section>article {
   display: flex;
