@@ -1,6 +1,4 @@
-    <div>
-          <input type="submit" value="Completa ordine" form="checkoutForm" />
-    </div>
+    
 
     <section>
         <form id="checkoutForm">
@@ -49,6 +47,8 @@
                 </li>
             </ul>
 
-            <input type="submit" value="Completa ordine" />
         </form>
+    </section>
+    <section>
+          <input type="submit" value="Completa ordine" form="checkoutForm" />
     </section>

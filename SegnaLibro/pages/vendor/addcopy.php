@@ -4,10 +4,6 @@ if (!defined('DIRECT_ACCESS')){
 }
 ?>
 
-<div>
-    <input type="submit" value="Aggiungi copia" form="addCopyForm">
-</div>
-
 <section>
 <h1>Modifica Libro</h1>
 
@@ -28,11 +24,12 @@ if (!defined('DIRECT_ACCESS')){
             </select>
         </li>
         <li>
-            <label for="description">Descrizione annuncio annuncio</label>
+            <label for="description">Descrizione annuncio</label>
             <input type="textarea" id="description" name="description" placeholder="Descrizione annuncio..." required>
         </li>
     </ul>
-
-    <input type="submit" value="Applica modifiche">
 </form>
+</section>
+<section>
+    <input type="submit" value="Aggiungi copia" form="addCopyForm">
 </section>

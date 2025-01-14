@@ -1,16 +1,11 @@
 function generateCartArticles(data) {
     let result = `
-        <div>
+        <section>
     `;
 
     let articles = data.articles;
     if (articles.length !== 0) {
-        result += `  
-            <p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
-        </div>
-        <section>
-            <h1>Carrello</h1>`;
-        result += `<p>Totale: ${data.total_price}</p><input type="button" value="Procedi all\'ordine" />`;
+        result += `<h1>Carrello</h1>`;
         for (let i = 0; i < articles.length; i++) {
             let article = `
             <article>
@@ -36,9 +31,13 @@ function generateCartArticles(data) {
             `;
             result += article;
         }
-        result += "</section>";
+        result += `</section>
+        <section>  
+            <p>Totale: ${data.total_price}</p>
+            <input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
+        </section>`;
     } else {
-        result += "<p>Il carrello è vuoto</p></div><p>Il carrello è vuoto</p>";
+        result += "<p>Il carrello è vuoto</p></section><section><p>Il carrello è vuoto</p></section>";
     }
 
     return result;

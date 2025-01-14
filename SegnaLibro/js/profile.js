@@ -24,12 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeInfo(name, lastname, avenue, civic, city, province, cap);
     })
 
-    var changePasswordLink = document.querySelector('form:first-of-type a');
-    changePasswordLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleChangePasswordForm();
-    });
-    var changePasswordLink = document.querySelector('div:first-of-type a');
+    var changePasswordLink = document.querySelector('section:last-of-type a:first-of-type');
     changePasswordLink.addEventListener('click', (e) => {
         e.preventDefault();
         toggleChangePasswordDiv();
@@ -41,14 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function toggleChangePasswordDiv() {
-    var changePasswordLink = document.querySelector('div:first-of-type a');
-    var changePasswordForm = document.querySelector('form:last-of-type');
-    changePasswordLink.innerHTML = (changePasswordForm.style.display == 'block') ? 'Modifica Password' : 'Annulla cambio password';
-    changePasswordForm.style.display = (changePasswordForm.style.display == 'block') ? 'none' : 'block';
-}
-
-function toggleChangePasswordForm() {
-    var changePasswordLink = document.querySelector('form:first-of-type a');
+    var changePasswordLink = document.querySelector('section:last-of-type a:first-of-type');
     var changePasswordForm = document.querySelector('form:last-of-type');
     changePasswordLink.innerHTML = (changePasswordForm.style.display == 'block') ? 'Modifica Password' : 'Annulla cambio password';
     changePasswordForm.style.display = (changePasswordForm.style.display == 'block') ? 'none' : 'block';

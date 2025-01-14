@@ -1,8 +1,6 @@
 function generateArticles(data) {
     let result = `
-    <div>
-        <input type="button" value="Segna come pronto" onclick="markAsReady(${data.articles[0]["CodiceOrdine"]})" />
-    </div>
+    
     <section>
     <h1>Ordine n. ${data.articles[0]["CodiceOrdine"]}</h1>`;
     for (let i = 0; i < data.articles.length; i++) {
@@ -30,7 +28,10 @@ function generateArticles(data) {
             `;
         result += article;
     }
-    result += `</section>`;
+    result += `</section>
+    <section>
+        <input type="button" value="Segna come pronto" onclick="markAsReady(${data.articles[0]["CodiceOrdine"]})" />
+    </section>`;
     return result;
 }
 

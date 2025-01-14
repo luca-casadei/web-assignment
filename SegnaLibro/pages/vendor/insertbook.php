@@ -3,9 +3,6 @@ if (!defined('DIRECT_ACCESS')){
     header("Location: ../../index.php");
 }
 ?>
-<div>
-    <a href="./index.php">Aggiungi libro</a>
-</div>
 
 <section>
     <form method="POST">
@@ -53,6 +50,9 @@ if (!defined('DIRECT_ACCESS')){
             <fieldset data-genres-container></fieldset>
         </li>
     </ul>
-    <input type="submit" value="Aggiungi Libro">
     </form>
+</section>
+
+<section>
+    <a href="./index.php">Aggiungi libro</a>
 </section>
