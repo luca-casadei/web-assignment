@@ -9,7 +9,8 @@ async function loadBooks(books) {
             <article> 
                 <header>
                     <h2>${b["Titolo"]}</h2>
-                    <input type="image" src="./images/pencil.png" alt="Edit book" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
+                    <label for="modify${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}">Modifica libro</label> 
+                    <input id="modify${b["EAN"]}-${b["CodiceTitolo"]}-${b["CodiceEditoriale"]}-${b["CodiceRegGroup"]}" type="image" src="./images/pencil.png" alt="Edit book" onClick=\'expandBook(\"${b["EAN"]}\",\"${b["CodiceTitolo"]}\",\"${b["CodiceEditoriale"]}\",\"${b["CodiceRegGroup"]}\")\'/>
                 </header>
                 <p>
                     <ul>

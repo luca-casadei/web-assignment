@@ -368,6 +368,10 @@ main[data-homevendor] h1 {
   color: #8e1017;
 }
 
+main[data-homevendor] > article > header > label {
+  display: none;
+}
+
 main[data-homevendor] > p {
   font-size: 19px;
   font-weight: bold;
