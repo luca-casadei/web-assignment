@@ -14,23 +14,26 @@ else if(isset($_POST["newCopy"])) {
     $description = $decoded["Descrizione"];
     $condition = $decoded["Condizione"];
 
-
-
-    $imgCount = is_array($_FILES['imgarticle']['name']) ? count($_FILES['imgarticle']['name']) : 1;
+    $index = 0;
+    $imgCount = 0;
+    while (isset($_FILES["imgarticle{$index}"])) {
+        $imgCount++;
+        $index++;
+    }
 
     $result = $dbh->insertCopy($bookdata, $title, $price, $description, $date, $condition, $imgCount);
 
-    for($i = 0; $i < count($result); $i++) {
-        $filename = $bookdata["EAN"]."-".$bookdata["CodiceRegGroup"]."-".$bookdata["CodiceEditoriale"]."-".$bookdata["CodiceTitolo"]."-".$result[$i];
-        if(isset($_FILES["imgarticle"]) && strlen($_FILES["imgarticle"]["name"])>0){
+    for ($i = 0; $i < count($result); $i++) {
+        $filename = $bookdata["EAN"] . "-" . $bookdata["CodiceRegGroup"] . "-" . $bookdata["CodiceEditoriale"] . "-" . $bookdata["CodiceTitolo"] . "-" . $result[$i];
+        if (isset($_FILES["imgarticle{$i}"]) && strlen($_FILES["imgarticle{$i}"]["name"]) > 0) {
             $path = __DIR__ . "/../." . IMAGE_PATH;
-            list($resultIMG, $msgIMG) = uploadImage($path, $_FILES["imgarticle"], $filename);
+            list($resultIMG, $msgIMG) = uploadImage($path, $_FILES["imgarticle{$i}"], $filename);
             $imgarticle = $msgIMG;
             $baseName = pathinfo($imgarticle, PATHINFO_FILENAME);
         }
     }
 
-    echo json_encode($_FILES['imgarticle']);
+    echo $path;
 } else {
     echo http_response_code(400);
 }
