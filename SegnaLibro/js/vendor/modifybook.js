@@ -1,18 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const authorSelect = document.getElementById('authorSelect');
     const customAuthorInput = document.querySelector('[placeholder="Nome e cognome..."]');
     const customAuthorLi = customAuthorInput.parentElement;
+    const authorSelectLi = authorSelect.parentElement;
 
-    customAuthorLi.style.display = 'none';
+    customAuthorLi.remove();
 
     authorSelect.addEventListener('change', handleAuthorSelectChange);
 
     function handleAuthorSelectChange() {
         if (authorSelect.value === 'custom') {
-            customAuthorLi.style.display = 'flex';
+            authorSelectLi.insertAdjacentElement('afterend', customAuthorLi);
             customAuthorInput.focus();
         } else {
-            customAuthorLi.style.display = 'none';
+            customAuthorLi.remove();
             customAuthorInput.value = '';
         }
     }
