@@ -8,7 +8,7 @@ if (isset($_POST["OrderMethod"])) {
                 $articles[$i]["InCarrello"] = "INCART";
             }
         }
-        $articles[$i]["NomeImmagine"] = IMAGE_PATH . $articles[$i]["NomeImmagine"];
+        $articles[$i]["NomeImmagine"] = IMAGE_PATH.$articles[$i]["NomeImmagine"];
     }
     header('Content-Type: application/json');
     echo json_encode($articles);

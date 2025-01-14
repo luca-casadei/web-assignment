@@ -40,7 +40,7 @@ else if(isset($_POST["newCopy"])) {
         }
     }
     
-    echo json_encode($fileExtensions);
+    echo 'SUCCESS';
 } else {
     echo http_response_code(400);
 }

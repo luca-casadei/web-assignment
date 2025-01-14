@@ -25,7 +25,7 @@ a {
 
 /* Navbar and footer styles */
 nav,
-body>footer {
+body > footer {
   background-color: #801524;
   color: white;
   width: 100%;
@@ -43,23 +43,23 @@ nav {
   padding: 5px;
 }
 
-nav>ul>li[data-active] {
+nav > ul > li[data-active] {
   font-weight: bold;
 }
 
 /* Navbar menu */
-nav>ul {
+nav > ul {
   display: flex;
   flex-direction: row;
   gap: 30px;
   align-items: center;
 }
 
-nav>ul:last-of-type>li {
+nav > ul:last-of-type > li {
   cursor: pointer;
 }
 
-nav>ul:last-of-type>li:last-of-type {
+nav > ul:last-of-type > li:last-of-type {
   display: none;
 }
 
@@ -68,12 +68,12 @@ nav img {
   width: 40px;
 }
 
-nav>ul>li>a {
+nav > ul > li > a {
   color: white;
 }
 
 /* Footer styles */
-body>footer {
+body > footer {
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -97,23 +97,23 @@ main[data-access] {
   padding-top: 50px;
 }
 
-main[data-access]>h1 {
+main[data-access] > h1 {
   font-size: 40px;
   font-weight: bold;
 }
 
-main[data-access]>form {
+main[data-access] > form {
   width: 100%;
 }
 
-main[data-access]>form>ul {
+main[data-access] > form > ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 50px;
 }
 
-main[data-access]>form>ul>li {
+main[data-access] > form > ul > li {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -145,17 +145,17 @@ main[data-access] input[type="submit"] {
   font-size: large;
 }
 
-main[data-access]>form>ul>li:last-child {
+main[data-access] > form > ul > li:last-child {
   font-size: larger;
 }
 
-main[data-access]>form>ul>li>a {
+main[data-access] > form > ul > li > a {
   text-decoration: none;
   font-weight: bold;
   color: #801524;
 }
 
-main[data-access]>form>p {
+main[data-access] > form > p {
   text-align: center;
   font-weight: bold;
   margin: 3%;
@@ -164,7 +164,7 @@ main[data-access]>form>p {
 
 /* Advanced research */
 
-main[data-copiesofbook]>section:first-of-type>h1 {
+main[data-copiesofbook] > section:first-of-type > h1 {
   text-align: center;
   color: #801524;
   font-weight: bold;
@@ -173,7 +173,7 @@ main[data-copiesofbook]>section:first-of-type>h1 {
   padding-bottom: 10px;
 }
 
-main[data-advancedsearch]>section>h1 {
+main[data-advancedsearch] > section > h1 {
   text-align: center;
   color: #801524;
   font-weight: bold;
@@ -182,16 +182,16 @@ main[data-advancedsearch]>section>h1 {
   padding-bottom: 10px;
 }
 
-main[data-advancedsearch]>header,
-main[data-copiesofbook]>section:last-of-type,
+main[data-advancedsearch] > header,
+main[data-copiesofbook] > section:last-of-type,
 main[data-add_copy] div:last-of-type,
-main[data-book_insert] form>div:last-of-type,
-main[data-order_expanded]>section:last-of-type,
-main[data-book_modify] form>div:last-of-type,
-main[data-book_details]>section:last-of-type,
-main[data-cart]>section:last-of-type,
+main[data-book_insert] form > div:last-of-type,
+main[data-order_expanded] > section:last-of-type,
+main[data-book_modify] form > div:last-of-type,
+main[data-book_details] > section:last-of-type,
+main[data-cart] > section:last-of-type,
 main[data-checkout] div:last-of-type,
-main[data-profile]>section:last-of-type  {
+main[data-profile] > section:last-of-type {
   width: 20%;
   background-color: #801524;
   color: white;
@@ -206,7 +206,7 @@ main[data-profile]>section:last-of-type  {
   padding-top: 20px;
 }
 
-main[data-advancedsearch]>header>form {
+main[data-advancedsearch] > header > form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -268,7 +268,7 @@ main[data-advancedsearch]>section>article>div>p {
 main[data-homeuser]>article header,
 main[data-everyann] article header,
 main[data-copiesofbook] article header,
-main[data-advancedsearch]>section>article header {
+main[data-advancedsearch] > section > article header {
   display: flex;
   flex-direction: row;
   font-size: large;
@@ -313,7 +313,7 @@ main[data-advancedsearch]>section>article footer>p:first-of-type>span {
 main[data-homeuser]>article footer,
 main[data-everyann] article footer,
 main[data-copiesofbook] article footer,
-main[data-advancedsearch]>section>article footer {
+main[data-advancedsearch] > section > article footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -322,7 +322,7 @@ main[data-advancedsearch]>section>article footer {
 main[data-homeuser]>article,
 main[data-everyann] article,
 main[data-copiesofbook] article,
-main[data-advancedsearch]>section>article {
+main[data-advancedsearch] > section > article {
   display: flex;
   flex-direction: row;
   gap: 2%;
@@ -345,7 +345,7 @@ main[data-advancedsearch] {
   display: flex;
 }
 
-main[data-advancedsearch]>section {
+main[data-advancedsearch] > section {
   width: 80%;
   flex-direction: column;
   display: flex;
@@ -368,7 +368,7 @@ main[data-homevendor] h1 {
   color: #8e1017;
 }
 
-main[data-homevendor]>p {
+main[data-homevendor] > p {
   font-size: 19px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -437,7 +437,7 @@ main[data-homevendor] article input[type="button"] {
   width: 35%;
 }
 
-main[data-homevendor] article>footer>input[type="button"] {
+main[data-homevendor] article > footer > input[type="button"] {
   margin-right: auto;
 }
 
@@ -468,24 +468,24 @@ main[data-homevendor] article ul {
   list-style-type: none;
 }
 
-main[data-homevendor] article>ul>li {
+main[data-homevendor] article > ul > li {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-main[data-homevendor] article>ul>li>p {
+main[data-homevendor] article > ul > li > p {
   width: 50%;
   text-align: left;
 }
 
-main[data-homevendor] article>ul>li>ul {
+main[data-homevendor] article > ul > li > ul {
   display: inline;
   width: 50%;
   text-align: left;
 }
 
-main[data-homevendor] article>p {
+main[data-homevendor] article > p {
   font-size: 14px;
   line-height: 22px;
   margin-left: 86px;
@@ -598,7 +598,7 @@ main[data-book_insert] section:first-of-type form ul li textarea {
   height: 60px;
 }
 
-main[data-book_insert] section:first-of-type>form>input {
+main[data-book_insert] section:first-of-type > form > input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -612,7 +612,10 @@ main[data-book_insert] section:first-of-type form input:hover {
   font-weight: bold;
 }
 
-main[data-book_insert] section:first-of-type form fieldset[data-genres-container] {
+main[data-book_insert]
+  section:first-of-type
+  form
+  fieldset[data-genres-container] {
   padding: 15px;
   display: flex;
   flex-direction: row;
@@ -620,7 +623,11 @@ main[data-book_insert] section:first-of-type form fieldset[data-genres-container
   border: transparent;
 }
 
-main[data-book_insert] section:first-of-type form fieldset[data-genres-container] label {
+main[data-book_insert]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  label {
   background-color: transparent;
   flex-direction: column;
   display: flex;
@@ -631,7 +638,11 @@ main[data-book_insert] section:first-of-type form fieldset[data-genres-container
   margin: 0 2px;
 }
 
-main[data-book_insert] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
+main[data-book_insert]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  input[type="checkbox"] {
   background-color: transparent;
   margin: 0 5px;
 }
@@ -642,7 +653,7 @@ main[data-add_copy] {
   gap: 20px;
 }
 
-main[data-add_copy] h1{
+main[data-add_copy] h1 {
   font-size: 30px;
   margin-bottom: 5px;
   color: #801524;
@@ -716,7 +727,7 @@ main[data-add_copy] section:first-of-type form ul li label {
   text-align: center;
 }
 
-main[data-add_copy] section:first-of-type>form>ul>li>input,
+main[data-add_copy] section:first-of-type > form > ul > li > input,
 main[data-add_copy] section:first-of-type form ul li textarea,
 main[data-add_copy] section:first-of-type form ul li select {
   width: 70%;
@@ -732,7 +743,7 @@ main[data-add_copy] section:first-of-type form ul li textarea {
   height: 60px;
 }
 
-main[data-add_copy] section:first-of-type>form>input {
+main[data-add_copy] section:first-of-type > form > input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -754,7 +765,11 @@ main[data-add_copy] section:first-of-type form fieldset[data-genres-container] {
   border: transparent;
 }
 
-main[data-add_copy] section:first-of-type form fieldset[data-genres-container] label {
+main[data-add_copy]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  label {
   background-color: transparent;
   flex-direction: column;
   display: flex;
@@ -765,7 +780,11 @@ main[data-add_copy] section:first-of-type form fieldset[data-genres-container] l
   margin: 0 2px;
 }
 
-main[data-add_copy] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
+main[data-add_copy]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  input[type="checkbox"] {
   background-color: transparent;
   margin: 0 5px;
 }
@@ -777,7 +796,7 @@ main[data-profile] {
   gap: 20px;
 }
 
-main[data-profile] div>p {
+main[data-profile] div > p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -801,7 +820,7 @@ main[data-profile] h1 {
   text-align: center;
 }
 
-main[data-profile] section:first-of-type>form {
+main[data-profile] section:first-of-type > form {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -811,7 +830,7 @@ main[data-profile] section:first-of-type>form {
   gap: 10px;
 }
 
-main[data-profile] section:first-of-type>form>ul {
+main[data-profile] section:first-of-type > form > ul {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -821,7 +840,7 @@ main[data-profile] section:first-of-type>form>ul {
   gap: 20px;
 }
 
-main[data-profile] section:first-of-type>form>ul>li {
+main[data-profile] section:first-of-type > form > ul > li {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -830,7 +849,7 @@ main[data-profile] section:first-of-type>form>ul>li {
   border-radius: 10px;
 }
 
-main[data-profile] section:first-of-type>form>ul>li>label {
+main[data-profile] section:first-of-type > form > ul > li > label {
   width: 30%;
   background-color: #801524;
   border-radius: 7px;
@@ -843,7 +862,7 @@ main[data-profile] section:first-of-type>form>ul>li>label {
   line-height: 70%;
 }
 
-main[data-profile] section:first-of-type>form>ul>li>input,
+main[data-profile] section:first-of-type > form > ul > li > input,
 select {
   width: 70%;
   text-align: center;
@@ -851,7 +870,7 @@ select {
   border-radius: 10px;
 }
 
-main[data-profile] section:first-of-type>form>input {
+main[data-profile] section:first-of-type > form > input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -861,17 +880,17 @@ main[data-profile] section:first-of-type>form>input {
   text-decoration: underline;
 }
 
-main[data-profile] section:first-of-type>form>input:hover {
+main[data-profile] section:first-of-type > form > input:hover {
   font-weight: bold;
 }
 
-main[data-profile] section>a:hover {
+main[data-profile] section > a:hover {
   font-weight: bold;
   border: 2px white solid;
 }
 
 /* Notifcations */
-main[data-notifications]{
+main[data-notifications] {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -880,7 +899,7 @@ main[data-notifications]{
   padding-top: 20px;
 }
 
-main[data-notifications] > article{
+main[data-notifications] > article {
   background-color: #d9d9d9;
   display: flex;
   flex-direction: column;
@@ -889,7 +908,7 @@ main[data-notifications] > article{
   padding: 10px;
 }
 
-main[data-notifications] > article > footer > p > span{
+main[data-notifications] > article > footer > p > span {
   font-weight: bold;
 }
 
@@ -897,7 +916,7 @@ main[data-notifications] > article > footer > p {
   font-size: 18px;
 }
 
-main[data-notifications] > article > header > h2{
+main[data-notifications] > article > header > h2 {
   font-size: 20px;
   font-weight: bold;
   color: #801524;
@@ -911,7 +930,7 @@ main[data-cart] {
   gap: 10px;
 }
 
-main[data-cart] div+p {
+main[data-cart] div + p {
   padding: 10px;
   font-size: 20px;
   color: #801524;
@@ -922,7 +941,7 @@ main[data-copiesofbook] {
   flex-direction: row;
 }
 
-main[data-copiesofbook]>section:first-of-type {
+main[data-copiesofbook] > section:first-of-type {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -930,7 +949,7 @@ main[data-copiesofbook]>section:first-of-type {
   gap: 20px;
 }
 
-main>div {
+main > div {
   width: 30%;
   background-color: #801524;
   display: flex;
@@ -942,7 +961,7 @@ main>div {
   bottom: 50px;
 }
 
-main[data-cart] div>p {
+main[data-cart] div > p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -965,7 +984,7 @@ main[data-cart] h1 {
   text-align: center;
 }
 
-main[data-cart] section:first-of-type>input[type="button"] {
+main[data-cart] section:first-of-type > input[type="button"] {
   display: none;
 }
 
@@ -1013,7 +1032,7 @@ main[data-cart] article header p {
   color: #555;
 }
 
-main[data-cart] section:first-of-type>article>p {
+main[data-cart] section:first-of-type > article > p {
   font-size: 14px;
   line-height: 22px;
   margin-left: 86px;
@@ -1036,7 +1055,7 @@ main[data-cart] section:first-of-type article footer p span {
   font-weight: bold;
 }
 
-main[data-cart] section:first-of-type>article>header>input {
+main[data-cart] section:first-of-type > article > header > input {
   border: none;
   cursor: pointer;
   margin-left: auto;
@@ -1058,7 +1077,7 @@ main[data-checkout] {
   gap: 20px;
 }
 
-main[data-checkout]>section:first-of-type {
+main[data-checkout] > section:first-of-type {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -1068,7 +1087,7 @@ main[data-checkout]>section:first-of-type {
   gap: 10px;
 }
 
-main[data-checkout]>section:first-of-type>form {
+main[data-checkout] > section:first-of-type > form {
   width: 80%;
   max-width: 600px;
   display: flex;
@@ -1076,11 +1095,11 @@ main[data-checkout]>section:first-of-type>form {
   gap: 20px;
 }
 
-main[data-checkout]>section:first-of-type>form>input {
+main[data-checkout] > section:first-of-type > form > input {
   display: none;
 }
 
-main[data-checkout]>section:first-of-type>form select,
+main[data-checkout] > section:first-of-type > form select,
 main[data-checkout] form ul li input,
 main[data-checkout] form ul li select {
   width: 100%;
@@ -1194,7 +1213,7 @@ main[data-book_details] p {
   font-size: 16px;
 }
 
-main[data-book_details] div>p {
+main[data-book_details] div > p {
   color: white;
   font-size: 32px;
 }
@@ -1212,7 +1231,7 @@ main[data-book_details] section:first-of-type div {
   align-items: center;
 }
 
-main[data-book_details] section:first-of-type>div>div {
+main[data-book_details] section:first-of-type > div > div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1220,18 +1239,18 @@ main[data-book_details] section:first-of-type>div>div {
   text-align: center;
 }
 
-main[data-book_details] section:first-of-type>div img {
+main[data-book_details] section:first-of-type > div img {
   max-height: 100%;
   max-width: 100%;
   border: 3px solid #801524;
   border-radius: 10px;
 }
 
-main[data-book_details] section:first-of-type>div>label {
+main[data-book_details] section:first-of-type > div > label {
   display: none;
 }
 
-main[data-book_details] section:first-of-type>div input[type="image"] {
+main[data-book_details] section:first-of-type > div input[type="image"] {
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -1241,21 +1260,27 @@ main[data-book_details] section:first-of-type>div input[type="image"] {
   background-repeat: no-repeat;
 }
 
-main[data-book_details] section:first-of-type>div input[type="image"]:first-of-type {
+main[data-book_details]
+  section:first-of-type
+  > div
+  input[type="image"]:first-of-type {
   left: -45px;
 }
 
-main[data-book_details] section:first-of-type>div input[type="image"]:last-of-type {
+main[data-book_details]
+  section:first-of-type
+  > div
+  input[type="image"]:last-of-type {
   right: -45px;
 }
 
-main[data-book_details] section:first-of-type>footer {
+main[data-book_details] section:first-of-type > footer {
   display: none;
 }
 
 /* Modify book page */
 
-main[data-book_modify] div>p {
+main[data-book_modify] div > p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -1331,7 +1356,7 @@ main[data-book_modify] section:first-of-type form ul li textarea {
   height: 60px;
 }
 
-main[data-book_modify] section:first-of-type>form>input {
+main[data-book_modify] section:first-of-type > form > input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -1341,7 +1366,10 @@ main[data-book_modify] section:first-of-type>form>input {
   text-decoration: underline;
 }
 
-main[data-book_modify] section:first-of-type form fieldset[data-genres-container] {
+main[data-book_modify]
+  section:first-of-type
+  form
+  fieldset[data-genres-container] {
   width: 70%;
   padding: 15px;
   display: flex;
@@ -1349,7 +1377,11 @@ main[data-book_modify] section:first-of-type form fieldset[data-genres-container
   border: transparent;
 }
 
-main[data-book_modify] section:first-of-type form fieldset[data-genres-container] label {
+main[data-book_modify]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  label {
   background-color: transparent;
   flex-direction: column;
   display: flex;
@@ -1360,21 +1392,25 @@ main[data-book_modify] section:first-of-type form fieldset[data-genres-container
   margin: 0 2px;
 }
 
-main[data-book_modify] section:first-of-type form fieldset[data-genres-container] input[type="checkbox"] {
+main[data-book_modify]
+  section:first-of-type
+  form
+  fieldset[data-genres-container]
+  input[type="checkbox"] {
   background-color: transparent;
   margin: 0 5px;
 }
 
 /* User orders page */
 
-main[data-orders]{
+main[data-orders] {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 }
 
-main[data-orders] section{
+main[data-orders] section {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1383,7 +1419,7 @@ main[data-orders] section{
   justify-items: center;
 }
 
-main[data-orders] h1{
+main[data-orders] h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
@@ -1404,11 +1440,11 @@ main[data-orders] section > article {
   padding: 20px;
 }
 
-main[data-orders] section > article span{
+main[data-orders] section > article span {
   font-weight: bold;
 }
 
-main[data-orders] section > article > header{
+main[data-orders] section > article > header {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1417,7 +1453,7 @@ main[data-orders] section > article > header{
   padding-bottom: 10px;
 }
 
-main[data-orders] section > article > footer{
+main[data-orders] section > article > footer {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1427,7 +1463,7 @@ main[data-orders] section > article > footer{
   padding-top: 10px;
 }
 
-main[data-orders] section > article > footer > input{
+main[data-orders] section > article > footer > input {
   padding: 5px;
   background-color: #801524;
   color: white;
@@ -1435,21 +1471,21 @@ main[data-orders] section > article > footer > input{
   border: none;
 }
 
-main[data-orders] section > article > footer > input:hover{
+main[data-orders] section > article > footer > input:hover {
   background-color: #8e1017;
   font-weight: bold;
   cursor: pointer;
 }
 
 /* Vendor order page */
-main[data-user_orders]{
+main[data-user_orders] {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
 }
 
-main[data-user_orders] section{
+main[data-user_orders] section {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1458,7 +1494,7 @@ main[data-user_orders] section{
   justify-items: center;
 }
 
-main[data-user_orders] h1{
+main[data-user_orders] h1 {
   color: #801524;
   font-size: 32px;
   text-decoration: underline;
@@ -1479,11 +1515,11 @@ main[data-user_orders] section > article {
   padding: 20px;
 }
 
-main[data-user_orders] section > article span{
+main[data-user_orders] section > article span {
   font-weight: bold;
 }
 
-main[data-user_orders] section > article > header{
+main[data-user_orders] section > article > header {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1503,7 +1539,7 @@ main[data-user_orders] input[type="button"] {
   cursor: pointer;
 }
 
-main[data-user_orders] section > article > footer{
+main[data-user_orders] section > article > footer {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1513,7 +1549,7 @@ main[data-user_orders] section > article > footer{
   padding-top: 10px;
 }
 
-main[data-user_orders] section > article > footer > input{
+main[data-user_orders] section > article > footer > input {
   padding: 5px;
   background-color: #801524;
   color: white;
@@ -1521,7 +1557,7 @@ main[data-user_orders] section > article > footer > input{
   border: none;
 }
 
-main[data-user_orders] section > article > footer > input:hover{
+main[data-user_orders] section > article > footer > input:hover {
   background-color: #8e1017;
   font-weight: bold;
   cursor: pointer;
@@ -1562,7 +1598,7 @@ main[data-order_expanded] section:first-of-type > p {
   display: none;
 }
 
-main[data-order_expanded] article{
+main[data-order_expanded] article {
   width: 80%;
   background-color: #fff;
   color: #801524;
@@ -1574,7 +1610,7 @@ main[data-order_expanded] article{
   gap: 8px;
 }
 
-main[data-order_expanded] section:first-of-type > article > header{
+main[data-order_expanded] section:first-of-type > article > header {
   border-bottom: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1582,7 +1618,7 @@ main[data-order_expanded] section:first-of-type > article > header{
   justify-content: space-between;
 }
 
-main[data-order_expanded] section:first-of-type > article > div{
+main[data-order_expanded] section:first-of-type > article > div {
   color: #801524;
   font-size: unset;
   display: flex;
@@ -1592,12 +1628,12 @@ main[data-order_expanded] section:first-of-type > article > div{
   gap: 20px;
 }
 
-main[data-order_expanded] section:first-of-type > article > div > p{
+main[data-order_expanded] section:first-of-type > article > div > p {
   color: #801524;
   font-size: unset;
 }
 
-main[data-order_expanded] section:first-of-type > article > footer{
+main[data-order_expanded] section:first-of-type > article > footer {
   border-top: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1605,7 +1641,7 @@ main[data-order_expanded] section:first-of-type > article > footer{
   justify-content: end;
 }
 
-main[data-order_expanded] span{
+main[data-order_expanded] span {
   font-weight: bold;
 }
 
@@ -1635,7 +1671,7 @@ main[data-user_order_expanded] > section:first-of-type > h1 {
   color: #801524;
 }
 
-main[data-user_order_expanded] > section:last-of-type{
+main[data-user_order_expanded] > section:last-of-type {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -1654,7 +1690,7 @@ main[data-user_order_expanded] > section:first-of-type {
   align-items: center;
 }
 
-main[data-user_order_expanded] article{
+main[data-user_order_expanded] article {
   width: 80%;
   background-color: #fff;
   color: #801524;
@@ -1666,7 +1702,7 @@ main[data-user_order_expanded] article{
   gap: 8px;
 }
 
-main[data-user_order_expanded] > section:first-of-type > article > header{
+main[data-user_order_expanded] > section:first-of-type > article > header {
   border-bottom: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1674,14 +1710,14 @@ main[data-user_order_expanded] > section:first-of-type > article > header{
   justify-content: space-between;
 }
 
-main[data-user_order_expanded] > section:first-of-type > article > div{
+main[data-user_order_expanded] > section:first-of-type > article > div {
   display: flex;
   flex-direction: row;
   height: 100px;
   gap: 20px;
 }
 
-main[data-user_order_expanded] > section:first-of-type > article > footer{
+main[data-user_order_expanded] > section:first-of-type > article > footer {
   border-top: 2px #801524 solid;
   padding: 5px;
   display: flex;
@@ -1689,7 +1725,7 @@ main[data-user_order_expanded] > section:first-of-type > article > footer{
   justify-content: end;
 }
 
-main[data-user_order_expanded] > section:first-of-type > article span{
+main[data-user_order_expanded] > section:first-of-type > article span {
   font-weight: bold;
 }
 
@@ -1726,12 +1762,12 @@ main[data-user_order_expanded] section:last-of-type>input,
 main[data-user_order_expanded] section:last-of-type>button,
 main[data-checkout] > div:last-of-type > input,
 main[data-checkout] form input[type="submit"],
-main[data-book_details] section:last-of-type>a,
-main[data-book_details] section:last-of-type>input,
-main[data-book_details] section:last-of-type>button,
-main[data-book_modify] div:last-of-type>a,
-main[data-book_modify] div:last-of-type>input,
-main[data-book_modify] div:last-of-type>button {
+main[data-book_details] section:last-of-type > a,
+main[data-book_details] section:last-of-type > input,
+main[data-book_details] section:last-of-type > button,
+main[data-book_modify] div:last-of-type > a,
+main[data-book_modify] div:last-of-type > input,
+main[data-book_modify] div:last-of-type > button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1765,12 +1801,12 @@ main[data-user_order_expanded] section:last-of-type>input:hover,
 main[data-user_order_expanded] section:last-of-type>button:hover,
 main[data-checkout] > div:last-of-type > input:hover,
 main[data-checkout] form input[type="submit"]:hover,
-main[data-book_details] section:last-of-type>a:hover,
-main[data-book_details] section:last-of-type>input:hover,
-main[data-book_details] section:last-of-type>button:hover,
-main[data-book_modify] div:last-of-type>a:hover,
-main[data-book_modify] div:last-of-type>input:hover,
-main[data-book_modify] div:last-of-type>button:hover {
+main[data-book_details] section:last-of-type > a:hover,
+main[data-book_details] section:last-of-type > input:hover,
+main[data-book_details] section:last-of-type > button:hover,
+main[data-book_modify] div:last-of-type > a:hover,
+main[data-book_modify] div:last-of-type > input:hover,
+main[data-book_modify] div:last-of-type > button:hover {
   font-weight: bold;
   border: 2px white solid;
 }
@@ -1781,12 +1817,12 @@ main[data-book_modify] div:last-of-type>button:hover {
     justify-content: right;
   }
 
-  nav[data-open="false"]>ul:first-of-type {
+  nav[data-open="false"] > ul:first-of-type {
     display: none;
   }
 
   /* Navbar opened */
-  nav[data-open="true"]>ul:first-of-type {
+  nav[data-open="true"] > ul:first-of-type {
     flex-direction: column;
     position: fixed;
     right: 0;
@@ -1800,23 +1836,23 @@ main[data-book_modify] div:last-of-type>button:hover {
     font-size: larger;
   }
 
-  nav>ul:first-of-type>li:first-of-type {
+  nav > ul:first-of-type > li:first-of-type {
     display: none;
   }
 
-  nav>ul:last-of-type>li:last-of-type {
+  nav > ul:last-of-type > li:last-of-type {
     display: unset;
   }
 
-  main[data-access]>form input {
+  main[data-access] > form input {
     width: 60%;
   }
 
-  main[data-access]>form>ul {
+  main[data-access] > form > ul {
     gap: 20px;
   }
 
-  main[data-access]>form input[type="submit"] {
+  main[data-access] > form input[type="submit"] {
     width: 40%;
   }
 
@@ -1831,8 +1867,14 @@ main[data-book_modify] div:last-of-type>button:hover {
     width: 100%;
   }
 
-  main[data-book_insert] section:first-of-type form fieldset[data-genres-container],
-  main[data-book_modify] section:first-of-type form fieldset[data-genres-container]{
+  main[data-book_insert]
+    section:first-of-type
+    form
+    fieldset[data-genres-container],
+  main[data-book_modify]
+    section:first-of-type
+    form
+    fieldset[data-genres-container] {
     width: 100%;
     flex-direction: column;
     align-items: center;
@@ -1878,7 +1920,7 @@ main[data-book_modify] div:last-of-type>button:hover {
     display: none;
   }
 
-  main[data-book_details] section:first-of-type>footer {
+  main[data-book_details] section:first-of-type > footer {
     display: flex;
     flex-direction: column;
   }
@@ -1910,7 +1952,7 @@ main[data-book_modify] div:last-of-type>button:hover {
     display: none;
   }
 
-  main[data-cart] section>input[type="button"]:hover {
+  main[data-cart] section > input[type="button"]:hover {
     display: flex;
     background-color: #a3111a;
   }
@@ -1949,15 +1991,15 @@ main[data-book_modify] div:last-of-type>button:hover {
     font-weight: bold;
   }
 
-  main[data-order_expanded] div{
+  main[data-order_expanded] div {
     display: none;
   }
 
-  main[data-order_expanded] section:first-of-type{
+  main[data-order_expanded] section:first-of-type {
     width: 100%;
   }
 
-  main[data-order_expanded] section:first-of-type > p{
+  main[data-order_expanded] section:first-of-type > p {
     display: flex;
     flex-direction: row;
     color: #801524;
@@ -1966,7 +2008,7 @@ main[data-book_modify] div:last-of-type>button:hover {
 
   main[data-book_modify] section:first-of-type,
   main[data-user_order_expanded] section:first-of-type,
-  main[data-add_copy] section:first-of-type{
+  main[data-add_copy] section:first-of-type {
     width: 100%;
   }
 
@@ -1980,28 +2022,38 @@ main[data-book_modify] div:last-of-type>button:hover {
   }
 
   /* Index php styling */
-  main[data-homeuser]>article>div>header> :not(:first-child),
-  main[data-copiesofbook] article>div>header :not(:first-child),
-  main[data-advancedsearch]>section>article>div>header> :not(:first-child) {
+  main[data-homeuser] > article > div > header > :not(:first-child),
+  main[data-copiesofbook] article > div > header :not(:first-child),
+  main[data-advancedsearch]
+    > section
+    > article
+    > div
+    > header
+    > :not(:first-child) {
     display: none;
   }
 
-  main[data-homeuser]>article,
+  main[data-homeuser] > article,
   main[data-copiesofbook] article,
-  main[data-advancedsearch]>section>article {
+  main[data-advancedsearch] > section > article {
     place-content: center;
     text-align: center;
   }
 
-  main[data-homeuser]>article>figure,
-  main[data-copiesofbook] article>figure,
-  main[data-advancedsearch]>section>article>figure {
+  main[data-homeuser] > article > figure,
+  main[data-copiesofbook] article > figure,
+  main[data-advancedsearch] > section > article > figure {
     place-self: center;
   }
 
-  main[data-homeuser]>article>div>footer>p:first-of-type,
-  main[data-copiesofbook] article>div>footer>p:first-of-type,
-  main[data-advancedsearch]>section>article>div>footer>p:first-of-type {
+  main[data-homeuser] > article > div > footer > p:first-of-type,
+  main[data-copiesofbook] article > div > footer > p:first-of-type,
+  main[data-advancedsearch]
+    > section
+    > article
+    > div
+    > footer
+    > p:first-of-type {
     display: none;
   }
 
@@ -2014,15 +2066,15 @@ main[data-book_modify] div:last-of-type>button:hover {
     justify-content: space-between;
   }
 
-  main[data-homeuser]>article>div>header,
-  main[data-advancedsearch]>section>article>div>header,
-  main[data-copiesofbook] article>div>header {
+  main[data-homeuser] > article > div > header,
+  main[data-advancedsearch] > section > article > div > header,
+  main[data-copiesofbook] article > div > header {
     justify-content: center;
   }
 
-  main[data-homeuser]>article>div,
-  main[data-copiesofbook] article>div,
-  main[data-advancedsearch]>section>article>div {
+  main[data-homeuser] > article > div,
+  main[data-copiesofbook] article > div,
+  main[data-advancedsearch] > section > article > div {
     padding: 2px;
   }
 
@@ -2041,29 +2093,29 @@ main[data-book_modify] div:last-of-type>button:hover {
     flex-direction: column;
   }
 
-  main[data-advancedsearch]>section,
-  main[data-profile]>section:last-of-type,
+  main[data-advancedsearch] > section,
+  main[data-profile] > section:last-of-type,
   main[data-add_copy] div:last-of-type,
-  main[data-book_insert] form>div:last-of-type,
-  main[data-user_order_expanded]>section:last-of-type,
-  main[data-order_expanded]>section:last-of-type,
-  main[data-book_modify] form>div:last-of-type,
+  main[data-book_insert] form > div:last-of-type,
+  main[data-user_order_expanded] > section:last-of-type,
+  main[data-order_expanded] > section:last-of-type,
+  main[data-book_modify] form > div:last-of-type,
   main[data-checkout] div:last-of-type,
-  main[data-cart]>section:last-of-type,
-  main[data-book_details]>section:last-of-type,
-  main[data-copiesofbook]>section:nth-child(n),
-  main[data-advancedsearch]>header {
+  main[data-cart] > section:last-of-type,
+  main[data-book_details] > section:last-of-type,
+  main[data-copiesofbook] > section:nth-child(n),
+  main[data-advancedsearch] > header {
     height: 120px;
     width: 100%;
     padding: 0;
     padding-top: 20px;
   }
 
-  main[data-copiesofbook]>section:last-of-type {
+  main[data-copiesofbook] > section:last-of-type {
     padding-bottom: 20px;
   }
 
-  main[data-advancedsearch]>header>form {
+  main[data-advancedsearch] > header > form {
     flex-direction: row;
   }
 
@@ -2077,20 +2129,20 @@ main[data-book_modify] div:last-of-type>button:hover {
   main[data-advancedsearch]>header,
   main[data-profile]>section:last-of-type,
   main[data-add_copy] div:last-of-type,
-  main[data-book_insert] form>div:last-of-type,
-  main[data-user_order_expanded]>section:last-of-type,
-  main[data-order_expanded]>section:last-of-type,
-  main[data-book_modify] form>div:last-of-type,
+  main[data-book_insert] form > div:last-of-type,
+  main[data-user_order_expanded] > section:last-of-type,
+  main[data-order_expanded] > section:last-of-type,
+  main[data-book_modify] form > div:last-of-type,
   main[data-checkout] div:last-of-type,
-  main[data-cart]>section:last-of-type,
-  main[data-book_details]>section:last-of-type,
-  main[data-copiesofbook]>section:last-of-type{
+  main[data-cart] > section:last-of-type,
+  main[data-book_details] > section:last-of-type,
+  main[data-copiesofbook] > section:last-of-type {
     position: unset;
     gap: 5px;
   }
 
-  main[data-advancedsearch]>header>div[role="search"],
-  main[data-advancedsearch]>header>div[role="search"]>input {
+  main[data-advancedsearch] > header > div[role="search"],
+  main[data-advancedsearch] > header > div[role="search"] > input {
     width: 100%;
   }
 }
