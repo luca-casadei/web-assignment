@@ -6,12 +6,10 @@ function uploadImage($path, $image, $filename)
     $imageFileType  = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
     $baseName = $filename;
-
     $imageName = $baseName . '.' . $imageFileType;
-
     $fullPath = $path . $imageName;
 
-    $maxKB = 500;
+    $maxKB = 50000;
     $acceptedExtensions = array("jpg", "jpeg", "png");
     $result = 0;
     $msg = "";
