@@ -29,6 +29,10 @@ if (!defined('DIRECT_ACCESS')){
             <label for="customAuthor">Inserisci autore</label>
             <input type="text" id="customAuthor" placeholder="Nome e cognome...">
         </li>
+        <li>
+            <label for="editorName">Inserisci editore</label>
+            <input type="text" id="editorName" placeholder="Editore"/>
+        </li>
         </li>
         <li>
             <label for="book_publish_date">Anno</label>
@@ -50,7 +54,7 @@ if (!defined('DIRECT_ACCESS')){
         </li>
         <li>
             <label>Generi</label>
-            <fieldset data-genres-container></fieldset>
+            <fieldset data-genres-container><div data-js-genres></div></fieldset>
         </li>
     </ul>
     <input type="submit" value="Aggiungi Libro">

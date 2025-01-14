@@ -1,5 +1,8 @@
 <?php
     require './bootstrap.php';
+    if (isUserVendor()){
+        header("Location: ./user_order_expanded_index.php");
+    }
     if (!isset($_SESSION["orderexpanded"])){
         header("Location: ./index.php");
     }

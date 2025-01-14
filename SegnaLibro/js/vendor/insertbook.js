@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
             Titolo: document.getElementById("book_title").value.trim(),
             Descrizione: document.getElementById("book_desription").value.trim(),
             DataPubblicazione: document.getElementById("book_publish_date").value.trim(),
-            Edizione: document.getElementById("book_edition").value.trim()
+            Edizione: document.getElementById("book_edition").value.trim(),
+            NomeEditore: document.getElementById("editorName").value.trim()
         };
 
         let authorName, authorLastName;
