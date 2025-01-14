@@ -64,13 +64,16 @@ async function insertArticleInTheCart() {
         const json = await response.json();
         if (json.status === "success") {
             alert("Articolo inserito correttamente nel carrello.");
-            window.location.href = "./index.php"
+            window.location.href = "./index.php";
+        } else if (json.status === "redirect"){
+            window.location.href = "./login_index.php";
         } else {
             alert("Attenzione: Articolo già presente nel carrello.");
         }
     } catch (error) {
         console.log(error.message);
     }
+    
 }
 
 getBookImages();

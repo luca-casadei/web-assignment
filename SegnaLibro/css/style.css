@@ -1986,7 +1986,6 @@ main[data-book_modify] div:last-of-type > button:hover {
 
   main[data-checkout] form input[type="submit"] {
     font-size: 16px;
-    margin: 0 auto;
     display: block;
     font-weight: bold;
   }
@@ -2121,6 +2120,7 @@ main[data-book_modify] div:last-of-type > button:hover {
 
   
   main[data-add_copy] section>form>div:last-of-type,
+  main[data-checkout] section>form>div:last-of-type,
   main[data-user_order_expanded] section:last-of-type,
   main[data-book_insert] section>form>div:last-of-type{
     background-color: transparent;

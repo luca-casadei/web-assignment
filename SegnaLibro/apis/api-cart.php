@@ -2,6 +2,9 @@
 require('../bootstrap.php');
 
 if(isset($_POST['action'])) {
+    if(!isUserLoggedIn()){
+        echo json_encode(["status" => "redirect"]);
+    } else{
         if($_POST['action'] == 'remove') {
             $data = $dbh->removeArticleFromCart($_POST['numero_copia'],
             $_POST['ean'], 
@@ -16,13 +19,17 @@ if(isset($_POST['action'])) {
             $article['CodiceRegGroup'],
             $article['CodiceTitolo']);
         }
+    
+        header('Content-Type: application/json');
+        
+        if($data) {
+            echo json_encode(["status" => "success"]);
+        } else {
+            echo json_encode(["status" => "error"]);
+        }
 
-    header('Content-Type: application/json');
-    if($data) {
-        echo json_encode(["status" => "success"]);
-    } else {
-        echo json_encode(["status" => "error"]);
     }
+
 } else {
     $cart_articles = $dbh->getCart();
     $total_price = 0;
