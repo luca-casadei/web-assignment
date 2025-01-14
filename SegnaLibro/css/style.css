@@ -213,13 +213,25 @@ main[data-advancedsearch]>header>form {
   gap: 20px;
 }
 
-main[data-advancedsearch]>header>form input,
-main[data-advancedsearch]>header>form select {
+main[data-advancedsearch]>header>form ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+main[data-advancedsearch]>header>form ul li input,
+main[data-advancedsearch]>header>form ul li select {
   height: 30px;
   border-radius: 5px;
 }
 
-main[data-advancedsearch]>header>form>div {
+main[data-advancedsearch]>header>form ul li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main[data-advancedsearch]>header>form div {
   display: flex;
   flex-direction: column;
   width: 85%;
@@ -1243,7 +1255,7 @@ main[data-book_modify] section:first-of-type {
 }
 
 main[data-book_modify] section:first-of-type form {
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1687,6 +1699,9 @@ main[data-profile] section:last-of-type>button,
 main[data-cart] section:last-of-type>a,
 main[data-cart] section:last-of-type>input,
 main[data-cart] section:last-of-type>button,
+main[data-user_order_expanded] section:last-of-type>a,
+main[data-user_order_expanded] section:last-of-type>input,
+main[data-user_order_expanded] section:last-of-type>button,
 main[data-checkout] > div:last-of-type > input,
 main[data-checkout] form input[type="submit"],
 main[data-book_details] section:last-of-type>a,
@@ -1723,6 +1738,9 @@ main[data-profile] section:last-of-type>button:hover,
 main[data-cart] section:last-of-type>a:hover,
 main[data-cart] section:last-of-type>input:hover,
 main[data-cart] section:last-of-type>button:hover,
+main[data-user_order_expanded] section:last-of-type>a:hover,
+main[data-user_order_expanded] section:last-of-type>input:hover,
+main[data-user_order_expanded] section:last-of-type>button:hover,
 main[data-checkout] > div:last-of-type > input:hover,
 main[data-checkout] form input[type="submit"]:hover,
 main[data-book_details] section:last-of-type>a:hover,
@@ -1930,6 +1948,15 @@ main[data-book_modify] div:last-of-type>button:hover {
     width: 100%;
   }
 
+  main[data-advancedsearch] header>form>h2{
+    display: none;
+  }
+
+  main[data-advancedsearch]>header>form ul{
+    flex-direction: row;
+    
+  }
+
   /* Index php styling */
   main[data-homeuser]>article>div>header> :not(:first-child),
   main[data-copiesofbook] article>div>header :not(:first-child),
@@ -1956,9 +1983,12 @@ main[data-book_modify] div:last-of-type>button:hover {
     display: none;
   }
 
+  main[data-advancedsearch]>section>article>div>footer{
+    justify-content: center;
+  }
+
   main[data-homeuser]>article>div>footer,
-  main[data-copiesofbook] article>div>footer,
-  main[data-advancedsearch]>section>article>div>footer {
+  main[data-copiesofbook] article>div>footer{
     justify-content: space-between;
   }
 
@@ -2013,6 +2043,13 @@ main[data-book_modify] div:last-of-type>button:hover {
 
   main[data-advancedsearch]>header>form {
     flex-direction: row;
+  }
+
+  
+  main[data-add_copy] section>form>div:last-of-type,
+  main[data-user_order_expanded] section:last-of-type,
+  main[data-book_insert] section>form>div:last-of-type{
+    background-color: transparent;
   }
 
   main[data-advancedsearch]>header,
