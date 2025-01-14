@@ -1,6 +1,6 @@
 <?php
     require './bootstrap.php';
-    if (!isset($_SESSION["userorderexpanded"])){
+    if (!isset($_SESSION["orderexpanded"])){
         header("Location: ./index.php");
     }
     define('DIRECT_ACCESS',true);
