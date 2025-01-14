@@ -1,9 +1,9 @@
-function generateArticles(articoli){
+function generateArticles(articoli) {
     let result = "";
-    if (articoli.length == 0){
-        result += "<p>Nessun annuncio disponibile.</p>"
-    }else{
-        for(let i=0; i < articoli.length; i++){
+    if (articoli.length == 0) {
+        result += "<p>Nessun annuncio disponibile.</p>";
+    } else {
+        for (let i = 0; i < articoli.length; i++) {
             let articolo = `
             <article onClick=\'expandArticles(\"${articoli[i]["EAN"]}\", \"${articoli[i]["CodiceEditoriale"]}\", \"${articoli[i]["CodiceTitolo"]}\", \"${articoli[i]["CodiceRegGroup"]}\", \"${articoli[i]["NumeroCopia"]}\")\'>
                 <figure>
@@ -21,6 +21,11 @@ function generateArticles(articoli){
                     <footer>
                         <p>Condizione:<span>${articoli[i]["NomeCondizione"]}</span></p>
                         <p>€ ${articoli[i]["Prezzo"]}</p>
+                        `;
+                        if (articoli[i]["InCarrello"] === "INCART"){
+                            articolo+= `<p>In carrello</p>`
+                        }
+            articolo += `
                     </footer>
                 </div>
             </article>
@@ -32,7 +37,7 @@ function generateArticles(articoli){
 }
 
 async function getArticleData() {
-    const url = './apis/api-articles.php';
+    const url = "./apis/api-articles.php";
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -47,29 +52,37 @@ async function getArticleData() {
     }
 }
 
-async function expandArticles(ean, codiceEditoriale, codiceTitolo, codiceRegGroup, numeroCopia){
-    const url = './apis/api-detailed-article.php';
+async function expandArticles(
+    ean,
+    codiceEditoriale,
+    codiceTitolo,
+    codiceRegGroup,
+    numeroCopia
+) {
+    const url = "./apis/api-detailed-article.php";
     try {
         const formData = new FormData();
-        formData.append("expandedarticledata", JSON.stringify({
-            "EAN": ean,
-            "CodiceEditoriale": codiceEditoriale,
-            "CodiceTitolo": codiceTitolo,
-            "CodiceRegGroup": codiceRegGroup,
-            "NumeroCopia": numeroCopia
-        }))
+        formData.append(
+            "expandedarticledata",
+            JSON.stringify({
+                EAN: ean,
+                CodiceEditoriale: codiceEditoriale,
+                CodiceTitolo: codiceTitolo,
+                CodiceRegGroup: codiceRegGroup,
+                NumeroCopia: numeroCopia,
+            })
+        );
 
         const response = await fetch(url, {
             method: "POST",
-            body: formData
+            body: formData,
         });
 
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
-        }else{
+        } else {
             window.location.href = "./book_details_index.php";
         }
-
     } catch (error) {
         console.log(error.message);
     }
