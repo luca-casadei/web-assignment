@@ -1,9 +1,9 @@
 /* Ottenimento di tutto il necessario per rappresentare gli articoli */
 CREATE VIEW LIBRI_CATEGORIE_AUTORE AS (
 	SELECT LIBRO.*,
-	AUTORE.Codice AS CodiceAUTORE,
-	AUTORE.Nome AS NomeAUTORE,
-	AUTORE.Cognome AS CognomeAUTORE,
+	AUTORE.Codice AS CodiceAutore,
+	AUTORE.Nome AS NomeAutore,
+	AUTORE.Cognome AS CognomeAutore,
 	CATEGORIA.Codice AS CodiceCategoria,
 	CATEGORIA.Nome AS NomeCategoria,
 	EDITORE.Nome AS NomeEditore
