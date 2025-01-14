@@ -245,7 +245,7 @@ class DatabaseHelper
 
     public function getBookGenres($book)
     {
-        $qr = "SELECT * FROM genere JOIN genere_libro ON genere_libro.CodiceGenere = genere.Codice WHERE genere_libro.EAN = ? AND genere_libro.CodiceEditoriale = ? AND genere_libro.CodiceRegGroup = ? AND genere_libro.CodiceTitolo = ?";
+        $qr = "SELECT * FROM GENERE JOIN GENERE_LIBRO ON GENERE_LIBRO.CodiceGenere = GENERE.Codice WHERE GENERE_LIBRO.EAN = ? AND GENERE_LIBRO.CodiceEditoriale = ? AND GENERE_LIBRO.CodiceRegGroup = ? AND GENERE_LIBRO.CodiceTitolo = ?";
         $stmt = $this->db->prepare($qr);
         $stmt->bind_param('ssss', $book["ean"], $book["codiceeditoriale"], $book["codicereggroup"], $book["codicetitolo"]);
         $stmt->execute();
@@ -467,7 +467,7 @@ class DatabaseHelper
 
     public function getBook($ean, $codice_reg_group, $codice_editoriale, $codice_titolo)
     {
-        $query = "SELECT * FROM libri_categorie_autore WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
+        $query = "SELECT * FROM LIBRI_CATEGORIE_AUTORE WHERE EAN = ? AND CodiceRegGroup = ? AND CodiceEditoriale = ? AND CodiceTitolo = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("ssss", $ean, $codice_reg_group, $codice_editoriale, $codice_titolo);
         $stmt->execute();
@@ -501,7 +501,7 @@ class DatabaseHelper
     {
         try {
             $this->db->begin_transaction();
-            $qr = "INSERT INTO ordine (DataOrdine, Stato, UniqueUserID) VALUES (?, 'Aperto', ?);";
+            $qr = "INSERT INTO ORDINE (DataOrdine, Stato, UniqueUserID) VALUES (?, 'Aperto', ?);";
             $stmt = $this->db->prepare($qr);
             $orderDate = date("Y-m-d");
             $stmt->bind_param("si", $orderDate, $_SESSION['userid']);
@@ -517,13 +517,13 @@ class DatabaseHelper
 
             $cart_articles = $this->getCart();
             for ($i = 0; $i < count($cart_articles); $i++) {
-                $qr = "INSERT INTO copie_ordine (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
+                $qr = "INSERT INTO COPIE_ORDINE (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
                 $stmt = $this->db->prepare($qr);
                 $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"], $oid);
                 $stmt->execute();
             }
 
-            $qr = "DELETE FROM carrello WHERE UniqueUserID = ?";
+            $qr = "DELETE FROM CARRELLO WHERE UniqueUserID = ?";
             $stmt = $this->db->prepare($qr);
             $stmt->bind_param("i", $_SESSION['userid']);
             $stmt->execute();
