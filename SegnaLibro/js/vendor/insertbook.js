@@ -71,6 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
+            if (json["book"] == true) {
+                    alert("Libro inserito con successo")
+                    window.location.href = "./index.php";
+            }
+            else{
+                console.log(json);
+            }
         } catch (error) {
             console.log(error.message);
         }
