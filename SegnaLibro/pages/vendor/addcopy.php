@@ -32,8 +32,8 @@ if (!defined('DIRECT_ACCESS')){
             <input type="file" name="imgarticle" id="imgarticle" accept=".png,.jpg,.jpeg" multiple />
         </li>
     </ul>
+    <div>
+        <input type="submit" value="Aggiungi copia">
+    </div>
 </form>
-</section>
-<section>
-    <input type="submit" value="Aggiungi copia" form="addCopyForm">
 </section>

@@ -37,7 +37,7 @@ function generateCartArticles(data) {
             <input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
         </section>`;
     } else {
-        result += "<p>Il carrello è vuoto</p></section><section><p>Il carrello è vuoto</p></section>";
+        result += "</section><section><p>Il carrello è vuoto</p></section>";
     }
 
     return result;

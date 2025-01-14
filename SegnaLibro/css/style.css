@@ -184,13 +184,13 @@ main[data-advancedsearch]>section>h1 {
 
 main[data-advancedsearch]>header,
 main[data-copiesofbook]>section:last-of-type,
-main[data-add_copy]>section:last-of-type,
-main[data-book_insert]>section:last-of-type,
+main[data-add_copy] div:last-of-type,
+main[data-book_insert] form>div:last-of-type,
 main[data-order_expanded]>section:last-of-type,
-main[data-book_modify]>section:last-of-type,
+main[data-book_modify] form>div:last-of-type,
 main[data-book_details]>section:last-of-type,
 main[data-cart]>section:last-of-type,
-main[data-checkout]>section:last-of-type,
+main[data-checkout] div:last-of-type,
 main[data-profile]>section:last-of-type  {
   width: 20%;
   background-color: #801524;
@@ -478,9 +478,9 @@ main[data-book_insert] {
   gap: 20px;
 }
 
-main[data-book_insert] section:last-of-type>a,
-main[data-book_insert] section:last-of-type>input,
-main[data-book_insert] section:last-of-type>button {
+main[data-book_insert] form>div:last-of-type>a,
+main[data-book_insert] form>div:last-of-type>input,
+main[data-book_insert] form>div:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -496,14 +496,14 @@ main[data-book_insert] section:last-of-type>button {
   cursor: pointer;
 }
 
-main[data-book_insert] section:last-of-type>a:hover,
-main[data-book_insert] section:last-of-type>input:hover,
-main[data-book_insert] section:last-of-type>button:hover {
+main[data-book_insert] form>div:last-of-type>a:hover,
+main[data-book_insert] form>div:last-of-type>input:hover,
+main[data-book_insert] form>div:last-of-type>button:hover {
   font-weight: bold;
   border: 2px white solid;
 }
 
-main[data-book_insert] section:last-of-type>p {
+main[data-book_insert] form>div:last-of-type>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -593,7 +593,7 @@ main[data-book_insert] section:first-of-type form ul li textarea {
   height: 60px;
 }
 
-main[data-book_insert] section:first-of-type form input {
+main[data-book_insert] section:first-of-type>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -638,9 +638,9 @@ main[data-add_copy] {
   gap: 20px;
 }
 
-main[data-add_copy] section:last-of-type>a,
-main[data-add_copy] section:last-of-type>input,
-main[data-add_copy] section:last-of-type>button {
+main[data-add_copy] div:last-of-type a,
+main[data-add_copy] div:last-of-type input,
+main[data-add_copy] div:last-of-type button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -656,14 +656,14 @@ main[data-add_copy] section:last-of-type>button {
   cursor: pointer;
 }
 
-main[data-add_copy] section:last-of-type>a:hover,
-main[data-add_copy] section:last-of-type>input:hover,
-main[data-add_copy] section:last-of-type>button:hover {
+main[data-add_copy] div:last-of-type>a:hover,
+main[data-add_copy] div:last-of-type>input:hover,
+main[data-add_copy] div:last-of-type>button:hover {
   font-weight: bold;
   border: 2px white solid;
 }
 
-main[data-add_copy] section:last-of-type>p {
+main[data-add_copy] div:last-of-type>p {
   color: white;
   text-align: center;
   font-size: 32px;
@@ -737,7 +737,7 @@ main[data-add_copy] section:first-of-type form ul li label {
   text-align: center;
 }
 
-main[data-add_copy] section:first-of-type form ul li input,
+main[data-add_copy] section:first-of-type>form>ul>li>input,
 main[data-add_copy] section:first-of-type form ul li textarea,
 main[data-add_copy] section:first-of-type form ul li select {
   width: 70%;
@@ -753,7 +753,7 @@ main[data-add_copy] section:first-of-type form ul li textarea {
   height: 60px;
 }
 
-main[data-add_copy] section:first-of-type form input {
+main[data-add_copy] section:first-of-type>form>input {
   margin: 5px;
   color: #801524;
   cursor: pointer;
@@ -1125,7 +1125,7 @@ main[data-checkout] {
   gap: 20px;
 }
 
-main[data-checkout]>section:last-of-type>input,
+main[data-checkout]>div:last-of-type>input,
 main[data-checkout] form input[type="submit"] {
   font-size: 18px;
   color: white;
@@ -1136,7 +1136,7 @@ main[data-checkout] form input[type="submit"] {
   padding: 10px 20px;
 }
 
-main[data-checkout]>section:last-of-type>input:hover,
+main[data-checkout]>div:last-of-type>input:hover,
 main[data-checkout] form input[type="submit"]:hover {
   font-weight: bold;
   border: 2px, white, solid;
@@ -1364,9 +1364,9 @@ main[data-book_details] section:first-of-type>footer {
 
 /* Modify book page */
 
-main[data-book_modify] section:last-of-type>a,
-main[data-book_modify] section:last-of-type>input,
-main[data-book_modify] section:last-of-type>button {
+main[data-book_modify] div:last-of-type>a,
+main[data-book_modify] div:last-of-type>input,
+main[data-book_modify] div:last-of-type>button {
   font-size: 20px;
   height: 30px;
   color: white;
@@ -1382,9 +1382,9 @@ main[data-book_modify] section:last-of-type>button {
   cursor: pointer;
 }
 
-main[data-book_modify] section:last-of-type>a:hover,
-main[data-book_modify] section:last-of-type>input:hover,
-main[data-book_modify] section:last-of-type>button:hover {
+main[data-book_modify] div:last-of-type>a:hover,
+main[data-book_modify] div:last-of-type>input:hover,
+main[data-book_modify] div:last-of-type>button:hover {
   font-weight: bold;
   border: 2px, white, solid;
 }
@@ -1908,10 +1908,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     flex-direction: column;
   }
 
-  main[data-book_insert] div {
-    display: none;
-  }
-
   main[data-book_insert] section:first-of-type {
     width: 100%;
   }
@@ -2001,9 +1997,6 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     flex-direction: column;
   }
 
-  main[data-checkout]>div {
-    display: none;
-  }
 
   main[data-checkout] section:first-of-type {
     width: 100%;
@@ -2118,12 +2111,12 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
 
   main[data-advancedsearch]>section,
   main[data-profile]>section:last-of-type,
-  main[data-add_copy]>section:last-of-type,
-  main[data-book_insert]>section:last-of-type,
+  main[data-add_copy] div:last-of-type,
+  main[data-book_insert] form>div:last-of-type,
   main[data-user_order_expanded]>section:last-of-type,
   main[data-order_expanded]>section:last-of-type,
-  main[data-book_modify]>section:last-of-type,
-  main[data-checkout]>section:last-of-type,
+  main[data-book_modify] form>div:last-of-type,
+  main[data-checkout] div:last-of-type,
   main[data-cart]>section:last-of-type,
   main[data-book_details]>section:last-of-type,
   main[data-copiesofbook]>section:nth-child(n),
@@ -2131,6 +2124,7 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
     height: 100px;
     width: 100%;
     padding: 0;
+    padding-top: 20px;
   }
 
   main[data-copiesofbook]>section:last-of-type {
@@ -2147,12 +2141,12 @@ main[data-user_order_expanded] section:last-of-type>button:hover {
 
   main[data-advancedsearch]>header,
   main[data-profile]>section:last-of-type,
-  main[data-add_copy]>section:last-of-type,
-  main[data-book_insert]>section:last-of-type,
+  main[data-add_copy] div:last-of-type,
+  main[data-book_insert] form>div:last-of-type,
   main[data-user_order_expanded]>section:last-of-type,
   main[data-order_expanded]>section:last-of-type,
-  main[data-book_modify]>section:last-of-type,
-  main[data-checkout]>section:last-of-type,
+  main[data-book_modify] form>div:last-of-type,
+  main[data-checkout] div:last-of-type,
   main[data-cart]>section:last-of-type,
   main[data-book_details]>section:last-of-type,
   main[data-copiesofbook]>section:last-of-type{

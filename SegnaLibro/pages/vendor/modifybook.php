@@ -62,8 +62,8 @@ if (!defined('DIRECT_ACCESS')){
             <fieldset data-genres-container></fieldset>
         </li>
     </ul>
+    <div>
+        <input type="submit" value="Applica modifiche">
+    </div>
 </form>
-</section>
-<section>
-    <input type="submit" value="Applica modifiche" form="modifyBookForm">
 </section>
