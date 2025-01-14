@@ -20,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
         data.append("newCopy", JSON.stringify(copyData));
 
         const fileInput = document.getElementById("imgarticle");
-        if(fileInput.isDefaultNamespace.length > 0) {
-            console.log("Immagine selezionata", fileInput.files[0]);
-            data.append("imgarticle", fileInput.files[0]);
+        console.log("fileInput.files.length", fileInput.files.length);
+
+        for (let i = 0; i < fileInput.files.length; i++) {
+            console.log(`imgarticle${i}:`,fileInput.files[i]);
+            data.append(`imgarticle${i}`, fileInput.files[i]);
         }
 
         const url = "./apis/vendor/api-addcopy.php";
