@@ -12,6 +12,7 @@ if(isset($_POST['action'])) {
             $_POST['codice_editoriale'], 
             $_POST['codice_reg_group'],
             $_POST['codice_titolo']);
+            echo json_encode(["status" => "success"]);
         } else if ($_POST['action'] == 'add') {
             $article = json_decode($_SESSION["expandedarticledata"],true);
             if(!$dbh->isItemOrdered($article['NumeroCopia'], $article['EAN'], $article['CodiceEditoriale'], $article['CodiceRegGroup'],$article['CodiceTitolo'])){
