@@ -217,6 +217,7 @@ main[data-advancedsearch]>header>form ul{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px;
 }
 
 main[data-advancedsearch]>header>form ul li input,
@@ -229,6 +230,7 @@ main[data-advancedsearch]>header>form ul li{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 main[data-advancedsearch]>header>form div {
@@ -1634,12 +1636,14 @@ main[data-order_expanded] section:first-of-type > article > div {
   flex-direction: row;
   align-items: unset;
   height: 100px;
+  overflow: hidden;
   gap: 20px;
 }
 
 main[data-order_expanded] section:first-of-type > article > div > p {
   color: #801524;
   font-size: unset;
+  overflow: hidden;
 }
 
 main[data-order_expanded] section:first-of-type > article > footer {
@@ -1790,6 +1794,8 @@ main[data-book_modify] div:last-of-type > button {
   border: 1px white solid;
   border-radius: 10px;
   cursor: pointer;
+  width: 90%;
+  align-self: center;
 }
 
 /* Stili comuni in hover */
@@ -2160,8 +2166,14 @@ main[data-book_modify] div:last-of-type > button:hover {
     gap: 5px;
   }
 
-  main[data-advancedsearch] > header > div[role="search"],
-  main[data-advancedsearch] > header > div[role="search"] > input {
+  main[data-advancedsearch] > header > div[role="search"] {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  main[data-advancedsearch] > header > div[role="search"] > input {
+    width: 90%;
   }
 }

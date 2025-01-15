@@ -23,6 +23,7 @@ if (!defined('DIRECT_ACCESS')) {
         </div>
     <?php } ?>
     <p><?php echo $data["DescrizioneAnnuncio"] ?></p>
+    <p><?php echo $data["Descrizione"] ?></p>
     <footer>
         <p>Prezzo: <span><?php echo $data["Prezzo"] ?>€</span></p>
         <input type="button" aria-label="Aggiungi al carrello"

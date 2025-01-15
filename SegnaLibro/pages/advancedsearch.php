@@ -3,7 +3,7 @@
         <label for="contentsearch">Cerca libro:</label>
         <input
             type="search"
-            placeholder="..."
+            placeholder="Cerca per titolo"
             aria-label="Ricerca libro per titolo"
             oninput="updateSearchTerms()"
             id="contentsearch"
