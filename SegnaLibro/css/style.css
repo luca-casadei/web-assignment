@@ -494,7 +494,6 @@ main[data-homevendor] article > ul > li > ul {
 main[data-homevendor] article > p {
   font-size: 14px;
   line-height: 22px;
-  margin-left: 86px;
   color: #333;
 }
 
@@ -1000,6 +999,7 @@ main[data-cart] article {
   box-shadow: 0 3px 5px #888;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 16px;
   gap: 8px;
   width: 80%;
@@ -1016,14 +1016,13 @@ main[data-cart] article > header > label {
   display: flex;
 }
 
-main[data-cart] article header figure {
+main[data-cart] article>figure {
   margin: 0;
   min-width: 70px;
   max-width: 70px;
-  max-height: 70px;
 }
 
-main[data-cart] article header figure img {
+main[data-cart] article>figure>img {
   display: block;
   width: 100%;
   height: auto;
@@ -1045,7 +1044,6 @@ main[data-cart] article header p {
 main[data-cart] section:first-of-type > article > p {
   font-size: 14px;
   line-height: 22px;
-  margin-left: 86px;
   color: #333;
 }
 
@@ -1054,7 +1052,6 @@ main[data-cart] section:first-of-type article footer {
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
-  margin-left: 86px;
 }
 
 main[data-cart] section:first-of-type article footer p {
@@ -2061,7 +2058,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-homeuser] > article,
   main[data-copiesofbook] article,
   main[data-advancedsearch] > section > article {
-    place-content: center;
+    place-items: center;
     text-align: center;
     flex-direction: column;
   }
@@ -2089,7 +2086,7 @@ main[data-book_modify] div:last-of-type > button:hover {
 
   main[data-homeuser]>article>div>footer,
   main[data-copiesofbook] article>div>footer{
-    justify-content: center;
+    justify-content: space-around;
   }
 
   main[data-homeuser] > article > div > header,

@@ -9,10 +9,11 @@ function generateCartArticles(data) {
         for (let i = 0; i < articles.length; i++) {
             let article = `
             <article>
+                <figure>
+                    <img src="${articles[i]["NomeImmagine"]}" alt="" />
+                </figure>
                 <header>
-                    <figure>
-                        <img src="${articles[i]["NomeImmagine"]}" alt="" />
-                    </figure>
+                    
                     <h2>${articles[i]["TitoloAnnuncio"]}</h2>
                     <p>${articles[i]["NomeAutore"]} ${articles[i]["CognomeAutore"]}</p>
                     <label for="trashitem">Rimuovi dal carrello</label>
