@@ -1701,6 +1701,7 @@ main[data-user_order_expanded] > section:first-of-type {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 main[data-user_order_expanded] article {
@@ -1728,6 +1729,7 @@ main[data-user_order_expanded] > section:first-of-type > article > div {
   flex-direction: row;
   height: 100px;
   gap: 20px;
+  overflow: hidden;
 }
 
 main[data-user_order_expanded] > section:first-of-type > article > footer {

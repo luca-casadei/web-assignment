@@ -9,7 +9,7 @@ if (isUserLoggedIn() && isUserVendor()){
             $total_price += $articles[$j]['Prezzo'];
         }
         $orders[$i]["Count"] = count($articles);
-        $orders[$i]["PrezzoTotaleOrdine"] = $total_price;
+        $orders[$i]["PrezzoTotaleOrdine"] = round($total_price,2);
     }
     $data = ["orders"=> $orders];
 
