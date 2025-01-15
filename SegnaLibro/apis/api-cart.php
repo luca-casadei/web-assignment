@@ -5,6 +5,7 @@ if(isset($_POST['action'])) {
     if(!isUserLoggedIn()){
         echo json_encode(["status" => "redirect"]);
     } else{
+        header('Content-Type: application/json');
         if($_POST['action'] == 'remove') {
             $data = $dbh->removeArticleFromCart($_POST['numero_copia'],
             $_POST['ean'], 
@@ -13,21 +14,22 @@ if(isset($_POST['action'])) {
             $_POST['codice_titolo']);
         } else if ($_POST['action'] == 'add') {
             $article = json_decode($_SESSION["expandedarticledata"],true);
-            $data = $dbh->insertArticleInTheCart($article['NumeroCopia'],
-            $article['EAN'], 
-            $article['CodiceEditoriale'], 
-            $article['CodiceRegGroup'],
-            $article['CodiceTitolo']);
+            if(!$dbh->isItemOrdered($article['NumeroCopia'], $article['EAN'], $article['CodiceEditoriale'], $article['CodiceRegGroup'],$article['CodiceTitolo'])){
+                $data = $dbh->insertArticleInTheCart($article['NumeroCopia'],
+                $article['EAN'], 
+                $article['CodiceEditoriale'], 
+                $article['CodiceRegGroup'],
+                $article['CodiceTitolo']);
+                if($data) {
+                    echo json_encode(["status" => "success"]);
+                } else {
+                    echo json_encode(["status" => "error"]);
+                }
+            }
+            else{
+                echo json_encode(["status" => "ordered"]);
+            }
         }
-    
-        header('Content-Type: application/json');
-        
-        if($data) {
-            echo json_encode(["status" => "success"]);
-        } else {
-            echo json_encode(["status" => "error"]);
-        }
-
     }
 
 } else {

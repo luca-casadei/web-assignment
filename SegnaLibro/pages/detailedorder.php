@@ -7,10 +7,11 @@ if (!defined('DIRECT_ACCESS')) {
 <section>
     <header>
         <h1><?php echo $data["Titolo"] ?></h1>
+        <p><?php echo $data["TitoloAnnuncio"] ?></p>
         <p><?php echo $data["NomeAutore"] . " " . $data["CognomeAutore"] ?></p>
         <p><?php echo $data["NomeEditore"] ?></p>
         <p><?php echo $data["ISBN"] ?></p>
-        <p>Condizione: <?php echo $data["NomeCondizione"]?></p>
+        <p>Condizione: <?php echo $data["NomeCondizione"] ?></p>
     </header>
     <?php if (isset($data["NomeImmagine"])) { ?>
         <div>
@@ -22,10 +23,10 @@ if (!defined('DIRECT_ACCESS')) {
         </div>
     <?php } ?>
     <p><?php echo $data["DescrizioneAnnuncio"] ?></p>
-</section>
-<section>
-    <p>Prezzo: <strong><?php echo $data["Prezzo"]?>€</strong></p>
-    <input type="button" aria-label="Aggiungi al carrello" 
-    onclick='insertArticleInTheCart()' 
-    value="Aggiungi al carrello" />
+    <footer>
+        <p>Prezzo: <span><?php echo $data["Prezzo"] ?>€</span></p>
+        <input type="button" aria-label="Aggiungi al carrello"
+            onclick='insertArticleInTheCart()'
+            value="Aggiungi al carrello" />
+    </footer>
 </section>

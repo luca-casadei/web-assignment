@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector('form');
+  const form = document.querySelector("form");
   if (form) {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -8,11 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const cvc = form.querySelector('input[name="card_cvc"]');
       const cardHolder = form.querySelector('input[name="card_holder"]');
       if (!validateCardNumber(cardNumber.value)) {
-        alert("Il numero carta non è valido. Deve contenere 16 cifre (senza spazi).");
+        alert(
+          "Il numero carta non è valido. Deve contenere 16 cifre (senza spazi)."
+        );
         return;
       }
       if (!validateExpiration(expiration.value)) {
-        alert("La data di scadenza deve essere nel formato MM/YY (es. 08/26).");
+        alert(
+          "La data di scadenza deve essere nel formato MM/YY (es. 08/26)."
+        );
         return;
       }
       if (!validateCVC(cvc.value)) {
@@ -70,39 +74,41 @@ function isAllDigits(str) {
   return true;
 }
 
-
-async function getAddress(){
-    const url = './apis/api-checkout.php';
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-      const userInfo = json["user_info"];
-      document.querySelector('#address_avenue').value = userInfo.Via || "";
-      document.querySelector('#address_civic').value = userInfo.Civico || "";
-      document.querySelector('#address_city').value = userInfo.Citta || "";
-      document.querySelector('#address_province').value = userInfo.CodiceProvincia || "";
-      document.querySelector('#address_cap').value = userInfo.CAP || "";
-      document.querySelector('#card_holder').value = userInfo.Nome + " " + userInfo.Cognome || "";
-    } catch (error) {
-        console.log(error.message);
-    }
-}
-
-async function getProvinces() {
-  const url = './apis/api-checkout.php';
+async function getAddress() {
+  const url = "./apis/api-checkout.php";
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
     const json = await response.json();
-    const provincesSelect = document.querySelector('#address_province');
-    provincesSelect.innerHTML = '<option value="">Seleziona la provincia</option>';
-    json["provinces"].forEach(province => {
-      const option = document.createElement('option');
+    const userInfo = json["user_info"];
+    document.querySelector("#address_avenue").value = userInfo.Via || "";
+    document.querySelector("#address_civic").value = userInfo.Civico || "";
+    document.querySelector("#address_city").value = userInfo.Citta || "";
+    document.querySelector("#address_province").value =
+      userInfo.CodiceProvincia || "";
+    document.querySelector("#address_cap").value = userInfo.CAP || "";
+    document.querySelector("#card_holder").value =
+      userInfo.Nome + " " + userInfo.Cognome || "";
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+async function getProvinces() {
+  const url = "./apis/api-checkout.php";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const json = await response.json();
+    const provincesSelect = document.querySelector("#address_province");
+    provincesSelect.innerHTML =
+      '<option value="">Seleziona la provincia</option>';
+    json["provinces"].forEach((province) => {
+      const option = document.createElement("option");
       option.value = province.Codice;
       option.textContent = province.Nome;
       provincesSelect.appendChild(option);
@@ -113,24 +119,27 @@ async function getProvinces() {
 }
 
 async function insertOrder() {
-  const url = './apis/api-checkout.php';
+  const url = "./apis/api-checkout.php";
   const formData = new FormData();
-  formData.append('action', 'insert_order');
+  formData.append("action", "insert_order");
   try {
     const response = await fetch(url, {
       method: "POST",
-      body: formData
+      body: formData,
     });
-    const json = await response.json();
+    const text = await response.json();
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-    redirectToCompleteOrder();
+    if (text["status"] === "ALREADY_ORDERED") {
+      alert("Alcuni elementi del carrello sono già stati ordinati");
+      window.location.href = "./index.php";
+    } else if (text["status"] === "SUCCESS") {
+      window.location.href = "./complete_order_index.php";
+    } else {
+      console.log(text);
+    }
   } catch (error) {
     console.log(error.message);
   }
-}
-
-function redirectToCompleteOrder() {
-  window.location.href = "./complete_order_index.php";
 }

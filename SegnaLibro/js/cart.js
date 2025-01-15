@@ -15,16 +15,18 @@ function generateCartArticles(data) {
                     </figure>
                     <h2>${articles[i]["TitoloAnnuncio"]}</h2>
                     <p>${articles[i]["NomeAutore"]} ${articles[i]["CognomeAutore"]}</p>
-                    <input type="button" 
-                        alt="Rimuovi articolo dal carrello" 
+                    <label for="trashitem">Rimuovi dal carrello</label>
+                    <input type="image" 
+                        id="trashitem"
+                        alt="Rimuovi elemento dal carrello"
+                        src="./images/trash.png"
                         onclick="removeArticle('${articles[i]["NumeroCopia"]}', '${articles[i]["EAN"]}', '${articles[i]["CodiceRegGroup"]}', '${articles[i]["CodiceEditoriale"]}', '${articles[i]["CodiceTitolo"]}')"
                     />
                 </header>
-                <p>ISBN: ${articles[i]["EAN"]}-${articles[i]["CodiceRegGroup"]}-${articles[i]["CodiceEditoriale"]}-${articles[i]["CodiceTitolo"]}-${articles[i]["CifraControllo"]}</p>
                 <p>${articles[i]["NomeCategoria"]}</p>
                 <p>${articles[i]["DescrizioneAnnuncio"]}</p>
                 <footer>
-                    <p>${articles[i]["Prezzo"]}</p>
+                    <p>${articles[i]["Prezzo"]}€</p>
                     <p>Condizione: <span>${articles[i]["NomeCondizione"]}</span></p>
                 </footer>
             </article>
@@ -33,8 +35,8 @@ function generateCartArticles(data) {
         }
         result += `</section>
         <section>  
-            <p>Totale: ${data.total_price}€</p>
-            <input type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
+            <h1>Totale: ${data.total_price}€</h1>
+            <input aria-label="Procedi all'ordine" type="button" value="Procedi all\'ordine" onclick="redirectToPayment()" />
         </section>`;
     } else {
         result += "</section><section><p>Il carrello è vuoto</p></section>";

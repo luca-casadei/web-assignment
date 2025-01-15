@@ -210,6 +210,15 @@ class DatabaseHelper
         return $stmt->affected_rows > 0;
     }
 
+    public function isItemOrdered($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo){
+        $qr = "SELECT * FROM COPIE_ORDINE WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceTitolo = ? AND CodiceRegGroup = ?";
+        $stmt = $this->db->prepare($qr);
+        $stmt->bind_param('issss', $numero_copia, $ean, $codice_editoriale, $codice_titolo, $codice_reg_group);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
     public function removeArticleFromCart($numero_copia, $ean, $codice_editoriale, $codice_reg_group, $codice_titolo)
     {
         $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceEditoriale = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND UniqueUserID = ?";
@@ -532,20 +541,31 @@ class DatabaseHelper
             $stmt->execute();
 
             $cart_articles = $this->getCart();
-            for ($i = 0; $i < count($cart_articles); $i++) {
-                $qr = "INSERT INTO COPIE_ORDINE (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
-                $stmt = $this->db->prepare($qr);
-                $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"], $oid);
-                $stmt->execute();
+            if (count($cart_articles) > 0){
+                for ($i = 0; $i < count($cart_articles); $i++) {
+                    if(!$this->isItemOrdered($cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceTitolo"])){
+                        $qr = "INSERT INTO COPIE_ORDINE (NumeroCopia, EAN, CodiceRegGroup, CodiceEditoriale, CodiceTitolo, CodiceOrdine) VALUES (?, ?, ?, ?, ?, ?)";
+                        $stmt = $this->db->prepare($qr);
+                        $stmt->bind_param("issssi", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceEditoriale"], $cart_articles[$i]["CodiceTitolo"], $oid);
+                        $stmt->execute();
+                        $qr = "DELETE FROM CARRELLO WHERE NumeroCopia = ? AND EAN = ? AND CodiceRegGroup = ? AND CodiceTitolo = ? AND CodiceEditoriale = ?";
+                        $stmt = $this->db->prepare($qr);
+                        $stmt->bind_param("issss", $cart_articles[$i]["NumeroCopia"], $cart_articles[$i]["EAN"], $cart_articles[$i]["CodiceRegGroup"], $cart_articles[$i]["CodiceTitolo"], $cart_articles[$i]["CodiceEditoriale"] );
+                        $stmt->execute();
+                    }
+                    else{
+                        $this->db->rollback();
+                        return 'ALREADY_ORDERED';
+                    }
+                }
+            }
+            else{
+                $this->db->rollback();
+                return 'ALREADY_ORDERED';
             }
 
-            $qr = "DELETE FROM CARRELLO WHERE UniqueUserID = ?";
-            $stmt = $this->db->prepare($qr);
-            $stmt->bind_param("i", $_SESSION['userid']);
-            $stmt->execute();
-
             $this->db->commit();
-            return $stmt->affected_rows > 0;
+            return 'SUCCESS';
         } catch (Exception $e) {
             $this->db->rollback();
             return $e->getMessage();

@@ -62,12 +62,16 @@ async function insertArticleInTheCart() {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
+        console.log(json);
         if (json.status === "success") {
             alert("Articolo inserito correttamente nel carrello.");
             window.location.href = "./index.php";
         } else if (json.status === "redirect"){
             window.location.href = "./login_index.php";
-        } else {
+        } else if(json.status === "ordered"){
+            alert("Attenzione: L'articolo è già stato ordinato.")
+        } 
+        else {
             alert("Attenzione: Articolo già presente nel carrello.");
         }
     } catch (error) {
