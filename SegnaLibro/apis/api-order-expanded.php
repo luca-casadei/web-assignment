@@ -16,7 +16,7 @@ else if (isset($_POST["getArticles"])) {
     $data["articles"] = $articles;
     $data["DataOrdine"] = $order["DataOrdine"];
     $data["stato"] = $order["Stato"];
-    $data["prezzoTotale"] = $total_price;
+    $data["prezzoTotale"] = round($total_price,2);
 
     echo json_encode($data);
 }

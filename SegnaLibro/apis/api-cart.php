@@ -42,7 +42,7 @@ if(isset($_POST['action'])) {
     }
     $data = [
         "articles"     => $cart_articles,
-        "total_price"  => $total_price
+        "total_price"  => round($total_price,2)
     ];
     header('Content-Type: application/json');
     echo json_encode($data);
