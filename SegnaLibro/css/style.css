@@ -268,7 +268,7 @@ main[data-advancedsearch]>section>article>div>p {
 }
 
 main[data-homeuser]>article header,
-main[data-everyann] article header,
+main[data-everyann] article>div>header,
 main[data-copiesofbook] article header,
 main[data-advancedsearch] > section > article header {
   display: flex;
@@ -2063,6 +2063,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-advancedsearch] > section > article {
     place-content: center;
     text-align: center;
+    flex-direction: column;
   }
 
   main[data-homeuser] > article > figure,
@@ -2128,7 +2129,7 @@ main[data-book_modify] div:last-of-type > button:hover {
   main[data-checkout] div:last-of-type,
   main[data-cart] > section:last-of-type,
   main[data-book_details] footer:last-of-type,
-  main[data-copiesofbook] > section:nth-child(n),
+  main[data-copiesofbook] > section:last-of-type,
   main[data-advancedsearch] > header {
     height: 140px;
     width: 100%;
@@ -2140,9 +2141,23 @@ main[data-book_modify] div:last-of-type > button:hover {
     padding-bottom: 20px;
     height: 80px;
   }
+  
+  main[data-copiesofbook] > section:first-of-type{
+    width: 100%;
+  }
+  
+  main[data-copiesofbook] article>div{
+    width: 100%;
+  }
 
   main[data-advancedsearch] > header > form {
     flex-direction: row;
+  }
+
+  main[data-everyann] article,
+  main[data-everyann] article>div>header{
+    flex-direction: column;
+    align-items: center;
   }
 
   
