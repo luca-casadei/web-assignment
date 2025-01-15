@@ -84,7 +84,7 @@ async function changeInfo(name, lastname, avenue, civic, city, province, cap) {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        document.querySelector('form:first-of-type p:last-of-type').innerHTML = json["profile_alert"];
+        document.querySelector('section:first-of-type p:last-of-type').innerHTML = json["profile_alert"];
     } catch (error) {
         console.log(error.message);
     }
