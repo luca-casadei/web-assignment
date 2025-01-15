@@ -8,7 +8,7 @@
     }
     define('DIRECT_ACCESS',true);
 
-    $tp["title"] = "SegnaLibro - dettagli ordine";
+    $tp["title"] = "SegnaLibro - Dettagli ordine";
     $tp["identification"] = "order_expanded";
     
     array_push($tp["js"], "./js/order_expanded.js");
